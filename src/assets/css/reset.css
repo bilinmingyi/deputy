@@ -5,7 +5,9 @@ body, h1, h2, h3, h4, h5, p, dl, dd, ol, ul, th, td, form, fieldset, input, butt
   font-weight: normal;
   font-family: "microsoft yahei";
 }
-
+body{
+  background: #F5F5F5;
+}
 html {
   -webkit-text-size-adjust: none;
   word-wrap: break-word;
