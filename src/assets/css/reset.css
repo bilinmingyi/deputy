@@ -7,13 +7,21 @@ body, h1, h2, h3, h4, h5, p, dl, dd, ol, ul, th, td, form, fieldset, input, butt
 }
 body{
   background: #F5F5F5;
+
 }
 html {
   -webkit-text-size-adjust: none;
   word-wrap: break-word;
   width: 100%;
+  font-size: 16px;
 }
-
+.full-screen-hr {
+  width: 100vw;
+  margin: 0;
+  -webkit-transform: scaleY(.5);
+  transform: scaleY(.5);
+  border-top: 1px solid #d9d9d9;
+}
 h1, h2, h3 {
   font-size: 100%
 }
