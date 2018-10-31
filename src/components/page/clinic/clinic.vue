@@ -1,12 +1,12 @@
 <template>
     <div>
-      检查列表
+      <router-view/>
     </div>
 </template>
 
 <script>
     export default {
-        name: "checkListPage"
+        name: "clinic"
     }
 </script>
 

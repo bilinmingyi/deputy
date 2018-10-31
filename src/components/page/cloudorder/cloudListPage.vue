@@ -1,12 +1,12 @@
 <template>
     <div>
-      诊所
+      <router-view/>
     </div>
 </template>
 
 <script>
     export default {
-        name: "clinic"
+        name: "cloudListPage"
     }
 </script>
 

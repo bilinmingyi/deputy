@@ -1,12 +1,12 @@
 <template>
     <div>
-      云处方列表
+      这是确认订单页面
     </div>
 </template>
 
 <script>
     export default {
-        name: "cloudListPage"
+        name: "confirmedOrderDetail"
     }
 </script>
 

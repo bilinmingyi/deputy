@@ -18,18 +18,79 @@ export default new Router({
     },
     {
       path: '/checkListPage',
-      name: 'checkListPage',
-      component: () => import(/* webapckChunkName: 'checkListPage'*/'@/components/page/checkListPage.vue')
+      component: () => import(/* webapckChunkName: 'checkListPage'*/'@/components/page/checkorder/checkListPage.vue'),
+      children: [
+        {
+          path: '',
+          name: 'checkListPage',
+          component: () => import(/* webpackChunkName: 'checkListPage' */'@/components/page/checkorder/checkList.vue')
+        },
+        {
+          path: 'clinicCheckOrderPage/:clinicId',
+          name: 'clinicCheckOrderPage',
+          component: () => import(/* webpackChunkName: 'checkListPage' */ '@/components/page/checkorder/clinicCheckOrderPage.vue'),
+          props: true
+        },
+        {
+          path: 'clinicCheckOrderPage/confirmedOrderDetail/:orderSeqno',
+          name: 'confirmedOrderDetail',
+          component: () => import(/* webpackChunkName: 'confirmedOrderDetail' */'@/components/page/checkorder/confirmedOrderDetail.vue'),
+          props: true
+        },
+        {
+          path:'clinicCheckOrderPage/newOrderPage',
+          name:'newOrderPage',
+          component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/newOrderPage.vue'),
+        },
+        {
+          path:'clinicCheckOrderPage/newOrderPage/addNewProject',
+          name:'addNewProject',
+          component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/addNewProject.vue'),
+        },
+        {
+          path:'clinicCheckOrderPage/newOrderPage/editBarCode',
+          name:'editBarCode',
+          component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/editBarCode.vue'),
+        }
+      ]
     },
     {
       path: '/cloudListPage',
-      name: 'cloudListPage',
-      component: () => import(/* webpackChunkName: 'cloudListPage' */'@/components/page/cloudListPage.vue')
+      component: () => import(/* webpackChunkName: 'cloudListPage' */'@/components/page/cloudorder/cloudListPage.vue'),
+      children: [
+        {
+          path: '',
+          name:'cloudListPage',
+          component: () => import(/* webpackChunkName:'cloudListPage' */'@/components/page/cloudorder/cloudList.vue')
+        },
+        {
+          path:'clinicCloudOrderPage/:clinicId',
+          name:'clinicCloudOrderPage',
+          component: ()=> import(/* webpackChunkName: 'cloudListPage' */'@/components/page/cloudorder/clinicCloudOrderPage.vue'),
+          props:true
+        },
+        {
+          path:'clinicCloudOrderPage/waitPayPage/:orderSeqno',
+          name:'waitPayPage',
+          component: () => import(/* webpackChunkName: 'waitPayPage' */'@/components/page/cloudorder/waitPayPage.vue')
+        }
+      ]
     },
     {
       path: '/clinic',
-      name: 'clinic',
-      component: () => import(/* webpackChunkName: 'clinic' */'@/components/page/clinic.vue')
+      component: () => import(/* webpackChunkName: 'clinic' */'@/components/page/clinic/clinic.vue'),
+      children:[
+        {
+          path: '',
+          name:'clinic',
+          component: () => import(/* webpackChunkName: 'clinic' */'@/components/page/clinic/clinicList.vue')
+        },
+        {
+          path:'/clinicDetail/:clinicId',
+          name:'clinicDetail',
+          component: () => import(/* webpackChunkName: 'clinicDetail' */'@/components/page/clinic/clinicDetail.vue')
+        }
+      ]
     },
     {
       path: '/personal',
