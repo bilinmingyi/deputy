@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 
 Vue.use(Router)
-
+//又传不上去了
 export default new Router({
   routes: [
     {
