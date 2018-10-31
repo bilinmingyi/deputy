@@ -140,5 +140,6 @@
     height: 2.5rem;
     line-height: 2.5rem;
     text-align: center;
+    margin-bottom: 3.125rem;
   }
 </style>
