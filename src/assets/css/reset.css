@@ -1,0 +1,100 @@
+/*重置*/
+body, h1, h2, h3, h4, h5, p, dl, dd, ol, ul, th, td, form, fieldset, input, button, textarea {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: "microsoft yahei";
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+h1, h2, h3 {
+  font-size: 100%
+}
+
+ol, ul {
+  list-style: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  font-size: inherit
+}
+
+fieldset, img {
+  border: 0
+}
+
+html, body, .content {
+  height: 100%;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  display: flex;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "microsoft yahei";
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  border: none;
+
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+button {
+  outline: none;
+}
+
+a:link, a:visited, a:hover, a:active {
+  outline: none;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* 图标字体 */
+@font-face {
+  font-family: 'iconfont';
+  src: url('../fonts/iconfont.woff') format('woff'),
+    /* chrome、firefox */ url('../fonts/iconfont.ttf') format('truetype'),
+    /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('../fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}

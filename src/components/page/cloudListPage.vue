@@ -1,5 +1,7 @@
 <template>
-    
+    <div>
+      云处方列表
+    </div>
 </template>
 
 <script>
