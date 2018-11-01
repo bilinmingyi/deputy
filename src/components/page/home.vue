@@ -48,12 +48,17 @@
       </ul>
       <div class="add_more">查看更多...</div>
     </section>
+    <d-footer :activeItem="1"></d-footer>
   </div>
 </template>
 
 <script>
+  import dFooter from "@/components/common/dFooter";
   export default {
-    name: "home"
+    name: "home",
+    components: {
+      dFooter
+    }
   }
 </script>
 
