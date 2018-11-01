@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-
 Vue.use(Router)
 export default new Router({
+
   routes: [
     {
       path: '/',
@@ -17,7 +17,7 @@ export default new Router({
     },
     {
       path: '/checkListPage',
-      component: () => import(/* webapckChunkName: 'checkListPage'*/'@/components/page/checkorder/checkListPage.vue'),
+      component: () => import(/* webpackChunkName: 'checkListPage'*/'@/components/page/checkorder/checkListPage.vue'),
       children: [
         {
           path: '',

@@ -1,8 +1,9 @@
 <template>
-    <div>
-
-      <section class="clinic_content">
-        <ul>
+  <div>
+    <d-search @on-search="getData"></d-search>
+    <section class="clinic_content">
+      <ul>
+        <router-link to="/clinic/clinicDetail/117">
           <li>
             <div class="order_infor">
               <div class="order_infor_top">
@@ -15,6 +16,8 @@
             </div>
             <hr class="full-screen-hr">
           </li>
+        </router-link>
+        <router-link to="/clinic/clinicDetail/118">
           <li>
             <div class="order_infor">
               <div class="order_infor_top">
@@ -27,6 +30,8 @@
             </div>
             <hr class="full-screen-hr">
           </li>
+        </router-link>
+        <router-link to="/clinic/clinicDetail/119">
           <li>
             <div class="order_infor">
               <div class="order_infor_top">
@@ -39,22 +44,40 @@
             </div>
             <hr class="full-screen-hr">
           </li>
-        </ul>
-        <div class="add_more">查看更多...</div>
-      </section>
-    </div>
+        </router-link>
+      </ul>
+      <div class="add_more">查看更多...</div>
+    </section>
+    <d-footer :activeItem="2"></d-footer>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "clinicList"
+  import dSearch from '@/components/common/dSearch.vue'
+  import dFooter from '@/components/common/dFooter.vue'
+
+  export default {
+    name: "clinicList",
+    data: function () {
+      return {}
+    },
+    components: {
+      'd-search': dSearch,
+      'd-footer': dFooter
+    },
+    methods: {
+      getData: function (name) {
+        console.log(name)
+      }
     }
+  }
 </script>
 
 <style scoped>
-  .clinic_content{
+  .clinic_content {
     background: #ffffff;
   }
+
   .order_infor {
     padding: 0.625rem 1rem;
   }
@@ -63,13 +86,15 @@
     display: flex;
 
   }
-  .order_infor_top div:first-child{
+
+  .order_infor_top div:first-child {
 
     color: #3F3F3F;
     font-size: 1rem;
     font-weight: bolder;
   }
-  .order_infor_top div:last-child{
+
+  .order_infor_top div:last-child {
     font-size: 0.625rem;
     color: #FFFFFF;
     border-radius: 4px;
@@ -78,15 +103,19 @@
     padding: 0 0.25rem;
     margin-left: 0.5rem;
   }
-  .bg_EB{
+
+  .bg_EB {
     background: #EB6262;
   }
-  .bg_ED{
+
+  .bg_ED {
     background: #EDAB15;
   }
-  .bg_4D{
+
+  .bg_4D {
     background: #4DBC89;
   }
+
   .order_infor_bottom {
     margin-top: 0.5rem;
     color: #7C7C7C;
@@ -95,7 +124,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .add_more{
+
+  .add_more {
     color: #7C7C7C;
     font-size: 0.875rem;
     background: #FAFAFA;
