@@ -1,16 +1,16 @@
 <template>
   <footer class="d-footer">
-    <div :class="['d-footer-item', {active: activeBar==1}]" @click="activeBar=1">
+    <div :class="['d-footer-item', {active: activeBar==1}]" @click="setPage(1)">
         <span class="yunicon" v-if="activeBar==1">&#xe60b;</span>
         <span class="yunicon" v-else="activeBar!=1">&#xe60e;</span>
         <span class="d-footer-text">首页</span>
     </div>
-    <div :class="['d-footer-item', {active: activeBar==2}]" @click="activeBar=2">
+    <div :class="['d-footer-item', {active: activeBar==2}]" @click="setPage(2)">
         <span class="yunicon" v-if="activeBar==2">&#xe60a;</span>
         <span class="yunicon" v-else="activeBar!=2">&#xe60c;</span>
         <span class="d-footer-text">诊所</span>
     </div>
-    <div :class="['d-footer-item', {active: activeBar==3}]" @click="activeBar=3">
+    <div :class="['d-footer-item', {active: activeBar==3}]" @click="setPage(3)">
         <span class="yunicon" v-if="activeBar==3">&#xe60d;</span>
         <span class="yunicon" v-else="activeBar!=3">&#xe609;</span>
         <span class="d-footer-text">个人</span>
@@ -26,6 +26,21 @@ export default {
       activeBar: this.activeItem
     };
   },
+  created() {
+    this.setPage(this.activeBar);
+  },
+  methods: {
+    setPage(type) {
+      this.activeBar = type;
+      switch(type) {
+        case 1: this.$router.push('/home');break;
+        case 2: this.$router.push('/clinic');break;
+        case 3: this.$router.push('/personal');break;
+        default: this.$router.push('/home');break;
+      } 
+      console.log(type);     
+    }
+  }
 };
 </script>
 
