@@ -95,6 +95,11 @@ export default new Router({
       path: '/personal',
       name: '/personal',
       component: () => import(/* webpackChunkName: '/personal' */'@/components/page/personal.vue')
+    },
+    {
+      path: '/test',
+      name: '/test',
+      component: () => import(/* webpackChunkName: '/personal' */'@/components/common/moduleTest.vue')
     }
   ]
 })

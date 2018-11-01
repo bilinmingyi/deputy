@@ -5,8 +5,7 @@
         :name="name"
         :value="item.value"
         :checked="checkedVal==item.value"
-        @click="setChecked(item.value)"
-        @input="dosomething">
+        @click="setChecked(item.value)">
       <label :for="item.id">{{item.label}}</label>
     </div>
   </div>
@@ -25,9 +24,6 @@ export default {
       this.checkedVal = val;
       this.$emit('input', val);
     },
-    dosomething() {
-      console.log(1)
-    }
   }
 };
 </script>
@@ -45,7 +41,7 @@ export default {
   line-height: 2rem;
 }
 .radio-group > div:nth-last-child(1) {
-  margin-right: 0.875rem;
+  margin-right: 0.625rem;
 }
 .radio-group label {
   position: relative;
