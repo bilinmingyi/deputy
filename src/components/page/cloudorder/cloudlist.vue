@@ -1,187 +1,74 @@
 <template>
-    <div>
-      <d-header>云处方订单</d-header>
-      <section class="content">
-        <info-bar :title="'患者详情'">
-          <div>
-            <span>就诊时间：</span>
-            <span>{{order.time}}</span>
-          </div>
-          <div>
-            <span>患者姓名：</span>
-            <span>{{order.patientName}}</span>
-          </div>
-          <div>
-            <span>联系电话：</span>
-            <span>{{order.mobile}}</span>
-          </div>
-          <div>
-            <span>就诊医生：</span>
-            <span>{{order.doctor}}</span>
-          </div>
-        </info-bar>
-        <info-bar :title="'配送地址'">
-          <button slot="btn">选择地址</button>
-          <div>
-            <span>联系人名：</span>
-            <span>{{order.time}}</span>
-          </div>
-          <div>
-            <span>联系电话：</span>
-            <span>{{order.patientName}}</span>
-          </div>
-          <div>
-            <span>详细地址：</span>
-            <span>{{order.mobile}}</span>
-          </div>
-          <div>
-            <span>就诊医生：</span>
-            <span>{{order.doctor}}</span>
-          </div>
-        </info-bar>
-        <info-header>处方信息</info-header>
-        <div class="bg-fff p16 mb12">
-          <table class="d-table" data-type="1">
-            <tbody>
-              <tr>
-                <th>处方类型</th>
-                <th>发药类型</th>
-                <th>金额</th>
-              </tr>
-              <tr>
-                <td>中药饮片</td>
-                <td>云药房</td>
-                <td>123</td>
-              </tr>
-              <tr>
-                <td>颗粒饮片</td>
-                <td>本机构</td>
-                <td>456</td>
-              </tr>
-              <tr>
-                <td>附加服务</td>
-                <td>云药房</td>
-                <td>789</td>
-              </tr>
-              <tr>
-                <td>中药饮片</td>
-                <td>本机构</td>
-                <td>012</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="bg-fff p15 mb12">
-          <table class="d-table" data-type="2">
-            <tbody>
-              <tr>
-                <th><div>处方类型</div></th>
-                <th><div>发药类型</div></th>
-                <th><div>金额</div></th>
-              </tr>
-              <tr>
-                <td class="bg-medium">中药饮片</td>
-                <td>云药房</td>
-                <td>123</td>
-              </tr>
-              <tr>
-                <td class="bg-medium">颗粒饮片</td>
-                <td>本机构</td>
-                <td>456</td>
-              </tr>
-              <tr>
-                <td class="bg-medium">附加服务</td>
-                <td>云药房</td>
-                <td>789</td>
-              </tr>
-              <tr>
-                <td class="bg-medium">中药饮片</td>
-                <td>本机构</td>
-                <td>012</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="bg-fff p15 mb12">
-          <touch-list :data="touchListData">
-            <div slot-scope="{prop}">
-                <span>{{prop.name}}</span>
-            </div>
-          </touch-list>  
-        </div>
-        <div class="bg-fff pl15 pr15 pt12 pb12 mb12">
-          <radio-group :name="'pay-type'" :data="payType" v-model="checkedPayType"></radio-group>
-        </div>
-      </section>
-      <!-- <d-footer :activeItem="2"></d-footer> -->
-    </div>
+  <div class="checkList">
+    <d-header>云处方订单</d-header>
+    <d-search @on-search="getData"></d-search>
+    <section class="clinicList">
+      <div class="bg-fff p15">
+        <table class="d-table" data-type="2">
+          <tbody>
+          <tr>
+            <th><div>诊所名称</div></th>
+            <th><div>待确认</div></th>
+            <th><div>操作</div></th>
+          </tr>
+          <tr v-for="item in dataList">
+            <td>深圳淳道门诊</td>
+            <td>8</td>
+            <td>
+              <router-link :to="{path:`/cloudListPage/clinicCloudOrderPage/${item.id}`, query:{name:`${item.name}`}}" class="red_a">去处理</router-link>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="add_more">查看更多...</div>
+    </section>
+  </div>
 </template>
 
 <script>
-import dHeader from "@/components/common/dHeader";
-import dFooter from "@/components/common/dFooter";
-import infoBar from "@/components/common/infoBar";
-import infoHeader from "@/components/common/infoHeader";
-import touchList from "@/components/common/touchList";
-import radioGroup from "@/components/common/radioGroup";
-export default {
-  components: {
-    dHeader,
-    dFooter,
-    infoBar,
-    infoHeader,
-    touchList,
-    radioGroup,
-  },
-  data() {
-    return {
-      order: {
-        time: "2018-12-23 22:26",
-        patientName: "王尼玛",
-        mobile: "13245678901",
-        doctor: "李教授"
-      },
-      touchListData: [
-        {
-          name: "甲功三项",
-          age: 12
-        },
-        {
-          name: "血常规",
-          age: 34
-        },
-        {
-          name: "肾功能常规",
-          age: 56
-        }
-      ],
-      checkedPayType: 6,
-      payType: [
-        {
-          id: 'pay-type-wx',
-          value: 1,
-          label: '微信',
-        },
-        {
-          id: 'pay-type-zfb',
-          value: 2,
-          label: '支付宝',
-        },
-        {
-          id: 'pay-type-xj',
-          value: 3,
-          label: '现金',
-        }
-      ],
-    };
+  import dHeader from '@/components/common/dHeader.vue'
+  import dSearch from '@/components/common/dSearch.vue'
+  export default {
+    name: "cloudlist",
+    data:function(){
+      return{
+        dataList:[
+          {name:"深圳淳道",id:1,wait:1},
+          {name:"深圳淳道",id:2,wait:2},
+          {name:"深圳淳道",id:3,wait:3},
+          {name:"深圳淳道",id:4,wait:4},
+          {name:"深圳淳道",id:5,wait:5},
+          {name:"深圳淳道",id:6,wait:6},
+          {name:"深圳淳道",id:7,wait:7},
+          {name:"深圳淳道",id:8,wait:8},
+          {name:"深圳淳道",id:9,wait:9},
+          {name:"深圳淳道",id:0,wait:0}
+        ]
+      }
+    },
+    components: {
+      'd-search': dSearch,
+      'd-header': dHeader
+    },
+    methods:{
+      getData:function (name) {
+        console.log(name)
+      }
+    }
   }
-};
 </script>
 
 <style scoped>
-.content {
-  min-height: calc(100vh - 2.75rem);
-  width: 100vw;
-  margin: 2.75rem 0 0 0;
-}
+  .checkList >>> .block-fix {
+    top: 2.75rem;
+  }
+
+  .clinicList {
+    margin-top: 5.75rem;
+    background: #FFFFFF;
+  }
+  .red_a{
+    color: red;
+  }
 </style>

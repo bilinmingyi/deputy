@@ -23,15 +23,12 @@
       </div>
       <div class="add_more">查看更多...</div>
     </section>
-
-
   </div>
 </template>
 
 <script>
   import dHeader from '@/components/common/dHeader.vue'
   import dSearch from '@/components/common/dSearch.vue'
-
   export default {
     name: "checkList",
     data:function(){

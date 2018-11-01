@@ -5,16 +5,15 @@
         <img src="../../assets/img/yf.png">
         <span>云药房订单</span>
       </div>
-      <router-link to="/checkListPage">
-        <div class="top_item">
-          <img src="../../assets/img/jy.png">
-          <span>检验订单</span>
-        </div>
+      <router-link class="top_item" to="/checkListPage">
+        <img src="../../assets/img/jy.png">
+        <span>检验订单</span>
       </router-link>
-      <div class="top_item">
+      <router-link class="top_item" to="/cloudListPage">
         <img src="../../assets/img/cf.png">
         <span>云处方订单</span>
-      </div>
+      </router-link>
+
     </section>
     <section class="home_content">
       <div class="home_content_title">
@@ -56,22 +55,19 @@
 
 <script>
   import dFooter from "@/components/common/dFooter";
+
   export default {
     name: "home",
     components: {
       dFooter
     },
-    data:function () {
-      return{
-
-      }
+    data: function () {
+      return {}
     },
-    created:function(){
+    created: function () {
 
     },
-    methods:{
-
-    }
+    methods: {}
   }
 </script>
 
@@ -132,17 +128,20 @@
     display: flex;
 
   }
-  .order_infor_top div:first-child{
+
+  .order_infor_top div:first-child {
     flex: 1;
     color: #3F3F3F;
     font-size: 1rem;
     font-weight: bolder;
   }
-  .order_infor_top div:last-child{
+
+  .order_infor_top div:last-child {
     font-size: 0.875rem;
     color: #3F3F3F;
     margin-right: 0.5rem;
   }
+
   .order_infor_bottom {
     margin-top: 0.5rem;
     color: #7C7C7C;
@@ -151,7 +150,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .add_more{
+
+  .add_more {
     color: #7C7C7C;
     font-size: 0.875rem;
     background: #FAFAFA;
