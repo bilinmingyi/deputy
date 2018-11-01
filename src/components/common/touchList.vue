@@ -88,7 +88,7 @@ ul {
 }
 .list-item {
   position: relative;
-  height: 2.75rem;
+  min-height: 2.75rem;
   margin-bottom: 0.625rem;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;

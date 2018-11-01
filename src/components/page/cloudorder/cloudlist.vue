@@ -105,9 +105,12 @@
         <div class="bg-fff p15 mb12">
           <touch-list :data="touchListData">
             <div slot-scope="{prop}">
-              {{prop.name}}
+                <span>{{prop.name}}</span>
             </div>
-          </touch-list>
+          </touch-list>  
+        </div>
+        <div class="bg-fff pl15 pr15 pt12 pb12 mb12">
+          <radio-group :name="'pay-type'" :data="payType" v-model="checkedPayType"></radio-group>
         </div>
       </section>
       <!-- <d-footer :activeItem="2"></d-footer> -->
@@ -120,13 +123,15 @@ import dFooter from "@/components/common/dFooter";
 import infoBar from "@/components/common/infoBar";
 import infoHeader from "@/components/common/infoHeader";
 import touchList from "@/components/common/touchList";
+import radioGroup from "@/components/common/radioGroup";
 export default {
   components: {
     dHeader,
     dFooter,
     infoBar,
     infoHeader,
-    touchList
+    touchList,
+    radioGroup,
   },
   data() {
     return {
@@ -138,15 +143,36 @@ export default {
       },
       touchListData: [
         {
-          name: "甲功三项"
+          name: "甲功三项",
+          age: 12
         },
         {
-          name: "血常规"
+          name: "血常规",
+          age: 34
         },
         {
-          name: "肾功能常规"
+          name: "肾功能常规",
+          age: 56
         }
-      ]
+      ],
+      checkedPayType: 6,
+      payType: [
+        {
+          id: 'pay-type-wx',
+          value: 1,
+          label: '微信',
+        },
+        {
+          id: 'pay-type-zfb',
+          value: 2,
+          label: '支付宝',
+        },
+        {
+          id: 'pay-type-xj',
+          value: 3,
+          label: '现金',
+        }
+      ],
     };
   }
 };
