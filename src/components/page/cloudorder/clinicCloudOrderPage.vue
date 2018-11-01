@@ -25,20 +25,23 @@
       <hr class="full-screen-hr">
     </section>
     <section class="mt188 mb50">
-      <div class="order_item">
-        <div class="order_item_top">
-          <span>李教授</span>
-          <span>18/10/01 14:12</span>
+      <router-link to="/cloudListPage/clinicCloudOrderPage/waitPayPage/11">
+        <div class="order_item">
+          <div class="order_item_top">
+            <span>李教授</span>
+            <span>18/10/01 14:12</span>
+          </div>
+          <div class="order_item_middle">
+            <span>王尼玛：15876890561</span>
+            <span>待确认</span>
+          </div>
+          <div class="order_item_bottom">
+            <span>付款金额：323</span>
+          </div>
+          <hr class="full-screen-hr">
         </div>
-        <div class="order_item_middle">
-          <span>王尼玛：15876890561</span>
-          <span>待确认</span>
-        </div>
-        <div class="order_item_bottom">
-          <span>付款金额：323</span>
-        </div>
-        <hr class="full-screen-hr">
-      </div>
+      </router-link>
+
       <div class="add_more">查看更多...</div>
     </section>
   </div>
