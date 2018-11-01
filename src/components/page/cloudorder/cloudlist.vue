@@ -102,6 +102,13 @@
             </tbody>
           </table>
         </div>
+        <div class="bg-fff p15 mb12">
+          <touch-list :data="touchListData">
+            <div slot-scope="{prop}">
+              {{prop.name}}
+            </div>
+          </touch-list>
+        </div>
       </section>
       <!-- <d-footer :activeItem="2"></d-footer> -->
     </div>
@@ -112,12 +119,14 @@ import dHeader from "@/components/common/dHeader";
 import dFooter from "@/components/common/dFooter";
 import infoBar from "@/components/common/infoBar";
 import infoHeader from "@/components/common/infoHeader";
+import touchList from "@/components/common/touchList";
 export default {
   components: {
     dHeader,
     dFooter,
     infoBar,
-    infoHeader
+    infoHeader,
+    touchList
   },
   data() {
     return {
@@ -126,7 +135,18 @@ export default {
         patientName: "王尼玛",
         mobile: "13245678901",
         doctor: "李教授"
-      }
+      },
+      touchListData: [
+        {
+          name: "甲功三项"
+        },
+        {
+          name: "血常规"
+        },
+        {
+          name: "肾功能常规"
+        }
+      ]
     };
   }
 };
