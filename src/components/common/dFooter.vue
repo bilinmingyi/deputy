@@ -37,8 +37,7 @@ export default {
         case 2: this.$router.push('/clinic');break;
         case 3: this.$router.push('/personal');break;
         default: this.$router.push('/home');break;
-      } 
-      console.log(type);     
+      }
     }
   }
 };

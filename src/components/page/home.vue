@@ -58,6 +58,17 @@
     name: "home",
     components: {
       dFooter
+    },
+    data:function () {
+      return{
+
+      }
+    },
+    created:function(){
+
+    },
+    methods:{
+
     }
   }
 </script>
