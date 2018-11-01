@@ -12,7 +12,6 @@ html {
   -webkit-text-size-adjust: none;
   word-wrap: break-word;
   width: 100%;
-  font-size: 16px;
 }
 h1, h2, h3 {
   font-size: 100%
@@ -471,4 +470,15 @@ button {
 }
 .mb20 {
   margin-bottom: 1.25rem;
+}
+.mb50{
+  margin-bottom: 3.125rem;
+}
+.add_more {
+  color: #7C7C7C;
+  font-size: 0.875rem;
+  background: #FAFAFA;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
 }

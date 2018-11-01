@@ -45,8 +45,92 @@
             <hr class="full-screen-hr">
           </li>
         </router-link>
+        <router-link to="/clinic/clinicDetail/117">
+          <li>
+            <div class="order_infor">
+              <div class="order_infor_top">
+                <div>采购订单下单</div>
+                <div class="bg_EB">综合诊所</div>
+              </div>
+              <div class="order_infor_bottom">
+                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
+              </div>
+            </div>
+            <hr class="full-screen-hr">
+          </li>
+        </router-link>
+        <router-link to="/clinic/clinicDetail/118">
+          <li>
+            <div class="order_infor">
+              <div class="order_infor_top">
+                <div>采购订单下单</div>
+                <div class="bg_ED">西医诊所</div>
+              </div>
+              <div class="order_infor_bottom">
+                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
+              </div>
+            </div>
+            <hr class="full-screen-hr">
+          </li>
+        </router-link>
+        <router-link to="/clinic/clinicDetail/119">
+          <li>
+            <div class="order_infor">
+              <div class="order_infor_top">
+                <div>采购订单下单</div>
+                <div class="bg_4D">西医诊所</div>
+              </div>
+              <div class="order_infor_bottom">
+                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
+              </div>
+            </div>
+            <hr class="full-screen-hr">
+          </li>
+        </router-link>
+        <router-link to="/clinic/clinicDetail/117">
+          <li>
+            <div class="order_infor">
+              <div class="order_infor_top">
+                <div>采购订单下单</div>
+                <div class="bg_EB">综合诊所</div>
+              </div>
+              <div class="order_infor_bottom">
+                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
+              </div>
+            </div>
+            <hr class="full-screen-hr">
+          </li>
+        </router-link>
+        <router-link to="/clinic/clinicDetail/118">
+          <li>
+            <div class="order_infor">
+              <div class="order_infor_top">
+                <div>采购订单下单</div>
+                <div class="bg_ED">西医诊所</div>
+              </div>
+              <div class="order_infor_bottom">
+                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
+              </div>
+            </div>
+            <hr class="full-screen-hr">
+          </li>
+        </router-link>
+        <router-link to="/clinic/clinicDetail/119">
+          <li>
+            <div class="order_infor">
+              <div class="order_infor_top">
+                <div>采购订单下单</div>
+                <div class="bg_4D">西医诊所</div>
+              </div>
+              <div class="order_infor_bottom">
+                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
+              </div>
+            </div>
+            <hr class="full-screen-hr">
+          </li>
+        </router-link>
       </ul>
-      <div class="add_more">查看更多...</div>
+      <div class="add_more mb50">查看更多...</div>
     </section>
     <d-footer :activeItem="2"></d-footer>
   </div>
@@ -76,6 +160,7 @@
 <style scoped>
   .clinic_content {
     background: #ffffff;
+    margin-top: 3rem;
   }
 
   .order_infor {
@@ -123,15 +208,5 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  .add_more {
-    color: #7C7C7C;
-    font-size: 0.875rem;
-    background: #FAFAFA;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    text-align: center;
-    margin-bottom: 3.125rem;
   }
 </style>

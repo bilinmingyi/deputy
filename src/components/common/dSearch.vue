@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-ff">
+  <div class="bg-ff block-fix">
     <div class="search">
       <div class="search_left">
         <img src="../../assets/img/ss.png">
@@ -37,6 +37,11 @@
 </script>
 
 <style scoped>
+  .block-fix{
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
   .search {
     background: #ffffff;
     display: flex;

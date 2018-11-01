@@ -5,10 +5,12 @@
         <img src="../../assets/img/yf.png">
         <span>云药房订单</span>
       </div>
-      <div class="top_item">
-        <img src="../../assets/img/jy.png">
-        <span>检验订单</span>
-      </div>
+      <router-link to="/checkListPage">
+        <div class="top_item">
+          <img src="../../assets/img/jy.png">
+          <span>检验订单</span>
+        </div>
+      </router-link>
       <div class="top_item">
         <img src="../../assets/img/cf.png">
         <span>云处方订单</span>
