@@ -22,7 +22,86 @@
         </info-bar>
         <info-bar :title="'配送地址'">
           <button slot="btn">选择地址</button>
+          <div>
+            <span>联系人名：</span>
+            <span>{{order.time}}</span>
+          </div>
+          <div>
+            <span>联系电话：</span>
+            <span>{{order.patientName}}</span>
+          </div>
+          <div>
+            <span>详细地址：</span>
+            <span>{{order.mobile}}</span>
+          </div>
+          <div>
+            <span>就诊医生：</span>
+            <span>{{order.doctor}}</span>
+          </div>
         </info-bar>
+        <info-header>处方信息</info-header>
+        <div class="bg-fff p16 mb12">
+          <table class="d-table" data-type="1">
+            <tbody>
+              <tr>
+                <th>处方类型</th>
+                <th>发药类型</th>
+                <th>金额</th>
+              </tr>
+              <tr>
+                <td>中药饮片</td>
+                <td>云药房</td>
+                <td>123</td>
+              </tr>
+              <tr>
+                <td>颗粒饮片</td>
+                <td>本机构</td>
+                <td>456</td>
+              </tr>
+              <tr>
+                <td>附加服务</td>
+                <td>云药房</td>
+                <td>789</td>
+              </tr>
+              <tr>
+                <td>中药饮片</td>
+                <td>本机构</td>
+                <td>012</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="bg-fff p15 mb12">
+          <table class="d-table" data-type="2">
+            <tbody>
+              <tr>
+                <th><div>处方类型</div></th>
+                <th><div>发药类型</div></th>
+                <th><div>金额</div></th>
+              </tr>
+              <tr>
+                <td class="bg-medium">中药饮片</td>
+                <td>云药房</td>
+                <td>123</td>
+              </tr>
+              <tr>
+                <td class="bg-medium">颗粒饮片</td>
+                <td>本机构</td>
+                <td>456</td>
+              </tr>
+              <tr>
+                <td class="bg-medium">附加服务</td>
+                <td>云药房</td>
+                <td>789</td>
+              </tr>
+              <tr>
+                <td class="bg-medium">中药饮片</td>
+                <td>本机构</td>
+                <td>012</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
       <!-- <d-footer :activeItem="2"></d-footer> -->
     </div>
@@ -32,28 +111,30 @@
 import dHeader from "@/components/common/dHeader";
 import dFooter from "@/components/common/dFooter";
 import infoBar from "@/components/common/infoBar";
+import infoHeader from "@/components/common/infoHeader";
 export default {
   components: {
     dHeader,
     dFooter,
-    infoBar
+    infoBar,
+    infoHeader
   },
   data() {
     return {
       order: {
-        time: '2018-12-23 22:26',
-        patientName: '王尼玛',
-        mobile: '13245678901',
-        doctor: '李教授'
+        time: "2018-12-23 22:26",
+        patientName: "王尼玛",
+        mobile: "13245678901",
+        doctor: "李教授"
       }
-    }
+    };
   }
 };
 </script>
 
 <style scoped>
 .content {
-  height: calc(100vh - 2.75rem);
+  min-height: calc(100vh - 2.75rem);
   width: 100vw;
   margin: 2.75rem 0 0 0;
 }

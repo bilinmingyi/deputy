@@ -5,16 +5,7 @@
       <slot name='btn' class="info-header-btn"></slot>
     </div>
     <div class="info-content">
-      <slot>
-        <!-- <div>
-          <span>就诊时间：</span>
-          <span>2018-12-23 22:26</span>
-        </div>
-        <div>
-          <span>详细地址：</span>
-          <span>王广州市天河区珠江新城花城汇XXXxxxx街道</span>
-        </div> -->
-      </slot>
+      <slot></slot>
     </div>
   </section>
 </template>
