@@ -1,8 +1,9 @@
 <template>
-  <div class="info-header">
+  <div :class="['info-header', {'border': !noBorder}]">
     <span class="info-header-text">
       <slot></slot>
     </span>
+    <slot name='btn'></slot>
   </div>
 </template>
 
@@ -10,6 +11,12 @@
 
 <script>
 export default {
+  props: {
+    'noBorder': {
+      type: Boolean,
+      default: false,
+    }
+  },
   data() {
     return {};
   }
@@ -25,7 +32,7 @@ export default {
   justify-content: flex-start;
   position: relative;
 }
-.info-header::after {
+.info-header.border::after {
   content: "";
   position: absolute;
   left: 0;
@@ -44,5 +51,22 @@ export default {
   margin-left: 0.75rem;
   border-left: 0.25rem solid #08bac6;
   padding-left: 0.5rem;
+}
+.info-header button {
+  position: absolute;
+  right: 0.94rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ebf8f9;
+  border: 1px solid #08bac6;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+  min-height: 2rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.75rem;
+  color: #3f3f3f;
+  letter-spacing: 0;
+  text-align: left;
 }
 </style>

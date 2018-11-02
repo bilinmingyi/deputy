@@ -2,7 +2,7 @@
   <section>
     <div class="info-header">
       <span class="info-header-text">{{infoTitle}}</span>
-      <slot name='btn' class="info-header-btn"></slot>
+      <slot name='btn'></slot>
     </div>
     <div class="info-content">
       <slot></slot>
