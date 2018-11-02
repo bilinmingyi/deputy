@@ -37,17 +37,17 @@ export default new Router({
           props: true
         },
         {
-          path:'clinicCheckOrderPage/newOrderPage',
+          path:'newOrderPage',
           name:'newOrderPage',
           component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/newOrderPage.vue'),
         },
         {
-          path:'clinicCheckOrderPage/newOrderPage/addNewProject',
+          path:'newOrderPage/addNewProject',
           name:'addNewProject',
           component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/addNewProject.vue'),
         },
         {
-          path:'clinicCheckOrderPage/newOrderPage/editBarCode',
+          path:'newOrderPage/editBarCode',
           name:'editBarCode',
           component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/editBarCode.vue'),
         }

@@ -10,7 +10,6 @@
       <hr class="full-screen-hr">
     </div>
     <section class="mt92 mb50">
-
       <router-link to="/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/1212">
         <div class="order_item">
           <div class="order_item_top">
@@ -46,9 +45,11 @@
       <div class="add_more">查看更多...</div>
     </section>
     <div class="record_sheet">
-      <button>
-        我要录单
-      </button>
+      <router-link to="/checkListPage/newOrderPage">
+        <button>
+          我要录单
+        </button>
+      </router-link>
     </div>
   </div>
 </template>
