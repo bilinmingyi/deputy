@@ -4,7 +4,7 @@
       个人中心
     </d-header>
     <section class="person_content">
-      <img class="person_portrait" src="../../assets/img/ndb.png">
+      <img class="person_portrait" src="../../../assets/img/ndb.png">
       <div class="person_infor">
         <div>
           <span class="person_name">李代表</span>
@@ -13,20 +13,28 @@
         <div class="person_id">帐号ID：12243</div>
       </div>
       <div>
-        <img class="person_change" src="../../assets/img/fanghui@2x.png"/>
+        <router-link to="/personal/changeInfor">
+          <img class="person_change" src="../../../assets/img/fanghui@2x.png"/>
+        </router-link>
       </div>
     </section>
     <section class="person_list">
       <ul>
-        <li>
-          <img src="../../assets/img/yj.png">
-          <span> 我的业绩</span>
-        </li>
+        <router-link to="/personal/myAchievement">
+          <li>
+            <img src="../../../assets/img/yj.png">
+            <span> 我的业绩</span>
+          </li>
+        </router-link>
+
         <hr class="full-screen-hr">
-        <li>
-          <img src="../../assets/img/td.png">
-          我的团队
-        </li>
+        <router-link to="/personal/myTeam">
+          <li>
+            <img src="../../../assets/img/td.png">
+            我的团队
+          </li>
+        </router-link>
+
       </ul>
       <hr class="full-screen-hr">
     </section>
@@ -100,7 +108,7 @@
   .person_list {
     background: #FFFFFF;
     font-size: 1rem;
-    color: #3F3F3F;
+
   }
 
   .person_list ul {
@@ -111,6 +119,7 @@
   .person_list li {
     display: flex;
     padding: 0.815rem 0 0.78rem;
+    color: #3F3F3F;
   }
 
   .person_list li img {

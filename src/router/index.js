@@ -93,8 +93,34 @@ export default new Router({
     },
     {
       path: '/personal',
-      name: '/personal',
-      component: () => import(/* webpackChunkName: '/personal' */'@/components/page/personal.vue')
+      component: () => import(/* webpackChunkName: 'personal' */'@/components/page/person/person.vue'),
+      children:[
+        {
+          path: '',
+          name: 'personal',
+          component: () => import(/* webpackChunkName: 'personal' */'@/components/page/person/personal.vue')
+        },
+        {
+          path: 'changeInfor',
+          name: 'changeInfor',
+          component: () => import(/* webpackChunkName: 'personal' */'@/components/page/person/changeInfor.vue')
+        },
+        {
+          path:'changePhone',
+          name:'changePhone',
+          component: ()=> import(/* webpackChunkName: 'personal' */'@/components/page/person/changePhone.vue')
+        },
+        {
+          path:'myAchievement',
+          name:'myAchievement',
+          component: ()=> import(/* webpackChunkName: 'myAchievement' */'@/components/page/person/myAchievement.vue')
+        },
+        {
+          path:'myTeam',
+          name:'myTeam',
+          component: ()=> import(/* webpackChunkName: 'myTeam' */'@/components/page/person/myTeam.vue')
+        }
+      ]
     },
     {
       path: '/test',
