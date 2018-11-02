@@ -120,6 +120,7 @@
           <counter :min=0 :max=10 v-model="counter"></counter>
         </div>
       </section>
+      <d-load v-if="showLoad"></d-load>
       <!-- <d-footer :activeItem="2"></d-footer> -->
     </div>
 </template>
@@ -133,6 +134,7 @@ import touchList from "@/components/common/touchList";
 import radioGroup from "@/components/common/radioGroup";
 import dRadio from "@/components/common/dRadio";
 import counter from "@/components/common/counter";
+import dLoad from "@/components/common/dLoad";
 export default {
   components: {
     dHeader,
@@ -143,6 +145,7 @@ export default {
     radioGroup,
     dRadio,
     counter,
+    dLoad,
   },
   data() {
     return {
@@ -185,7 +188,14 @@ export default {
         }
       ],
       counter: 0,
+      showLoad: true,
     };
+  },
+  created() {
+    setTimeout(()=> {
+      console.log(1)
+      this.showLoad = false;
+    },100);
   },
   methods: {
     setChecked() {
