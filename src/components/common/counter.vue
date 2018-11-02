@@ -9,7 +9,7 @@
 <script>
 export default {
   props: {
-    num: {
+    value: {
       type: Number,
       default: 0
     },
@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      myNum: this.num
+      myNum: this.value
     };
   },
   watch: {
@@ -56,6 +56,10 @@ export default {
   color: #8c8c8c;
   letter-spacing: 0;
   margin: 0 0.75rem;
-  width: 10rem;
+  width: 5rem;
+  flex: 1;
+}
+.counter input:focus {
+  outline-color: #08bac6;
 }
 </style>
