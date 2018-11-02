@@ -1,15 +1,15 @@
 <template>
   <div class="d-radio">
-    <input type="radio" :id="id" :name="name" :value="value"
-      :checked="checkedVal==value"
-      @input="$emit('input', value);">
+    <input type="radio" :id="id" :name="name"
+      :checked="curVal == checkedVal"
+      @change="$emit('change')">
       <label :for="id"><slot></slot></label>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["id", "name", "value", "checkedVal"],
+  props: ["id", "name", "checkedVal", "curVal"],
   data() {
     return {};
   },
@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 .d-radio {
-  display: inline-block; 
+  display: inline-block;
   margin-right: 0.625rem;
   line-height: 2rem;
 }

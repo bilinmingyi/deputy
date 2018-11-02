@@ -113,8 +113,8 @@
           <radio-group :name="'pay-type'" :data="payType" v-model="checkedPayType"></radio-group>
         </div>
         <div class="bg-fff pl15 pr15 pt12 pb12 mb12">
-          <d-radio :name="'pay-type'" :id="'pay-type-yb'" v-model="checkedPayType">医保</d-radio>
-          <d-radio :name="'pay-type'" :id="'pay-type-yhk'" v-model="checkedPayType">银行卡</d-radio>
+          <d-radio :name="'pay-type'" :id="'pay-type-yb'" :checkedVal=4 :curVal="checkedPayType" @change="checkedPayType=4">医保</d-radio>
+          <d-radio :name="'pay-type'" :id="'pay-type-yhk'" :checkedVal=5 :curVal="checkedPayType" @change="checkedPayType=5">银行卡</d-radio>
         </div>
         <div class="bg-fff pl15 pr15 pt6 pb6">
           <counter :min=0 :max=10 v-model="counter"></counter>
@@ -166,7 +166,7 @@ export default {
           age: 56
         }
       ],
-      checkedPayType: 6,
+      checkedPayType: -1,
       payType: [
         {
           id: 'pay-type-wx',
@@ -186,6 +186,11 @@ export default {
       ],
       counter: 0,
     };
+  },
+  methods: {
+    setChecked() {
+      console.log(1);
+    }
   }
 };
 </script>
