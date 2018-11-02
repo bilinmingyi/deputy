@@ -60,11 +60,11 @@ export default {
   justify-content: center;
   background: #ebf8f9;
   border: 1px solid #08bac6;
-  border-radius: 0.25rem;
-  padding: 0 0.5rem;
+  border-radius: 3.125rem;
+  padding: 0 1.625rem;
   min-height: 2rem;
   font-family: PingFangSC-Regular;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: #3f3f3f;
   letter-spacing: 0;
   text-align: left;

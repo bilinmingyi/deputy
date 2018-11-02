@@ -20,7 +20,7 @@
           <span>{{order.doctor}}</span>
         </div>
       </info-bar>
-      <info-header>处方信息</info-header>
+      <info-header>检验项目</info-header>
       <div class="bg-fff p15 mb12">
         <touch-list :data="touchListData">
           <div slot-scope="{prop}">
