@@ -30,7 +30,7 @@ export default {
 .nav_block {
   width: 100%;
   z-index: 999;
-  position: absolute;
+  position: relative;
 }
 .nav_block.border::after {
   content: "";

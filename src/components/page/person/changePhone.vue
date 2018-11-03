@@ -1,15 +1,17 @@
 <template>
     <div>
-      修改电话
+      <d-header>绑定手机</d-header>
     </div>
 </template>
 
 <script>
-    export default {
-        name: "changePhone"
-    }
+import dHeader from "@/components/common/dHeader";
+export default {
+  components: {
+    dHeader,
+  }
+};
 </script>
 
 <style scoped>
-
 </style>

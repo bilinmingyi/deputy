@@ -35,6 +35,13 @@
           </li>
         </router-link>
 
+        <hr class="full-screen-hr">
+        <router-link to="/personal/teamAchievement">
+          <li>
+            <img src="../../../assets/img/tdyj.png">
+            团队业绩
+          </li>
+        </router-link>
       </ul>
       <hr class="full-screen-hr">
     </section>
@@ -43,87 +50,86 @@
 </template>
 
 <script>
-  import dHeader from '@/components/common/dHeader.vue'
-  import dFooter from '@/components/common/dFooter.vue'
+import dHeader from "@/components/common/dHeader.vue";
+import dFooter from "@/components/common/dFooter.vue";
 
-  export default {
-    name: "personal",
-    components: {
-      'd-header': dHeader,
-      'd-footer': dFooter
-    }
+export default {
+  name: "personal",
+  components: {
+    "d-header": dHeader,
+    "d-footer": dFooter
   }
+};
 </script>
 
 <style scoped>
-  .person_content {
-    margin-top: 44px;
-    background: #FFFFFF;
-    display: flex;
-    padding: 1.375rem 1.25rem;
-    align-items: center;
-    margin-bottom: 0.78rem;
-  }
+.person_content {
+  margin-top: 44px;
+  background: #ffffff;
+  display: flex;
+  padding: 1.375rem 1.25rem;
+  align-items: center;
+  margin-bottom: 0.78rem;
+}
 
-  .person_portrait {
-    height: 3.5rem;
-    width: 3.5rem;
-    margin-right: 0.625rem;
-  }
+.person_portrait {
+  height: 3.5rem;
+  width: 3.5rem;
+  margin-right: 0.625rem;
+}
 
-  .person_infor {
-    flex: 1;
-    font-size: 1rem;
-    color: #7C7C7C;
-  }
+.person_infor {
+  flex: 1;
+  font-size: 1rem;
+  color: #7c7c7c;
+}
 
-  .person_age {
-    background: #2CBBF4;
-    font-size: 0.75rem;
-    color: #FFFFFF;
-    padding: 0.03rem 0.315rem;
-    border-radius: 3.125rem;
-  }
+.person_age {
+  background: #2cbbf4;
+  font-size: 0.75rem;
+  color: #ffffff;
+  padding: 0.03rem 0.315rem;
+  border-radius: 3.125rem;
+}
 
-  .person_name {
-    color: #3F3F3F;
-    font-weight: bold;
-    margin-right: 0.75rem;
-  }
+.person_name {
+  color: #3f3f3f;
+  font-weight: bold;
+  margin-right: 0.75rem;
+}
 
-  .person_id {
-    margin-top: 0.5rem;
-  }
+.person_id {
+  margin-top: 0.5rem;
+}
 
-  .person_change {
-    height: 1.25rem;
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-    padding-left: 0.5rem;
-  }
+.person_change {
+  height: 1.25rem;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  padding-left: 0.5rem;
+}
 
-  .person_list {
-    background: #FFFFFF;
-    font-size: 1rem;
+.person_list {
+  background: #ffffff;
+  font-size: 1rem;
+}
 
-  }
+.person_list ul {
+  padding-left: 0.94rem;
+  padding-right: 0.94rem;
+}
 
-  .person_list ul {
-    padding-left: 0.94rem;
-    padding-right: 0.94rem;
-  }
+.person_list li {
+  display: flex;
+  padding: 0.815rem 0 0.78rem;
+  color: #3f3f3f;
+}
 
-  .person_list li {
-    display: flex;
-    padding: 0.815rem 0 0.78rem;
-    color: #3F3F3F;
-  }
-
-  .person_list li img {
-    height: 1.25rem;
-    margin-right: 0.5rem;
-  }
+.person_list li img {
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
 </style>

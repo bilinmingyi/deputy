@@ -1,6 +1,6 @@
 <template>
     <div>
-      <d-header>我的业绩</d-header>
+      <d-header>团队业绩</d-header>
       <d-nav class="nav">
         <li :class="{'active': activePage==1}" @click="activePage=1">云药房</li>
         <li :class="{'active': activePage==2}" @click="activePage=2">云处方</li>
@@ -19,9 +19,9 @@
 import dHeader from "@/components/common/dHeader";
 import dNav from "@/components/common/dNav";
 import dTimer from "@/components/common/dTimer";
-import cloudPharmacy from "./myAchievementPaging/cloudPharmacy";
-import cloudRecipe from "./myAchievementPaging/cloudRecipe";
-import inspectOrder from "./myAchievementPaging/inspectOrder";
+import cloudPharmacy from "./teamAchievementPaging/cloudPharmacy";
+import cloudRecipe from "./teamAchievementPaging/cloudRecipe";
+import inspectOrder from "./teamAchievementPaging/inspectOrder";
 export default {
   components: {
     dHeader,

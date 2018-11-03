@@ -57,7 +57,7 @@ export default {
   background: #ffffff;
   width: 100%;
   z-index: 999;
-  position: absolute;
+  position: relative;
 }
 .d-timer.border::after {
   content: "";

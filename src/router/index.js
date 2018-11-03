@@ -119,6 +119,11 @@ export default new Router({
           path:'myTeam',
           name:'myTeam',
           component: ()=> import(/* webpackChunkName: 'myTeam' */'@/components/page/person/myTeam.vue')
+        },
+        {
+          path:'teamAchievement',
+          name:'teamAchievement',
+          component: ()=> import(/* webpackChunkName: 'teamAchievement' */'@/components/page/person/teamAchievement.vue')
         }
       ]
     },
