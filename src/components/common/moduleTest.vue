@@ -116,9 +116,10 @@
           <d-radio :name="'pay-type'" :id="'pay-type-yb'" :checkedVal=4 :curVal="checkedPayType" @change="checkedPayType=4">医保</d-radio>
           <d-radio :name="'pay-type'" :id="'pay-type-yhk'" :checkedVal=5 :curVal="checkedPayType" @change="checkedPayType=5">银行卡</d-radio>
         </div>
-        <div class="bg-fff pl15 pr15 pt6 pb6">
+        <div class="bg-fff pl15 pr15 pt6 pb6 mb12">
           <counter :min=0 :max=10 v-model="counter"></counter>
         </div>
+        <d-timer></d-timer>
       </section>
       <d-load v-if="showLoad"></d-load>
       <!-- <d-footer :activeItem="2"></d-footer> -->
@@ -135,6 +136,7 @@ import radioGroup from "@/components/common/radioGroup";
 import dRadio from "@/components/common/dRadio";
 import counter from "@/components/common/counter";
 import dLoad from "@/components/common/dLoad";
+import dTimer from "@/components/common/dTimer";
 export default {
   components: {
     dHeader,
@@ -146,6 +148,7 @@ export default {
     dRadio,
     counter,
     dLoad,
+    dTimer,
   },
   data() {
     return {
@@ -193,7 +196,6 @@ export default {
   },
   created() {
     setTimeout(()=> {
-      console.log(1)
       this.showLoad = false;
     },100);
   },
