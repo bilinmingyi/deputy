@@ -4,18 +4,18 @@
       <section class="content">
         <info-header>基本信息</info-header>
         <div class="bg-fff pl15 pr15">
-          <div class="info-item">
+          <div class="info-item border">
             <span>姓名</span>
             <input type="text" v-model="infoName">
           </div>
-          <div class="info-item">
+          <div class="info-item border">
             <span>年龄</span>
             <input type="text" v-model="infoYear" class="width-30">
             <span class="mr28">岁</span>
             <input type="text" v-model="infoMonth" class="width-30">
             <span class="mr28">月</span>
           </div>
-          <div class="info-item">
+          <div class="info-item border">
             <span>性别</span>
             <span>
               <radio-group :name="'sex'" :data="sexType" v-model="infoSex"></radio-group>
@@ -30,6 +30,9 @@
           </div>
         </div>
       </section>
+      <footer>
+        <button>保存</button>
+      </footer>
     </div>
 </template>
 
@@ -71,6 +74,7 @@ export default {
 .content {
   width: 100vw;
   margin-top: 2.75rem;
+  margin-bottom: 3.5rem;
 }
 .info-item {
   min-height: 3rem;
@@ -83,7 +87,7 @@ export default {
   letter-spacing: 0;
   position: relative;
 }
-.info-item::after {
+.info-item.border::after {
   content: "";
   border-bottom: 1px solid #d9d9d9;
   position: absolute;
@@ -123,8 +127,30 @@ export default {
   letter-spacing: 0;
   min-width: 3.75rem;
   min-height: 2rem;
+  line-height: 1.25rem;
+  padding: 0.375rem 0.3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3.5rem;
+  background: #fff;
+  padding: 0.5rem 0.9375rem;
+  display: flex;
+}
+footer button {
+  flex: 1;
+  border: none;
+  background: #08bac6;
+  border-radius: 0.25rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.9375rem;
+  color: #fff;
+  letter-spacing: 0;
 }
 </style>
