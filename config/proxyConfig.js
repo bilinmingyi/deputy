@@ -1,4 +1,4 @@
-
+var config= require("../src/fetch/config");
 
 module.exports = {
   proxy: {
