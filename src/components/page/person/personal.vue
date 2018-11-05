@@ -4,13 +4,14 @@
       个人中心
     </d-header>
     <section class="person_content">
-      <img class="person_portrait" src="../../../assets/img/ndb.png">
+      <img v-if="avatar!==''" :src="avatar"/>
+      <img v-else class="person_portrait" src="../../../assets/img/ndb.png">
       <div class="person_infor">
         <div>
-          <span class="person_name">李代表</span>
-          <span class="person_age">40岁</span>
+          <span class="person_name">{{name}}</span>
+          <span class="person_age">{{birthday|birthToYear}}岁</span>
         </div>
-        <div class="person_id">帐号ID：12243</div>
+        <div class="person_id">帐号ID：{{id}}</div>
       </div>
       <div>
         <router-link to="/personal/changeInfor">
@@ -61,7 +62,16 @@ export default {
   },
   data(){
     return {
-
+      name:"",
+      id:"",
+      avatar:"",
+      birthday:""
+    }
+  },
+  filters:{
+    birthToYear(val){
+      var today=new Date();
+      return Number(today.getFullYear())-Number(new Date(Number(val)).getFullYear());
     }
   },
   created(){
@@ -69,9 +79,19 @@ export default {
   },
   methods:{
     getPerson(){
+      var self=this;
       this.axios.post("/apis/weixin/sales/info").then(
-        function (respone) {
-          console.log(respone)
+        (respone) => {
+          var res=respone.data;
+          if(res.code==1000){
+            console.log(this)
+            self.name=res.data.name;
+            self.id=res.data.id;
+            self.avatar=res.data.avatar;
+            self.birthday=res.data.birthday;
+          }else {
+            alert(res.msg)
+          }
         }
       ).catch(
         function (error) {

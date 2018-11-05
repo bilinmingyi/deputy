@@ -3,134 +3,23 @@
     <d-search @on-search="getData"></d-search>
     <section class="clinic_content">
       <ul>
-        <router-link to="/clinic/clinicDetail/117">
+        <router-link v-for="(clinic,index) in clinicList" :to="`/clinic/clinicDetail/${clinic.id}`" :key="index">
           <li>
             <div class="order_infor">
               <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_EB">综合诊所</div>
+                <div>{{clinic.name}}</div>
+                <div :class="clinic.type==1?'bg_4D':'bg_EB'">{{clinic.type|clinicType}}</div>
               </div>
               <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
+                地址：{{clinic.address}}
               </div>
             </div>
             <hr class="full-screen-hr">
           </li>
         </router-link>
-        <router-link to="/clinic/clinicDetail/118">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_ED">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/119">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_4D">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/117">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_EB">综合诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/118">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_ED">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/119">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_4D">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/117">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_EB">综合诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/118">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_ED">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/119">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_4D">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
+
       </ul>
-      <div class="add_more mb50">查看更多...</div>
+      <div class="add_more mb50" @click.stop="addMore()" v-if="isCanAdd">查看更多...</div>
     </section>
     <d-footer :activeItem="2"></d-footer>
   </div>
@@ -143,15 +32,59 @@
   export default {
     name: "clinicList",
     data: function () {
-      return {}
+      return {
+        clinicList:[],
+        page:1,
+        pageSize:10,
+        queryName:"",
+        isCanAdd:false
+      }
     },
     components: {
       'd-search': dSearch,
       'd-footer': dFooter
     },
+    filters:{
+      clinicType:function (val) {
+        var list=[{code:1,name:"普通诊所"},{code:2,name:"淳道诊所"}];
+        for (var i=0;i<list.length;i++){
+          if(list[i].code==val){
+            return list[i].name;
+          }
+        }
+      }
+    },
+    created(){
+      this.getData()
+    },
     methods: {
-      getData: function (name) {
-        console.log(name)
+      getData: function (name,isAdd) {
+        this.queryName=name;
+        this.axios.post("/apis/weixin/sales/clinic/list",{
+          "page":this.page,
+          "page_size":this.pageSize,
+          "query":name
+        }).then((respone) =>{
+          var res=respone.data,self=this;
+          if(res.code==1000){
+            self.isCanAdd=res.data.length>=this.pageSize?true:false;
+            if(isAdd){
+              res.data.forEach(function (item) {
+                self.clinicList.push(item);
+              })
+            }else {
+              self.clinicList=res.data;
+            }
+          }else {
+            alert(res.msg)
+          }
+        }).catch((error) => {
+          console.log(error)
+        })
+      },
+      addMore(){
+        this.page++;
+        this.getData(this.queryName,true);
       }
     }
   }

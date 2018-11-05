@@ -12,16 +12,16 @@
             <th><div>操作</div></th>
           </tr>
           <tr v-for="item in dataList">
-            <td>深圳淳道门诊</td>
-            <td>8</td>
+            <td>{{item.clinic_name}}</td>
+            <td>{{item.sum}}</td>
             <td>
-              <router-link :to="{path:`/checkListPage/clinicCheckOrderPage/${item.id}`, query:{name:`${item.name}`}}" class="red_a">去处理</router-link>
+              <router-link :to="{path:`/checkListPage/clinicCheckOrderPage/${item.clinic_id}`, query:{name:`${item.clinic_name}`}}" class="red_a">去处理</router-link>
             </td>
           </tr>
           </tbody>
         </table>
       </div>
-      <div class="add_more">查看更多...</div>
+      <!--<div class="add_more">查看更多...</div>-->
     </section>
   </div>
 </template>
@@ -33,27 +33,31 @@
     name: "checkList",
     data:function(){
       return{
-        dataList:[
-          {name:"深圳淳道",id:1,wait:1},
-          {name:"深圳淳道",id:2,wait:2},
-          {name:"深圳淳道",id:3,wait:3},
-          {name:"深圳淳道",id:4,wait:4},
-          {name:"深圳淳道",id:5,wait:5},
-          {name:"深圳淳道",id:6,wait:6},
-          {name:"深圳淳道",id:7,wait:7},
-          {name:"深圳淳道",id:8,wait:8},
-          {name:"深圳淳道",id:9,wait:9},
-          {name:"深圳淳道",id:0,wait:0}
-        ]
+        dataList:[]
       }
     },
     components: {
       'd-search': dSearch,
       'd-header': dHeader
     },
+    created(){
+      this.getData();
+    },
     methods:{
       getData:function (name) {
-        console.log(name)
+        var self=this;
+        self.axios.post("/apis/weixin/sales/dyCheckOrder/num",{
+          "query":name
+        }).then( (respone) => {
+          var res=respone.data;
+          if(res.code==1000){
+            this.dataList=res.data;
+          }else {
+            alert(res.msg)
+          }
+        }).catch((error) =>{
+          console.log(error)
+        })
       }
     }
   }

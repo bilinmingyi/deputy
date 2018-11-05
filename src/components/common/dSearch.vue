@@ -6,7 +6,7 @@
         <input type="text" placeholder="诊所名称" v-model="searchName" @input="searchInput()"/>
       </div>
       <div>
-        <button class="search_btn">查询</button>
+        <button class="search_btn" @click.stop="searchInput()">查询</button>
       </div>
     </div>
     <hr class="full-screen-hr">
