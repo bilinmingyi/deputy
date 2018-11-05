@@ -6,7 +6,6 @@
         <li :class="{'active': activePage==2}" @click="activePage=2">云处方</li>
         <li :class="{'active': activePage==3}" @click="activePage=3">检验订单</li>
       </d-nav>
-      <d-timer class="timer"></d-timer>
       <section class="content">
         <keep-alive>
           <component v-bind:is="currentTabComponent"></component>
@@ -18,7 +17,6 @@
 <script>
 import dHeader from "@/components/common/dHeader";
 import dNav from "@/components/common/dNav";
-import dTimer from "@/components/common/dTimer";
 import cloudPharmacy from "./teamAchievementPaging/cloudPharmacy";
 import cloudRecipe from "./teamAchievementPaging/cloudRecipe";
 import inspectOrder from "./teamAchievementPaging/inspectOrder";
@@ -26,7 +24,6 @@ export default {
   components: {
     dHeader,
     dNav,
-    dTimer,
     cloudPharmacy,
     cloudRecipe,
     inspectOrder

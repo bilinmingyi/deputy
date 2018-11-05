@@ -1,5 +1,6 @@
 <template>
   <div>
+    <d-timer class="timer"></d-timer>
     <div class="content-title pl15 pr15">
       <span class="mr8">业绩总汇</span><span class="color-ec6464">￥44654</span>
     </div>
@@ -38,7 +39,11 @@
 </template>
 
 <script>
+import dTimer from "@/components/common/dTimer";
 export default {
+  components: {
+    dTimer,
+  },
   data() {
     return {};
   },
@@ -49,6 +54,10 @@ export default {
 </script>
 
 <style scoped>
+:root .timer {
+  position: fixed;
+  top: 5.75rem;
+}
 .content-title {
   background: #fff;
   min-height: 2.75rem;

@@ -1,16 +1,16 @@
 <template>
   <div :class="['d-timer', {'border': !noBorder}]">
     <div class="fast_block">
-        <button :class="{'cur': curBtn == 1}">今日</button>
-        <button :class="{'cur': curBtn == 2}">昨日</button>
-        <button :class="{'cur': curBtn == 3}">本月</button>
-        <button :class="{'cur': curBtn == 4}">上月</button>
+        <button :class="{'cur': myFastDate == 1}" @click="setQueryDate(1)">今日</button>
+        <button :class="{'cur': myFastDate == 2}" @click="setQueryDate(2)">昨日</button>
+        <button :class="{'cur': myFastDate == 3}" @click="setQueryDate(3)">本月</button>
+        <button :class="{'cur': myFastDate == 4}" @click="setQueryDate(4)">上月</button>
       </div>
       <div class="input_block">
         <input placeholder="起始日期" type="date" v-model="startDate">
         <input placeholder="结束日期" type="date" v-model="endDate">
         <div>
-          <button>查询</button>
+          <button @click="setQueryDate">查询</button>
         </div>
       </div>
   </div>
@@ -32,15 +32,24 @@ export default {
     return {
       myFastDate: this.fastDate,
       startDate: "",
-      endDate: ""
+      endDate: "",
+      today: "",
+      yesterday: "",
+      thisMonthStart: "",
+      thisMonthEnd: "",
+      lastMonthStart: "",
+      lastMonthEnd: ""
     };
   },
-  created() {},
+  created() {
+    this.setFast();
+    this.setQueryDate(this.myFastDate);
+  },
+  activated() {
+    this.setFast();
+    this.setQueryDate(this.myFastDate);
+  },
   computed: {
-    curBtn() {
-      // TODO:
-      return 1;
-    },
     startTime() {
       return new Date(this.startDate).getTime();
     },
@@ -48,7 +57,73 @@ export default {
       return new Date(this.endDate).getTime() + 86399999;
     }
   },
-  methods: {}
+  methods: {
+    setQueryDate(type) {
+      switch (type) {
+        case 1:
+          this.startDate = this.today;
+          this.endDate = this.today;
+          break;
+        case 2:
+          this.startDate = this.yesterday;
+          this.endDate = this.yesterday;
+          break;
+        case 3:
+          this.startDate = this.thisMonthStart;
+          this.endDate = this.thisMonthEnd;
+          break;
+        case 4:
+          this.startDate = this.lastMonthStart;
+          this.endDate = this.lastMonthEnd;
+          break;
+        default:
+          break;
+      }
+      this.myFastDate = type ? type : -1;
+      this.$emit("input", {
+        start_time: this.startTime,
+        end_time: this.endTime
+      });
+    },
+    dateToString(date) {
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      month = month > 9 ? month : "0" + month;
+      let day = date.getDate();
+      day = day > 9 ? day : "0" + day;
+      return `${year}-${month}-${day}`;
+    },
+    setFast() {
+      const date = new Date();
+      date.setHours(0);
+      date.setMinutes(0);
+      date.setSeconds(0);
+      date.setMilliseconds(0);
+      let dateYear = date.getFullYear();
+      let dateMonth = date.getMonth();
+      let dateDay = date.getDate();
+
+      // 今天
+      this.today = this.dateToString(date);
+
+      // 昨天
+      this.yesterday = this.dateToString(new Date(date.getTime() - 86400000));
+
+      // 本月
+      this.thisMonthStart = this.dateToString(new Date(date.setDate(1)));
+      this.thisMonthEnd = this.dateToString(
+        new Date(new Date(date.getTime()).setMonth(dateMonth + 1) - 1)
+      );
+
+      // 上月
+      this.lastMonthStart = this.dateToString(
+        new Date(date.setMonth(dateMonth - 1))
+      );
+      this.lastMonthEnd = this.dateToString(
+        new Date(new Date(date.getTime()).setMonth(dateMonth) - 1)
+      );
+    }
+  }
 };
 </script>
 
