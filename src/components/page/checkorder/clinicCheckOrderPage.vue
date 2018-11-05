@@ -11,7 +11,7 @@
     </div>
     <section class="mt92 mb56">
       <keep-alive>
-        <component :is="currComponent"></component>
+        <component :is="currComponent" :clinicId="clinicId"></component>
       </keep-alive>
     </section>
     <div class="record_sheet">

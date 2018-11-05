@@ -18,6 +18,7 @@
           <hr class="full-screen-hr">
         </div>
       </router-link>
+      <div class="add_more" v-show="isComplete && dataList.length==0">暂无数据</div>
       <div class="add_more" v-if="isCanAdd" @click.stop="addMore()">查看更多...</div>
     </section>
 
@@ -29,6 +30,7 @@
 
   export default {
     name: "allList",
+    props:['clinicId'],
     components: {
       dTime
     },
@@ -38,7 +40,8 @@
         page: 1,
         pageSize: 10,
         isCanAdd:false,
-        timeObj:{}
+        timeObj:{},
+        isComplete:false
       }
     },
     activated(){
@@ -49,10 +52,12 @@
         this.axios.post("/apis/weixin/sales/dyCheckOrder/list", {
           "start_time":this.timeObj.start_time,
           "end_time":this.timeObj.end_time,
+          "clinic_id":this.clinicId,
           "page_size": this.pageSize,
           "page": this.page
         }).then(respone => {
           var res=respone.data,self=this;
+          self.isComplete=true;
           if(res.code===1000){
             this.isCanAdd=Math.ceil(res.total_num/this.pageSize)>this.page?true:false;
             if(isAdd){
