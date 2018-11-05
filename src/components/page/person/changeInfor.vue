@@ -1,7 +1,7 @@
 <template>
     <div>
       <d-header>个人资料</d-header>
-      <section class="content">
+      <section class="content" v-cloak>
         <info-header>基本信息</info-header>
         <div class="bg-fff pl15 pr15">
           <div class="info-item border">
@@ -10,9 +10,9 @@
           </div>
           <div class="info-item border">
             <span>年龄</span>
-            <input type="text" v-model="infoYear" class="width-30">
+            <input type="number" v-model="infoYear" class="width-30">
             <span class="mr28">岁</span>
-            <input type="text" v-model="infoMonth" class="width-30">
+            <input type="number" v-model="infoMonth" class="width-30">
             <span class="mr28">月</span>
           </div>
           <div class="info-item border">
@@ -31,7 +31,7 @@
         </div>
       </section>
       <footer>
-        <button>保存</button>
+        <button @click="saveInfo">保存</button>
       </footer>
     </div>
 </template>
@@ -48,11 +48,11 @@ export default {
   },
   data() {
     return {
-      infoName: "李老板",
-      infoYear: 20,
-      infoMonth: 9,
-      infoSex: 1,
-      infoMobile: "13245678901",
+      infoName: "",
+      infoYear: 0,
+      infoMonth: 0,
+      infoSex: -1,
+      infoMobile: "",
       sexType: [
         {
           id: "sex-male",
@@ -66,6 +66,87 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    birthday() {
+      const year = Number(this.infoYear);
+      const month = Number(this.infoMonth);
+      const today = new Date();
+      const todayMonth = today.getMonth() + 1;
+      const todayYear = today.getFullYear();
+      let birthMonth, birthYear;
+      if (month < todayMonth) {
+        birthMonth = todayMonth - month;
+        birthYear = todayYear - year;
+      } else {
+        birthMonth = todayMonth - month + 12;
+        birthYear = todayYear - year - 1;
+      }
+      birthMonth = birthMonth > 9 ? birthMonth : "0" + birthMonth;
+      return `${birthYear}-${birthMonth}-01`;
+    }
+  },
+  watch: {
+    infoMonth(newVal) {
+      if (newVal !== "") {
+        this.infoYear = Number(this.infoYear) + Math.trunc(Number(newVal) / 12);
+        this.infoMonth = Number(newVal) % 12;
+      }
+    }
+  },
+  created() {
+    this.getInfo();
+  },
+  methods: {
+    getInfo() {
+      this.axios.post("/apis/weixin/sales/info", {})
+        .then(response => {
+          const res = response.data;
+          if (res.code == 1000) {
+            let info = res.data;
+            this.infoName = info.name;
+            this.infoSex = info.sex;
+            this.infoMobile = info.phoneNum;
+            let subYear = new Date().getFullYear() - new Date(info.birthday).getFullYear();
+            let subMonth = new Date().getMonth() - new Date(info.birthday).getMonth();
+            if (subMonth < 0) {
+              this.infoYear = --subYear;
+              this.infoMonth = subMonth + 12;
+            } else {
+              this.infoYear = subYear;
+              this.infoMonth = subMonth;
+            }
+          } else {
+            alert(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    saveInfo() {
+      if (this.infoName == "") {
+        alert("姓名不能为空");
+        return;
+      }
+      this.axios
+        .post("/apis/weixin/sales/info/update", {
+          name: this.infoName,
+          birthday: new Date(this.birthday).getTime(),
+          sex: this.infoSex
+        })
+        .then(response => {
+          const res = response.data;
+          if (res.code == 1000) {
+            this.$router.push("/personal");
+          } else {
+            alert(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>

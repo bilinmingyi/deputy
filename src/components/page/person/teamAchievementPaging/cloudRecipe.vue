@@ -51,6 +51,257 @@
             <span>中药产品</span>
           </div>
         </div>
+        <hr class="full-screen-hr">
+      </div>
+            <div class="achi-item">
+        <div class="achi-item-title">
+          <span>李代表</span>
+          <span>业绩<span class="color-ec6464">￥3097</span></span>
+        </div>
+        <div class="achi-item-content">
+          <div>
+            <span>￥897</span>
+            <span>中药饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>颗粒饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中成西药</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中药产品</span>
+          </div>
+        </div>
+        <hr class="full-screen-hr">
+      </div>
+            <div class="achi-item">
+        <div class="achi-item-title">
+          <span>李代表</span>
+          <span>业绩<span class="color-ec6464">￥3097</span></span>
+        </div>
+        <div class="achi-item-content">
+          <div>
+            <span>￥897</span>
+            <span>中药饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>颗粒饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中成西药</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中药产品</span>
+          </div>
+        </div>
+        <hr class="full-screen-hr">
+      </div>
+            <div class="achi-item">
+        <div class="achi-item-title">
+          <span>李代表</span>
+          <span>业绩<span class="color-ec6464">￥3097</span></span>
+        </div>
+        <div class="achi-item-content">
+          <div>
+            <span>￥897</span>
+            <span>中药饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>颗粒饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中成西药</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中药产品</span>
+          </div>
+        </div>
+        <hr class="full-screen-hr">
+      </div>
+            <div class="achi-item">
+        <div class="achi-item-title">
+          <span>李代表</span>
+          <span>业绩<span class="color-ec6464">￥3097</span></span>
+        </div>
+        <div class="achi-item-content">
+          <div>
+            <span>￥897</span>
+            <span>中药饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>颗粒饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中成西药</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中药产品</span>
+          </div>
+        </div>
+        <hr class="full-screen-hr">
+      </div>
+            <div class="achi-item">
+        <div class="achi-item-title">
+          <span>李代表</span>
+          <span>业绩<span class="color-ec6464">￥3097</span></span>
+        </div>
+        <div class="achi-item-content">
+          <div>
+            <span>￥897</span>
+            <span>中药饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>颗粒饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中成西药</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中药产品</span>
+          </div>
+        </div>
+        <hr class="full-screen-hr">
+      </div>
+            <div class="achi-item">
+        <div class="achi-item-title">
+          <span>李代表</span>
+          <span>业绩<span class="color-ec6464">￥3097</span></span>
+        </div>
+        <div class="achi-item-content">
+          <div>
+            <span>￥897</span>
+            <span>中药饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>颗粒饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中成西药</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中药产品</span>
+          </div>
+        </div>
+        <hr class="full-screen-hr">
+      </div>
+            <div class="achi-item">
+        <div class="achi-item-title">
+          <span>李代表</span>
+          <span>业绩<span class="color-ec6464">￥3097</span></span>
+        </div>
+        <div class="achi-item-content">
+          <div>
+            <span>￥897</span>
+            <span>中药饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>颗粒饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中成西药</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中药产品</span>
+          </div>
+        </div>
+        <hr class="full-screen-hr">
+      </div>
+            <div class="achi-item">
+        <div class="achi-item-title">
+          <span>李代表</span>
+          <span>业绩<span class="color-ec6464">￥3097</span></span>
+        </div>
+        <div class="achi-item-content">
+          <div>
+            <span>￥897</span>
+            <span>中药饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>颗粒饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中成西药</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中药产品</span>
+          </div>
+        </div>
+        <hr class="full-screen-hr">
+      </div>
+            <div class="achi-item">
+        <div class="achi-item-title">
+          <span>李代表</span>
+          <span>业绩<span class="color-ec6464">￥3097</span></span>
+        </div>
+        <div class="achi-item-content">
+          <div>
+            <span>￥897</span>
+            <span>中药饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>颗粒饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中成西药</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中药产品</span>
+          </div>
+        </div>
+        <hr class="full-screen-hr">
+      </div>
+            <div class="achi-item">
+        <div class="achi-item-title">
+          <span>李代表</span>
+          <span>业绩<span class="color-ec6464">￥3097</span></span>
+        </div>
+        <div class="achi-item-content">
+          <div>
+            <span>￥897</span>
+            <span>中药饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>颗粒饮片</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中成西药</span>
+          </div>
+          <div>
+            <span>￥897</span>
+            <span>中药产品</span>
+          </div>
+        </div>
+        <hr class="full-screen-hr">
       </div>
     </div>
   </div>

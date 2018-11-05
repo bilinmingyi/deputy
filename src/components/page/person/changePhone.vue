@@ -3,17 +3,22 @@
       <d-header>绑定手机</d-header>
       <section class="content">
         <div class="bg-fff pl15 pr15">
+          <div class="info-item">
+            <input type="text" v-model="imgCode" placeholder="请输入图片验证码">
+            <img :src="imgCodeUrl" class="img-code" @click="getImgCode">
+          </div>
           <div class="info-item border">
             <input type="text" v-model="bindMobile" placeholder="请输入手机号码">
-            <button class="get-code-btn">获取验证码</button>
+            <button class="get-code-btn bg-c5" @click="getMsgCode" v-if="sendMsgDisabled">{{time+'秒后获取'}}</button>
+            <button class="get-code-btn" @click="getMsgCode" v-else>获取验证码</button>
           </div>
           <div class="info-item">
-            <input type="text" v-model="msgCode" placeholder="请输入短信验证码">
+            <input type="text" v-model="msgCode" placeholder="请输入手机验证码">
           </div>
         </div>
       </section>
       <footer>
-        <button>确定</button>
+        <button @click="checkCode">确定</button>
       </footer>
     </div>
 </template>
@@ -26,9 +31,135 @@ export default {
   },
   data() {
     return {
+      imgCode: "",
+      imgCodeUrl: "",
+      token: "",
       bindMobile: "",
-      msgCode: ""
+      msgCode: "",
+      time: 10,
+      sendMsgDisabled: false
     };
+  },
+  created() {
+    this.getImgCode();
+  },
+  methods: {
+    getImgCode() {
+      this.axios
+        .post("/apis/weixin/sales/checkImgCode", {})
+        .then(response => {
+          let res = response.data;
+          if (res.code == 1000) {
+            this.imgCodeUrl = res.data.img_data;
+            this.token = res.data.token;
+          } else {
+            alert(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    getMsgCode() {
+      if (this.imgCode == "") {
+        alert("请先输入图片验证码");
+        return;
+      }
+      if (this.bindMobile == "") {
+        alert("请输入手机号");
+        return;
+      }
+      this.axios({
+        url: "/apis/weixin/sales/sendChkcode",
+        method: "post",
+        data: {
+          mobile: this.bindMobile,
+          imgCode: this.imgCode,
+          token: this.token
+        },
+        transformRequest: [
+          function(data) {
+            let ret = "";
+            for (let it in data) {
+              ret +=
+                encodeURIComponent(it) +
+                "=" +
+                encodeURIComponent(data[it]) +
+                "&";
+            }
+            return ret;
+          }
+        ],
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      })
+        .then(response => {
+          let res = response.data;
+          if (res.code == 1000) {
+            this.sendMsgDisabled = true;
+            let interval = window.setInterval(() => {
+              if (this.time-- <= 0) {
+                this.time = 60;
+                this.sendMsgDisabled = false;
+                window.clearInterval(interval);
+              }
+            }, 1000);
+          } else {
+            alert(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    checkCode() {
+      // this.axios({
+      //   url: "/apis/weixin/sales/bind",
+      //   method: "post",
+      //   data: {
+      //     mobile: this.bindMobile,
+      //     code: this.msgCode
+      //   },
+      //   transformRequest: [
+      //     function(data) {
+      //       let ret = "";
+      //       for (let it in data) {
+      //         ret +=
+      //           encodeURIComponent(it) +
+      //           "=" +
+      //           encodeURIComponent(data[it]) +
+      //           "&";
+      //       }
+      //       return ret;
+      //     }
+      //   ],
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded"
+      //   }
+      // })
+      this.axios
+        .post("/apis/weixin/sales/bind", {
+          mobile: this.bindMobile,
+          code: this.msgCode
+        })
+        .then(response => {
+          let res = response.data;
+          if (res.code == 1000) {
+            alert("绑定成功");
+            this.$router.push("/personal/changeInfor");
+          } else {
+            if (res.code == 100002) {
+              alert('手机验证码错误');
+              return;
+            }
+            alert(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>
@@ -59,6 +190,7 @@ export default {
   transform: translateY(0.5px) scaleY(0.5);
 }
 .info-item input {
+  flex: 1;
   border: none;
   font-family: PingFangSC-Regular;
   font-size: 1rem;
@@ -71,9 +203,12 @@ export default {
 .info-item input::-webkit-input-placeholder {
   color: #999;
 }
+.img-code {
+  /* margin: -0.5rem 0;
+  height: 2.5rem; */
+  width: 5rem;
+}
 .get-code-btn {
-  position: absolute;
-  right: 0;
   background: #eeae1d;
   border-radius: 0.25rem;
   border: none;
@@ -88,6 +223,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.bg-c5 {
+  background: #c5c5c5;
 }
 footer {
   position: absolute;

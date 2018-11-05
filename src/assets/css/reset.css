@@ -633,6 +633,11 @@ button {
 .color-ec6464 {
   color: #EC6464 !important;
 }
+
+/* v-cloak */
+[v-cloak]{
+  display: none !important;
+}
 /*订单列表*/
 .order_item {
   background: #FFFFFF;
