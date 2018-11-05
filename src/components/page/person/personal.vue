@@ -58,6 +58,27 @@ export default {
   components: {
     "d-header": dHeader,
     "d-footer": dFooter
+  },
+  data(){
+    return {
+
+    }
+  },
+  created(){
+    this.getPerson();
+  },
+  methods:{
+    getPerson(){
+      this.axios.post("/apis/weixin/sales/info").then(
+        function (respone) {
+          console.log(respone)
+        }
+      ).catch(
+        function (error) {
+          console.log(error)
+        }
+      )
+    }
   }
 };
 </script>

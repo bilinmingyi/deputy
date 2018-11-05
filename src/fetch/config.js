@@ -1,8 +1,7 @@
 
 const url = 'http://localhost:50000';
 let ROOT;
-//由于封装的axios请求中，会将ROOT打包进去，为了方便之后不再更改，判断了当前环境，而生成的不同的ROOT
-if (process.env.NODE_ENV !== 'development') {
+if (process.env.NODE_ENV === 'production') {
   //生产环境下的地址
   ROOT = url;
 } else {

@@ -1,5 +1,4 @@
 var config= require("../src/fetch/config");
-
 module.exports = {
   proxy: {
     [config.ROOT]: {    //将www.exaple.com印射为/apis
