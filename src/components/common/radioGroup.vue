@@ -4,7 +4,7 @@
       <input :id="item.id" type="radio"
         :name="name"
         :value="item.value"
-        :checked="checkedVal==item.value"
+        :checked="value==item.value"
         @click="setChecked(item.value)">
       <label :for="item.id">{{item.label}}</label>
     </div>
@@ -13,15 +13,9 @@
 
 <script>
 export default {
-  props: ["data", "name"],
-  data() {
-    return {
-      checkedVal: -1,
-    };
-  },
+  props: ["data", "name", 'value'],
   methods: {
     setChecked(val) {
-      this.checkedVal = val;
       this.$emit('input', val);
     },
   }

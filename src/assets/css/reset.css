@@ -631,3 +631,8 @@ button {
 .color-ec6464 {
   color: #EC6464 !important;
 }
+
+/* v-cloak */
+[v-cloak]{
+  display: none !important;
+}
