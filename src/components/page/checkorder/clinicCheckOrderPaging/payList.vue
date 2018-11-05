@@ -22,7 +22,7 @@
 
 <script>
     export default {
-        name: "payList",
+      name: "payList",
       data() {
         return {
           dataList: [],
