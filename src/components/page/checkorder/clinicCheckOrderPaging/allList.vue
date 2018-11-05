@@ -1,32 +1,87 @@
 <template>
-    <div>
-      <router-link to="/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/1212">
+  <div>
+    <dTime v-model="timeObj" class="search_block" @input="getData()"></dTime>
+    <section class="mt188 mb50">
+      <router-link v-for="(order,index) in dataList" :key="index" :to="`/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${order.id}`">
         <div class="order_item">
           <div class="order_item_top">
-            <span>李教授</span>
-            <span>18/10/01 14:12</span>
+            <span>{{order.doctor_name}}</span>
+            <span>{{order.create_time|fullTime}}</span>
           </div>
           <div class="order_item_middle">
-            <span>王尼玛</span>
-            <span>待确认</span>
+            <span>{{order.patient_name}}</span>
+            <span>待支付</span>
           </div>
           <div class="order_item_bottom">
-            <span>付款金额：323</span>
+            <span>付款金额：{{order.trade_price}}</span>
           </div>
           <hr class="full-screen-hr">
         </div>
       </router-link>
-      <div class="add_more">查看更多...</div>
-    </div>
+      <div class="add_more" v-if="isCanAdd" @click.stop="addMore()">查看更多...</div>
+    </section>
+
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "allList"
+  import dTime from "@/components/common/dTimer.vue"
+
+  export default {
+    name: "allList",
+    components: {
+      dTime
+    },
+    data() {
+      return {
+        dataList: [],
+        page: 1,
+        pageSize: 10,
+        isCanAdd:false,
+        timeObj:{}
+      }
+    },
+    activated(){
+      this.getData()
+    },
+    methods: {
+      getData(isAdd) {
+        this.axios.post("/apis/weixin/sales/dyCheckOrder/list", {
+          "start_time":this.timeObj.start_time,
+          "end_time":this.timeObj.end_time,
+          "page_size": this.pageSize,
+          "page": this.page
+        }).then(respone => {
+          var res=respone.data,self=this;
+          if(res.code===1000){
+            this.isCanAdd=Math.ceil(res.total_num/this.pageSize)>this.page?true:false;
+            if(isAdd){
+              res.data.forEach(function (item) {
+                self.dataList.push(item);
+              })
+            }else {
+              this.dataList=res.data;
+            }
+          }else {
+            alert(res.msg)
+          }
+        })
+      },
+      addMore(){
+        this.page++;
+        this.getData(true);
+      }
     }
+  }
 </script>
 
 <style scoped>
+  .search_block {
+    position: fixed !important;
+    top: 5.75rem;
+    background: #FFFFFF;
+    width: 100%;
+  }
 
   .order_item {
     background: #FFFFFF;

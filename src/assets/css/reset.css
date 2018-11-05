@@ -531,7 +531,7 @@ button {
 }
 
 .mt188 {
-  margin-top: 11.85rem;
+  margin-top: 11.78rem;
 }
 
 /* margin-bottom */
@@ -570,7 +570,9 @@ button {
 .mb50 {
   margin-bottom: 3.125rem;
 }
-
+.mb56 {
+  margin-bottom: 3.5rem;
+}
 .add_more {
   color: #7C7C7C;
   font-size: 0.875rem;

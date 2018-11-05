@@ -9,7 +9,7 @@
       </nav>
       <hr class="full-screen-hr">
     </div>
-    <section class="mt92 mb50">
+    <section class="mt92 mb56">
       <keep-alive>
         <component :is="currComponent"></component>
       </keep-alive>
