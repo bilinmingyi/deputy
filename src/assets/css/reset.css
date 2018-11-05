@@ -636,3 +636,42 @@ button {
 [v-cloak]{
   display: none !important;
 }
+/*订单列表*/
+.order_item {
+  background: #FFFFFF;
+  font-size: 0.94rem;
+  color: #7C7C7C;
+}
+
+.order_item_top {
+  color: #3F3F3F;
+  display: flex;
+  padding: 0.625rem 0.94rem 0.25rem;
+}
+
+.order_item_top span:first-child {
+  flex: 1;
+  font-weight: bold;
+}
+
+.order_item_top span:last-child {
+  font-size: 0.875rem;
+}
+
+.order_item_middle {
+  display: flex;
+  padding: 0 0.94rem 0.25rem;
+}
+
+.order_item_middle span:first-child {
+  flex: 1;
+}
+
+.order_item_middle span:last-child {
+  color: #EB6262;
+}
+
+.order_item_bottom {
+  padding: 0 0.94rem 0.625rem;
+}
+/*订单列表*/
