@@ -16,7 +16,7 @@
         <hr class="full-screen-hr">
       </div>
     </router-link>
-    <div class="add_more">查看更多...</div>
+    <div class="add_more" v-if="isCanAdd" @click.stop="addMore()">查看更多...</div>
   </div>
 </template>
 
@@ -28,26 +28,37 @@
         dataList: [],
         page: 1,
         pageSize: 10,
-
+        isCanAdd:false
       }
     },
     activated(){
       this.getData()
     },
     methods: {
-      getData() {
+      getData(isAdd) {
         this.axios.post("/apis/weixin/sales/dyCheckOrder/list", {
           "status": "WAITCONFIRM",
           "page_size": this.pageSize,
           "page": this.page
         }).then(respone => {
-          var res=respone.data;
+          var res=respone.data,self=this;
           if(res.code===1000){
-            this.dataList=res.data;
+            this.isCanAdd=Math.ceil(res.total_num/this.pageSize)>this.page?true:false;
+            if(isAdd){
+              res.data.forEach(function (item) {
+                self.dataList.push(item);
+              })
+            }else {
+              this.dataList=res.data;
+            }
           }else {
             alert(res.msg)
           }
         })
+      },
+      addMore(){
+        this.page++;
+        this.getData(true);
       }
     }
   }
