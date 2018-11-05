@@ -72,6 +72,7 @@
           }
         })
       },
+
       addMore(){
         this.page++;
         this.getData(true);
