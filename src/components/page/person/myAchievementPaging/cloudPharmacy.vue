@@ -1,5 +1,6 @@
 <template>
   <div>
+    <d-timer class="timer" v-model="queryTime"></d-timer>
     <div class="bg-fff p15 mb12">
       <table class="d-table" data-type="2">
         <tbody>
@@ -56,17 +57,27 @@
 </template>
 
 <script>
+import dTimer from "@/components/common/dTimer";
 export default {
+  components: {
+    dTimer,
+  },
   data() {
-    return {};
+    return {
+      queryTime: {},
+    };
   },
   activated() {
-    console.log(1);
-  },
+
+  }
 };
 </script>
 
 <style scoped>
+:root .timer {
+  position: fixed;
+  top: 5.75rem;
+}
 .f12 {
   font-size: 0.75rem !important;
 }
