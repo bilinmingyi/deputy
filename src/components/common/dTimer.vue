@@ -41,7 +41,7 @@ export default {
       lastMonthEnd: ""
     };
   },
-  activated() {
+  created() {
     this.setFast();
     this.setQueryDate(this.myFastDate);
   },

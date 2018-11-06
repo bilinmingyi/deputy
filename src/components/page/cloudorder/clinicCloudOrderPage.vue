@@ -8,7 +8,7 @@
       </nav>
       <hr class="full-screen-hr">
     </div>
-    <section class="mt92 mb50">
+    <section class="mt92">
       <keep-alive>
         <component :is="currComponent" :clinicId="clinicId"></component>
       </keep-alive>
@@ -80,6 +80,7 @@
     position: fixed;
     top: 44px;
     width: 100%;
+    z-index: 999;
   }
 
   .nav_list {

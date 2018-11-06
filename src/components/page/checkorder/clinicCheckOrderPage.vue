@@ -27,7 +27,7 @@
 <script>
   import dHeader from "@/components/common/dHeader.vue"
   import allList from "@/components/page/checkorder/clinicCheckOrderPaging/allList.vue"
-  import confirmedList from "@/components/page/checkorder/clinicCheckOrderPaging/payList.vue"
+  import confirmedList from "@/components/page/checkorder/clinicCheckOrderPaging/confirmedList.vue"
   import payList from "@/components/page/checkorder/clinicCheckOrderPaging/payList.vue"
 
   export default {
@@ -76,6 +76,7 @@
     position: fixed;
     top: 44px;
     width: 100%;
+    z-index: 999;
   }
 
   .nav_list {
