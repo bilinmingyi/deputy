@@ -67,7 +67,7 @@
               this.dataList = res.data;
             }
           } else {
-            alert(res.msg)
+            this.$Message.infor(res.msg)
           }
         })
       },

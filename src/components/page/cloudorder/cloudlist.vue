@@ -53,7 +53,7 @@
           if(res.code==1000){
             this.dataList=res.data;
           }else {
-            alert(res.msg)
+            this.$Message.infor(res.msg)
           }
         }).catch((error) =>{
           console.log(error)

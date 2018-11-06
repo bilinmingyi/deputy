@@ -53,7 +53,7 @@ export default {
             this.imgCodeUrl = res.data.img_data;
             this.token = res.data.token;
           } else {
-            alert(res.msg);
+            this.$Message.infor(res.msg);
           }
         })
         .catch(err => {
@@ -62,11 +62,11 @@ export default {
     },
     getMsgCode() {
       if (this.imgCode == "") {
-        alert("请先输入图片验证码");
+        this.$Message.infor("请先输入图片验证码");
         return;
       }
       if (this.bindMobile == "") {
-        alert("请输入手机号");
+        this.$Message.infor("请输入手机号");
         return;
       }
       this.axios({
@@ -106,7 +106,7 @@ export default {
               }
             }, 1000);
           } else {
-            alert(res.msg);
+            this.$Message.infor(res.msg);
           }
         })
         .catch(err => {
@@ -122,14 +122,14 @@ export default {
         .then(response => {
           let res = response.data;
           if (res.code == 1000) {
-            alert("绑定成功");
+            this.$Message.infor("绑定成功");
             this.$router.push("/personal/changeInfor");
           } else {
             if (res.code == 100002) {
-              alert('手机验证码错误');
+              this.$Message.infor('手机验证码错误');
               return;
             }
-            alert(res.msg);
+            this.$Message.infor(res.msg);
           }
         })
         .catch(err => {

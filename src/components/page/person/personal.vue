@@ -97,7 +97,7 @@ export default {
             this.birthday = data.birthday;
             this.teamId = data.salesChannelId;
           } else {
-            alert(res.msg);
+            this.$Message.infor(res.msg);
           }
         })
         .catch(function(error) {
@@ -112,7 +112,7 @@ export default {
           if (res.code == 1000) {
             this.isLeader = res.data;
           } else {
-            alert(res.msg);
+            this.$Message.infor(res.msg);
           }
         })
         .catch(err => {

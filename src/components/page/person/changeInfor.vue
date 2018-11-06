@@ -117,7 +117,7 @@ export default {
               this.infoMonth = subMonth;
             }
           } else {
-            alert(res.msg);
+            this.$Message.infor(res.msg);
           }
         })
         .catch(err => {
@@ -126,7 +126,7 @@ export default {
     },
     saveInfo() {
       if (this.infoName == "") {
-        alert("姓名不能为空");
+        this.$Message.infor("姓名不能为空");
         return;
       }
       this.axios
@@ -140,7 +140,7 @@ export default {
           if (res.code == 1000) {
             this.$router.push("/personal");
           } else {
-            alert(res.msg);
+            this.$Message.infor(res.msg);
           }
         })
         .catch(err => {
