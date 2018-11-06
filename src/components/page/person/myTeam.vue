@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      activePage: 1
+      activePage: 1,
     };
   },
   computed: {
@@ -44,7 +44,7 @@ export default {
           break;
       }
     }
-  }
+  },
 };
 </script>
 

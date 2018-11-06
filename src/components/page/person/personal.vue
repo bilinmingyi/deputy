@@ -19,9 +19,9 @@
         </router-link>
       </div>
     </section>
-    <section class="person_list">
+    <section class="person_list" v-show="showList">
       <ul>
-        <router-link to="/personal/myAchievement">
+        <router-link :to="{ path: '/personal/myAchievement', query: { salesId: id }}">
           <li>
             <img src="../../../assets/img/yj.png">
             <span> 我的业绩</span>
@@ -29,15 +29,15 @@
         </router-link>
 
         <hr class="full-screen-hr">
-        <router-link to="/personal/myTeam">
+        <router-link :to="{ path: '/personal/myTeam', query: { teamId: teamId }}">
           <li>
             <img src="../../../assets/img/td.png">
             我的团队
           </li>
         </router-link>
 
-        <hr class="full-screen-hr">
-        <router-link to="/personal/teamAchievement">
+        <hr class="full-screen-hr" v-if="isLeader">
+        <router-link :to="{ path: '/personal/teamAchievement', query: { teamId: teamId }}" v-if="isLeader">
           <li>
             <img src="../../../assets/img/tdyj.png">
             团队业绩
@@ -55,49 +55,72 @@ import dHeader from "@/components/common/dHeader.vue";
 import dFooter from "@/components/common/dFooter.vue";
 
 export default {
-  name: "personal",
   components: {
     "d-header": dHeader,
     "d-footer": dFooter
   },
-  data(){
+  data() {
     return {
-      name:"",
-      id:"",
-      avatar:"",
-      birthday:""
+      name: "",
+      id: "",
+      avatar: "",
+      birthday: "",
+      isLeader: false,
+      showList: false,
+      teamId: null,
+    };
+  },
+  filters: {
+    birthToYear(val) {
+      var today = new Date();
+      return (
+        Number(today.getFullYear()) -
+        Number(new Date(Number(val)).getFullYear())
+      );
     }
   },
-  filters:{
-    birthToYear(val){
-      var today=new Date();
-      return Number(today.getFullYear())-Number(new Date(Number(val)).getFullYear());
-    }
-  },
-  created(){
+  created() {
     this.getPerson();
+    this.checkLeader();
   },
-  methods:{
-    getPerson(){
-      var self=this;
-      this.axios.post("/apis/weixin/sales/info").then(
-        (respone) => {
-          var res=respone.data;
-          if(res.code==1000){
-            console.log(this)
-            self.name=res.data.name;
-            self.id=res.data.id;
-            self.avatar=res.data.avatar;
-            self.birthday=res.data.birthday;
-          }else {
-            alert(res.msg)
+  methods: {
+    getPerson() {
+      this.axios
+        .post("/apis/weixin/sales/info")
+        .then(respone => {
+          var res = respone.data;
+          if (res.code == 1000) {
+            let data = res.data;
+            this.name = data.name;
+            this.id = data.id;
+            this.avatar = data.avatar;
+            this.birthday = data.birthday;
+            this.teamId = data.salesChannelId;
+          } else {
+            alert(res.msg);
           }
-        }
-      ).catch(
-        function (error) {
-          console.log(error)
-        }
-      )
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    checkLeader() {
+      this.axios
+        .post("/apis/weixin/sales/isHeader")
+        .then(response => {
+          let res = response.data;
+          if (res.code == 1000) {
+            this.isLeader = res.data;
+          } else {
+            alert(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })
+        .then(() => {
+          this.showList = true;
+        });
     }
   }
 };
