@@ -44,7 +44,7 @@ export default {
           if (res.code == 1000) {
             this.teamMembers = res.data;
           } else {
-            alert(res.msg);
+            this.$Message.infor(res.msg);
           }
         })
         .catch(err => {

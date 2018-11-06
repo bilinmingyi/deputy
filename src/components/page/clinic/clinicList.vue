@@ -76,7 +76,7 @@
               self.clinicList=res.data;
             }
           }else {
-            alert(res.msg)
+            self.$Message.infor(res.msg)
           }
         }).catch((error) => {
           console.log(error)

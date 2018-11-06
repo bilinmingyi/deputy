@@ -71,12 +71,12 @@
         if(acct.data.code===1000){
           self.doctorList=acct.data.data;
         }else {
-          alert("获取医生列表出错："+acct.data.msg)
+          self.$Message.infor("获取医生列表出错："+acct.data.msg)
         }
         if(perms.data.code===1000){
           self.clinicDetail=perms.data.data;
         }else {
-          alert("获取医生详情出错："+perms.data.msg)
+          self.$Message.infor("获取医生详情出错："+perms.data.msg)
         }
       }))
     },
