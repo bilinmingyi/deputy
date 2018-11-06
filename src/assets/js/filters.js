@@ -7,20 +7,32 @@ const treatOrdeType = (val) => {
     {code: 'DONE', name: '完成'},
     {code: 'CANCEL', name: '取消'}
   ];
-  for(var i=0;i<list.length;i++){
-    if(list[i].code==val){
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].code == val) {
       return list[i].name;
     }
   }
 };
-const fullTime =(val) =>{
-  var dateObj=new Date(Number(val));
-  var year=dateObj.getFullYear();
-  var month=(dateObj.getMonth()+1)>9?(dateObj.getMonth()+1).toString():"0"+(dateObj.getMonth()+1).toString();
-  var date=(dateObj.getDate())>9?(dateObj.getDate()).toString():"0"+(dateObj.getDate()).toString();
-  var hour=(dateObj.getHours())>9?(dateObj.getHours()).toString():"0"+(dateObj.getHours()).toString();
-  var minutes=(dateObj.getMinutes())>9?(dateObj.getMinutes()).toString():"0"+(dateObj.getMinutes()).toString();
+const checkOrderType = (val) => {
+  var list = [
+    {code: 'WAITCONFIRM', name: '待确认'},
+    {code: 'CHECKING', name: '检验中'},
+    {code: 'DONE', name: '完成'}
+  ];
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].code == val) {
+      return list[i].name;
+    }
+  }
+};
+const fullTime = (val) => {
+  var dateObj = new Date(Number(val));
+  var year = dateObj.getFullYear();
+  var month = (dateObj.getMonth() + 1) > 9 ? (dateObj.getMonth() + 1).toString() : "0" + (dateObj.getMonth() + 1).toString();
+  var date = (dateObj.getDate()) > 9 ? (dateObj.getDate()).toString() : "0" + (dateObj.getDate()).toString();
+  var hour = (dateObj.getHours()) > 9 ? (dateObj.getHours()).toString() : "0" + (dateObj.getHours()).toString();
+  var minutes = (dateObj.getMinutes()) > 9 ? (dateObj.getMinutes()).toString() : "0" + (dateObj.getMinutes()).toString();
 
-  return year+"/"+month+"/"+date+"  "+hour+":"+minutes;
+  return year + "/" + month + "/" + date + "  " + hour + ":" + minutes;
 }
-module.exports = {treatOrdeType,fullTime};
+module.exports = {treatOrdeType, fullTime, checkOrderType};

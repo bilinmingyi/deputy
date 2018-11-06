@@ -10,7 +10,7 @@
           </div>
           <div class="order_item_middle">
             <span>{{order.patient_name}}</span>
-            <span>待支付</span>
+            <span>{{order.status|checkOrderType}}</span>
           </div>
           <div class="order_item_bottom">
             <span>付款金额：{{order.trade_price}}</span>
@@ -42,9 +42,6 @@
         timeObj:{},
         isComplete:false
       }
-    },
-    activated(){
-      this.getData()
     },
     methods: {
       getData(isAdd) {

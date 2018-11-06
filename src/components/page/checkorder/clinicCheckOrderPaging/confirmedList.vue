@@ -23,7 +23,6 @@
 
 <script>
   export default {
-    name: "confirmedList",
     props:['clinicId'],
     data() {
       return {
@@ -34,7 +33,7 @@
         isComplete:false
       }
     },
-    activated(){
+    created(){
       this.getData()
     },
     methods: {
