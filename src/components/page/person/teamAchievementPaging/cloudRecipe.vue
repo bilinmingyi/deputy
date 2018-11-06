@@ -1,284 +1,34 @@
 <template>
   <div>
-    <d-timer class="timer"></d-timer>
+    <d-timer class="timer" v-model="queryTime" @input="getData"></d-timer>
     <div class="bg-fff p15 mb12">
       <table class="d-table" data-type="2">
         <tbody>
           <tr>
             <th class="width-100"><div>业绩汇总</div></th>
-            <th><div>业绩</div></th>
+            <th><div>{{}}</div></th>
           </tr>
           <tr>
             <td class="bg-medium">中药饮片</td>
-            <td>123</td>
+            <td>{{achievementData.yp_price}}</td>
           </tr>
           <tr>
             <td class="bg-medium">颗粒饮片</td>
-            <td>456</td>
+            <td>{{achievementData.kl_price}}</td>
           </tr>
           <tr>
             <td class="bg-medium">中西成药</td>
-            <td>789</td>
+            <td>{{achievementData.western_price}}</td>
           </tr>
           <tr>
             <td class="bg-medium">中药产品</td>
-            <td>012</td>
+            <td>{{achievementData.product_price}}</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="bg-fff">
       <div class="achi-item">
-        <div class="achi-item-title">
-          <span>李代表</span>
-          <span>业绩<span class="color-ec6464">￥3097</span></span>
-        </div>
-        <div class="achi-item-content">
-          <div>
-            <span>￥897</span>
-            <span>中药饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>颗粒饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中成西药</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中药产品</span>
-          </div>
-        </div>
-        <hr class="full-screen-hr">
-      </div>
-            <div class="achi-item">
-        <div class="achi-item-title">
-          <span>李代表</span>
-          <span>业绩<span class="color-ec6464">￥3097</span></span>
-        </div>
-        <div class="achi-item-content">
-          <div>
-            <span>￥897</span>
-            <span>中药饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>颗粒饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中成西药</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中药产品</span>
-          </div>
-        </div>
-        <hr class="full-screen-hr">
-      </div>
-            <div class="achi-item">
-        <div class="achi-item-title">
-          <span>李代表</span>
-          <span>业绩<span class="color-ec6464">￥3097</span></span>
-        </div>
-        <div class="achi-item-content">
-          <div>
-            <span>￥897</span>
-            <span>中药饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>颗粒饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中成西药</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中药产品</span>
-          </div>
-        </div>
-        <hr class="full-screen-hr">
-      </div>
-            <div class="achi-item">
-        <div class="achi-item-title">
-          <span>李代表</span>
-          <span>业绩<span class="color-ec6464">￥3097</span></span>
-        </div>
-        <div class="achi-item-content">
-          <div>
-            <span>￥897</span>
-            <span>中药饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>颗粒饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中成西药</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中药产品</span>
-          </div>
-        </div>
-        <hr class="full-screen-hr">
-      </div>
-            <div class="achi-item">
-        <div class="achi-item-title">
-          <span>李代表</span>
-          <span>业绩<span class="color-ec6464">￥3097</span></span>
-        </div>
-        <div class="achi-item-content">
-          <div>
-            <span>￥897</span>
-            <span>中药饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>颗粒饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中成西药</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中药产品</span>
-          </div>
-        </div>
-        <hr class="full-screen-hr">
-      </div>
-            <div class="achi-item">
-        <div class="achi-item-title">
-          <span>李代表</span>
-          <span>业绩<span class="color-ec6464">￥3097</span></span>
-        </div>
-        <div class="achi-item-content">
-          <div>
-            <span>￥897</span>
-            <span>中药饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>颗粒饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中成西药</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中药产品</span>
-          </div>
-        </div>
-        <hr class="full-screen-hr">
-      </div>
-            <div class="achi-item">
-        <div class="achi-item-title">
-          <span>李代表</span>
-          <span>业绩<span class="color-ec6464">￥3097</span></span>
-        </div>
-        <div class="achi-item-content">
-          <div>
-            <span>￥897</span>
-            <span>中药饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>颗粒饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中成西药</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中药产品</span>
-          </div>
-        </div>
-        <hr class="full-screen-hr">
-      </div>
-            <div class="achi-item">
-        <div class="achi-item-title">
-          <span>李代表</span>
-          <span>业绩<span class="color-ec6464">￥3097</span></span>
-        </div>
-        <div class="achi-item-content">
-          <div>
-            <span>￥897</span>
-            <span>中药饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>颗粒饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中成西药</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中药产品</span>
-          </div>
-        </div>
-        <hr class="full-screen-hr">
-      </div>
-            <div class="achi-item">
-        <div class="achi-item-title">
-          <span>李代表</span>
-          <span>业绩<span class="color-ec6464">￥3097</span></span>
-        </div>
-        <div class="achi-item-content">
-          <div>
-            <span>￥897</span>
-            <span>中药饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>颗粒饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中成西药</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中药产品</span>
-          </div>
-        </div>
-        <hr class="full-screen-hr">
-      </div>
-            <div class="achi-item">
-        <div class="achi-item-title">
-          <span>李代表</span>
-          <span>业绩<span class="color-ec6464">￥3097</span></span>
-        </div>
-        <div class="achi-item-content">
-          <div>
-            <span>￥897</span>
-            <span>中药饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>颗粒饮片</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中成西药</span>
-          </div>
-          <div>
-            <span>￥897</span>
-            <span>中药产品</span>
-          </div>
-        </div>
-        <hr class="full-screen-hr">
-      </div>
-            <div class="achi-item">
         <div class="achi-item-title">
           <span>李代表</span>
           <span>业绩<span class="color-ec6464">￥3097</span></span>
@@ -311,14 +61,40 @@
 import dTimer from "@/components/common/dTimer";
 export default {
   components: {
-    dTimer,
+    dTimer
   },
   data() {
-    return {};
+    return {
+      salesId: null,
+      achievementData: [],
+      queryTime: {
+        start_time: 0,
+        end_time: Date.now()
+      }
+    };
   },
-  activated() {
-    console.log(2);
+  created() {
+    this.teamId = Number(this.$route.query.teamId);
   },
+  methods: {
+    getData() {
+      let params = Object.assign({ channel_id: this.teamId }, this.queryTime);
+      this.axios
+        .post("/apis/statistic/dytreat/teamStatList", params)
+        .then(response => {
+          let res = response.data;
+          if (res.code == 1000) {
+            this.achievementData = res.data;
+            this.$Message.info('666')
+          } else {
+            this.$Message.info(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
 };
 </script>
 

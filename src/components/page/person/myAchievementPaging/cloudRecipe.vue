@@ -1,6 +1,6 @@
 <template>
   <div>
-    <d-timer class="timer"></d-timer>
+    <d-timer class="timer" v-model="queryTime" @input="getData"></d-timer>
     <div class="bg-fff p15 mb12">
       <table class="d-table" data-type="2">
         <tbody>
@@ -63,10 +63,36 @@ export default {
     dTimer
   },
   data() {
-    return {};
+    return {
+      salesId: null,
+      achievementData: {},
+      queryTime: {
+        start_time: 0,
+        end_time: Date.now()
+      }
+    };
   },
-  activated() {
-    console.log(2);
+  created() {
+    this.salesId = Number(this.$route.query.salesId);
+  },
+  methods: {
+    getData() {
+      let params = Object.assign({ sales_id: this.salesId }, this.queryTime);
+      this.axios
+        .post("/apis/statistic/dytreat/personalStatList", params)
+        .then(response => {
+          let res = response.data;
+          if (res.code == 1000) {
+            this.achievementData = res.data;
+            this.$Message.info('666')
+          } else {
+            alert(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>

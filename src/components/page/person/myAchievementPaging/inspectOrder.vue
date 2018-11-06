@@ -52,7 +52,7 @@ export default {
     }
   },
   created() {
-    this.salesId = this.$route.query.salesId;
+    this.salesId = Number(this.$route.query.salesId); 
   },
   methods: {
     getData() {

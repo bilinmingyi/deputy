@@ -52,7 +52,7 @@ export default {
     }
   },
   created() {
-    this.teamId = this.$route.query.teamId;
+    this.teamId = Number(this.$route.query.teamId);
   },
   methods: {
     getData() {
