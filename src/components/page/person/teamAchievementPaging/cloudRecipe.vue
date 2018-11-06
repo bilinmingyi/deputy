@@ -6,52 +6,51 @@
         <tbody>
           <tr>
             <th class="width-100"><div>业绩汇总</div></th>
-            <th><div>{{}}</div></th>
+            <th><div>{{totalAchievement | parseNum | priceFormat}}</div></th>
           </tr>
           <tr>
             <td class="bg-medium">中药饮片</td>
-            <td>{{achievementData.yp_price}}</td>
+            <td>{{achievementData.yp_price | parseNum | priceFormat}}</td>
           </tr>
           <tr>
             <td class="bg-medium">颗粒饮片</td>
-            <td>{{achievementData.kl_price}}</td>
+            <td>{{achievementData.kl_price | parseNum | priceFormat}}</td>
           </tr>
           <tr>
             <td class="bg-medium">中西成药</td>
-            <td>{{achievementData.western_price}}</td>
+            <td>{{achievementData.western_price | parseNum | priceFormat}}</td>
           </tr>
           <tr>
             <td class="bg-medium">中药产品</td>
-            <td>{{achievementData.product_price}}</td>
+            <td>{{achievementData.product_price | parseNum | priceFormat}}</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="bg-fff">
-      <div class="achi-item">
+      <div class="achi-item" v-for="item in achievementData.dataList">
         <div class="achi-item-title">
-          <span>李代表</span>
-          <span>业绩<span class="color-ec6464">￥3097</span></span>
+          <span>{{item.name}}</span>
+          <span>业绩<span class="color-ec6464">{{item.total_price | parseNum | priceFormat}}</span></span>
         </div>
         <div class="achi-item-content">
           <div>
-            <span>￥897</span>
+            <span>{{item.yp_price | parseNum | priceFormat}}</span>
             <span>中药饮片</span>
           </div>
           <div>
-            <span>￥897</span>
+            <span>{{item.kl_price | parseNum | priceFormat}}</span>
             <span>颗粒饮片</span>
           </div>
           <div>
-            <span>￥897</span>
+            <span>{{item.western_price | parseNum | priceFormat}}</span>
             <span>中成西药</span>
           </div>
           <div>
-            <span>￥897</span>
+            <span>{{item.product_price | parseNum | priceFormat}}</span>
             <span>中药产品</span>
           </div>
         </div>
-        <hr class="full-screen-hr">
       </div>
     </div>
   </div>
@@ -65,13 +64,28 @@ export default {
   },
   data() {
     return {
-      salesId: null,
-      achievementData: [],
+      teamId: null,
+      achievementData: {
+        dataList: [],
+      },
       queryTime: {
         start_time: 0,
         end_time: Date.now()
       }
     };
+  },
+  computed: {
+    totalAchievement() {
+      let res = 0;
+      let keys = Object.keys(this.achievementData);
+      keys.forEach(item => {
+        let val = this.achievementData[item];
+        if (typeof val == "number") {
+          res += val;
+        }
+      });
+      return res;
+    }
   },
   created() {
     this.teamId = Number(this.$route.query.teamId);
@@ -85,9 +99,8 @@ export default {
           let res = response.data;
           if (res.code == 1000) {
             this.achievementData = res.data;
-            this.$Message.info('666')
           } else {
-            this.$Message.info(res.msg);
+            this.$Message.infor(res.msg);
           }
         })
         .catch(err => {

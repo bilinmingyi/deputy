@@ -72,4 +72,16 @@ const priceFormat = (price, currency, decimals) => {
   return sign + currency + head + mid + _float;
 };
 
-module.exports = { treatOrdeType, fullTime, checkOrderType, priceFormat };
+/**
+ * @desc Parse Number
+ * @param {All} num
+ * @return {Number}
+ * 
+ * @example priceFormat('12345.67890', '$', 3) -> '$12,345.679'
+*/
+const parseNum = (num) => {
+  let n = parseFloat(num);
+  return n == n ? n : 0;
+}
+
+module.exports = { treatOrdeType, fullTime, checkOrderType, priceFormat, parseNum};
