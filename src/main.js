@@ -6,14 +6,15 @@ import router from './router'
 import axios from 'axios'
 import vueAxios from 'vue-axios'
 import filters from './assets/js/filters'
+import message from './assets/js/message'
 
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
+Vue.prototype.$Message = message;
+Vue.use(vueAxios, axios);
 
-Vue.use(vueAxios, axios)
-
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
