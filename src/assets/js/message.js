@@ -5,7 +5,7 @@ var infor = function (text) {
     '<div style="margin-bottom: 1rem;">' +
     text +
     '</div>' +
-    '<div  style="color: #7cd33a;text-align: right"><div id="messageClose" style="display: inline-block;">确定</div></div>' +
+    '<div  style="color: #08BAC6;text-align: right"><div id="messageClose" style="display: inline-block;">确定</div></div>' +
     '</div>' +
     '</section>';
   document.getElementsByTagName('body')[0].insertAdjacentHTML("afterbegin", innerHtml);
