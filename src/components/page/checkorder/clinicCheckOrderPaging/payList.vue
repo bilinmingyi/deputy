@@ -23,7 +23,7 @@
 
 <script>
     export default {
-      name: "payList",
+
       props:['clinicId'],
       data() {
         return {

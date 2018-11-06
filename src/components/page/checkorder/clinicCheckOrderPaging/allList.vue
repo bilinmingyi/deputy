@@ -29,7 +29,6 @@
   import dTime from "@/components/common/dTimer.vue"
 
   export default {
-    name: "allList",
     props:['clinicId'],
     components: {
       dTime

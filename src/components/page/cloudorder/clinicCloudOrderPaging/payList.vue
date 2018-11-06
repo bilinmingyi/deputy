@@ -8,7 +8,7 @@
         </div>
         <div class="order_item_middle">
           <span>{{order.patientName}}</span>
-          <span>待支付</span>
+          <span>待付款</span>
         </div>
         <div class="order_item_bottom">
           <span>付款金额：{{order.price}}</span>
@@ -33,8 +33,11 @@
         isComplete:false
       }
     },
-    activated(){
+    created(){
       this.getData()
+    },
+    activated(){
+
     },
     methods: {
       getData(isAdd) {
