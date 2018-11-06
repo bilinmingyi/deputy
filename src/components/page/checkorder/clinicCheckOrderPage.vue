@@ -27,7 +27,7 @@
 <script>
   import dHeader from "@/components/common/dHeader.vue"
   import allList from "@/components/page/checkorder/clinicCheckOrderPaging/allList.vue"
-  import confirmedList from "@/components/page/checkorder/clinicCheckOrderPaging/confirmedList.vue"
+  import confirmedList from "@/components/page/checkorder/clinicCheckOrderPaging/payList.vue"
   import payList from "@/components/page/checkorder/clinicCheckOrderPaging/payList.vue"
 
   export default {

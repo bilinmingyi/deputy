@@ -7,15 +7,24 @@
         <table class="d-table" data-type="2">
           <tbody>
           <tr>
-            <th><div>诊所名称</div></th>
-            <th><div>待确认</div></th>
-            <th><div>操作</div></th>
+            <th>
+              <div>诊所名称</div>
+            </th>
+            <th>
+              <div>待确认</div>
+            </th>
+            <th>
+              <div>操作</div>
+            </th>
           </tr>
           <tr v-for="item in dataList">
             <td>{{item.clinic_name}}</td>
             <td>{{item.sum}}</td>
             <td>
-              <router-link :to="{path:`/checkListPage/clinicCheckOrderPage/${item.clinic_id}`, query:{name:`${item.clinic_name}`}}" class="red_a">去处理</router-link>
+              <router-link
+                :to="{path:`/checkListPage/clinicCheckOrderPage/${item.clinic_id}`, query:{name:`${item.clinic_name}`}}"
+                class="red_a">去处理
+              </router-link>
             </td>
           </tr>
           </tbody>
@@ -29,33 +38,34 @@
 <script>
   import dHeader from '@/components/common/dHeader.vue'
   import dSearch from '@/components/common/dSearch.vue'
+
   export default {
     name: "checkList",
-    data:function(){
-      return{
-        dataList:[]
+    data: function () {
+      return {
+        dataList: []
       }
     },
     components: {
       'd-search': dSearch,
       'd-header': dHeader
     },
-    created(){
+    created() {
       this.getData();
     },
-    methods:{
-      getData:function (name) {
-        var self=this;
-        self.axios.post("/apis/weixin/sales/dyCheckOrder/num",{
-          "query":name
-        }).then( (respone) => {
-          var res=respone.data;
-          if(res.code==1000){
-            this.dataList=res.data;
-          }else {
+    methods: {
+      getData: function (name) {
+        var self = this;
+        self.axios.post("/apis/weixin/sales/dyCheckOrder/num", {
+          "query": name
+        }).then((respone) => {
+          var res = respone.data;
+          if (res.code == 1000) {
+            this.dataList = res.data;
+          } else {
             alert(res.msg)
           }
-        }).catch((error) =>{
+        }).catch((error) => {
           console.log(error)
         })
       }
@@ -72,7 +82,8 @@
     margin-top: 5.75rem;
     background: #FFFFFF;
   }
-  .red_a{
+
+  .red_a {
     color: red;
   }
 </style>

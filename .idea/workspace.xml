@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1730b4b-107d-44df-880f-b029dd3db586" name="Default" comment="待确认和待支付组件">
+    <list default="true" id="f1730b4b-107d-44df-880f-b029dd3db586" name="Default" comment="增加诊所id">
+      <change afterPath="$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPaging/allList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPaging/payList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/checkList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/checkList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/allList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/allList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/confirmedList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/confirmedList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/payList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/payList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -59,8 +61,8 @@
           <entry key="html" value="27" />
           <entry key="js" value="3170" />
           <entry key="json" value="1" />
-          <entry key="txt" value="90" />
-          <entry key="vue" value="10217" />
+          <entry key="txt" value="102" />
+          <entry key="vue" value="10779" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -69,8 +71,8 @@
           <entry key="HTML" value="27" />
           <entry key="JSON" value="3" />
           <entry key="JavaScript" value="3170" />
-          <entry key="PLAIN_TEXT" value="90" />
-          <entry key="Vue.js" value="10217" />
+          <entry key="PLAIN_TEXT" value="102" />
+          <entry key="Vue.js" value="10779" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -83,7 +85,7 @@
           <entry key="JSON" value="3" />
           <entry key="JavaScript" value="21" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Vue.js" value="90" />
+          <entry key="Vue.js" value="99" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -96,7 +98,7 @@
           <entry key="js" value="21" />
           <entry key="json" value="2" />
           <entry key="png" value="1" />
-          <entry key="vue" value="90" />
+          <entry key="vue" value="99" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -105,40 +107,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPage.vue">
+        <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPaging/payList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-              <folding>
-                <element signature="e#1830#1883#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="572">
+              <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/confirmedList.vue">
+        <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="770">
-              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+            <state relative-caret-position="22">
+              <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/payList.vue">
+        <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPaging/allList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/allList.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="57" column="31" lean-forward="true" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="31" />
+            <state relative-caret-position="44">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -146,60 +136,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPage.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="26" column="31" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="31" />
+            <state relative-caret-position="832">
+              <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
               <folding>
-                <element signature="n#section#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#1427#1480#0" expanded="true" />
+                <element signature="n#style#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/common/dTimer.vue">
+        <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPage.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="924">
-              <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+            <state relative-caret-position="242">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="29" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#140#161#0" expanded="true" />
+                <element signature="e#1830#1883#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/assets/js/filters.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/assets/css/reset.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="533" column="19" selection-start-line="533" selection-start-column="19" selection-end-line="533" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/page/clinic/clinicList.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="111" selection-start-line="5" selection-start-column="111" selection-end-line="5" selection-end-column="111" />
             </state>
           </provider>
         </entry>
@@ -211,8 +165,8 @@
       <list>
         <option value="HTML File" />
         <option value="HTTP Request" />
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -231,8 +185,9 @@
       <find>order_item_top</find>
       <find>mb50</find>
       <find>search_block</find>
-      <find>mt188</find>
       <find>setQueryDate</find>
+      <find>mt188</find>
+      <find>currComponent</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -241,9 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/page/clinicCheckOrderPage.vue" />
-        <option value="$PROJECT_DIR$/src/components/page/checkListPage.vue" />
-        <option value="$PROJECT_DIR$/src/components/page/checkList.vue" />
         <option value="$PROJECT_DIR$/src/components/page/confirmedOrderDetail.vue" />
         <option value="$PROJECT_DIR$/src/components/page/payOrderDetail.vue" />
         <option value="$PROJECT_DIR$/src/components/page/orderDetail.vue" />
@@ -260,8 +212,6 @@
         <option value="$PROJECT_DIR$/src/components/common/dHeader.vue" />
         <option value="$PROJECT_DIR$/src/components/page/personal.vue" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue" />
-        <option value="$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPage.vue" />
         <option value="$PROJECT_DIR$/src/components/page/cloudorder/waitPayPage.vue" />
         <option value="$PROJECT_DIR$/src/components/common/infoHeader.vue" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetail.vue" />
@@ -281,17 +231,22 @@
         <option value="$PROJECT_DIR$/src/components/page/person/changeInfor.vue" />
         <option value="$PROJECT_DIR$/src/components/page/person/personal.vue" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/src/components/page/checkorder/checkList.vue" />
         <option value="$PROJECT_DIR$/src/components/common/dSearch.vue" />
         <option value="$PROJECT_DIR$/src/components/page/clinic/clinicList.vue" />
         <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/assets/js/filters.js" />
         <option value="$PROJECT_DIR$/src/assets/css/reset.css" />
         <option value="$PROJECT_DIR$/src/components/common/dTimer.vue" />
-        <option value="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/allList.vue" />
-        <option value="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/payList.vue" />
-        <option value="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/confirmedList.vue" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPage.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/payList.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/allList.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPaging/allList.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/checkorder/checkList.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/confirmedList.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPaging/confirmedList.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPage.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPaging/payList.vue" />
       </list>
     </option>
   </component>
@@ -391,7 +346,25 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="checkorder" type="462c0819:PsiDirectoryNode" />
+              <item name="clinicCheckOrderPaging" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deputy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deputy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
               <item name="cloudorder" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deputy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deputy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="cloudorder" type="462c0819:PsiDirectoryNode" />
+              <item name="clinicCloudOrderPaging" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="deputy" type="b2602c69:ProjectViewProjectNode" />
@@ -609,7 +582,7 @@
       <workItem from="1540947679309" duration="12000" />
       <workItem from="1540947726113" duration="86658000" />
       <workItem from="1541207521063" duration="227000" />
-      <workItem from="1541231995483" duration="32050000" />
+      <workItem from="1541231995483" duration="36611000" />
     </task>
     <task id="LOCAL-00001" summary="新建项目">
       <created>1540885743978</created>
@@ -821,23 +794,37 @@
       <option name="project" value="LOCAL" />
       <updated>1541412601236</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="待确认和待支付组件">
+      <created>1541413712759</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1541413712759</updated>
+    </task>
+    <task id="LOCAL-00032" summary="增加诊所id">
+      <created>1541413816942</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1541413816942</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124486000" />
+    <option name="totallyTimeSpent" value="129047000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16754478" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16754478" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32998884" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -899,19 +886,10 @@
     <MESSAGE value="代理新增" />
     <MESSAGE value="新增订单筛选，新增过滤器" />
     <MESSAGE value="待确认和待支付组件" />
-    <option name="LAST_COMMIT_MESSAGE" value="待确认和待支付组件" />
+    <MESSAGE value="增加诊所id" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加诊所id" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.babelrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="78" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/img/fanghui@2x.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="717">
@@ -947,13 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/infoBar.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -975,13 +946,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="19" column="8" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/waitPayPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1342">
-          <caret line="111" column="1" lean-forward="true" selection-start-line="111" selection-start-column="1" selection-end-line="115" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -1013,13 +977,6 @@
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/cloudListPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1136,13 +1093,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/checkList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="49" column="22" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/dSearch.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1198,23 +1148,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="31" />
-          <folding>
-            <element signature="n#section#0;n#div#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/reset.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="533" column="19" selection-start-line="533" selection-start-column="19" selection-end-line="533" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/dTimer.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
@@ -1222,34 +1155,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/allList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="57" column="31" lean-forward="true" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/payList.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="508">
-          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+          <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/confirmedList.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/waitPayPage.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+        <state relative-caret-position="827">
+          <caret line="111" column="1" lean-forward="true" selection-start-line="111" selection-start-column="1" selection-end-line="115" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/cloudListPage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/checkList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-132">
+          <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+          <folding>
+            <element signature="e#1247#1622#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/allList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1628">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="569" column="1" selection-start-line="569" selection-start-column="1" selection-end-line="569" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPage.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+        <state relative-caret-position="242">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="29" />
           <folding>
             <element signature="e#1830#1883#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/confirmedList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="41" column="61" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPaging/allList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="832">
+          <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
+          <folding>
+            <element signature="e#1427#1480#0" expanded="true" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPaging/payList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
         </state>
       </provider>
     </entry>
