@@ -114,30 +114,6 @@ export default {
         });
     },
     checkCode() {
-      // this.axios({
-      //   url: "/apis/weixin/sales/bind",
-      //   method: "post",
-      //   data: {
-      //     mobile: this.bindMobile,
-      //     code: this.msgCode
-      //   },
-      //   transformRequest: [
-      //     function(data) {
-      //       let ret = "";
-      //       for (let it in data) {
-      //         ret +=
-      //           encodeURIComponent(it) +
-      //           "=" +
-      //           encodeURIComponent(data[it]) +
-      //           "&";
-      //       }
-      //       return ret;
-      //     }
-      //   ],
-      //   headers: {
-      //     "Content-Type": "application/x-www-form-urlencoded"
-      //   }
-      // })
       this.axios
         .post("/apis/weixin/sales/bind", {
           mobile: this.bindMobile,

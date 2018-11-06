@@ -3,134 +3,22 @@
     <d-search @on-search="getData"></d-search>
     <section class="clinic_content">
       <ul>
-        <router-link to="/clinic/clinicDetail/117">
-          <li>
+        <li v-for="item in clinicList">
+          <router-link :to="`/clinic/clinicDetail/${item.id}`">
             <div class="order_infor">
               <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_EB">综合诊所</div>
+                <div>{{item.name}}</div>
+                <div :class="item.type==1?'bg_4D':'bg_EB'">{{item.type | clinicType}}</div>
               </div>
               <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
+                地址：{{item.address}}
               </div>
             </div>
             <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/118">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_ED">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/119">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_4D">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/117">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_EB">综合诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/118">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_ED">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/119">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_4D">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/117">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_EB">综合诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/118">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_ED">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
-        <router-link to="/clinic/clinicDetail/119">
-          <li>
-            <div class="order_infor">
-              <div class="order_infor_top">
-                <div>采购订单下单</div>
-                <div class="bg_4D">西医诊所</div>
-              </div>
-              <div class="order_infor_bottom">
-                深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-              </div>
-            </div>
-            <hr class="full-screen-hr">
-          </li>
-        </router-link>
+          </router-link>
+        </li>
       </ul>
-      <div class="add_more">查看更多...</div>
+      <!-- <div class="add_more">查看更多...</div> -->
     </section>
   </div>
 </template>
@@ -142,14 +30,42 @@ export default {
     dSearch
   },
   data() {
-    return {};
+    return {
+      teamId: null,
+      clinicList: []
+    };
   },
-  activated() {
-    console.log(2);
+  filters: {
+    clinicType: function(val) {
+      var list = [{ code: 1, name: "普通诊所" }, { code: 2, name: "淳道诊所" }];
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].code == val) {
+          return list[i].name;
+        }
+      }
+    }
+  },
+  created() {
+    this.teamId = this.$route.query.teamId;
+    this.getData();
   },
   methods: {
     getData() {
-      console.log(name);
+      this.axios
+        .post("/apis/weixin/salesTeam/clinic/list", {
+          sales_channel_id: this.teamId
+        })
+        .then(response => {
+          let res = response.data;
+          if (res.code == 1000) {
+            this.clinicList = res.data;
+          } else {
+            alert(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

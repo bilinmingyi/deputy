@@ -1,15 +1,15 @@
 <template>
   <div>
-    <div class="person_content">
+    <div class="person_content" v-for="item in teamMembers">
       <img class="person_portrait" src="@/assets/img/ndb.png">
-      <div class="person_infor">
+      <div class="person_infor" :id="item.id">
         <div>
-          <span class="person_name">李代表</span>
+          <span class="person_name">{{item.contract}}</span>
         </div>
-        <div class="person_mobile">联系电话：124343423432</div>
+        <div class="person_mobile">联系电话：{{item.phone_num}}</div>
       </div>
     </div>
-    <div class="person_content">
+    <!-- <div class="person_content">
       <img class="person_portrait" src="@/assets/img/nv.png">
       <div class="person_infor">
         <div>
@@ -17,18 +17,41 @@
         </div>
         <div class="person_mobile">联系电话：124343423432</div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      teamId: null,
+      teamMembers: [],
+    };
   },
-  activated() {
-    console.log(1);
+  created() {
+    this.teamId = this.$route.query.teamId;
+    this.getMembers();
   },
+  methods: {
+    getMembers() {
+      this.axios
+        .post("/apis/weixin/salesTeam/list", {
+          sales_channel_id: this.teamId
+        })
+        .then(response => {
+          let res = response.data;
+          if (res.code == 1000) {
+            this.teamMembers = res.data;
+          } else {
+            alert(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
 };
 </script>
 

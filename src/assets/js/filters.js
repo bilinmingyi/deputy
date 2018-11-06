@@ -23,4 +23,32 @@ const fullTime =(val) =>{
 
   return year+"/"+month+"/"+date+"  "+hour+":"+minutes;
 }
-module.exports = {treatOrdeType,fullTime};
+
+/**
+* @desc： Format price.
+* @param {String} price
+* @param {String} currency
+* @param {Number} decimals
+* @return {String}
+*
+* @example priceFormat('12345.67890', '$', 3) -> '$12,345.679'
+*/
+const priceFormat = (price, currency, decimals) => {
+  price = parseFloat(price);
+  if (!price && price !== 0 || !isFinite(price)) return '';
+  currency = currency != null ? currency : '￥';
+  decimals = decimals != null ? decimals : 2;
+  var sign = price < 0 ? '-' : '';
+  var str = Math.abs(price).toFixed(decimals);
+  var _int = decimals ? str.slice(0, -1 - decimals) : '';
+  var _float = decimals ? str.slice(-1 - decimals) : '';
+  var i = _int.length % 3;
+  var head = i > 0 
+    ? (_int.slice(0, i) + (_int.length > 3 ? ',' : '')) 
+    : ''; 
+  var mid = _int.slice(i).replace(/(\d{3})(?=\d)/g, '$1,');
+  return sign + currency + head + mid + _float;
+}
+
+
+module.exports = {treatOrdeType,fullTime,priceFormat};

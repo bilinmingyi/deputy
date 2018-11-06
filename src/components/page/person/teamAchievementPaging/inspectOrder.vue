@@ -1,8 +1,8 @@
 <template>
   <div>
-    <d-timer class="timer"></d-timer>
+    <d-timer class="timer" v-model="queryTime" @input="getData"></d-timer>
     <div class="content-title pl15 pr15">
-      <span class="mr8">业绩总汇</span><span class="color-ec6464">￥44654</span>
+      <span class="mr8">业绩总汇</span><span class="color-ec6464">{{totalAchievement | priceFormat}}</span>
     </div>
     <div class="bg-fff pl15 pr15 pb12 mb12">
       <table class="d-table" data-type="2">
@@ -12,25 +12,13 @@
             <th><div>诊所名称</div></th>
             <th><div>业绩</div></th>
           </tr>
-          <tr>
-            <td class="bg-medium">1</td>
-            <td class="f12">深圳淳道门诊</td>
-            <td>123</td>
+          <tr v-for="(item, index) in dataList">
+            <td class="bg-medium">{{index + 1}}</td>
+            <td class="f12">{{item.clinic_name}}</td>
+            <td>{{item.price | priceFormat}}</td>
           </tr>
-          <tr>
-            <td class="bg-medium">2</td>
-            <td>深圳淳道门诊</td>
-            <td>456</td>
-          </tr>
-          <tr>
-            <td class="bg-medium">3</td>
-            <td>深圳淳道门诊</td>
-            <td>789</td>
-          </tr>
-          <tr>
-            <td class="bg-medium">4</td>
-            <td>深圳淳道门诊</td>
-            <td>012</td>
+          <tr v-if="dataList.length === 0">
+            <td colspan="3">暂无数据</td>
           </tr>
         </tbody>
       </table>
@@ -42,13 +30,47 @@
 import dTimer from "@/components/common/dTimer";
 export default {
   components: {
-    dTimer,
+    dTimer
   },
   data() {
-    return {};
+    return {
+      salesId: null,
+      dataList: [],
+      queryTime: {
+        start_time: 0,
+        end_time: Date.now()
+      }
+    };
   },
-  activated() {
-    console.log(3);
+  computed: {
+    totalAchievement() {
+      let res = 0;
+      this.dataList.forEach(item => {
+        res += item.price;
+      });
+      return res;
+    }
+  },
+  created() {
+    this.teamId = this.$route.query.teamId;
+  },
+  methods: {
+    getData() {
+      let params = Object.assign({ channel_id: this.teamId }, this.queryTime);
+      this.axios
+        .post("/apis/statistic/dycheck/teamGradeStat", params)
+        .then(response => {
+          let res = response.data;
+          if (res.code == 1000) {
+            this.dataList = res.data;
+          } else {
+            alert(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>
