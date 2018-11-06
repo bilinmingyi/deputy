@@ -85,9 +85,10 @@ export default new Router({
           component: () => import(/* webpackChunkName: 'clinic' */'@/components/page/clinic/clinicList.vue')
         },
         {
-          path:'/clinicDetail/:clinicId',
+          path:'clinicDetail/:clinicId',
           name:'clinicDetail',
-          component: () => import(/* webpackChunkName: 'clinicDetail' */'@/components/page/clinic/clinicDetail.vue')
+          component: () => import(/* webpackChunkName: 'clinicDetail' */'@/components/page/clinic/clinicDetail.vue'),
+          props:true
         }
       ]
     },

@@ -105,7 +105,7 @@ export default {
 
 <style scoped>
 .person_content {
-  margin-top: 44px;
+  margin-top: 2.75rem;
   background: #ffffff;
   display: flex;
   padding: 1.375rem 1.25rem;
