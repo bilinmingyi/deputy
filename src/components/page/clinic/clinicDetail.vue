@@ -8,30 +8,44 @@
       <section class="clinic_infor">
         <div class="clinic_infor_item">
           <div>诊所地址：</div>
-          <div>广东省深圳市福田区福民路196号XXX栋</div>
+          <div>{{clinicDetail.provinceName}}省{{clinicDetail.cityName}}市{{clinicDetail.countyName}}区{{clinicDetail.address}}</div>
         </div>
         <div class="clinic_infor_item mt5">
           <div>联系电话：</div>
-          <div>090088998979798989</div>
+          <div>{{clinicDetail.phoneNum}}</div>
         </div>
       </section>
     </section>
     <section class="home_top">
-      <div class="top_item">
+      <router-link  class="top_item" :to="{path:'/checkListPage/newOrderPage',query:{clinicId:clinicId}}">
         <img src="../../../assets/img/jyld.png">
         <span>检验录单</span>
-      </div>
-      <router-link class="top_item" to="/checkListPage">
+      </router-link>
+      <router-link class="top_item" :to="{path:`/checkListPage/clinicCheckOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
         <img src="../../../assets/img/jy.png">
         <span>检验订单查询</span>
       </router-link>
-      <router-link class="top_item" to="/cloudListPage">
+      <router-link class="top_item" :to="{path:`/cloudListPage/clinicCloudOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
         <img src="../../../assets/img/cf.png">
-        <span>云处方订单查询</span>
+        <span>云处方订单<br>查询</span>
       </router-link>
     </section>
-    <section>
-
+    <section v-for="doc in doctorList">
+      <div class="doctor_item">
+        <img :src="doc.avatar" v-if="doc.avatar!='' && doc.avatar!=undefined">
+        <img v-else src="../../../assets/img/ndb.png">
+        <div class="doctor_infor">
+          <div>
+            <span class="doctor_name">{{doc.name}}</span>
+            <span>{{doc.job_type_name}}</span>
+          </div>
+          <div>
+            <span class="mr8" v-if="doc.hospital!=''">{{doc.hospital}}</span>
+            <span>{{doc.department}}</span>
+          </div>
+        </div>
+      </div>
+      <hr class="full-screen-hr">
     </section>
   </div>
 </template>
@@ -159,5 +173,28 @@
     width: 1.5rem;
     margin-right: 0.375rem;
     margin-left: 0.9375rem;
+  }
+  .doctor_item{
+    display: flex;
+    background: #FFFFFF;
+    padding: 0.75rem 0.94rem;
+  }
+  .doctor_item img{
+    margin-right: 0.75rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+  }
+  .doctor_item .doctor_infor{
+    font-size: 0.875rem;
+    color: #7C7C7C;
+    flex: 1;
+    line-height: 1.85rem;
+  }
+  .doctor_item .doctor_name{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #3F3F3F;
+    margin-right: 0.5rem;
   }
 </style>

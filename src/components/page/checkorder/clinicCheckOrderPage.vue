@@ -15,7 +15,7 @@
       </keep-alive>
     </section>
     <div class="record_sheet">
-      <router-link to="/checkListPage/newOrderPage">
+      <router-link :to="{path:'/checkListPage/newOrderPage',query:{clinicId:clinicId}}">
         <button>
           我要录单
         </button>
