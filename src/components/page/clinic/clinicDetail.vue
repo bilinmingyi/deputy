@@ -68,7 +68,6 @@
     created(){
       var self=this;
       this.axios.all([this.getDoctorList(),this.getClinicDetail()]).then(this.axios.spread(function (acct, perms) {
-        console.log(acct,perms);
         if(acct.data.code===1000){
           self.doctorList=acct.data.data;
         }else {

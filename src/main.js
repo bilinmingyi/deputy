@@ -10,6 +10,7 @@ import filters from './assets/js/filters'
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
+
 Vue.use(vueAxios, axios)
 
 Vue.config.productionTip = false
