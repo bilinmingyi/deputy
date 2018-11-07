@@ -75,6 +75,7 @@
         sex: state => state.patient.sex
       }),
     },
+    //ff
     methods: {
       ...mapActions('newCheckOrder', [
         'set_patient',
