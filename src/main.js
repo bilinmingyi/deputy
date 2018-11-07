@@ -7,6 +7,7 @@ import axios from 'axios'
 import vueAxios from 'vue-axios'
 import filters from './assets/js/filters'
 import message from './assets/js/message'
+import store from './store/index'
 
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
@@ -20,6 +21,7 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
+  store,
   components: {App},
   template: '<App/>'
 })
