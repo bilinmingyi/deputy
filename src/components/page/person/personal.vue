@@ -72,7 +72,11 @@ export default {
   },
   filters: {
     birthToYear(val) {
+      if(val=='' ||val==0){
+        return
+      }
       var today = new Date();
+
       return (
         Number(today.getFullYear()) -
         Number(new Date(Number(val)).getFullYear())
