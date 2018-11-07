@@ -1,5 +1,7 @@
 const newOne={
-  state:{},
+  state:{
+
+  },
   getters:{},
   mutations:{},
   actions:{}
