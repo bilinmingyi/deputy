@@ -21,20 +21,22 @@
       <div class="add_more" v-show="isComplete && dataList.length==0">暂无数据</div>
       <div class="add_more" v-if="isCanAdd" @click.stop="addMore()">查看更多...</div>
     </section>
-
+    <d-load v-if="showLoad"></d-load>
   </div>
 </template>
 
 <script>
   import dTime from "@/components/common/dTimer.vue"
-
+  import dLoad from "@/components/common/dLoad";
   export default {
     props: ['clinicId'],
     components: {
-      dTime
+      dTime,
+      dLoad
     },
     data() {
       return {
+        showLoad: false,
         dataList: [],
         page: 1,
         pageSize: 10,
@@ -48,6 +50,7 @@
     },
     methods: {
       getData(isAdd) {
+        this.showLoad = true;
         this.axios.post("/apis/weixin/sales/dyTreatOrder/list", {
           "start_time": this.timeObj.start_time,
           "end_time": this.timeObj.end_time,
@@ -69,7 +72,8 @@
           } else {
             this.$Message.infor(res.msg)
           }
-        })
+        }).catch(console.log)
+          .then(() => this.showLoad = false);
       },
 
       addMore() {

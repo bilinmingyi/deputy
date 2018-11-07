@@ -20,17 +20,21 @@
       </ul>
       <!-- <div class="add_more">查看更多...</div> -->
     </section>
+    <d-load v-if="showLoad"></d-load>
   </div>
 </template>
 
 <script>
 import dSearch from "@/components/common/dSearch";
+import dLoad from "@/components/common/dLoad";
 export default {
   components: {
-    dSearch
+    dSearch,
+    dLoad
   },
   data() {
     return {
+      showLoad: false,
       teamId: null,
       clinicList: []
     };
@@ -50,10 +54,12 @@ export default {
     this.getData();
   },
   methods: {
-    getData() {
+    getData(name) {
+      this.showLoad = true;
       this.axios
         .post("/apis/weixin/salesTeam/clinic/list", {
-          sales_channel_id: this.teamId
+          sales_channel_id: this.teamId,
+          name
         })
         .then(response => {
           let res = response.data;
@@ -65,6 +71,9 @@ export default {
         })
         .catch(err => {
           console.log(err);
+        })
+        .then(() => {
+          this.showLoad = false;
         });
     }
   }

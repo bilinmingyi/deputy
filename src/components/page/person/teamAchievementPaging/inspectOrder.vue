@@ -23,17 +23,21 @@
         </tbody>
       </table>
     </div>
+    <d-load v-if="showLoad"></d-load>
   </div>
 </template>
 
 <script>
 import dTimer from "@/components/common/dTimer";
+import dLoad from "@/components/common/dLoad";
 export default {
   components: {
-    dTimer
+    dTimer,
+    dLoad
   },
   data() {
     return {
+      showLoad: false,
       salesId: null,
       dataList: [],
       queryTime: {
@@ -56,6 +60,7 @@ export default {
   },
   methods: {
     getData() {
+      this.showLoad = true;
       let params = Object.assign({ channel_id: this.teamId }, this.queryTime);
       this.axios
         .post("/apis/statistic/dycheck/teamGradeStat", params)
@@ -69,7 +74,10 @@ export default {
         })
         .catch(err => {
           console.log(err);
-        });
+        })
+        .then(() => {
+          this.showLoad = false;
+        })
     }
   }
 };
