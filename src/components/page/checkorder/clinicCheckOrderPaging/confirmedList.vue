@@ -18,14 +18,20 @@
     </router-link>
     <div class="add_more" v-show="isComplete && dataList.length==0">暂无数据</div>
     <div class="add_more" v-if="isCanAdd" @click.stop="addMore()">查看更多...</div>
+    <d-load v-if="showLoad"></d-load>
   </div>
 </template>
 
 <script>
+  import dLoad from "@/components/common/dLoad";
   export default {
+    components: {
+      dLoad
+    },
     props:['clinicId'],
     data() {
       return {
+        showLoad: false,
         dataList: [],
         page: 1,
         pageSize: 10,
@@ -38,6 +44,7 @@
     },
     methods: {
       getData(isAdd) {
+        this.showLoad = true;
         this.axios.post("/apis/weixin/sales/dyCheckOrder/list", {
           "status": "WAITCONFIRM",
           "clinic_id":this.clinicId,
@@ -58,7 +65,8 @@
           }else {
             this.$Message.infor(res.msg)
           }
-        })
+        }).catch(console.log)
+          .then(() => this.showLoad = false);
       },
       addMore(){
         this.page++;

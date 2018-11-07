@@ -47,26 +47,30 @@
       </div>
       <hr class="full-screen-hr">
     </section>
+    <d-load v-if="showLoad"></d-load>
   </div>
 </template>
 
 <script>
   import dHeader from '@/components/common/dHeader.vue'
-
+  import dLoad from "@/components/common/dLoad";
   export default {
     name: "clinicDetail",
     props:['clinicId'],
     components: {
-      dHeader
+      dHeader,
+      dLoad
     },
     data(){
       return{
+        showLoad: false,
         clinicDetail:{},
         doctorList:[]
       }
     },
     created(){
       var self=this;
+      this.showLoad = true;
       this.axios.all([this.getDoctorList(),this.getClinicDetail()]).then(this.axios.spread(function (acct, perms) {
         if(acct.data.code===1000){
           self.doctorList=acct.data.data;
@@ -75,10 +79,12 @@
         }
         if(perms.data.code===1000){
           self.clinicDetail=perms.data.data;
-        }else {
+          }else {
           self.$Message.infor("获取医生详情出错："+perms.data.msg)
         }
       }))
+        .catch(console.log)
+        .then(() => this.showLoad = false);
     },
     methods:{
       getDoctorList(){

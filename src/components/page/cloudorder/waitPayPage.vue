@@ -81,6 +81,7 @@
         <button>去支付</button>
       </div>
     </section>
+    <d-load v-if="showLoad"></d-load>
   </div>
 </template>
 
@@ -88,10 +89,12 @@
   import dHeader from "@/components/common/dHeader.vue"
   import infoBar from "@/components/common/infoBar";
   import infoHeader from "@/components/common/infoHeader";
+  import dLoad from "@/components/common/dLoad";
   export default {
     name: "waitPayPage",
     data(){
       return{
+        showLoad: false,
         order: {
           time: "2018-12-23 22:26",
           patientName: "王尼玛",
@@ -103,7 +106,8 @@
     components: {
       dHeader,
       infoHeader,
-      infoBar
+      infoBar,
+      dLoad
     }
   }
 </script>
