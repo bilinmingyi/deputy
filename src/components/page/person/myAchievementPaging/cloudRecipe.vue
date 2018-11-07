@@ -53,17 +53,21 @@
         </div>
       </div>
     </div>
+    <d-load v-if="showLoad"></d-load>
   </div>
 </template>
 
 <script>
 import dTimer from "@/components/common/dTimer";
+import dLoad from "@/components/common/dLoad";
 export default {
   components: {
-    dTimer
+    dTimer,
+    dLoad
   },
   data() {
     return {
+      showLoad: false,
       salesId: null,
       achievementData: {
         dataList: [],
@@ -92,6 +96,7 @@ export default {
   },
   methods: {
     getData() {
+      this.showLoad = true;
       let params = Object.assign({ sales_id: this.salesId }, this.queryTime);
       this.axios
         .post("/apis/statistic/dytreat/personalStatList", params)
@@ -105,7 +110,10 @@ export default {
         })
         .catch(err => {
           console.log(err);
-        });
+        })
+        .then(() => {
+          this.showLoad = false;
+        })
     }
   }
 };
