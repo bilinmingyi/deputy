@@ -6,4 +6,5 @@ const newOne={
   mutations:{},
   actions:{}
 };
+//ceshjio
 export default newOne
