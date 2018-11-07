@@ -44,6 +44,14 @@
     },
     data() {
       return {};
+    },
+    created(){
+      this.init();
+    },
+    methods:{
+      init(){
+        this.$store.commit('newCheckOrder/SET_CLINICID',this.$route.query.clinicId)
+      }
     }
   }
 </script>

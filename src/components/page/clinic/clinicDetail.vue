@@ -8,7 +8,9 @@
       <section class="clinic_infor">
         <div class="clinic_infor_item">
           <div>诊所地址：</div>
-          <div>{{clinicDetail.provinceName}}省{{clinicDetail.cityName}}市{{clinicDetail.countyName}}区{{clinicDetail.address}}</div>
+          <div>
+            {{clinicDetail.provinceName}}省{{clinicDetail.cityName}}市{{clinicDetail.countyName}}区{{clinicDetail.address}}
+          </div>
         </div>
         <div class="clinic_infor_item mt5">
           <div>联系电话：</div>
@@ -17,15 +19,17 @@
       </section>
     </section>
     <section class="home_top">
-      <router-link  class="top_item" :to="{path:'/checkListPage/newOrderPage',query:{clinicId:clinicId}}">
+      <router-link class="top_item" :to="{path:'/checkListPage/newOrderPage',query:{clinicId:clinicId}}">
         <img src="../../../assets/img/jyld.png">
         <span>检验录单</span>
       </router-link>
-      <router-link class="top_item" :to="{path:`/checkListPage/clinicCheckOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
+      <router-link class="top_item"
+                   :to="{path:`/checkListPage/clinicCheckOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
         <img src="../../../assets/img/jy.png">
         <span>检验订单查询</span>
       </router-link>
-      <router-link class="top_item" :to="{path:`/cloudListPage/clinicCloudOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
+      <router-link class="top_item"
+                   :to="{path:`/cloudListPage/clinicCloudOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
         <img src="../../../assets/img/cf.png">
         <span>云处方订单<br>查询</span>
       </router-link>
@@ -55,42 +59,42 @@
 
   export default {
     name: "clinicDetail",
-    props:['clinicId'],
+    props: ['clinicId'],
     components: {
       dHeader
     },
-    data(){
-      return{
-        clinicDetail:{},
-        doctorList:[]
+    data() {
+      return {
+        clinicDetail: {},
+        doctorList: []
       }
     },
-    created(){
-      var self=this;
-      this.axios.all([this.getDoctorList(),this.getClinicDetail()]).then(this.axios.spread(function (acct, perms) {
-        if(acct.data.code===1000){
-          self.doctorList=acct.data.data;
-        }else {
-          self.$Message.infor("获取医生列表出错："+acct.data.msg)
+    created() {
+      var self = this;
+      this.axios.all([this.getDoctorList(), this.getClinicDetail()]).then(this.axios.spread(function (acct, perms) {
+        if (acct.data.code === 1000) {
+          self.doctorList = acct.data.data;
+        } else {
+          self.$Message.infor("获取医生列表出错：" + acct.data.msg)
         }
-        if(perms.data.code===1000){
-          self.clinicDetail=perms.data.data;
-        }else {
-          self.$Message.infor("获取医生详情出错："+perms.data.msg)
+        if (perms.data.code === 1000) {
+          self.clinicDetail = perms.data.data;
+        } else {
+          self.$Message.infor("获取医生详情出错：" + perms.data.msg)
         }
       }))
     },
-    methods:{
-      getDoctorList(){
-        var self=this;
-       return self.axios.post("/apis/weixin/sales/clinic/doctorList",{
-         "clinic_id":self.clinicId
-       })
+    methods: {
+      getDoctorList() {
+        var self = this;
+        return self.axios.post("/apis/weixin/sales/clinic/doctorList", {
+          "clinic_id": self.clinicId
+        })
       },
-      getClinicDetail(){
-        var self=this;
-        return self.axios.post("/apis/weixin/sales/clinic/detail",{
-          "id":self.clinicId
+      getClinicDetail() {
+        var self = this;
+        return self.axios.post("/apis/weixin/sales/clinic/detail", {
+          "id": self.clinicId
         })
       }
     }
@@ -98,16 +102,18 @@
 </script>
 
 <style scoped>
-  .clinic_ban{
+  .clinic_ban {
     margin-top: 2.75rem;
     background: #FFFFFF;
     padding: 0.75rem 0.97rem 0.625rem;
   }
-  .clinic_ban img{
-    width: calc( 100vw - 1.94rem);
+
+  .clinic_ban img {
+    width: calc(100vw - 1.94rem);
     border-radius: 0.25rem;
   }
-  .clinic_infor{
+
+  .clinic_infor {
     margin: 0 0.97rem;
     width: calc(100vw - 1.94rem);
     padding: 0.625rem 0.94rem;
@@ -117,15 +123,17 @@
     color: #7C7C7C;
 
   }
-  .clinic_infor_item{
+
+  .clinic_infor_item {
     display: flex;
     line-height: 1.25rem;
   }
 
-  .clinic_infor_item div:last-child{
+  .clinic_infor_item div:last-child {
     flex: 1;
     color: #111111;
   }
+
   .home_top {
     display: flex;
     justify-content: center;
@@ -173,24 +181,28 @@
     margin-right: 0.375rem;
     margin-left: 0.9375rem;
   }
-  .doctor_item{
+
+  .doctor_item {
     display: flex;
     background: #FFFFFF;
     padding: 0.75rem 0.94rem;
   }
-  .doctor_item img{
+
+  .doctor_item img {
     margin-right: 0.75rem;
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
   }
-  .doctor_item .doctor_infor{
+
+  .doctor_item .doctor_infor {
     font-size: 0.875rem;
     color: #7C7C7C;
     flex: 1;
     line-height: 1.85rem;
   }
-  .doctor_item .doctor_name{
+
+  .doctor_item .doctor_name {
     font-size: 1rem;
     font-weight: bold;
     color: #3F3F3F;
