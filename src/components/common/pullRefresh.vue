@@ -10,12 +10,14 @@
         </header>
         <slot>
         </slot>
-        <footer class="load-more" v-if="!this.top && this.state === 0">
-          <slot name="load-more">
-              <span v-show="downFlag === false">上啦加载更多</span>
-              <span v-show="downFlag === true">加载中……</span>
-          </slot>
-          <div class="nullData" v-show="dataList.noFlag">暂无更多数据</div>
+        <footer class="load-more" v-if="enableInfinite && !this.top && this.state === 0">
+          <div class="more-data" v-show="!dataList.noFlag">
+            <slot name="load-more">
+                <span v-show="downFlag === false">上啦加载更多</span>
+                <span v-show="downFlag === true">加载中……</span>
+            </slot>
+          </div>
+          <div class="null-data" v-show="dataList.noFlag">暂无更多数据</div>
         </footer>
       </section>
     </div>
@@ -37,7 +39,11 @@ export default {
       default: true
     },
     dataList: {
-      default: false,
+      default() {
+        return {
+          noFlag: false,
+        }
+      },
       required: false
     },
     onRefresh: {
@@ -70,7 +76,6 @@ export default {
       this.touching = true;
 
       this.dataList.noFlag = false;
-      this.$el.querySelector(".load-more").style.display = "block";
     },
     touchMove(e) {
       if (!this.enableRefresh || this.dataList.noFlag || !this.touching) {
@@ -141,7 +146,6 @@ export default {
         this.downFlag = true;
         this.infinite();
       } else {
-        this.$el.querySelector(".load-more").style.display = "none";
         this.downFlag = false;
       }
     },
@@ -207,7 +211,8 @@ export default {
   justify-content: center;
   display: none;
 }
-.yo-scroll .inner .nullData {
+.yo-scroll .inner .null-data,
+.yo-scroll .inner .more-data, {
   font-size: 26px;
   color: #999999;
   height: 100px;

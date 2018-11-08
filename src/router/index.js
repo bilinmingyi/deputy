@@ -37,6 +37,18 @@ export default new Router({
           props: true
         },
         {
+          path: 'clinicCheckOrderPage/confirmedOrderDetail/:orderSeqno/addNewProject',
+          name: 'confirmedOrderAddNewProject',
+          component: () => import(/* webpackChunkName: 'confirmedOrderDetail' */'@/components/page/checkorder/confirmedOrderDetailPaging/addNewProject.vue'),
+          props: true
+        },
+        {
+          path: 'clinicCheckOrderPage/confirmedOrderDetail/:orderSeqno/editBarCode',
+          name: 'confirmedOrderEditBarCode',
+          component: () => import(/* webpackChunkName: 'confirmedOrderDetail' */'@/components/page/checkorder/confirmedOrderDetailPaging/editBarCode.vue'),
+          props: true
+        },
+        {
           path:'newOrderPage',
           name:'newOrderPage',
           component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/newOrderPage.vue'),

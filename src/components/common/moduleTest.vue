@@ -1,7 +1,7 @@
 <template>
     <div>
       <d-header>云处方订单</d-header>
-      <pull-refresh class="content" :onRefresh="init" :dataList="scrollData">
+      <pull-refresh class="content" :onRefresh="init">
         <section>
           <info-bar :title="'患者详情'">
             <div>
@@ -156,9 +156,6 @@ export default {
   },
   data() {
     return {
-      scrollData: {
-        noFlag: false //暂无更多数据显示
-      },
       order: {
         time: "2018-12-23 22:26",
         patientName: "王尼玛",
@@ -208,9 +205,7 @@ export default {
   },
   methods: {
     init(done) {
-      setTimeout(() => {
-        this.$Message.infor("初始化");
-      });
+      this.$Message.infor("初始化成功");
       done && done();
     },
     onInfinite(done) {

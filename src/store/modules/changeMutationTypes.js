@@ -1,0 +1,9 @@
+/* 检验订单详情 */
+export default {
+  // 修改订单信息
+  SET_ORDER: 'SET_ORDER',
+  // 添加检验项目
+  ADD_CHECKORDERPROJECT: 'ADD_CHECKORDERPROJECT',
+  // 删除检验项目
+  DELETE_CHECKORDERPROJECT: 'DELETE_CHECKORDERPROJECT',
+}

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link v-for="(order,index) in dataList" :key="index" :to="`/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${order.id}`">
+    <router-link v-for="(order,index) in dataList" :key="index" :to="`/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${order.order_seqno}`">
       <div class="order_item">
         <div class="order_item_top">
           <span>{{order.doctor_name}}</span>

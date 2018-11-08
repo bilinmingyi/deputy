@@ -5,19 +5,19 @@
       <info-bar :title="'患者详情'">
         <div>
           <span>就诊时间：</span>
-          <span>{{patient.time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
+          <span>{{order.create_time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
         </div>
         <div>
           <span>患者姓名：</span>
-          <span>{{patient.patientName}}</span>
+          <span>{{order.patient_name}}</span>
         </div>
         <div>
           <span>联系电话：</span>
-          <span>{{patient.mobile}}</span>
+          <span>{{order.patient_mobile}}</span>
         </div>
         <div>
           <span>就诊医生：</span>
-          <span>{{patient.doctor}}</span>
+          <span>{{order.doctor_name}}</span>
         </div>
       </info-bar>
       <!--订单检查项目组件-->
@@ -31,10 +31,10 @@
 
       <div class="payment">
         <span>备注</span>
-        <input type="text" placeholder="请输入备注" style="border: none;outline: none">
+        <input type="text" :value="order.memo" placeholder="请输入备注" style="border: none;outline: none">
       </div>
       <div class="pay_operation">
-        <button>关闭</button>
+        <button @click="$router.go(-1)">关闭</button>
         <button>给诊所退款</button>
         <button>确认</button>
       </div>
@@ -63,35 +63,32 @@ export default {
     orderPay,
     dLoad
   },
+  props: ['orderSeqno'],
   data() {
     return {
       showLoad: false,
-      order: {
-        time: 965535132000,
-        patientName: "王尼玛",
-        mobile: "13245678901",
-        doctor: "李教授"
-      }
     };
   },
   created() {
+    document.documentElement.scrollTop = 0;
+    this.getData();
   },
   computed: {
     ...mapState('changeCheckOrder', {
-      patient: state => state.patient,
-    })
+      order: state => state.order,
+    }),
   },
   methods: {
+    ...mapActions('changeCheckOrder', ['set_order']),
     getData() {
       this.showLoad = true;
-      let params = {};
-      // TODO:url
+      let params = {order_seqno: this.orderSeqno};  
       this.axios
-        .post("", params)
+        .post("/apis/weixin/sales/dyCheckOrder/detail", params)
         .then(response => {
           let res = response.data;
           if (res.code == 1000) {
-            
+            this.set_order(res.data);
           } else {
             this.$Message.infor(res.msg);
           }
