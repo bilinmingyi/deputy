@@ -16,5 +16,9 @@ export default {
   //清空管类型
   CLEAR_CONTAIN: 'CLEAR_CONTAIN',
   //替换更新管类型
-  SET_CONTAIN: 'SET_CONTAIN'
+  SET_CONTAIN: 'SET_CONTAIN',
+  //更新价格
+  SET_PRICE: 'SET_PRICE',
+  //更新支付方式
+  SET_PAYTYPE: 'SET_PAYTYPE'
 }

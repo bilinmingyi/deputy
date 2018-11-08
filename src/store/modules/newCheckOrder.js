@@ -18,6 +18,7 @@ const newOne = {
     },
     prescription: {
       recipeType: 7,
+      payType: 1,
       money: 0,
       isCould: 1,
       doctorRemark: "",
@@ -54,8 +55,14 @@ const newOne = {
     [types.CLEAR_CONTAIN](state) {
       state.prescription.contains = [];
     },
-    [types.SET_CONTAIN](state,obj){
-      state.prescription.contains=obj;
+    [types.SET_CONTAIN](state, obj) {
+      state.prescription.contains = obj;
+    },
+    [types.SET_PRICE](state, obj) {
+      state.prescription.money = obj;
+    },
+    [types.SET_PAYTYPE](state, obj) {
+      state.prescription.payType = obj;
     }
   },
   actions: {
@@ -81,7 +88,13 @@ const newOne = {
       commit(types.CLEAR_CONTAIN)
     },
     set_contain: ({commit}, obj) => {
-      commit(types.SET_CONTAIN,obj)
+      commit(types.SET_CONTAIN, obj)
+    },
+    set_price: ({commit}, obj) => {
+      commit(types.SET_PRICE, obj)
+    },
+    set_payType: ({commit}, obj) => {
+      commit(types.SET_PAYTYPE, obj)
     }
   }
 };
