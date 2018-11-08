@@ -76,12 +76,80 @@ const priceFormat = (price, currency, decimals) => {
  * @desc Parse Number
  * @param {All} num
  * @return {Number}
- * 
- * @example priceFormat('12345.67890', '$', 3) -> '$12,345.679'
-*/
-const parseNum = (num) => {
+ *
+ * @example parseNum('abc') -> 0
+ */
+const parseNum = num => {
   let n = parseFloat(num);
   return n == n ? n : 0;
-}
+};
 
-module.exports = { treatOrdeType, fullTime, checkOrderType, priceFormat, parseNum};
+/**
+ * @desc: Date format
+ * @param {} date
+ * @param {string} fmt 目标字符串格式,默认：yyyy-MM-dd hh:mm:ss
+ * @returns {string} 返回格式化后的日期字符串
+ *
+ * @example
+ * var date = new Date();
+ * date.Format("yyyy年MM月dd日 第q季度")
+ *
+ * @support:
+ * yyyy：年
+ * q: 季度
+ * MM：月
+ * dd：日
+ * hh: 时
+ * mm：分
+ * ss：秒
+ * S：毫秒
+ */
+const dateFormat = function(date, fmt) {
+  if (!Date.prototype.Format) {
+    Object.defineProperty(Date.prototype, "Format", {
+      enumerable: false,
+      configurable: false,
+      writable: false,
+      value: function(fmt) {
+        var f = fmt != null ? fmt : "yyyy-MM-dd hh:mm:ss";
+        var o = {
+          "q+": Math.floor((this.getMonth() + 3) / 3), // 季度
+          "M+": this.getMonth() + 1, // 月份
+          "d+": this.getDate(), // 日
+          "h+": this.getHours(), // 时
+          "m+": this.getMinutes(), // 分
+          "s+": this.getSeconds(), // 秒
+          S: this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(f)) {
+          f = f.replace(
+            RegExp.$1,
+            (this.getFullYear() + "").substr(4 - RegExp.$1.length)
+          );
+        }
+        for (var k in o) {
+          if (new RegExp("(" + k + ")").test(f)) {
+            f = f.replace(
+              RegExp.$1,
+              RegExp.$1.length == 1
+                ? o[k]
+                : ("00" + o[k]).substr(("" + o[k]).length)
+            );
+          }
+        }
+        return f;
+      }
+    });
+  }
+  let d = Date.prototype.isPrototypeOf(date) ? date : new Date(date);
+  return d.getTime() === d.getTime() ? d.Format(fmt) : '';
+};
+
+module.exports = {
+  treatOrdeType,
+  fullTime,
+  checkOrderType,
+  priceFormat,
+  parseNum,
+  dateFormat
+};
