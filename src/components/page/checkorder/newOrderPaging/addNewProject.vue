@@ -73,7 +73,7 @@
               }
               if(i===selectContains.length){
                 this.push_contain({
-                  num:0,
+                  num:1,
                   memo:'',
                   code:item.code,
                   id:item.id,
@@ -87,6 +87,9 @@
             this.$Message.infor(res.msg);
             next(false);
           }
+        }).catch(error=>{
+          console.log(error)
+          next(false)
         })
       }
 

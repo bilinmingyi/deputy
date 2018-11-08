@@ -14,5 +14,7 @@ export default {
   //删除管类型
   DELETE_CONTAIN: 'DELETE_CONTAIN',
   //清空管类型
-  CLEAR_CONTAIN: 'CLEAR_CONTAIN'
+  CLEAR_CONTAIN: 'CLEAR_CONTAIN',
+  //替换更新管类型
+  SET_CONTAIN: 'SET_CONTAIN'
 }

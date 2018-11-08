@@ -51,8 +51,11 @@ const newOne = {
     [types.DELETE_CONTAIN](state, index) {
       state.prescription.contains.splice(index, 1)
     },
-    [types.CLEAR_CONTAIN](state){
-      state.prescription.contains=[];
+    [types.CLEAR_CONTAIN](state) {
+      state.prescription.contains = [];
+    },
+    [types.SET_CONTAIN](state,obj){
+      state.prescription.contains=obj;
     }
   },
   actions: {
@@ -76,6 +79,9 @@ const newOne = {
     },
     clear_contain: ({commit}) => {
       commit(types.CLEAR_CONTAIN)
+    },
+    set_contain: ({commit}, obj) => {
+      commit(types.SET_CONTAIN,obj)
     }
   }
 };
