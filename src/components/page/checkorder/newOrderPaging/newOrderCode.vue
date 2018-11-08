@@ -2,7 +2,11 @@
   <div>
     <info-header>
       条码信息
-      <button slot="btn">编辑条码</button>
+      <button slot="btn">
+        <router-link to="/checkListPage/newOrderPage/editBarCode" style="color:#3f3f3f;">
+          编辑条码
+        </router-link>
+      </button>
     </info-header>
     <div class="bg-fff p15 mb12">
       <ul>
@@ -21,8 +25,8 @@
     components: {
       infoHeader
     },
-    computed:{
-      ...mapState('newCheckOrder',{
+    computed: {
+      ...mapState('newCheckOrder', {
         contains: state => state.prescription.contains
       })
     }
@@ -36,6 +40,7 @@
     padding: 0;
     width: 100%;
   }
+
   .list-item {
     height: 2.75rem;
     line-height: 2.75rem;
@@ -44,8 +49,9 @@
     border-radius: 0.25rem;
     background: #fff;
     text-align: center;
-    font-size: 0.94rm;
+    font-size: 0.94 rm;
   }
+
   ul .list-item:nth-last-child(1) {
     margin-bottom: 0;
   }

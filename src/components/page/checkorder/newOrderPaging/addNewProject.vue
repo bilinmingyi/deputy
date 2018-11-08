@@ -55,36 +55,41 @@
           })
         }
       })
-      this.axios.post("/apis/stockmng/specimenContainer/list",{
-        codes:list
-      }).then(respone =>{
-        const res=respone.data;
-        const selectContains=JSON.parse(JSON.stringify(this.contains));
+      if(list.length===0){
+        next();
+      }else {
+        this.axios.post("/apis/stockmng/specimenContainer/list",{
+          codes:list
+        }).then(respone =>{
+          const res=respone.data;
+          const selectContains=JSON.parse(JSON.stringify(this.contains));
 
-        if(res.code===1000){
-          res.data.forEach(item => {
-            for(var i=0;i<selectContains.length;i++){
-              if(selectContains[i].code===item.code){
-                break
+          if(res.code===1000){
+            res.data.forEach(item => {
+              for(var i=0;i<selectContains.length;i++){
+                if(selectContains[i].code===item.code){
+                  break
+                }
               }
-            }
-            if(i===selectContains.length){
-              this.push_contain({
-                num:0,
-                memo:'',
-                code:item.code,
-                id:item.id,
-                name:item.name,
-                barCode:''
-              })
-            }
-          })
-          next();
-        }else {
-          this.$Message.infor(res.msg);
-          next(false);
-        }
-      })
+              if(i===selectContains.length){
+                this.push_contain({
+                  num:0,
+                  memo:'',
+                  code:item.code,
+                  id:item.id,
+                  name:item.name,
+                  barCode:''
+                })
+              }
+            })
+            next();
+          }else {
+            this.$Message.infor(res.msg);
+            next(false);
+          }
+        })
+      }
+
     },
     methods: {
       ...mapActions('newCheckOrder', [

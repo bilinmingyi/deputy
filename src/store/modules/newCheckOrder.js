@@ -22,7 +22,7 @@ const newOne = {
       isCould: 1,
       doctorRemark: "",
       items: [],
-      contains:[]
+      contains: []
     }
   },
   getters: {},
@@ -42,14 +42,17 @@ const newOne = {
     [types.PUSH_CHECKITEM](state, obj) {
       state.prescription.items.push(obj);
     },
-    [types.DELETE_CHECKITEM](state, index){
-      state.prescription.items.splice(index,1)
+    [types.DELETE_CHECKITEM](state, index) {
+      state.prescription.items.splice(index, 1)
     },
-    [types.PUSH_CONTAIN](state, obj){
+    [types.PUSH_CONTAIN](state, obj) {
       state.prescription.contains.push(obj)
     },
-    [types.DELETE_CONTAIN](state,index){
-      state.prescription.contains.splice(index,1)
+    [types.DELETE_CONTAIN](state, index) {
+      state.prescription.contains.splice(index, 1)
+    },
+    [types.CLEAR_CONTAIN](state){
+      state.prescription.contains=[];
     }
   },
   actions: {
@@ -62,14 +65,17 @@ const newOne = {
     push_checkItem: ({commit}, obj) => {
       commit(types.PUSH_CHECKITEM, obj)
     },
-    delete_checkItem:({commit},index) => {
-      commit(types.DELETE_CHECKITEM,index)
+    delete_checkItem: ({commit}, index) => {
+      commit(types.DELETE_CHECKITEM, index)
     },
-    push_contain:({commit}, obj) => {
-      commit(types.PUSH_CONTAIN,obj)
+    push_contain: ({commit}, obj) => {
+      commit(types.PUSH_CONTAIN, obj)
     },
-    delete_contain:({commit},index) =>{
-      commit(types.DELETE_CONTAIN,index)
+    delete_contain: ({commit}, index) => {
+      commit(types.DELETE_CONTAIN, index)
+    },
+    clear_contain: ({commit}) => {
+      commit(types.CLEAR_CONTAIN)
     }
   }
 };

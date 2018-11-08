@@ -12,5 +12,7 @@ export default {
   //增加管类型
   PUSH_CONTAIN: 'PUSH_CONTAIN',
   //删除管类型
-  DELETE_CONTAIN: 'DELETE_CONTAIN'
+  DELETE_CONTAIN: 'DELETE_CONTAIN',
+  //清空管类型
+  CLEAR_CONTAIN: 'CLEAR_CONTAIN'
 }

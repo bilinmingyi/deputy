@@ -56,12 +56,12 @@ export default new Router({
         {
           path:'newOrderPage/addNewProject',
           name:'addNewProject',
-          component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/addNewProject.vue'),
+          component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/newOrderPaging/addNewProject.vue'),
         },
         {
           path:'newOrderPage/editBarCode',
           name:'editBarCode',
-          component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/editBarCode.vue'),
+          component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/newOrderPaging/editBarCode.vue'),
         }
       ]
     },

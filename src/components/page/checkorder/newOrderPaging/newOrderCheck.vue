@@ -43,7 +43,8 @@
     methods: {
       ...mapActions('newCheckOrder', [
         'delete_checkItem',
-        'delete_contain'
+        'delete_contain',
+        'clear_contain'
       ]),
       deleteCheckItem(index) {
         this.delete_checkItem(index);
@@ -57,6 +58,9 @@
             })
           }
         })
+        if(list.length===0){
+          this.clear_contain();
+        }
         this.axios.post("/apis/stockmng/specimenContainer/list", {
           codes: list
         }).then(respone => {
@@ -73,7 +77,6 @@
                   }
                 }
                 if(i===resData.length){
-                  console.log("999")
                   this.delete_contain(index)
                 }
               })
