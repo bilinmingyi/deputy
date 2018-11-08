@@ -8,11 +8,13 @@
       </nav>
       <hr class="full-screen-hr">
     </div>
-    <d-search @on-search="getData" placeholder="项目名称"></d-search>
+    <d-search @on-search="getData" placeholder="请输入检验项目名称"></d-search>
     <section class="content">
       <div class="project-box p15">
         <ul>
-          <li v-for="item in dataList" @click.stop="addProject(item)" :class="{'active_li':checkAddMed(item.id)}">{{item.name}}（{{item.trade_price}}元）</li>
+          <li v-for="item in dataList" @click.stop="addProject(item)" :class="{'active_li':checkAddMed(item.id)}">
+            {{item.name}}（{{item.trade_price}}元）
+          </li>
         </ul>
       </div>
     </section>
@@ -38,19 +40,72 @@
     },
     computed: {
       ...mapState('newCheckOrder', {
-        preItems: state => state.prescription.items
+        preItems: state => state.prescription.items,
+        contains: state => state.prescription.contains
+      })
+    },
+    beforeRouteLeave(to, from, next) {
+      var list = [];
+      this.preItems.forEach(item => {
+        if (item.type === 1) {
+          list.push(item.specimen_container_code)
+        } else if (item.type === 2) {
+          item.dy_checks.forEach(check => {
+            list.push(check.specimen_container_code)
+          })
+        }
+      })
+      this.axios.post("/apis/stockmng/specimenContainer/list",{
+        codes:list
+      }).then(respone =>{
+        const res=respone.data;
+        const selectContains=JSON.parse(JSON.stringify(this.contains));
+
+        if(res.code===1000){
+          res.data.forEach(item => {
+            for(var i=0;i<selectContains.length;i++){
+              if(selectContains[i].code===item.code){
+                break
+              }
+            }
+            if(i===selectContains.length){
+              this.push_contain({
+                num:0,
+                memo:'',
+                code:item.code,
+                id:item.id,
+                name:item.name,
+                barCode:''
+              })
+            }
+          })
+          next();
+        }else {
+          this.$Message.infor(res.data);
+          next(false);
+        }
       })
     },
     methods: {
       ...mapActions('newCheckOrder', [
-        'push_checkItem'
+        'push_checkItem',
+        'push_contain'
       ]),
       getData(name) {
-        var url = "";
+        var url = "", params = {};
         if (this.activePage == 1) {
           url = "/apis/stockmng/dyCheck/list"
+          params = {
+            "query": name,
+            "status": 1
+          }
         } else if (this.activePage == 2) {
           url = "/apis/stockmng/dyCheckset/list"
+          params = {
+            "query": name,
+            "status": 1,
+            "need_checks": 1
+          }
         }
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
@@ -58,10 +113,7 @@
             this.dataList = [];
             return
           }
-          this.axios.post(url, {
-            "query": name,
-            "status": 1
-          }).then((respone) => {
+          this.axios.post(url, params).then((respone) => {
             let res = respone.data;
             if (res.code == 1000) {
               this.dataList = res.data;
@@ -79,21 +131,18 @@
         this.dataList = [];
       },
       addProject(item) {
-        if(this.checkAddMed(item.id)){
+        if (this.checkAddMed(item.id)) {
           this.$Message.infor("该项目已添加")
           return
         }
         this.push_checkItem({
-          "type":this.activePage,
-          "id":item.id,
-          "name":item.name,
-          "price":item.price,
-          "trade_price":item.trade_price
+          ...item,
+          "type": this.activePage
         })
       },
-      checkAddMed(id){
-        for(var i=0;i<this.preItems.length;i++){
-          if(this.preItems[i].id===id && this.preItems[i].type===this.activePage){
+      checkAddMed(id) {
+        for (var i = 0; i < this.preItems.length; i++) {
+          if (this.preItems[i].id === id && this.preItems[i].type === this.activePage) {
             return true
           }
         }
@@ -165,8 +214,9 @@
     border: 1px solid #08bac6;
     border-radius: 0.25rem;
   }
-  .project-box ul .active_li{
-    background:#08bac6;
+
+  .project-box ul .active_li {
+    background: #08bac6;
     color: #FFFFFF;
   }
 </style>

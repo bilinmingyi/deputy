@@ -21,10 +21,9 @@ const newOne = {
       money: 0,
       isCould: 1,
       doctorRemark: "",
-      items: []
+      items: [],
+      contains:[]
     }
-
-
   },
   getters: {},
   mutations: {
@@ -45,6 +44,9 @@ const newOne = {
     },
     [types.DELETE_CHECKITEM](state, index){
       state.prescription.items.splice(index,1)
+    },
+    [types.PUSH_CONTAIN](state, obj){
+      state.prescription.contains.push(obj)
     }
   },
   actions: {
@@ -59,6 +61,9 @@ const newOne = {
     },
     delete_checkItem:({commit},index) => {
       commit(types.DELETE_CHECKITEM,index)
+    },
+    push_contain:({commit}, obj) => {
+      commit(types.PUSH_CONTAIN,obj)
     }
   }
 };
