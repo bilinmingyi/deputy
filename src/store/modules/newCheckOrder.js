@@ -7,6 +7,7 @@ const newOne = {
       name: "",
       mobile: "",
       age: "",
+      birthMonth: "",
       birthday: "",
       sex: 0
     },

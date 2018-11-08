@@ -14,7 +14,7 @@
       <order-pay></order-pay>
       <div class="payment">
         <span>备注</span>
-        <input type="text" placeholder="请输入备注" style="border: none;outline: none">
+        <input type="text" placeholder="请输入备注">
       </div>
       <div class="pay_operation">
         <button>关闭</button>
@@ -76,6 +76,8 @@
     font-size: 1rem;
     padding: 0 1rem;
     flex: 1;
+    border: none;
+    outline: none
   }
 
 </style>

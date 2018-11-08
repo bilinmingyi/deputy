@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1730b4b-107d-44df-880f-b029dd3db586" name="Default" comment="检验录单页面组件分块">
-      <change afterPath="$PROJECT_DIR$/src/store/modules/newMutationTypes.js" afterDir="false" />
+    <list default="true" id="f1730b4b-107d-44df-880f-b029dd3db586" name="Default" comment="选择医生">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/newOrderPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/newOrderPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/newOrderPatient.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/newOrderPatient.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/clinic/clinicDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/clinic/clinicDetail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/modules/newCheckOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modules/newCheckOrder.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -46,11 +44,12 @@
     <session id="65497544">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.57" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -58,10 +57,10 @@
           <entry key="babelrc" value="2" />
           <entry key="css" value="402" />
           <entry key="html" value="27" />
-          <entry key="js" value="5183" />
+          <entry key="js" value="5184" />
           <entry key="json" value="1" />
-          <entry key="txt" value="176" />
-          <entry key="vue" value="13859" />
+          <entry key="txt" value="182" />
+          <entry key="vue" value="15244" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -69,9 +68,9 @@
           <entry key="CSS" value="402" />
           <entry key="HTML" value="36" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="5174" />
-          <entry key="PLAIN_TEXT" value="176" />
-          <entry key="Vue.js" value="13859" />
+          <entry key="JavaScript" value="5175" />
+          <entry key="PLAIN_TEXT" value="182" />
+          <entry key="Vue.js" value="15244" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -104,13 +103,13 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5926158">
+    <splitter split-orientation="horizontal" split-proportion="0.5932416">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/store/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="511">
+                <state relative-caret-position="572">
                   <caret line="33" column="9" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="9" />
                   <folding>
                     <element signature="e#0#21#0" expanded="true" />
@@ -122,14 +121,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPage.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="528">
-                  <caret line="52" column="53" lean-forward="true" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="53" />
-                  <folding>
-                    <element signature="n#div#5;n#section#0;n#div#0;n#template#0;n#!!top" />
-                    <element signature="n#div#6;n#section#0;n#div#0;n#template#0;n#!!top" />
-                    <element signature="e#649#703#0" expanded="true" />
-                    <element signature="n#style#0;n#!!top" />
-                  </folding>
+                <state relative-caret-position="621">
+                  <caret line="79" column="17" lean-forward="true" selection-start-line="75" selection-start-column="3" selection-end-line="79" selection-end-column="17" />
                 </state>
               </provider>
             </entry>
@@ -137,11 +130,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/newOrderPatient.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="132">
-                  <caret line="6" column="96" selection-start-line="6" selection-start-column="96" selection-end-line="6" selection-end-column="96" />
+                <state relative-caret-position="614">
+                  <caret line="154" column="88" selection-start-line="154" selection-start-column="88" selection-end-line="154" selection-end-column="88" />
                   <folding>
-                    <element signature="n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" />
-                    <element signature="e#1305#1361#0" expanded="true" />
+                    <element signature="e#2565#2922#0" />
+                    <element signature="e#3172#3190#0" />
                   </folding>
                 </state>
               </provider>
@@ -150,7 +143,7 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/store/modules/newMutationTypes.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -163,8 +156,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/store/modules/newCheckOrder.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="726">
-                  <caret line="48" column="16" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="16" />
+                <state relative-caret-position="198">
+                  <caret line="9" column="16" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -207,6 +200,9 @@
       <find>alert</find>
       <find>pay_line_two</find>
       <find>counter</find>
+      <find>dataList</find>
+      <find>doctorList</find>
+      <find>birthMonth</find>
     </findStrings>
     <dirStrings>
       <dir>D:\deputy\src\components\page</dir>
@@ -265,8 +261,8 @@
         <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/newOrderImg.vue" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/newOrderPay.vue" />
         <option value="$PROJECT_DIR$/src/components/page/clinic/clinicDetail.vue" />
-        <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPage.vue" />
         <option value="$PROJECT_DIR$/src/store/modules/newMutationTypes.js" />
+        <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPage.vue" />
         <option value="$PROJECT_DIR$/src/store/modules/newCheckOrder.js" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/newOrderPatient.vue" />
       </list>
@@ -387,120 +383,6 @@
       <recent name="D:\deputy\src\components\page\checkorder" />
     </key>
   </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/assets/js/filters.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/person/myAchievementPaging/cloudRecipe.vue</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/person/myAchievementPaging/inspectOrder.vue</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/person/teamAchievementPaging/cloudRecipe.vue</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/person/teamAchievementPaging/inspectOrder.vue</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
-  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -542,7 +424,8 @@
       <workItem from="1540947679309" duration="12000" />
       <workItem from="1540947726113" duration="86658000" />
       <workItem from="1541207521063" duration="227000" />
-      <workItem from="1541231995483" duration="85409000" />
+      <workItem from="1541231995483" duration="87003000" />
+      <workItem from="1541639169873" duration="5990000" />
     </task>
     <task id="LOCAL-00001" summary="新建项目">
       <created>1540885743978</created>
@@ -873,17 +756,31 @@
       <option name="project" value="LOCAL" />
       <updated>1541574159916</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="选择医生">
+      <created>1541585226238</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1541585226238</updated>
+    </task>
+    <task id="LOCAL-00049" summary="选择医生">
+      <created>1541585416524</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1541585416524</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177845000" />
+    <option name="totallyTimeSpent" value="185429000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15806112" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15806112" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -959,7 +856,8 @@
     <MESSAGE value="年龄显示修改" />
     <MESSAGE value="修改" />
     <MESSAGE value="检验录单页面组件分块" />
-    <option name="LAST_COMMIT_MESSAGE" value="检验录单页面组件分块" />
+    <MESSAGE value="选择医生" />
+    <option name="LAST_COMMIT_MESSAGE" value="选择医生" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/build/webpack.prod.conf.js">
@@ -980,9 +878,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="21" column="52" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="52" />
-          <folding>
-            <element signature="e#1725#2115#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1043,9 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-          <folding>
-            <element signature="e#520#570#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1169,16 +1061,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/API/api.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/API/api.js" />
     <entry file="file://$PROJECT_DIR$/src/components/page/home.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1279,11 +1166,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="79">
           <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding>
-            <element signature="n#info-header#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#331#387#0" expanded="true" />
-            <element signature="e#599#822#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1291,9 +1173,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="n#info-header#0;n#div#0;n#template#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1308,32 +1187,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="744">
           <caret line="76" column="3" selection-start-line="76" selection-start-column="3" selection-end-line="76" selection-end-column="3" />
-          <folding>
-            <element signature="e#1060#1116#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="33" column="9" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="52" column="53" lean-forward="true" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="53" />
-          <folding>
-            <element signature="n#div#5;n#section#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#6;n#section#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#649#703#0" expanded="true" />
-            <element signature="n#style#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1344,6 +1197,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/modules/newMutationTypes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -1351,20 +1214,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="79" column="17" lean-forward="true" selection-start-line="75" selection-start-column="3" selection-end-line="79" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/modules/newCheckOrder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="48" column="16" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="16" />
+        <state relative-caret-position="198">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/newOrderPatient.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="96" selection-start-line="6" selection-start-column="96" selection-end-line="6" selection-end-column="96" />
+        <state relative-caret-position="614">
+          <caret line="154" column="88" selection-start-line="154" selection-start-column="88" selection-end-line="154" selection-end-column="88" />
           <folding>
-            <element signature="n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#1305#1361#0" expanded="true" />
+            <element signature="e#2565#2922#0" />
+            <element signature="e#3172#3190#0" />
           </folding>
         </state>
       </provider>
