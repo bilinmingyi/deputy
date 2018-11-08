@@ -68,7 +68,7 @@ export default {
       // 复位
       this.activeItem = -1;
       // 删除
-      this.data.splice(index, 1);
+      this.$emit('delete',index)
     }
   }
 };

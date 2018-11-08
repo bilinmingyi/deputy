@@ -5,19 +5,19 @@
       <info-bar :title="'患者详情'">
         <div>
           <span>就诊时间：</span>
-          <span>{{order.time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
+          <span>{{patient.time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
         </div>
         <div>
           <span>患者姓名：</span>
-          <span>{{order.patientName}}</span>
+          <span>{{patient.patientName}}</span>
         </div>
         <div>
           <span>联系电话：</span>
-          <span>{{order.mobile}}</span>
+          <span>{{patient.mobile}}</span>
         </div>
         <div>
           <span>就诊医生：</span>
-          <span>{{order.doctor}}</span>
+          <span>{{patient.doctor}}</span>
         </div>
       </info-bar>
       <!--订单检查项目组件-->
@@ -39,7 +39,7 @@
         <button>确认</button>
       </div>
     </section>
-
+    <d-load v-if="showLoad"></d-load>
   </div>
 </template>
 
@@ -50,7 +50,8 @@ import orderCheck from "@/components/page/checkorder/confirmedOrderDetailPaging/
 import orderCode from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderCode";
 import orderImg from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderImg";
 import orderPay from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderPay";
-
+import dLoad from "@/components/common/dLoad";
+import {mapState, mapActions} from 'vuex'
 export default {
   name: "confirmedOrderDetail",
   components: {
@@ -59,18 +60,46 @@ export default {
     orderCheck,
     orderCode,
     orderImg,
-    orderPay
+    orderPay,
+    dLoad
   },
   data() {
     return {
+      showLoad: false,
       order: {
         time: 965535132000,
         patientName: "王尼玛",
         mobile: "13245678901",
         doctor: "李教授"
-      },
+      }
     };
   },
+  created() {
+  },
+  computed: {
+    ...mapState('changeCheckOrder', {
+      patient: state => state.patient,
+    })
+  },
+  methods: {
+    getData() {
+      this.showLoad = true;
+      let params = {};
+      // TODO:url
+      this.axios
+        .post("", params)
+        .then(response => {
+          let res = response.data;
+          if (res.code == 1000) {
+            
+          } else {
+            this.$Message.infor(res.msg);
+          }
+        })
+        .catch(console.log)
+        .then(() => (this.showLoad = false));
+    }
+  }
 };
 </script>
 
