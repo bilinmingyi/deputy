@@ -5,7 +5,6 @@ export default {
   SET_PATIENT: 'SET_PATIENT',
   //设置医生ID
   SET_DOCTORID: 'SET_DOCTORID',
-
-  /* 检验订单详情 */
-  SET_CONFIRMEDPATIENT: 'SET_CONFIRMEDPATIENT'
+  //新增项目
+  PUSH_CHECKITEM: 'PUSH_CHECKITEM'
 }

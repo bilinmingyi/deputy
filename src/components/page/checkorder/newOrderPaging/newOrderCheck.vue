@@ -2,7 +2,11 @@
   <div>
     <info-header>
       检验项目
-      <button slot="btn">添加项目</button>
+      <button slot="btn">
+        <router-link to="/checkListPage/newOrderPage/addNewProject" style="color:#3f3f3f;">
+          添加项目
+        </router-link>
+      </button>
     </info-header>
     <div class="bg-fff p15 mb12">
       <touch-list :data="touchListData">
