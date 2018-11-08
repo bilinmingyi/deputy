@@ -3,16 +3,16 @@
     <d-header>检验项目</d-header>
     <div class="nav_block">
       <nav class="nav_list">
-        <li :class="{'active': activePage==1}" @click="changeTab(1)">组合项目</li>
-        <li :class="{'active': activePage==2}" @click="changeTab(2)">基本项目</li>
+        <li :class="{'active': activePage==1}" @click="changeTab(1)">基本项目</li>
+        <li :class="{'active': activePage==2}" @click="changeTab(2)">组合项目</li>
       </nav>
       <hr class="full-screen-hr">
     </div>
-    <d-search @on-search="getData"></d-search>
+    <d-search @on-search="getData" placeholder="项目名称"></d-search>
     <section class="content">
       <div class="project-box p15">
         <ul>
-          <li v-for="item in dataList" @click.stop="addProject(item)">{{item.name}}（{{item.trade_price}}元）</li>
+          <li v-for="item in dataList" @click.stop="addProject(item)" :class="{'active_li':checkAddMed(item.id)}">{{item.name}}（{{item.trade_price}}元）</li>
         </ul>
       </div>
     </section>
@@ -79,6 +79,10 @@
         this.dataList = [];
       },
       addProject(item) {
+        if(this.checkAddMed(item.id)){
+          this.$Message.infor("该项目已添加")
+          return
+        }
         this.push_checkItem({
           "type":this.activePage,
           "id":item.id,
@@ -86,6 +90,14 @@
           "price":item.price,
           "trade_price":item.trade_price
         })
+      },
+      checkAddMed(id){
+        for(var i=0;i<this.preItems.length;i++){
+          if(this.preItems[i].id===id && this.preItems[i].type===this.activePage){
+            return true
+          }
+        }
+        return false
       }
     }
   };
@@ -152,5 +164,9 @@
     background: #ebf8f9;
     border: 1px solid #08bac6;
     border-radius: 0.25rem;
+  }
+  .project-box ul .active_li{
+    background:#08bac6;
+    color: #FFFFFF;
   }
 </style>

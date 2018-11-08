@@ -9,7 +9,7 @@
       </button>
     </info-header>
     <div class="bg-fff p15 mb12">
-      <touch-list :data="touchListData">
+      <touch-list :data="preItems" @delete="delete_checkItem">
         <div slot-scope="{prop}">
           <span>{{prop.name}}</span>
         </div>
@@ -21,6 +21,7 @@
 <script>
   import infoHeader from "@/components/common/infoHeader";
   import touchList from "@/components/common/touchList";
+  import {mapState, mapActions} from 'vuex'
 
   export default {
     name: "orderCheck",
@@ -28,23 +29,20 @@
       infoHeader,
       touchList
     },
-    data(){
+    data() {
       return {
-        touchListData: [
-          {
-            name: "甲功三项",
-            age: 12
-          },
-          {
-            name: "血常规",
-            age: 34
-          },
-          {
-            name: "肾功能常规",
-            age: 56
-          }
-        ],
+        touchListData: [],
       }
+    },
+    computed: {
+      ...mapState('newCheckOrder', {
+        preItems: state => state.prescription.items
+      })
+    },
+    methods: {
+      ...mapActions('newCheckOrder', [
+        'delete_checkItem'
+      ]),
     }
   }
 </script>

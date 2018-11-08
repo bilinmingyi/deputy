@@ -42,6 +42,9 @@ const newOne = {
     },
     [types.PUSH_CHECKITEM](state, obj) {
       state.prescription.items.push(obj);
+    },
+    [types.DELETE_CHECKITEM](state, index){
+      state.prescription.items.splice(index,1)
     }
   },
   actions: {
@@ -51,8 +54,11 @@ const newOne = {
     set_doctorId: ({commit}, obj) => {
       commit(types.SET_DOCTORID, obj)
     },
-    push_checkItem: ({commit, obj}) => {
+    push_checkItem: ({commit}, obj) => {
       commit(types.PUSH_CHECKITEM, obj)
+    },
+    delete_checkItem:({commit},index) => {
+      commit(types.DELETE_CHECKITEM,index)
     }
   }
 };
