@@ -81,7 +81,7 @@
           })
           next();
         }else {
-          this.$Message.infor(res.data);
+          this.$Message.infor(res.msg);
           next(false);
         }
       })

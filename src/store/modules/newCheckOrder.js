@@ -47,6 +47,9 @@ const newOne = {
     },
     [types.PUSH_CONTAIN](state, obj){
       state.prescription.contains.push(obj)
+    },
+    [types.DELETE_CONTAIN](state,index){
+      state.prescription.contains.splice(index,1)
     }
   },
   actions: {
@@ -64,6 +67,9 @@ const newOne = {
     },
     push_contain:({commit}, obj) => {
       commit(types.PUSH_CONTAIN,obj)
+    },
+    delete_contain:({commit},index) =>{
+      commit(types.DELETE_CONTAIN,index)
     }
   }
 };
