@@ -44,6 +44,18 @@
         contains: state => state.prescription.contains
       })
     },
+    watch:{
+      preItems: {
+        deep: true,
+        handler(newVal, oldVal) {
+          var allPrice=0;
+          newVal.forEach(item => {
+            allPrice+=Number(item.trade_price);
+          })
+          this.set_price(allPrice)
+        }
+      }
+    },
     beforeRouteLeave(to, from, next) {
       var list = [];
       this.preItems.forEach(item => {
@@ -97,7 +109,8 @@
     methods: {
       ...mapActions('newCheckOrder', [
         'push_checkItem',
-        'push_contain'
+        'push_contain',
+        'set_price'
       ]),
       getData(name) {
         var url = "", params = {};
