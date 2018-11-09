@@ -22,5 +22,7 @@ export default {
   //更新支付方式
   SET_PAYTYPE: 'SET_PAYTYPE',
   //更新图片列表
-  SET_IMGLIST: 'SET_IMGLIST'
+  SET_IMGLIST: 'SET_IMGLIST',
+  //设置备注
+  SET_REMARK: 'SET_REMARK'
 }

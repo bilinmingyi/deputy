@@ -14,7 +14,7 @@
       <order-pay></order-pay>
       <div class="payment">
         <span>备注</span>
-        <input type="text" placeholder="请输入备注">
+        <input type="text" placeholder="请输入备注" :value="remark" @input="set_remark($event.target.value)">
       </div>
       <div class="pay_operation">
         <button>关闭</button>
@@ -49,7 +49,8 @@
     },
     computed:{
       ...mapState('newCheckOrder',{
-        imgDataList: state => state.prescription.imgList
+        imgDataList: state => state.prescription.imgList,
+        remark: state => state.prescription.doctorRemark
       })
     },
     created() {
@@ -57,13 +58,13 @@
     },
     methods: {
       ...mapActions('newCheckOrder',[
-        'set_imgList'
+        'set_imgList',
+        'set_remark'
       ]),
       init() {
         this.$store.commit('newCheckOrder/SET_CLINICID', this.$route.query.clinicId)
       },
       changeImg(str){
-        console.log(str)
         this.set_imgList(str)
       }
 

@@ -24,7 +24,7 @@ const newOne = {
       doctorRemark: "",
       items: [],
       contains: [],
-      imgList: ['','','']
+      imgList: ['', '', '']
     }
   },
   getters: {},
@@ -67,6 +67,9 @@ const newOne = {
     },
     [types.SET_IMGLIST](state, obj) {
       state.prescription.imgList = JSON.parse(obj);
+    },
+    [types.SET_REMARK](state, obj){
+      state.prescription.doctorRemark=obj;
     }
   },
   actions: {
@@ -102,6 +105,9 @@ const newOne = {
     },
     set_imgList: ({commit}, obj) => {
       commit(types.SET_IMGLIST, obj)
+    },
+    set_remark: ({commit}, obj) => {
+      commit(types.SET_REMARK,obj)
     }
   }
 };
