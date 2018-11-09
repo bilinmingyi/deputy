@@ -90,7 +90,7 @@
       ]),
       getDoctorList() {
         const self = this;
-        self.axios.post("/apis/weixin/sales/clinic/doctorList", {
+        self.axios.post("/weixin/sales/clinic/doctorList", {
           "clinic_id": self.clinicId
         }).then(respone => {
           var res = respone.data;
@@ -111,7 +111,7 @@
             self.showSelect = false;
             return
           }
-          self.axios.post("/apis/treatmng/patient/list", {
+          self.axios.post("/treatmng/patient/list", {
             "query": query
           }).then((respone) => {
             var res = respone.data;

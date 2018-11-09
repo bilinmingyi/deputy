@@ -48,7 +48,7 @@
     methods: {
       getData(isAdd) {
         this.showLoad = true;
-        this.axios.post("/apis/weixin/sales/dyCheckOrder/list", {
+        this.axios.post("/weixin/sales/dyCheckOrder/list", {
           "start_time":this.timeObj.start_time,
           "end_time":this.timeObj.end_time,
           "clinic_id":this.clinicId,

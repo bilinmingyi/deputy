@@ -99,7 +99,7 @@ export default {
       this.showLoad = true;
       let params = Object.assign({ channel_id: this.teamId }, this.queryTime);
       this.axios
-        .post("/apis/statistic/dytreat/teamStatList", params)
+        .post("/statistic/dytreat/teamStatList", params)
         .then(response => {
           let res = response.data;
           if (res.code == 1000) {

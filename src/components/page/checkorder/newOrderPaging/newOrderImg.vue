@@ -45,7 +45,7 @@
         if (!el.target.files[0].size) return;
         var formData = new FormData();
         formData.append("file", el.target.files[0]);
-        this.axios.post("/apis/weixin/sales/dyCheckOrder/imgUpload", formData).then(respone => {
+        this.axios.post("/weixin/sales/dyCheckOrder/imgUpload", formData).then(respone => {
           const res=respone.data;
           if(res.code==1000){
             this.imgDataList.splice(this.currIndex,1,res.data);

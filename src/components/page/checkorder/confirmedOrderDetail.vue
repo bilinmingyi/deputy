@@ -84,7 +84,7 @@ export default {
       this.showLoad = true;
       let params = {order_seqno: this.orderSeqno};  
       this.axios
-        .post("/apis/weixin/sales/dyCheckOrder/detail", params)
+        .post("/weixin/sales/dyCheckOrder/detail", params)
         .then(response => {
           let res = response.data;
           if (res.code == 1000) {

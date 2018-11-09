@@ -118,7 +118,7 @@
             memo:item.memo
           })
         });
-        this.axios.post("/apis/weixin/sales/dyCheckOrder/create", {
+        this.axios.post("/weixin/sales/dyCheckOrder/create", {
           "clinic_id": this.allState.clinic.clinicId,
           "doctor_id": this.allState.clinic.doctorId,
           "patient_mobile": this.allState.patient.mobile,

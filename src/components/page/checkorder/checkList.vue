@@ -56,7 +56,7 @@
     methods: {
       getData: function (name) {
         var self = this;
-        self.axios.post("/apis/weixin/sales/dyCheckOrder/num", {
+        self.axios.post("/weixin/sales/dyCheckOrder/num", {
           "query": name
         }).then((respone) => {
           var res = respone.data;
