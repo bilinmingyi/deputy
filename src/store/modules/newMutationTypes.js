@@ -24,5 +24,7 @@ export default {
   //更新图片列表
   SET_IMGLIST: 'SET_IMGLIST',
   //设置备注
-  SET_REMARK: 'SET_REMARK'
+  SET_REMARK: 'SET_REMARK',
+  //取消订单
+  CANCEL_ORDER: 'CANCEL_ORDER'
 }

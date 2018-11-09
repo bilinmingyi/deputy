@@ -17,8 +17,8 @@
         <input type="text" placeholder="请输入备注" :value="remark" @input="set_remark($event.target.value)">
       </div>
       <div class="pay_operation">
-        <button>关闭</button>
-        <button>取消订单</button>
+        <button @click.stop="close(1)">关闭</button>
+        <button @click.stop="close(2)">取消订单</button>
         <button>提交</button>
       </div>
     </section>
@@ -59,13 +59,22 @@
     methods: {
       ...mapActions('newCheckOrder',[
         'set_imgList',
-        'set_remark'
+        'set_remark',
+        'cancel_order'
       ]),
       init() {
         this.$store.commit('newCheckOrder/SET_CLINICID', this.$route.query.clinicId)
       },
       changeImg(str){
         this.set_imgList(str)
+      },
+      close(type){
+        if(type==1){
+          this.$router.go(-1);
+        }else if(type==2){
+          this.cancel_order();
+          this.$router.go(-1);
+        }
       }
 
     }

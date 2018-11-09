@@ -70,6 +70,33 @@ const newOne = {
     },
     [types.SET_REMARK](state, obj){
       state.prescription.doctorRemark=obj;
+    },
+    [types.CANCEL_ORDER](state){
+      state.prescription={
+        patient: {
+          name: "",
+          mobile: "",
+          age: "",
+          birthMonth: "",
+          birthday: "",
+          sex: 0
+        },
+        clinic: {
+          clinicId: "",
+          doctorList: [],
+          doctorId: ""
+        },
+        prescription: {
+          recipeType: 7,
+          payType: 1,
+          money: 0,
+          isCould: 1,
+          doctorRemark: "",
+          items: [],
+          contains: [],
+          imgList: ['', '', '']
+        }
+      }
     }
   },
   actions: {
@@ -108,6 +135,9 @@ const newOne = {
     },
     set_remark: ({commit}, obj) => {
       commit(types.SET_REMARK,obj)
+    },
+    cancel_order: ({commit}) => {
+      commit(types.CANCEL_ORDER)
     }
   }
 };
