@@ -9,7 +9,7 @@
       <!--订单条码组件-->
       <order-code></order-code>
       <!--订单图片组件-->
-      <order-img></order-img>
+      <order-img :img-list="JSON.stringify(imgDataList)" v-on:datachange="changeImg"></order-img>
       <!--订单支付方式组件-->
       <order-pay></order-pay>
       <div class="payment">
@@ -32,6 +32,8 @@
   import orderCode from "@/components/page/checkorder/newOrderPaging/newOrderCode"
   import orderImg from "@/components/page/checkorder/newOrderPaging/newOrderImg"
   import orderPay from "@/components/page/checkorder/newOrderPaging/newOrderPay"
+  import {mapState, mapActions} from 'vuex'
+
   export default {
     name: "newOrderPage",
     components: {
@@ -45,13 +47,26 @@
     data() {
       return {};
     },
-    created(){
+    computed:{
+      ...mapState('newCheckOrder',{
+        imgDataList: state => state.prescription.imgList
+      })
+    },
+    created() {
       this.init();
     },
-    methods:{
-      init(){
-        this.$store.commit('newCheckOrder/SET_CLINICID',this.$route.query.clinicId)
+    methods: {
+      ...mapActions('newCheckOrder',[
+        'set_imgList'
+      ]),
+      init() {
+        this.$store.commit('newCheckOrder/SET_CLINICID', this.$route.query.clinicId)
+      },
+      changeImg(str){
+        console.log(str)
+        this.set_imgList(str)
       }
+
     }
   }
 </script>

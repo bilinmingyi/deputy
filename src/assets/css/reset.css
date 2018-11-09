@@ -582,30 +582,7 @@ button {
   text-align: center;
 }
 
-.upload_img_block {
-  display: flex;
-  padding: 0.75rem 0.94rem;
-}
-.upload_img_block .add_img{
-  background: #EDEDED;
-  border-radius: 0.25rem;
-  width: calc( 20vw - 0.676rem);
-  height: calc( 20vw - 0.676rem);
-  line-height: calc( 20vw - 0.876rem);
-  margin-right: 0.5rem;
-  color: #CCCCCC;
-  font-size: 1.75rem;
-  text-align: center;
-  align-self: center;
 
-}
-.upload_img_block .add_img_title{
-  width: calc( 40vw - 1.352rem);
-  align-self: center;
-  text-align: center;
-  color: #7C7C7C;
-  font-size: 0.75rem;
-}
 .pay_operation{
   position: fixed;
   bottom: 0;

@@ -23,7 +23,8 @@ const newOne = {
       isCould: 1,
       doctorRemark: "",
       items: [],
-      contains: []
+      contains: [],
+      imgList: ['','','']
     }
   },
   getters: {},
@@ -63,6 +64,9 @@ const newOne = {
     },
     [types.SET_PAYTYPE](state, obj) {
       state.prescription.payType = obj;
+    },
+    [types.SET_IMGLIST](state, obj) {
+      state.prescription.imgList = JSON.parse(obj);
     }
   },
   actions: {
@@ -95,6 +99,9 @@ const newOne = {
     },
     set_payType: ({commit}, obj) => {
       commit(types.SET_PAYTYPE, obj)
+    },
+    set_imgList: ({commit}, obj) => {
+      commit(types.SET_IMGLIST, obj)
     }
   }
 };

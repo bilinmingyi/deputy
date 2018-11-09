@@ -20,5 +20,7 @@ export default {
   //更新价格
   SET_PRICE: 'SET_PRICE',
   //更新支付方式
-  SET_PAYTYPE: 'SET_PAYTYPE'
+  SET_PAYTYPE: 'SET_PAYTYPE',
+  //更新图片列表
+  SET_IMGLIST: 'SET_IMGLIST'
 }
