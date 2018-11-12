@@ -118,6 +118,5 @@
     background: rgba(0,0,0,0.4);
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
-    z-index: 200;
   }
 </style>

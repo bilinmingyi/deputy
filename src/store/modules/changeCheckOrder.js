@@ -123,7 +123,7 @@ const changeOne = {
       if (imgs) {
         return imgs;
       } else {
-        return ['', '', ''];
+        return '["", "", ""]';
       }
     }
   },
