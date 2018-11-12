@@ -76,7 +76,8 @@ const changeOne = {
     newProjects: {
       check_list: [],
       checkset_list: []
-    }
+    },
+    newImgList: '',
   },
   getters: {
     orderPrice: state => {
@@ -116,6 +117,14 @@ const changeOne = {
         }
       }
       return res;
+    },
+    imgDataList: state => {
+      let imgs = state.order.check_images;
+      if (imgs) {
+        return imgs;
+      } else {
+        return ['', '', ''];
+      }
     }
   },
   mutations: {
@@ -153,6 +162,12 @@ const changeOne = {
         check_list: [],
         checkset_list: []
       };
+    },
+    [types.UPDATE_IMGS](state, str) {
+      state.order.check_images = JSON.parse(str)
+    },
+    [types.SET_PAYTYPE](state, type) {
+      state.order.pay_type = type
     }
   },
   actions: {
@@ -170,7 +185,13 @@ const changeOne = {
     },
     clear_newProjectList: ({ commit }) => {
       commit(types.CLEAR_NEWPROJECTLST);
-    }
+    },
+    update_imgs: ({ commit }, str) => {
+      commit(types.UPDATE_IMGS, str);
+    },
+    set_payType: ({ commit }, type) => {
+      commit(types.SET_PAYTYPE, type);
+    },
   }
 };
 export default changeOne;

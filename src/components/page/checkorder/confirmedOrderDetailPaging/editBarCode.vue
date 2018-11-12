@@ -2,30 +2,19 @@
     <div>
       <d-header>条码编辑</d-header>
       <section class="content">
-        <info-header noBorder>血清管（黄管）</info-header>
-        <div class="bg-fff pl12 pr12 pb20 mb12">
-          <div class="pl12 pr12 input-btn-box">
-            <input type="text" placeholder="条码">
-            <button>扫码</button>
-          </div>
-          <div class="pl12 pr12 pt16 counter-box">
-            <counter :min=0 v-model="counter1"></counter>
-          </div>
-          <div class="input-box pl12 pr12 pt16">
-            <input type="text" placeholder="标本备注">
-          </div>
-        </div>
-        <info-header noBorder>血清管（黄管）</info-header>
-        <div class="bg-fff pl12 pr12 pb20 mb12">
-          <div class="pl12 pr12 input-btn-box">
-            <input type="text" placeholder="条码">
-            <button>扫码</button>
-          </div>
-          <div class="pl12 pr12 pt16 counter-box">
-            <counter :min=0 v-model="counter2"></counter>
-          </div>
-          <div class="input-box pl12 pr12 pt16">
-            <input type="text" placeholder="标本备注">
+        <div v-for="item in specimens">
+          <info-header noBorder>{{item.name}}</info-header>
+          <div class="bg-fff pl12 pr12 pb20 mb12">
+            <div class="pl12 pr12 input-btn-box">
+              <input type="text" placeholder="条码" v-model="item.barcode">
+              <button>扫码</button>
+            </div>
+            <div class="pl12 pr12 pt16 counter-box">
+              <counter :min=0 v-model="item.volumn"></counter>
+            </div>
+            <div class="input-box pl12 pr12 pt16">
+              <input type="text" placeholder="标本备注" v-model="item.memo">
+            </div>
           </div>
         </div>
       </section>
@@ -36,17 +25,49 @@
 import dHeader from "@/components/common/dHeader";
 import infoHeader from "@/components/common/infoHeader";
 import counter from "@/components/common/counter";
+import { mapState, mapActions } from "vuex";
 export default {
+  props: ["orderSeqno"],
   components: {
     dHeader,
     infoHeader,
     counter
   },
   data() {
-    return {
-      counter1: 0,
-      counter2: 1,
-    };
+    return {};
+  },
+  computed: {
+    ...mapState("changeCheckOrder", {
+      specimens: state => state.order.dyCheckOrderSpecimenInfos
+    })
+  },
+  beforeRouteLeave(to, from, next) {
+    let axios = this.axios;
+    let barCodeInfo = this.specimens;
+    let updateArr = [];
+    barCodeInfo.forEach((item) => {
+      updateArr.push(this.axios.post("/weixin/sales/dyCheckOrderSpecimens/update", {
+        id: item.id,
+        order_seqno: this.orderSeqno,
+        volumn: item.volumn,
+        barcode: item.barcode,
+        memo: item.memo
+      }))
+    })
+    axios.all(updateArr).then(axios.spread((...rest) => {
+      let status = true;
+      for (let i = 0, len = rest.length; i < len; i++) {
+        let response = rest[i].data;
+        let config = rest[i].config;
+        if (response.code != 1000) {
+          this.$Message.infor(response.msg);
+          status = false;
+          next(false);
+          break;
+        }
+      }
+      status && next();
+    }))
   }
 };
 </script>

@@ -80,7 +80,7 @@ export default {
     };
 
     this.axios
-      .post("/apis/weixin/sales/dyCheckOrder/update", params)
+      .post("/weixin/sales/dyCheckOrder/update", params)
       .then(respone => {
         const res = respone.data;
         if (res.code === 1000) {
@@ -169,8 +169,6 @@ export default {
       for (let i = 0, len = itemList.length; i < len; i++) {
         let cur = itemList[i];
         for (let j = 0, jLen = arr.length; j < jLen; j++) {
-          console.log('arrj:', arr[j]);
-          console.log('cur', cur)
           if (arr[j].item_id === cur.id) {
             if (arr[j].set_id) {
               this.$Message.infor(`该项目与 ${arr[j].set_name} 有重复内容`);
