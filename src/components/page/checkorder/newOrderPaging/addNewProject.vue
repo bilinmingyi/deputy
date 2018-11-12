@@ -149,6 +149,9 @@
       },
       changeTab(type) {
         this.activePage = type;
+        this.$nextTick(() => {
+          document.querySelector('#dsearch').value="";
+        });
         this.dataList = [];
       },
       addProject(item) {

@@ -3,7 +3,7 @@
     <div class="search">
       <div class="search_left">
         <img src="../../assets/img/ss.png">
-        <input type="text" placeholder="诊所名称" v-model="searchName" @input="searchInput()"/>
+        <input type="text" v-bind="$attrs" v-model="searchName" @input="searchInput()" id="dsearch"/>
       </div>
       <div>
         <button class="search_btn" @click.stop="searchInput()">查询</button>
@@ -17,6 +17,7 @@
 <script>
   export default {
     name: "dSearch",
+    inheritAttrs:false,
     data:function () {
       return{
         searchName:"",
