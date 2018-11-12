@@ -21,33 +21,33 @@
         <span>订单消息</span>
       </div>
       <hr class="full-screen-hr">
-      <ul>
-        <li>
-          <div class="order_infor">
-            <div class="order_infor_top">
-              <div>采购订单下单</div>
-              <div>18/10/01 14:12</div>
-            </div>
-            <div class="order_infor_bottom">
-              深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-            </div>
-          </div>
-          <hr class="full-screen-hr">
-        </li>
-        <li>
-          <div class="order_infor">
-            <div class="order_infor_top">
-              <div>采购订单下单</div>
-              <div>18/10/01 14:12</div>
-            </div>
-            <div class="order_infor_bottom">
-              深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息
-            </div>
-          </div>
-          <hr class="full-screen-hr">
-        </li>
-      </ul>
-      <div class="add_more">查看更多...</div>
+      <!--<ul>-->
+        <!--<li>-->
+          <!--<div class="order_infor">-->
+            <!--<div class="order_infor_top">-->
+              <!--<div>采购订单下单</div>-->
+              <!--<div>18/10/01 14:12</div>-->
+            <!--</div>-->
+            <!--<div class="order_infor_bottom">-->
+              <!--深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<hr class="full-screen-hr">-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<div class="order_infor">-->
+            <!--<div class="order_infor_top">-->
+              <!--<div>采购订单下单</div>-->
+              <!--<div>18/10/01 14:12</div>-->
+            <!--</div>-->
+            <!--<div class="order_infor_bottom">-->
+              <!--深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<hr class="full-screen-hr">-->
+        <!--</li>-->
+      <!--</ul>-->
+      <!--<div class="add_more">查看更多...</div>-->
     </section>
     <d-footer :activeItem="1"></d-footer>
   </div>
