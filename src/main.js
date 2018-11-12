@@ -9,6 +9,8 @@ import filters from './assets/js/filters'
 import message from './assets/js/message'
 import store from './store/index'
 
+
+
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })

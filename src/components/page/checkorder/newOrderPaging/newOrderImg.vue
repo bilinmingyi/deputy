@@ -4,7 +4,7 @@
     <div class="bg-fff p15 mb12 upload_img_block">
       <div class="add_img" v-for="(imgData,index) in imgDataList">
         <div v-if="imgData!=''">
-          <img :src="imgData">
+          <img :src="imgData" @click="showImg(imgData)">
         </div>
         <div v-else @click.stop.prevent="fileClick(index)">+</div>
         <input style="display: none;" type="file" :id="'img-'+index" @change="fileChange($event)"/>
@@ -15,7 +15,8 @@
 </template>
 
 <script>
-  import infoHeader from "@/components/common/infoHeader";
+  import infoHeader from "@/components/common/infoHeader"
+  import getWXSign from '@/assets/js/wx'
 
   export default {
     name: "newOrderImg",
@@ -56,7 +57,17 @@
         }).catch(error => {
           console.log(error)
         })
+      },
+      showImg(imgData){
+        var imgList=this.imgDataList;
+        getWXSign.apply(this).then(data=>{
+          wx.previewImage({
+            current:imgData,
+            urls: imgList
+          })
+        })
       }
+
     }
   }
 </script>
@@ -80,8 +91,8 @@
     align-self: center;
   }
   .upload_img_block .add_img img{
-    height: 4rem;
-    width: 4rem;
+    height: calc(20vw - 0.676rem);
+    width: calc(20vw - 0.676rem);
   }
 
   .upload_img_block .add_img_title {

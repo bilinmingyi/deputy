@@ -2,12 +2,12 @@
   <div>
     <d-header>条码编辑</d-header>
     <section class="content">
-      <div v-for="contain in contains">
+      <div v-for="(contain,index) in contains">
         <info-header noBorder>{{contain.name}}</info-header>
         <div class="bg-fff pl12 pr12 pb20 mb12">
           <div class="pl12 pr12 input-btn-box">
             <input type="number" placeholder="条码" v-model="contain.barCode">
-            <button>扫码</button>
+            <button @click.stop="scanCode(index)">扫码</button>
           </div>
           <div class="pl12 pr12 pt16 counter-box">
             <counter :min=1 v-model="contain.num"></counter>
@@ -25,7 +25,9 @@
   import dHeader from "@/components/common/dHeader";
   import infoHeader from "@/components/common/infoHeader";
   import counter from "@/components/common/counter";
+  import getWXSign from '@/assets/js/wx'
   import {mapState, mapActions} from 'vuex'
+
 
   export default {
     components: {
@@ -34,13 +36,16 @@
       counter
     },
     beforeRouteLeave(to, from, next) {
-      try{
+      try {
         this.set_contain(this.contains);
-      }catch (e) {
+      } catch (e) {
         console.log(e)
         next(false)
       }
       next();
+
+    },
+    created() {
 
     },
     data() {
@@ -56,7 +61,20 @@
     methods: {
       ...mapActions('newCheckOrder', [
         'set_contain'
-      ])
+      ]),
+      scanCode(index){
+        var self=this;
+        getWXSign.apply(this).then(data=>{
+          wx.scanQRCode({
+            needResult:1,
+            scanType: ["qrCode","barCode"],
+            success:function (res) {
+              var result=res.resultStr;
+              self.contains[index].barCode=result;
+            }
+          })
+        });
+      }
     }
   };
 </script>
