@@ -46,7 +46,7 @@ export default {
   methods: {
     getImgCode() {
       this.axios
-        .post("/apis/weixin/sales/checkImgCode", {})
+        .post("/weixin/sales/checkImgCode", {})
         .then(response => {
           let res = response.data;
           if (res.code == 1000) {
@@ -70,7 +70,7 @@ export default {
         return;
       }
       this.axios({
-        url: "/apis/weixin/sales/sendChkcode",
+        url: "/weixin/sales/sendChkcode",
         method: "post",
         data: {
           mobile: this.bindMobile,
@@ -115,7 +115,7 @@ export default {
     },
     checkCode() {
       this.axios
-        .post("/apis/weixin/sales/bind", {
+        .post("/weixin/sales/bind", {
           mobile: this.bindMobile,
           code: this.msgCode
         })

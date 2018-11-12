@@ -63,7 +63,7 @@ export default {
       this.showLoad = true;
       let params = Object.assign({ sales_id: this.salesId }, this.queryTime);
       this.axios
-        .post("/apis/statistic/dycheck/personalGradeStat", params)
+        .post("/statistic/dycheck/personalGradeStat", params)
         .then(response => {
           let res = response.data;
           if (res.code == 1000) {

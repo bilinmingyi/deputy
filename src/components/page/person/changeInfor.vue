@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     getInfo() {
-      this.axios.post("/apis/weixin/sales/info", {})
+      this.axios.post("/weixin/sales/info", {})
         .then(response => {
           const res = response.data;
           if (res.code == 1000) {
@@ -130,7 +130,7 @@ export default {
         return;
       }
       this.axios
-        .post("/apis/weixin/sales/info/update", {
+        .post("/weixin/sales/info/update", {
           name: this.infoName,
           birthday: new Date(this.birthday).getTime(),
           sex: this.infoSex

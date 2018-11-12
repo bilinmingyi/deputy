@@ -36,7 +36,7 @@ export default {
   methods: {
     getMembers() {
       this.axios
-        .post("/apis/weixin/salesTeam/list", {
+        .post("/weixin/salesTeam/list", {
           sales_channel_id: this.teamId
         })
         .then(response => {

@@ -61,7 +61,7 @@
         if(list.length===0){
           this.clear_contain();
         }
-        this.axios.post("/apis/stockmng/specimenContainer/list", {
+        this.axios.post("/stockmng/specimenContainer/list", {
           codes: list
         }).then(respone => {
           const res = respone.data;

@@ -90,7 +90,7 @@ export default {
   methods: {
     getPerson() {
       this.axios
-        .post("/apis/weixin/sales/info")
+        .post("/weixin/sales/info")
         .then(respone => {
           var res = respone.data;
           if (res.code == 1000) {
@@ -110,7 +110,7 @@ export default {
     },
     checkLeader() {
       this.axios
-        .post("/apis/weixin/sales/isHeader")
+        .post("/weixin/sales/isHeader")
         .then(response => {
           let res = response.data;
           if (res.code == 1000) {

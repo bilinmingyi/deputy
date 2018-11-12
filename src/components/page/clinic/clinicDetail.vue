@@ -89,13 +89,13 @@
     methods:{
       getDoctorList(){
         var self=this;
-       return self.axios.post("/apis/weixin/sales/clinic/doctorList",{
+       return self.axios.post("/weixin/sales/clinic/doctorList",{
          "clinic_id":self.clinicId
        })
       },
       getClinicDetail(){
         var self=this;
-        return self.axios.post("/apis/weixin/sales/clinic/detail",{
+        return self.axios.post("/weixin/sales/clinic/detail",{
           "id":self.clinicId
         })
       }

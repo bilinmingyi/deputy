@@ -70,7 +70,7 @@
       if (list.length === 0) {
         next();
       } else {
-        this.axios.post("/apis/stockmng/specimenContainer/list", {
+        this.axios.post("/stockmng/specimenContainer/list", {
           codes: list
         }).then(respone => {
           const res = respone.data;
@@ -115,13 +115,13 @@
       getData(name) {
         var url = "", params = {};
         if (this.activePage == 1) {
-          url = "/apis/stockmng/dyCheck/list"
+          url = "/stockmng/dyCheck/list"
           params = {
             "query": name,
             "status": 1
           }
         } else if (this.activePage == 2) {
-          url = "/apis/stockmng/dyCheckset/list"
+          url = "/stockmng/dyCheckset/list"
           params = {
             "query": name,
             "status": 1,

@@ -57,7 +57,7 @@ export default {
     getData(name) {
       this.showLoad = true;
       this.axios
-        .post("/apis/weixin/salesTeam/clinic/list", {
+        .post("/weixin/salesTeam/clinic/list", {
           sales_channel_id: this.teamId,
           name
         })

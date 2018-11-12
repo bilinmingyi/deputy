@@ -46,7 +46,7 @@
     methods:{
       getData:function (name) {
         var self=this;
-        self.axios.post("/apis/weixin/sales/dyTreatOrder/num",{
+        self.axios.post("/weixin/sales/dyTreatOrder/num",{
           "query":name
         }).then( (respone) => {
           var res=respone.data;

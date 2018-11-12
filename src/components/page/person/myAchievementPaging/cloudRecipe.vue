@@ -99,7 +99,7 @@ export default {
       this.showLoad = true;
       let params = Object.assign({ sales_id: this.salesId }, this.queryTime);
       this.axios
-        .post("/apis/statistic/dytreat/personalStatList", params)
+        .post("/statistic/dytreat/personalStatList", params)
         .then(response => {
           let res = response.data;
           if (res.code == 1000) {

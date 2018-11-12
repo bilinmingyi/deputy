@@ -48,7 +48,7 @@
     methods: {
       getData(isAdd) {
         this.showLoad = true;
-        this.axios.post("/apis/weixin/sales/dyTreatOrder/list", {
+        this.axios.post("/weixin/sales/dyTreatOrder/list", {
           "status":'UNPAID',
           "clinic_id":this.clinicId,
           "page_size": this.pageSize,

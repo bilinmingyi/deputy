@@ -5,7 +5,7 @@ module.exports = {
       target: config.PROXYROOT,  // 接口域名
       changeOrigin: true,  //是否跨域
       pathRewrite: {
-        [`^${config.ROOT}`]: ''   //需要rewrite的
+        [`^/`]: ''   //需要rewrite的
       }
     }
   }

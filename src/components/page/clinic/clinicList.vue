@@ -60,7 +60,7 @@
     methods: {
       getData: function (name,isAdd) {
         this.queryName=name;
-        this.axios.post("/apis/weixin/sales/clinic/list",{
+        this.axios.post("/weixin/sales/clinic/list",{
           "page":this.page,
           "page_size":this.pageSize,
           "query":name

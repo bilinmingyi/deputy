@@ -45,7 +45,7 @@
     methods: {
       getData(isAdd) {
         this.showLoad = true;
-        this.axios.post("/apis/weixin/sales/dyCheckOrder/list", {
+        this.axios.post("/weixin/sales/dyCheckOrder/list", {
           "status": "WAITCONFIRM",
           "clinic_id":this.clinicId,
           "page_size": this.pageSize,
