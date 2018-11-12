@@ -72,16 +72,50 @@ const changeOne = {
           create_time: 1541558844860
         }
       ]
+    },
+    newProjects: {
+      check_list: [],
+      checkset_list: []
     }
   },
   getters: {
-    orderPrice: (state) => {
+    orderPrice: state => {
       let arr = state.order.items_info;
       let price = 0;
-      arr.forEach((item) => {
+      arr.forEach(item => {
         price += item.cost_price;
-      })
+      });
       return price;
+    },
+    curProjects: state => {
+      let arr = state.order.items_info;
+      let res = {
+        check_list: [],
+        checkset_list: []
+      };
+      if (!Array.isArray(arr)) return res;
+      for (let i = 0, len = arr.length; i < len; i++) {
+        if (arr[i].set_id !== 0) {
+          let flag = true;
+          for (let j = 0, jLen = res.checkset_list.length; j < jLen; j++) {
+            if (res.checkset_list[j].set_id === arr[i].set_id) {
+              flag = false;
+              res.checkset_list[j].checks.push(arr[i]);
+              break;
+            }
+          }
+          if (flag) {
+            res.checkset_list.push({
+              set_id: arr[i].set_id,
+              set_name: arr[i].set_name,
+              checks: [arr[i]]
+            });
+          }
+        } else {
+          res.check_list.push(arr[i]);
+        }
+      }
+      return res;
     }
   },
   mutations: {
@@ -90,23 +124,53 @@ const changeOne = {
         state.order[item] = obj[item];
       });
     },
-    [types.ADD_CHECKORDERPROJECT](state, projectList) {
-      state.order.items_info[item] = state.order.items_info[item].concat(projectList);
+    [types.ADD_CHECKORDERPROJECT](state, obj) {
+      if (obj.type === 1) {
+        state.newProjects.check_list.push(obj.project);
+      } else if (obj.type === 2) {
+        state.newProjects.checkset_list.push(obj.project);
+      }
     },
-    [types.DELETE_CHECKORDERPROJECT](state, index) {
-      state.order.items_info.splice(index, 1);
+    [types.DELETE_CHECKPROJECT](state, obj) {
+      let arr = state.order.items_info;
+      for (let i = 0, len = arr.length; i < len; i++) {
+        if (arr[i].set_id == 0 && arr[i].item_id === obj.item_id) {
+          arr.splice(i, 1);
+          return;
+        }
+      }
+    },
+    [types.DELETE_CHECKSETPROJECT](state, obj) {
+      let arr = state.order.items_info;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].set_id === obj.set_id) {
+          arr.splice(i--, 1);
+        }
+      }
+    },
+    [types.CLEAR_NEWPROJECTLST](state) {
+      state.newProjects = {
+        check_list: [],
+        checkset_list: []
+      };
     }
   },
   actions: {
     set_order: ({ commit }, obj) => {
       commit(types.SET_ORDER, obj);
     },
-    add_project: ({ commit }, projectList) => {
-      commit(types.ADD_CHECKORDERPROJECT, projectList);
+    add_project: ({ commit }, obj) => {
+      commit(types.ADD_CHECKORDERPROJECT, obj);
     },
-    delete_project: ({ commit }, index) => {
-      commit(types.DELETE_CHECKORDERPROJECT, index);
+    delete_checkProject: ({ commit }, index) => {
+      commit(types.DELETE_CHECKPROJECT, index);
     },
+    delete_checkSetProject: ({ commit }, index) => {
+      commit(types.DELETE_CHECKSETPROJECT, index);
+    },
+    clear_newProjectList: ({ commit }) => {
+      commit(types.CLEAR_NEWPROJECTLST);
+    }
   }
 };
 export default changeOne;

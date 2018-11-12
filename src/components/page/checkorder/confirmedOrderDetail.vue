@@ -21,7 +21,7 @@
         </div>
       </info-bar>
       <!--订单检查项目组件-->
-      <order-check></order-check>
+      <order-check @update="getData(true)"></order-check>
       <!--订单条码组件-->
       <order-code></order-code>
       <!--订单图片组件-->
@@ -51,7 +51,7 @@ import orderCode from "@/components/page/checkorder/confirmedOrderDetailPaging/c
 import orderImg from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderImg";
 import orderPay from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderPay";
 import dLoad from "@/components/common/dLoad";
-import {mapState, mapActions} from 'vuex'
+import { mapState, mapGetters, mapActions } from "vuex";
 export default {
   name: "confirmedOrderDetail",
   components: {
@@ -63,10 +63,10 @@ export default {
     orderPay,
     dLoad
   },
-  props: ['orderSeqno'],
+  props: ["orderSeqno"],
   data() {
     return {
-      showLoad: false,
+      showLoad: false
     };
   },
   created() {
@@ -74,15 +74,18 @@ export default {
     this.getData();
   },
   computed: {
-    ...mapState('changeCheckOrder', {
-      order: state => state.order,
+    ...mapState("changeCheckOrder", {
+      order: state => state.order
     }),
+    ...mapGetters("changeCheckOrder", ["curProjects"])
   },
   methods: {
-    ...mapActions('changeCheckOrder', ['set_order']),
-    getData() {
-      this.showLoad = true;
-      let params = {order_seqno: this.orderSeqno};  
+    ...mapActions("changeCheckOrder", ["set_order"]),
+    getData(noLoad) {
+      if (!noLoad) {
+        this.showLoad = true;
+      }
+      let params = { order_seqno: this.orderSeqno };
       this.axios
         .post("/apis/weixin/sales/dyCheckOrder/detail", params)
         .then(response => {
