@@ -13,13 +13,24 @@
 
 <script>
 export default {
-  props: ["data"],
+  props: {
+    data:{
+      type:Array
+    },
+    canDelete:{
+      type: Boolean,
+      default: true
+    }
+  },
   data() {
     return {
       activeItem: -1,
       startX: 0,
       endX: 0
     };
+  },
+  created(){
+
   },
   computed: {
     getkey() {
@@ -38,10 +49,16 @@ export default {
     //滑动开始
     touchStart(e) {
       // 记录初始位置
+      if(!this.canDelete){
+        return
+      }
       this.startX = e.touches[0].clientX;
     },
     //滑动结束
     touchEnd(index, e) {
+      if(!this.canDelete){
+        return
+      }
       // 记录结束位置
       this.endX = e.changedTouches[0].clientX;
       // 左滑

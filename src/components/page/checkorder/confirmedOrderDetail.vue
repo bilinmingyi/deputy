@@ -31,11 +31,12 @@
 
       <div class="payment">
         <span>备注</span>
-        <input type="text" :value="order.memo" placeholder="请输入备注" style="border: none;outline: none">
+        <input type="text" :value="order.memo" placeholder="请输入备注" style="border: none;outline: none" @input="set_order({memo:$event.target.value})">
       </div>
       <div class="pay_operation">
         <button @click="$router.go(-1)">关闭</button>
-        <button @click="handleOrder(1)">给诊所退款</button>
+        <button @click="handleOrder(3)" v-if="order.is_paid==0">取消订单</button>
+        <button @click="handleOrder(1)" v-if="order.is_paid==1">给诊所退款</button>
         <button @click="handleOrder(2)">确认</button>
       </div>
     </section>
@@ -128,7 +129,8 @@ export default {
           .post("/weixin/sales/dyCheckOrder/comfirm", {
             order_seqno: this.orderSeqno,
             check_images: JSON.stringify(this.imgDataList),
-            pay_type: this.order.pay_type == 4 ? 1 : 0
+            pay_type: this.order.pay_type,
+            memo:this.order.memo
           })
           .then(response => {
             let res = response.data;
@@ -140,6 +142,17 @@ export default {
             }
           })
           .catch(console.log);
+      } else if(type==3){
+        this.axios.post("/weixin/sales/dyCheckOrder/cancel",{
+          order_seqno:this.orderSeqno
+        }).then(respone =>{
+          const res=respone.data;
+          if(res.code===1000){
+            this.$router.go(-1);
+          }else {
+            this.$Message.infor(res.msg)
+          }
+        })
       }
     }
   }

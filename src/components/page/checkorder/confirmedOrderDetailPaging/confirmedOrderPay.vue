@@ -6,29 +6,31 @@
         <span>订单金额</span>
         <span class="pay_money">{{orderPrice | priceFormat}}</span>
       </div>
-      <hr class="full-screen-hr">
-      <div class="pay_line">
-        <span>支付方式</span>
-        <span>微信</span>
-      </div>
-      <hr class="full-screen-hr">
-      <div class="pay_line pay_type_block">
-        <div>
-          <d-radio :name="'pay-type'" :id="'pay-type-yb'" :checkedVal=4 :curVal="checkedPayType"
-                   @change="checkedPayType=4">微信
-          </d-radio>
+
+      <section v-if="isPay===1">
+        <hr class="full-screen-hr">
+        <div class="pay_line">
+          <span>支付方式</span>
+          <span>微信</span>
         </div>
-        <!-- <div>
-          <d-radio :name="'pay-type'" :id="'pay-type-yhk'" :checkedVal=5 :curVal="checkedPayType"
-                   @change="checkedPayType=5">支付宝
-          </d-radio>
-        </div> -->
-        <div>
-          <d-radio :name="'pay-type'" :id="'pay-type-qf'" :checkedVal=6 :curVal="checkedPayType"
-                   @change="checkedPayType=6">欠费处理
-          </d-radio>
+      </section>
+
+      <section v-if="isPay===0">
+        <hr class="full-screen-hr">
+        <div class="pay_line pay_type_block">
+          <div>
+            <d-radio :name="'pay-type'" :id="'pay-type-yb'" :checkedVal=1 :curVal="checkedPayType"
+                     @change="set_payType(1)">微信
+            </d-radio>
+          </div>
+          <div>
+            <d-radio :name="'pay-type'" :id="'pay-type-qf'" :checkedVal=0  :curVal="checkedPayType"
+                     @change="set_payType(0)">欠费处理
+            </d-radio>
+          </div>
+          <div></div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </template>
@@ -46,20 +48,17 @@ export default {
   },
   data() {
     return {
-      checkedPayType: -1
+
     };
   },
   created() {
     this.set_payType(this.checkedPayType);
   },
-  watch: {
-    checkedPayType(newVal) {
-      this.set_payType(newVal);
-    }
-  },
   computed: {
     ...mapState("changeCheckOrder", {
-      projectList: state => state.order.items_info
+      projectList: state => state.order.items_info,
+      isPay: state => state.order.is_paid,
+      checkedPayType: state => state.order.pay_type
     }),
     ...mapGetters("changeCheckOrder", ["orderPrice"]),
     // payType() {

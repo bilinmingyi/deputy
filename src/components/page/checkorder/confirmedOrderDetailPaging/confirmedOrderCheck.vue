@@ -2,15 +2,15 @@
   <div>
     <info-header>
       检验项目
-      <button slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/addNewProject` })">添加项目</button>
+      <button v-if="isPay===0" slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/addNewProject` })">添加项目</button>
     </info-header>
     <div class="bg-fff p15 mb12">
-      <touch-list :data="curProjects.check_list" @delete="deleteCheckProject" class="mb10">
+      <touch-list :data="curProjects.check_list" @delete="deleteCheckProject" class="mb10" :can-delete="isPay===0?true:false">
         <div slot-scope="{prop}">
           <span>{{prop.set_id ? prop.set_name : prop.name}}</span>
         </div>
       </touch-list>
-      <touch-list :data="curProjects.checkset_list" @delete="deleteCheckSetProject">
+      <touch-list :data="curProjects.checkset_list" @delete="deleteCheckSetProject" :can-delete="isPay===0?true:false">
         <div slot-scope="{prop}">
           <span>{{prop.set_name}}</span>
         </div>
@@ -35,7 +35,8 @@ export default {
   },
   computed: {
     ...mapState("changeCheckOrder", {
-      orderSeqno: state => state.order.order_seqno
+      orderSeqno: state => state.order.order_seqno,
+      isPay: state => state.order.is_paid
     }),
     ...mapGetters("changeCheckOrder", ["curProjects"])
   },
@@ -65,7 +66,8 @@ export default {
       let params = {
         order_seqno: this.orderSeqno,
         check_list: check,
-        checkset_list: checkSet
+        checkset_list: checkSet,
+        memo:''
       };
       this.axios
         .post("/weixin/sales/dyCheckOrder/update", params)
