@@ -68,7 +68,7 @@ export default {
         checkset_list: checkSet
       };
       this.axios
-        .post("/apis/weixin/sales/dyCheckOrder/update", params)
+        .post("/weixin/sales/dyCheckOrder/update", params)
         .then(respone => {
           const res = respone.data;
           if (res.code === 1000) {

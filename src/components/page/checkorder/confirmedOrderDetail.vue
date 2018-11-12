@@ -25,7 +25,7 @@
       <!--订单条码组件-->
       <order-code></order-code>
       <!--订单图片组件-->
-      <order-img></order-img>
+      <order-img :img-list="JSON.stringify(imgDataList)" v-on:datachange="changeImg"></order-img>
       <!--订单支付方式组件-->
       <order-pay></order-pay>
 
@@ -35,8 +35,8 @@
       </div>
       <div class="pay_operation">
         <button @click="$router.go(-1)">关闭</button>
-        <button>给诊所退款</button>
-        <button>确认</button>
+        <button @click="handleOrder(1)">给诊所退款</button>
+        <button @click="handleOrder(2)">确认</button>
       </div>
     </section>
     <d-load v-if="showLoad"></d-load>
@@ -48,7 +48,7 @@ import dHeader from "@/components/common/dHeader.vue";
 import infoBar from "@/components/common/infoBar";
 import orderCheck from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderCheck";
 import orderCode from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderCode";
-import orderImg from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderImg";
+import orderImg from "@/components/page/checkorder/newOrderPaging/newOrderImg";
 import orderPay from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderPay";
 import dLoad from "@/components/common/dLoad";
 import { mapState, mapGetters, mapActions } from "vuex";
@@ -72,15 +72,20 @@ export default {
   created() {
     document.documentElement.scrollTop = 0;
     this.getData();
+    this.axios.post('/treatmng/dycheckorder/getCheckReport', {
+      order_seqno: this.orderSeqno
+    }).then((res) => {
+      console.log(res)
+    })
   },
   computed: {
     ...mapState("changeCheckOrder", {
       order: state => state.order
     }),
-    ...mapGetters("changeCheckOrder", ["curProjects"])
+    ...mapGetters("changeCheckOrder", ["curProjects", "imgDataList"])
   },
   methods: {
-    ...mapActions("changeCheckOrder", ["set_order"]),
+    ...mapActions("changeCheckOrder", ["set_order", "update_imgs"]),
     getData(noLoad) {
       if (!noLoad) {
         this.showLoad = true;
@@ -98,6 +103,44 @@ export default {
         })
         .catch(console.log)
         .then(() => (this.showLoad = false));
+    },
+    changeImg(str) {
+      this.update_imgs(str);
+    },
+    handleOrder(type) {
+      if (type == 1) {
+        this.axios
+          .post("/weixin/sales/dyCheckOrder/refund", {
+            order_seqno: this.orderSeqno
+          })
+          .then(response => {
+            let res = response.data;
+            if (res.code == 1000) {
+              this.$Message.infor("已确认退款");
+              this.$router.go(-1);
+            } else {
+              this.$Message.infor(res.msg);
+            }
+          })
+          .catch(console.log);
+      } else if (type == 2) {
+        this.axios
+          .post("/weixin/sales/dyCheckOrder/comfirm", {
+            order_seqno: this.orderSeqno,
+            check_images: JSON.stringify(this.imgDataList),
+            pay_type: this.order.pay_type == 4 ? 1 : 0
+          })
+          .then(response => {
+            let res = response.data;
+            if (res.code == 1000) {
+              this.$Message.infor("确认成功");
+              this.$router.go(-1);
+            } else {
+              this.$Message.infor(res.msg);
+            }
+          })
+          .catch(console.log);
+      }
     }
   }
 };

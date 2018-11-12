@@ -18,11 +18,11 @@
                    @change="checkedPayType=4">微信
           </d-radio>
         </div>
-        <div>
+        <!-- <div>
           <d-radio :name="'pay-type'" :id="'pay-type-yhk'" :checkedVal=5 :curVal="checkedPayType"
                    @change="checkedPayType=5">支付宝
           </d-radio>
-        </div>
+        </div> -->
         <div>
           <d-radio :name="'pay-type'" :id="'pay-type-qf'" :checkedVal=6 :curVal="checkedPayType"
                    @change="checkedPayType=6">欠费处理
@@ -36,7 +36,7 @@
 <script>
 import infoHeader from "@/components/common/infoHeader";
 import dRadio from "@/components/common/dRadio";
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
   name: "newOrderPay",
@@ -46,16 +46,29 @@ export default {
   },
   data() {
     return {
-      checkedPayType: 4
+      checkedPayType: -1
     };
+  },
+  created() {
+    this.set_payType(this.checkedPayType);
+  },
+  watch: {
+    checkedPayType(newVal) {
+      this.set_payType(newVal);
+    }
   },
   computed: {
     ...mapState("changeCheckOrder", {
       projectList: state => state.order.items_info
     }),
-    ...mapGetters("changeCheckOrder", [
-      "orderPrice",
-    ])
+    ...mapGetters("changeCheckOrder", ["orderPrice"]),
+    // payType() {
+    //   this.set_payType(this.checkedPayType);
+    //   return this.checkedPayType;
+    // }
+  },
+  methods: {
+    ...mapActions("changeCheckOrder", ["set_payType"])
   }
 };
 </script>
