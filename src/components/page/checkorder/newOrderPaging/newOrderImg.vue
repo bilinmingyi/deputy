@@ -3,8 +3,9 @@
     <info-header>上传图片</info-header>
     <div class="bg-fff p15 mb12 upload_img_block">
       <div class="add_img" v-for="(imgData,index) in imgDataList">
-        <div v-if="imgData!=''">
+        <div v-if="imgData!=''" style="position: relative;">
           <img :src="imgData" @click="showImg(imgData)">
+          <div class="img_delete_btn" @click.stop="deleteImg(index)">删除</div>
         </div>
         <div v-else @click.stop.prevent="fileClick(index)">+</div>
         <input style="display: none;" type="file" :id="'img-'+index" @change="fileChange($event)"/>
@@ -41,6 +42,10 @@
       fileClick(index) {
         this.currIndex = index;
         document.getElementById('img-' + index).click();
+      },
+      deleteImg(index){
+        this.imgDataList.splice(index,1,'');
+        this.$emit("datachange",JSON.stringify(this.imgDataList))
       },
       fileChange(el) {
         if (!el.target.files[0].size) return;
@@ -93,6 +98,7 @@
   .upload_img_block .add_img img{
     height: calc(20vw - 0.676rem);
     width: calc(20vw - 0.676rem);
+    border-radius: 0.25rem;
   }
 
   .upload_img_block .add_img_title {
@@ -101,5 +107,17 @@
     text-align: center;
     color: #7C7C7C;
     font-size: 0.75rem;
+  }
+  .upload_img_block .img_delete_btn{
+    position: absolute;
+    bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    z-index: 200;
   }
 </style>
