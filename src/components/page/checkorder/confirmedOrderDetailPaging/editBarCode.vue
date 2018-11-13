@@ -2,12 +2,12 @@
     <div>
       <d-header>条码编辑</d-header>
       <section class="content">
-        <div v-for="item in specimens">
+        <div v-for="(item, index) in specimens">
           <info-header noBorder>{{item.name}}</info-header>
           <div class="bg-fff pl12 pr12 pb20 mb12">
             <div class="pl12 pr12 input-btn-box">
               <input type="text" placeholder="条码" v-model="item.barcode">
-              <button>扫码</button>
+              <button  @click.stop="scanCode(index)">扫码</button>
             </div>
             <div class="pl12 pr12 pt16 counter-box">
               <counter :min=0 v-model="item.volumn"></counter>
@@ -26,6 +26,7 @@ import dHeader from "@/components/common/dHeader";
 import infoHeader from "@/components/common/infoHeader";
 import counter from "@/components/common/counter";
 import { mapState, mapActions } from "vuex";
+import getWXSign from "@/assets/js/wx";
 export default {
   props: ["orderSeqno"],
   components: {
@@ -45,29 +46,48 @@ export default {
     let axios = this.axios;
     let barCodeInfo = this.specimens;
     let updateArr = [];
-    barCodeInfo.forEach((item) => {
-      updateArr.push(this.axios.post("/weixin/sales/dyCheckOrderSpecimens/update", {
-        id: item.id,
-        order_seqno: this.orderSeqno,
-        volumn: item.volumn,
-        barcode: item.barcode,
-        memo: item.memo
-      }))
-    })
-    axios.all(updateArr).then(axios.spread((...rest) => {
-      let status = true;
-      for (let i = 0, len = rest.length; i < len; i++) {
-        let response = rest[i].data;
-        let config = rest[i].config;
-        if (response.code != 1000) {
-          this.$Message.infor(response.msg);
-          status = false;
-          next(false);
-          break;
+    barCodeInfo.forEach(item => {
+      updateArr.push(
+        this.axios.post("/weixin/sales/dyCheckOrderSpecimens/update", {
+          id: item.id,
+          order_seqno: this.orderSeqno,
+          volumn: item.volumn,
+          barcode: item.barcode,
+          memo: item.memo
+        })
+      );
+    });
+    axios.all(updateArr).then(
+      axios.spread((...rest) => {
+        let status = true;
+        for (let i = 0, len = rest.length; i < len; i++) {
+          let response = rest[i].data;
+          let config = rest[i].config;
+          if (response.code != 1000) {
+            this.$Message.infor(response.msg);
+            status = false;
+            next(false);
+            break;
+          }
         }
-      }
-      status && next();
-    }))
+        status && next();
+      })
+    );
+  },
+  methods: {
+    scanCode(index) {
+      var self = this;
+      getWXSign.apply(this).then(data => {
+        wx.scanQRCode({
+          needResult: 1,
+          scanType: ["qrCode", "barCode"],
+          success: function(res) {
+            var result = res.resultStr;
+            self.specimens[index].barCode = result;
+          }
+        });
+      });
+    }
   }
 };
 </script>
