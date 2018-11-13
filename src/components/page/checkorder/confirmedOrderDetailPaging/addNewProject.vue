@@ -13,7 +13,7 @@
       <div class="project-box p15">
         <ul>
           <li v-for="item in dataList" @click.stop="addProject(item)" :class="{'active_li':checkAddMed(item.id)}">
-            {{item.name}} ({{item.trade_price}})元
+            {{item.name}} ({{item.trade_price}}元)
           </li>
         </ul>
       </div>
