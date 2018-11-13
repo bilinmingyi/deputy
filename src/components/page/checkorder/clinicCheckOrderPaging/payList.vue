@@ -47,6 +47,7 @@
           this.showLoad = true;
           this.axios.post("/weixin/sales/dyCheckOrder/list", {
             "is_paid": 0,
+            "status_arr": ['CHECKING', 'DONE'],
             "clinic_id":this.clinicId,
             "page_size": this.pageSize,
             "page": this.page
