@@ -38,6 +38,11 @@
         imgDataList:JSON.parse(this.imgList)
       }
     },
+    watch: {
+      imgList(newVal) {
+        this.imgDataList = JSON.parse(newVal);
+      }
+    },
     methods: {
       fileClick(index) {
         this.currIndex = index;
