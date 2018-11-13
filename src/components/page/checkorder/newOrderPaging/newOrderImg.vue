@@ -8,7 +8,7 @@
           <div class="img_delete_btn" @click.stop="deleteImg(index)">删除</div>
         </div>
         <div v-else @click.stop.prevent="fileClick(index)">+</div>
-        <input style="display: none;" type="file" :id="'img-'+index" @change="fileChange($event)"/>
+        <input style="display: none;" type="file" :id="'img-'+index" @change="fileChange($event,index)"/>
       </div>
       <div class="add_img_title">最多可上传3张照片</div>
     </div>
@@ -52,12 +52,13 @@
         this.imgDataList.splice(index,1,'');
         this.$emit("datachange",JSON.stringify(this.imgDataList))
       },
-      fileChange(el) {
+      fileChange(el,index) {
         if (!el.target.files[0].size) return;
         var formData = new FormData();
         formData.append("file", el.target.files[0]);
         this.axios.post("/weixin/sales/dyCheckOrder/imgUpload", formData).then(respone => {
           const res=respone.data;
+          document.querySelector('#img-'+index).value=null
           if(res.code==1000){
             this.imgDataList.splice(this.currIndex,1,res.data);
             this.$emit("datachange",JSON.stringify(this.imgDataList))
