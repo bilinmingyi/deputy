@@ -138,7 +138,7 @@ export default {
           })
           .catch(console.log);
       } else if (type == 2) {
-        if (this.order.item_infos.length === 0) {
+        if (this.order.items_info.length === 0) {
           this.$Message.infor('至少添加一个检验项目');
           return;
         }
