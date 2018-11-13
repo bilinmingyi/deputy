@@ -17,10 +17,12 @@
       </section>
     </section>
     <section class="home_top">
-      <router-link  class="top_item" :to="{path:'/checkListPage/newOrderPage',query:{clinicId:clinicId}}">
+      <!-- <router-link  class="top_item" :to="{path:'/checkListPage/newOrderPage',query:{clinicId:clinicId}}"> -->
+      <div class="top_item" @click="jumpToNewOrder">
         <img src="../../../assets/img/jyld.png">
         <span>检验录单</span>
-      </router-link>
+      </div>
+      <!-- </router-link> -->
       <router-link class="top_item" :to="{path:`/checkListPage/clinicCheckOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
         <img src="../../../assets/img/jy.png">
         <span>检验订单查询</span>
@@ -54,6 +56,7 @@
 <script>
   import dHeader from '@/components/common/dHeader.vue'
   import dLoad from "@/components/common/dLoad";
+  import { mapActions } from 'vuex'
   export default {
     name: "clinicDetail",
     props:['clinicId'],
@@ -87,6 +90,11 @@
         .then(() => this.showLoad = false);
     },
     methods:{
+      ...mapActions('newCheckOrder', ['cancel_order']),
+      jumpToNewOrder() {
+        this.cancel_order();
+        this.$router.push({path:'/checkListPage/newOrderPage',query:{clinicId:this.clinicId}})
+      },
       getDoctorList(){
         var self=this;
        return self.axios.post("/weixin/sales/clinic/doctorList",{

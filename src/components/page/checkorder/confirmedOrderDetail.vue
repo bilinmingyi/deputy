@@ -1,6 +1,6 @@
 <template>
   <div>
-    <d-header @click="reset_order()">订单详情</d-header>
+    <d-header>订单详情</d-header>
     <section class="content">
       <order-report v-if="status!='WAITCONFIRM'"></order-report>
       <info-bar :title="'患者详情'">
@@ -120,7 +120,6 @@ export default {
     },
     handleOrder(type) {
       if (type == -1) {
-        this.reset_order();
         this.$router.go(-1);
       } else if (type == 1) {
         this.axios

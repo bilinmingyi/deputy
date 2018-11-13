@@ -1,6 +1,6 @@
 <template>
   <div>
-    <d-header @click="cancel">检验录单</d-header>
+    <d-header>检验录单</d-header>
     <section class="content">
       <!--订单患者信息组件-->
       <order-patient></order-patient>
@@ -60,11 +60,7 @@
       ...mapActions('newCheckOrder', [
         'set_imgList',
         'set_remark',
-        'cancel_order'
       ]),
-      cancel(){
-        this.cancel_order()
-      },
       init() {
         this.$store.commit('newCheckOrder/SET_CLINICID', this.$route.query.clinicId)
       },
@@ -75,7 +71,6 @@
         if (type == 1) {
           this.$router.go(-1);
         } else if (type == 2) {
-          this.cancel_order();
           this.$router.go(-1);
         }
       },
@@ -140,9 +135,7 @@
         }).then(respone => {
           var res=respone.data;
           if(res.code===1000){
-            this.cancel_order();
             if(this.allState.prescription.payType==1){
-              this.cancel_order();
               window.location.href='/weixin/pay/?orderType=5&orderSeqno='+res.data;
             }else {
               this.close(2);

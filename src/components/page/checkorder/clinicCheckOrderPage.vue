@@ -15,11 +15,9 @@
       </keep-alive>
     </section>
     <div class="record_sheet">
-      <router-link :to="{path:'/checkListPage/newOrderPage',query:{clinicId:clinicId}}">
-        <button>
+        <button @click="jumpToNewOrder">
           我要录单
         </button>
-      </router-link>
     </div>
   </div>
 </template>
@@ -29,7 +27,7 @@
   import allList from "@/components/page/checkorder/clinicCheckOrderPaging/allList.vue"
   import confirmedList from "@/components/page/checkorder/clinicCheckOrderPaging/confirmedList.vue"
   import payList from "@/components/page/checkorder/clinicCheckOrderPaging/payList.vue"
-
+  import { mapActions } from 'vuex'
   export default {
     name: "clinicCheckOrderPage",
     props: ['clinicId'],
@@ -64,6 +62,11 @@
       payList
     },
     methods: {
+      ...mapActions('newCheckOrder', ['cancel_order']),
+      jumpToNewOrder() {
+        this.cancel_order();
+        this.$router.push({path:'/checkListPage/newOrderPage',query:{clinicId:this.clinicId}})
+      },
       changeTab(tab) {
         this.currTab = tab;
       },

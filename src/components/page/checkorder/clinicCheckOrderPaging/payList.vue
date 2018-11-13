@@ -1,7 +1,7 @@
 <template>
   <div>
-    <router-link v-for="(order,index) in dataList" :key="index" :to="`/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${order.order_seqno}`">
-      <div class="order_item">
+    <!-- <router-link v-for="(order,index) in dataList" :key="index" :to="`/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${order.order_seqno}`"> -->
+      <div class="order_item" v-for="(order,index) in dataList" @click="jumpToDetail(order.order_seqno)">
         <div class="order_item_top">
           <span>{{order.doctor_name}}</span>
           <span>{{order.create_time|fullTime}}</span>
@@ -15,7 +15,7 @@
         </div>
         <hr class="full-screen-hr">
       </div>
-    </router-link>
+    <!-- </router-link> -->
     <div class="add_more" v-show="isComplete && dataList.length==0">暂无数据</div>
     <div class="add_more" v-if="isCanAdd" @click.stop="addMore()">查看更多...</div>
     <d-load v-if="showLoad"></d-load>
@@ -24,6 +24,7 @@
 
 <script>
     import dLoad from "@/components/common/dLoad";
+    import { mapActions } from "vuex";
     export default {
       components: {
         dLoad
@@ -43,6 +44,11 @@
         this.getData()
       },
       methods: {
+        ...mapActions("changeCheckOrder", ["reset_order"]),
+        jumpToDetail(url) {
+          this.reset_order();
+          this.$router.push(`/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${url}`)
+        },
         getData(isAdd) {
           this.showLoad = true;
           this.axios.post("/weixin/sales/dyCheckOrder/list", {
