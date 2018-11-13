@@ -1,6 +1,6 @@
 <template>
   <div>
-    <d-header>检验录单</d-header>
+    <d-header @click="cancel">检验录单</d-header>
     <section class="content">
       <!--订单患者信息组件-->
       <order-patient></order-patient>
@@ -17,7 +17,6 @@
         <input type="text" placeholder="请输入备注" :value="remark" @input="set_remark($event.target.value)">
       </div>
       <div class="pay_operation">
-        <button @click.stop="close(1)">关闭</button>
         <button @click.stop="close(2)">取消订单</button>
         <button @click.stop="sureOrder()">提交</button>
       </div>
@@ -63,6 +62,9 @@
         'set_remark',
         'cancel_order'
       ]),
+      cancel(){
+        this.cancel_order()
+      },
       init() {
         this.$store.commit('newCheckOrder/SET_CLINICID', this.$route.query.clinicId)
       },
@@ -140,9 +142,10 @@
           if(res.code===1000){
             this.cancel_order();
             if(this.allState.prescription.payType==1){
+              this.cancel_order();
               window.location.href='/weixin/pay/?orderType=5&orderSeqno='+res.data;
             }else {
-              this.close(1);
+              this.close(2);
             }
           }else {
             this.$Message.infor(res.msg)
@@ -150,8 +153,6 @@
 
         }).catch(error => {
           console.log(error)
-        }).then(()=>{
-          window.location.href
         })
       }
     }
