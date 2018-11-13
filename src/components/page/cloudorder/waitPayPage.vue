@@ -66,8 +66,8 @@
       </div>
       <div class="pay_operation">
         <button @click.stop="$router.go(-1)">关闭</button>
-        <button>取消订单</button>
-        <button>去支付</button>
+        <button v-if="order.status==='UNPAID'" @click.stop="cancelOrder()">取消订单</button>
+        <button v-if="order.status==='UNPAID'" @click.stop="toPay()">去支付</button>
       </div>
     </section>
     <d-load v-if="showLoad"></d-load>
@@ -79,18 +79,19 @@
   import infoBar from "@/components/common/infoBar";
   import infoHeader from "@/components/common/infoHeader";
   import dLoad from "@/components/common/dLoad";
+
   export default {
     name: "waitPayPage",
-    props:['orderSeqno'],
-    data(){
-      return{
+    props: ['orderSeqno'],
+    data() {
+      return {
         showLoad: false,
-        clinicId:this.$route.query.clinicId,
+        clinicId: this.$route.query.clinicId,
         order: {},
       }
     },
-    beforeRouteEnter(to,form,next){
-      next(vm=>{
+    beforeRouteEnter(to, form, next) {
+      next(vm => {
         vm.getData();
       });
     },
@@ -100,48 +101,69 @@
       infoBar,
       dLoad
     },
-    created(){
+    created() {
 
     },
-    methods:{
-      getData(){
-        this.showLoad=true;
-        this.axios.post("/weixin/sales/dyTreatOrder/detail",{
-          'order_seqno':this.orderSeqno,
-          'clinic_id':this.clinicId
-        }).then(respone=>{
-          var res=respone.data;
-          this.showLoad=false;
-          if(res.code===1000){
-            this.order=res.data;
-          }else {
+    methods: {
+      getData() {
+        this.showLoad = true;
+        this.axios.post("/weixin/sales/dyTreatOrder/detail", {
+          'order_seqno': this.orderSeqno,
+          'clinic_id': this.clinicId
+        }).then(respone => {
+          var res = respone.data;
+          this.showLoad = false;
+          if (res.code === 1000) {
+            this.order = res.data;
+          } else {
             this.$Message.infor(res.msg)
           }
-        }).catch(error=>{
+        }).catch(error => {
           console.log(error)
         })
       },
+      toPay() {
+        window.location.href = '/weixin/pay/?orderType=5&orderSeqno=' + this.orderSeqno;
+      },
+      cancelOrder() {
+        this.axios.post("/treatmng/dytreatorder/cancel", {
+          order_seqno: this.orderSeqno
+        }).then(respone => {
+          var res = respone.data;
+          if (res.code === 1000) {
+            this.$router.go(-1);
+          } else {
+            this.$Message.infor(res.msg)
+          }
+        }).catch(error => {
+          console.log(error)
+        })
+      }
 
     }
   };
 </script>
 
 <style scoped>
-.content {
-  min-height: calc(100vh - 2.75rem);
-  width: 100vw;
-  margin: 2.75rem 0 0 0;
-}
-.payment {
-  background: #ffffff;
-  color: #7c7c7c;
-  font-size: 1rem;
-  padding: 0.78rem 0.94rem;
-  margin-bottom: 4.25rem;
-}
-.payment span:last-child {
-  margin-left: 1rem;
-  color: #eb6262;
-  font-weight: bold;
-}
+  .content {
+    min-height: calc(100vh - 2.75rem);
+    width: 100vw;
+    margin: 2.75rem 0 0 0;
+  }
+
+  .payment {
+    background: #FFFFFF;
+    color: #7C7C7C;
+    font-size: 1rem;
+    padding: 0.78rem 0.94rem;
+    margin-bottom: 4.25rem;
+  }
+
+  .payment span:last-child {
+    margin-left: 1rem;
+    color: #EB6262;
+    font-weight: bold;
+  }
+
+
 </style>

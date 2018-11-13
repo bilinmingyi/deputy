@@ -601,7 +601,7 @@ button {
   margin: 0 0.33rem;
   line-height: 2.5rem;
 }
-.pay_operation button:nth-child(3){
+.pay_operation button:last-child{
   color: #FFFFFF;
   background: #08BAC6;
 }
