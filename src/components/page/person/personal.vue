@@ -4,12 +4,12 @@
       个人中心
     </d-header>
     <section class="person_content">
-      <img v-if="avatar!==''" :src="avatar"/>
+      <img class="person_portrait" v-if="avatar!==''" :src="avatar"/>
       <img v-else class="person_portrait" src="../../../assets/img/ndb.png">
       <div class="person_infor">
         <div>
           <span class="person_name">{{name}}</span>
-          <span class="person_age">{{birthday|birthToYear}}岁</span>
+          <span class="person_age" v-if="birthday !== 0 && birthday !== ''">{{birthday|birthToYear}}岁</span>
         </div>
         <div class="person_id">帐号ID：{{id}}</div>
       </div>
