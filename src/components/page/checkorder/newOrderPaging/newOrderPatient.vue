@@ -111,7 +111,8 @@
             self.showSelect = false;
             return
           }
-          self.axios.post("/treatmng/patient/list", {
+          self.axios.post("/weixin/sales/patient/list", {
+            "clinic_id":self.clinicId,
             "query": query
           }).then((respone) => {
             var res = respone.data;
