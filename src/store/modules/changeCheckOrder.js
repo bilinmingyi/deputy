@@ -90,7 +90,7 @@ const changeOne = {
     imgDataList: state => {
       let imgs = state.order.check_images;
       if (imgs) {
-        return imgs;
+        return typeof imgs === 'string' ? imgs : JSON.stringify(imgs);
       } else {
         return '["", "", ""]';
       }

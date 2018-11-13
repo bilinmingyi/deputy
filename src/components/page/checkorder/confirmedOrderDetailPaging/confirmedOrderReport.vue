@@ -67,14 +67,12 @@ export default {
         .catch(console.log);
     },
     showPic(pics) {
-      getWXSign()
-        .apply(this)
-        .then(data => {
-          wx.previewImage({
-            current: pics[0],
-            urls: pics
-          });
+      getWXSign.apply(this).then(data => {
+        wx.previewImage({
+          current: pics[0],
+          urls: pics
         });
+      });
     }
   }
 };
