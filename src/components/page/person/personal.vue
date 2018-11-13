@@ -9,7 +9,7 @@
       <div class="person_infor">
         <div>
           <span class="person_name">{{name}}</span>
-          <span class="person_age" v-if="birthday !== 0 && birthday !== ''">{{birthday|birthToYear}}岁</span>
+          <span class="person_age" v-if="birthday !== ''">{{birthday|birthToYear}}岁</span>
         </div>
         <div class="person_id">帐号ID：{{id}}</div>
       </div>
@@ -68,15 +68,15 @@ export default {
       isLeader: false,
       showList: false,
       teamId: null,
+      test: false,
     };
   },
   filters: {
     birthToYear(val) {
-      if(val=='' ||val==0){
+      if(val===''){
         return
       }
       var today = new Date();
-
       return (
         Number(today.getFullYear()) -
         Number(new Date(Number(val)).getFullYear())
@@ -144,6 +144,7 @@ export default {
   height: 3.5rem;
   width: 3.5rem;
   margin-right: 0.625rem;
+  border-radius: 50%;
 }
 
 .person_infor {
