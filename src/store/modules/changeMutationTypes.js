@@ -13,5 +13,7 @@ export default {
   // 更新图片信息
   UPDATE_IMGS: 'UPDATE_IMGS',
   // 设置付款方式
-  SET_PAYTYPE: 'SET_PAYTYPE'
+  SET_PAYTYPE: 'SET_PAYTYPE',
+  //重置订单
+  RESET_ORDER: 'RESET_ORDER'
 }

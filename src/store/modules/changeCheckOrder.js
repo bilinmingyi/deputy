@@ -4,19 +4,19 @@ const changeOne = {
   namespaced: true,
   state: {
     order: {
-      id: 7,
-      clinic_id: 5,
-      clinic_name: "大医联帮测试诊所",
-      order_seqno: "DC0279283644002",
+      id: -1,
+      clinic_id: -1,
+      clinic_name: "",
+      order_seqno: "",
       treat_order_seqno: "",
-      doctor_id: 2,
-      doctor_name: "demo",
-      patient_id: 81,
-      patient_name: "这么大",
-      patient_mobile: "15622146619",
-      patient_age: 18,
-      patient_sex: 1,
-      trade_price: 40,
+      doctor_id: -1,
+      doctor_name: "",
+      patient_id: -1,
+      patient_name: "",
+      patient_mobile: "",
+      patient_age: 0,
+      patient_sex: 0,
+      trade_price: 0,
       check_images: "",
       confirm_time: 0,
       check_time: 0,
@@ -29,49 +29,18 @@ const changeOne = {
       amount_receivable: 0,
       amount_receipts: 0,
       amount_arrears: 0,
-      status: "WAITCONFIRM",
+      status: "",
       memo: "",
       operator_memo: "",
-      create_time: 1541558844860,
-      creator: "测先生",
-      sales_id: 7,
-      sales_name: "测先生",
-      provider_code: "gz_test006",
-      provider: "佛山迪安",
+      create_time: 0,
+      creator: "",
+      sales_id: 0,
+      sales_name: "",
+      provider_code: "",
+      provider: "",
       is_lock: 0,
-      items_info: [
-        {
-          id: 15,
-          clinic_id: 5,
-          order_seqno: "DC0279283644002",
-          treat_order_seqno: "",
-          item_id: 5,
-          name: "test3",
-          provider_code: "gz_test006",
-          provider_check_code: "test3",
-          sale_price: 50,
-          cost_price: 40,
-          memo: "3",
-          set_id: 0,
-          set_name: "",
-          set_price: 0,
-          container_code: "FS_C12",
-          create_time: 1541558844887
-        }
-      ],
-      dyCheckOrderSpecimenInfos: [
-        {
-          id: 5,
-          order_seqno: "DC0279283644002",
-          provider: "gz_test006",
-          container_code: "FS_C12",
-          name: "咽拭子",
-          barcode: "652479854641",
-          volumn: 1,
-          memo: "备注",
-          create_time: 1541558844860
-        }
-      ]
+      items_info: [],
+      dyCheckOrderSpecimenInfos: []
     },
     newProjects: {
       check_list: [],
@@ -168,30 +137,80 @@ const changeOne = {
     },
     [types.SET_PAYTYPE](state, type) {
       state.order.pay_type = type
+    },
+    [types.RESET_ORDER](state) {
+
+      state.order = {
+        id: -1,
+        clinic_id: -1,
+        clinic_name: "",
+        order_seqno: "",
+        treat_order_seqno: "",
+        doctor_id: -1,
+        doctor_name: "",
+        patient_id: -1,
+        patient_name: "",
+        patient_mobile: "",
+        patient_age: 0,
+        patient_sex: 0,
+        trade_price: 0,
+        check_images: "",
+        confirm_time: 0,
+        check_time: 0,
+        charge_time: 0,
+        deliver_time: 0,
+        pay_type: 0,
+        pay_time: 0,
+        pay_image: "",
+        is_paid: 0,
+        amount_receivable: 0,
+        amount_receipts: 0,
+        amount_arrears: 0,
+        status: "",
+        memo: "",
+        operator_memo: "",
+        create_time: 0,
+        creator: "",
+        sales_id: 0,
+        sales_name: "",
+        provider_code: "",
+        provider: "",
+        is_lock: 0,
+        items_info: [],
+        dyCheckOrderSpecimenInfos: []
+      }
+      state.newProjects = {
+        check_list: [],
+        checkset_list: []
+      }
+      state.newImgList = ''
     }
   },
   actions: {
-    set_order: ({ commit }, obj) => {
+    set_order: ({commit}, obj) => {
       commit(types.SET_ORDER, obj);
     },
-    add_project: ({ commit }, obj) => {
+    add_project: ({commit}, obj) => {
       commit(types.ADD_CHECKORDERPROJECT, obj);
     },
-    delete_checkProject: ({ commit }, index) => {
+    delete_checkProject: ({commit}, index) => {
       commit(types.DELETE_CHECKPROJECT, index);
     },
-    delete_checkSetProject: ({ commit }, index) => {
+    delete_checkSetProject: ({commit}, index) => {
       commit(types.DELETE_CHECKSETPROJECT, index);
     },
-    clear_newProjectList: ({ commit }) => {
+    clear_newProjectList: ({commit}) => {
       commit(types.CLEAR_NEWPROJECTLST);
     },
-    update_imgs: ({ commit }, str) => {
+    update_imgs: ({commit}, str) => {
       commit(types.UPDATE_IMGS, str);
     },
-    set_payType: ({ commit }, type) => {
+    set_payType: ({commit}, type) => {
       commit(types.SET_PAYTYPE, type);
     },
+    reset_order: ({commit}) => {
+      commit(types.RESET_ORDER);
+    }
   }
 };
 export default changeOne;

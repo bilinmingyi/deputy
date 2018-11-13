@@ -68,35 +68,35 @@ const newOne = {
     [types.SET_IMGLIST](state, obj) {
       state.prescription.imgList = JSON.parse(obj);
     },
-    [types.SET_REMARK](state, obj){
-      state.prescription.doctorRemark=obj;
+    [types.SET_REMARK](state, obj) {
+      state.prescription.doctorRemark = obj;
     },
-    [types.CANCEL_ORDER](state){
-      state.prescription={
-        patient: {
-          name: "",
-          mobile: "",
-          age: "",
-          birthMonth: "",
-          birthday: "",
-          sex: 0
-        },
-        clinic: {
-          clinicId: "",
-          doctorList: [],
-          doctorId: ""
-        },
-        prescription: {
-          recipeType: 7,
-          payType: 1,
-          money: 0,
-          isCould: 1,
-          doctorRemark: "",
-          items: [],
-          contains: [],
-          imgList: ['', '', '']
-        }
+    [types.CANCEL_ORDER](state) {
+      state.patient = {
+        name: "",
+        mobile: "",
+        age: "",
+        birthMonth: "",
+        birthday: "",
+        sex: 0
+      };
+      state.clinic = {
+        clinicId: "",
+        doctorList: [],
+        doctorId: ""
       }
+
+      state.prescription = {
+        recipeType: 7,
+        payType: 1,
+        money: 0,
+        isCould: 1,
+        doctorRemark: "",
+        items: [],
+        contains: [],
+        imgList: ['', '', '']
+      }
+
     }
   },
   actions: {
@@ -134,7 +134,7 @@ const newOne = {
       commit(types.SET_IMGLIST, obj)
     },
     set_remark: ({commit}, obj) => {
-      commit(types.SET_REMARK,obj)
+      commit(types.SET_REMARK, obj)
     },
     cancel_order: ({commit}) => {
       commit(types.CANCEL_ORDER)
