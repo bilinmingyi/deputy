@@ -14,7 +14,7 @@
           <span>微信</span>
         </div>
       </section>
-      <section v-else-if="status==isPay===0 && 'WAITCONFIRM'">
+      <section v-else-if="isPay===0 && status=='WAITCONFIRM'">
         <hr class="full-screen-hr">
         <div class="pay_line pay_type_block">
           <div>

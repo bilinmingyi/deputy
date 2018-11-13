@@ -5,12 +5,12 @@
       <button v-if="isPay===0 && status=='WAITCONFIRM'" slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/addNewProject` })">添加项目</button>
     </info-header>
     <div class="bg-fff p15 mb12">
-      <touch-list :data="curProjects.check_list" @delete="deleteCheckProject" class="mb10" :can-delete="isPay===0?true:false">
+      <touch-list :data="curProjects.check_list" @delete="deleteCheckProject" class="mb10" :can-delete="status=='WAITCONFIRM' && isPay===0?true:false">
         <div slot-scope="{prop}">
           <span>{{prop.set_id ? prop.set_name : prop.name}}</span>
         </div>
       </touch-list>
-      <touch-list :data="curProjects.checkset_list" @delete="deleteCheckSetProject" :can-delete="isPay===0?true:false">
+      <touch-list :data="curProjects.checkset_list" @delete="deleteCheckSetProject" :can-delete="status=='WAITCONFIRM' && isPay===0?true:false">
         <div slot-scope="{prop}">
           <span>{{prop.set_name}}</span>
         </div>
