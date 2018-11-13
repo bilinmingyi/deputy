@@ -2,7 +2,7 @@
   <div>
     <info-header>
       条码信息
-      <button slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/editBarCode` })">编辑条码</button>
+      <button v-if="isPay===0 && status=='WAITCONFIRM'" slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/editBarCode` })">编辑条码</button>
     </info-header>
     <div class="barcode-box p15 mb12">
       <ul>
@@ -23,7 +23,9 @@ export default {
   computed: {
     ...mapState("changeCheckOrder", {
       orderSeqno: state => state.order.order_seqno,
-      barCodeList: state => state.order.dyCheckOrderSpecimenInfos
+      barCodeList: state => state.order.dyCheckOrderSpecimenInfos,
+      isPay: state => state.order.is_paid,
+      status: state => state.order.status
     })
   }
 };

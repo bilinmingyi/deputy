@@ -86,50 +86,71 @@
 </template>
 
 <script>
-  import dHeader from "@/components/common/dHeader.vue"
-  import infoBar from "@/components/common/infoBar";
-  import infoHeader from "@/components/common/infoHeader";
-  import dLoad from "@/components/common/dLoad";
-  export default {
-    name: "waitPayPage",
-    data(){
-      return{
-        showLoad: false,
-        order: {
-          time: "2018-12-23 22:26",
-          patientName: "王尼玛",
-          mobile: "13245678901",
-          doctor: "李教授"
-        },
+import dHeader from "@/components/common/dHeader.vue";
+import infoBar from "@/components/common/infoBar";
+import infoHeader from "@/components/common/infoHeader";
+import dLoad from "@/components/common/dLoad";
+export default {
+  components: {
+    dHeader,
+    infoHeader,
+    infoBar,
+    dLoad
+  },
+  // props: ["clinicId", "orderSeqno"],
+  data() {
+    return {
+      clinicId: this.$route.params.clinicId,
+      orderSeqno: this.$route.params.orderSeqno,
+      showLoad: false,
+      order: {
+        time: "2018-12-23 22:26",
+        patientName: "王尼玛",
+        mobile: "13245678901",
+        doctor: "李教授"
       }
-    },
-    components: {
-      dHeader,
-      infoHeader,
-      infoBar,
-      dLoad
+    };
+  },
+  created() {
+    this.getDate();
+  },
+  methods: {
+    getDate() {
+      this.axios
+        .post("/weixin/sales/dyTreatOrder/detail", {
+          order_seqno: this.orderSeqno,
+          clinic_id: this.clinicId
+        })
+        .then(response => {
+          let res = response.data;
+          if (res.code == 1000) {
+            this.set_order(res.data);
+          } else {
+            this.$Message.infor(res.msg);
+          }
+        })
+        .catch(console.log);
     }
   }
+};
 </script>
 
 <style scoped>
-  .content {
-    min-height: calc(100vh - 2.75rem);
-    width: 100vw;
-    margin: 2.75rem 0 0 0;
-  }
-  .payment{
-    background: #FFFFFF;
-    color: #7C7C7C;
-    font-size: 1rem;
-    padding: 0.78rem 0.94rem;
-    margin-bottom: 4.25rem;
-  }
-  .payment span:last-child{
-    margin-left: 1rem;
-    color: #EB6262;
-    font-weight: bold;
-  }
-
-
+.content {
+  min-height: calc(100vh - 2.75rem);
+  width: 100vw;
+  margin: 2.75rem 0 0 0;
+}
+.payment {
+  background: #ffffff;
+  color: #7c7c7c;
+  font-size: 1rem;
+  padding: 0.78rem 0.94rem;
+  margin-bottom: 4.25rem;
+}
+.payment span:last-child {
+  margin-left: 1rem;
+  color: #eb6262;
+  font-weight: bold;
+}
 </style>

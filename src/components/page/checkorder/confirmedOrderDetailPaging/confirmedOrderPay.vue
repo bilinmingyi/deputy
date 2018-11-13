@@ -7,15 +7,14 @@
         <span class="pay_money">{{orderPrice | priceFormat}}</span>
       </div>
 
-      <section v-if="isPay===1">
+      <section v-if="isPay==1">
         <hr class="full-screen-hr">
         <div class="pay_line">
           <span>支付方式</span>
           <span>微信</span>
         </div>
       </section>
-
-      <section v-if="isPay===0">
+      <section v-else-if="status==isPay===0 && 'WAITCONFIRM'">
         <hr class="full-screen-hr">
         <div class="pay_line pay_type_block">
           <div>
@@ -29,6 +28,13 @@
             </d-radio>
           </div>
           <div></div>
+        </div>
+      </section>
+      <section v-else>
+        <hr class="full-screen-hr">
+        <div class="pay_line">
+          <span>支付方式</span>
+          <span>欠费处理</span>
         </div>
       </section>
     </div>
@@ -47,9 +53,7 @@ export default {
     dRadio
   },
   data() {
-    return {
-
-    };
+    return {};
   },
   created() {
     this.set_payType(this.checkedPayType);
@@ -58,9 +62,10 @@ export default {
     ...mapState("changeCheckOrder", {
       projectList: state => state.order.items_info,
       isPay: state => state.order.is_paid,
-      checkedPayType: state => state.order.pay_type
+      checkedPayType: state => state.order.pay_type,
+      status: state => state.order.status
     }),
-    ...mapGetters("changeCheckOrder", ["orderPrice"]),
+    ...mapGetters("changeCheckOrder", ["orderPrice"])
     // payType() {
     //   this.set_payType(this.checkedPayType);
     //   return this.checkedPayType;

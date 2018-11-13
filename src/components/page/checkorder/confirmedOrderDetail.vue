@@ -2,6 +2,7 @@
   <div>
     <d-header @click="reset_order()">订单详情</d-header>
     <section class="content">
+      <order-report v-if="status!='WAITCONFIRM'"></order-report>
       <info-bar :title="'患者详情'">
         <div>
           <span>就诊时间：</span>
@@ -34,15 +35,6 @@
         <input v-else type="text" :value="order.memo" placeholder="请输入备注" style="border: none;outline: none"
                @input="set_order({memo:$event.target.value})">
       </div>
-      <section v-if="status=='DONE'" class="bottom">
-        <info-header>检验报告</info-header>
-        <div class="bg-fff pl15 pr15">
-          <div class="report-item">
-            <span><span style="color: #7C7C7C;">1: </span>报告名称 PDF</span>
-            <button>查看</button>
-          </div>
-        </div>
-      </section>
       <div class="pay_operation" v-if="status=='WAITCONFIRM'">
         <button @click="handleOrder(-1)">关闭</button>
         <button @click="handleOrder(3)" v-if="order.is_paid==0">取消订单</button>
@@ -66,6 +58,7 @@ import orderCode from "@/components/page/checkorder/confirmedOrderDetailPaging/c
 import orderImg from "@/components/page/checkorder/newOrderPaging/newOrderImg";
 import orderPay from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderPay";
 import dLoad from "@/components/common/dLoad";
+import orderReport from '@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderReport'
 import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
@@ -78,7 +71,8 @@ export default {
     orderImg,
     orderPay,
     dLoad,
-    infoHeader
+    infoHeader,
+    orderReport
   },
   props: ["orderSeqno"],
   data() {
@@ -89,11 +83,6 @@ export default {
   created() {
     document.documentElement.scrollTop = 0;
     this.getData();
-    this.axios.post('/treatmng/dycheckorder/getCheckReport', {
-      order_seqno: this.orderSeqno
-    }).then((res) => {
-      console.log(res)
-    })
   },
   computed: {
     ...mapState("changeCheckOrder", {
@@ -237,28 +226,5 @@ export default {
 input:disabled {
   background-color: #fff;
   color: #aca899;
-}
-
-.report-item {
-  height: 3.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: PingFangSC-Medium;
-  font-size: 0.9375rem;
-  color: #000000;
-  letter-spacing: 0;
-  text-align: left;
-  line-height: 42px;
-}
-
-.report-item button {
-  height: 2rem;
-  min-width: 3.75rem;
-  text-align: center;
-  line-height: 2rem;
-  background: #EBF8F9;
-  border: 1px solid #08BAC6;
-  border-radius: 0.25rem;
 }
 </style>

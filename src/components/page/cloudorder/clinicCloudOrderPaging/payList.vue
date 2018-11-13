@@ -1,6 +1,7 @@
 <template>
   <div>
-    <router-link v-for="(order,index) in dataList" :key="index" :to="`/cloudListPage/clinicCloudOrderPage/waitPayPage/${order.id}`">
+    <router-link v-for="(order,index) in dataList" :key="index"
+    :to="`/cloudListPage/clinicCloudOrderPage/waitPayPage/${order.id}/${order.orderSeqno}`">
       <div class="order_item">
         <div class="order_item_top">
           <span>{{order.doctorName}}</span>

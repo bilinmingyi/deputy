@@ -2,7 +2,7 @@
   <div>
     <dTime v-model="timeObj" class="search_block" @input="getData()"></dTime>
     <section class="mt188">
-      <router-link v-for="(order,index) in dataList" :key="index" :to="`/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${order.id}`">
+      <router-link v-for="(order,index) in dataList" :key="index" :to="`/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${order.order_seqno}`">
         <div class="order_item">
           <div class="order_item_top">
             <span>{{order.doctorName}}</span>

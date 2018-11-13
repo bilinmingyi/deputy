@@ -2,7 +2,7 @@
   <div>
     <info-header>
       检验项目
-      <button v-if="isPay===0" slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/addNewProject` })">添加项目</button>
+      <button v-if="isPay===0 && status=='WAITCONFIRM'" slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/addNewProject` })">添加项目</button>
     </info-header>
     <div class="bg-fff p15 mb12">
       <touch-list :data="curProjects.check_list" @delete="deleteCheckProject" class="mb10" :can-delete="isPay===0?true:false">
@@ -36,7 +36,8 @@ export default {
   computed: {
     ...mapState("changeCheckOrder", {
       orderSeqno: state => state.order.order_seqno,
-      isPay: state => state.order.is_paid
+      isPay: state => state.order.is_paid,
+      status: state => state.order.status
     }),
     ...mapGetters("changeCheckOrder", ["curProjects"])
   },
