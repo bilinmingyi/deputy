@@ -5,38 +5,38 @@
       <info-bar :title="'患者详情'">
         <div>
           <span>就诊时间：</span>
-          <span>{{order.time}}</span>
+          <span v-if="order.create_time!=undefined">{{order.create_time|fullTime}}</span>
         </div>
         <div>
           <span>患者姓名：</span>
-          <span>{{order.patientName}}</span>
+          <span>{{order.patient_name}}</span>
         </div>
         <div>
           <span>联系电话：</span>
-          <span>{{order.mobile}}</span>
+          <span>{{order.patient_mobile}}</span>
         </div>
         <div>
           <span>就诊医生：</span>
-          <span>{{order.doctor}}</span>
+          <span>{{order.doctor_name}}</span>
         </div>
       </info-bar>
       <info-bar :title="'配送地址'">
-        <button slot="btn">选择地址</button>
+
         <div>
           <span>联系人名：</span>
-          <span>{{order.time}}</span>
+          <span>{{order.contact}}</span>
         </div>
         <div>
           <span>联系电话：</span>
-          <span>{{order.patientName}}</span>
+          <span>{{order.phone_num}}</span>
         </div>
         <div>
           <span>详细地址：</span>
-          <span>{{order.mobile}}</span>
+          <span>{{order.address}}</span>
         </div>
         <div>
           <span>配送金额：</span>
-          <span style="color: red">￥12</span>
+          <span style="color: red">￥{{order.deliver_price}}</span>
         </div>
       </info-bar>
       <info-header>处方信息</info-header>
@@ -48,35 +48,24 @@
             <th>发药类型</th>
             <th>金额</th>
           </tr>
-          <tr>
-            <td>中药饮片</td>
-            <td>云药房</td>
-            <td>123</td>
+          <tr v-for="recipe in order.recipe_list">
+            <td>{{recipe.recipe_type|treatOrderType}}处方</td>
+            <td>
+              <span v-if="recipe.is_cloud==1">云药房</span>
+              <span v-else>本机构</span>
+            </td>
+            <td>￥{{recipe.price}}</td>
           </tr>
-          <tr>
-            <td>颗粒饮片</td>
-            <td>本机构</td>
-            <td>456</td>
-          </tr>
-          <tr>
-            <td>附加服务</td>
-            <td>云药房</td>
-            <td>789</td>
-          </tr>
-          <tr>
-            <td>中药饮片</td>
-            <td>本机构</td>
-            <td>012</td>
-          </tr>
+
           </tbody>
         </table>
       </div>
       <div class="payment">
         <span>付款金额</span>
-        <span>￥6666</span>
+        <span>￥{{order.price}}</span>
       </div>
       <div class="pay_operation">
-        <button>关闭</button>
+        <button @click.stop="$router.go(-1)">关闭</button>
         <button>取消订单</button>
         <button>去支付</button>
       </div>
@@ -86,53 +75,55 @@
 </template>
 
 <script>
-import dHeader from "@/components/common/dHeader.vue";
-import infoBar from "@/components/common/infoBar";
-import infoHeader from "@/components/common/infoHeader";
-import dLoad from "@/components/common/dLoad";
-export default {
-  components: {
-    dHeader,
-    infoHeader,
-    infoBar,
-    dLoad
-  },
-  // props: ["clinicId", "orderSeqno"],
-  data() {
-    return {
-      clinicId: this.$route.params.clinicId,
-      orderSeqno: this.$route.params.orderSeqno,
-      showLoad: false,
-      order: {
-        time: "2018-12-23 22:26",
-        patientName: "王尼玛",
-        mobile: "13245678901",
-        doctor: "李教授"
+  import dHeader from "@/components/common/dHeader.vue"
+  import infoBar from "@/components/common/infoBar";
+  import infoHeader from "@/components/common/infoHeader";
+  import dLoad from "@/components/common/dLoad";
+  export default {
+    name: "waitPayPage",
+    props:['orderSeqno'],
+    data(){
+      return{
+        showLoad: false,
+        clinicId:this.$route.query.clinicId,
+        order: {},
       }
-    };
-  },
-  created() {
-    this.getDate();
-  },
-  methods: {
-    getDate() {
-      this.axios
-        .post("/weixin/sales/dyTreatOrder/detail", {
-          order_seqno: this.orderSeqno,
-          clinic_id: this.clinicId
-        })
-        .then(response => {
-          let res = response.data;
-          if (res.code == 1000) {
-            this.set_order(res.data);
-          } else {
-            this.$Message.infor(res.msg);
+    },
+    beforeRouteEnter(to,form,next){
+      next(vm=>{
+        vm.getData();
+      });
+    },
+    components: {
+      dHeader,
+      infoHeader,
+      infoBar,
+      dLoad
+    },
+    created(){
+
+    },
+    methods:{
+      getData(){
+        this.showLoad=true;
+        this.axios.post("/weixin/sales/dyTreatOrder/detail",{
+          'order_seqno':this.orderSeqno,
+          'clinic_id':this.clinicId
+        }).then(respone=>{
+          var res=respone.data;
+          this.showLoad=false;
+          if(res.code===1000){
+            this.order=res.data;
+          }else {
+            this.$Message.infor(res.msg)
           }
+        }).catch(error=>{
+          console.log(error)
         })
-        .catch(console.log);
+      },
+
     }
-  }
-};
+  };
 </script>
 
 <style scoped>
