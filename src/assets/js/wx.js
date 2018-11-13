@@ -15,7 +15,7 @@ export default function getWXSign() {
           jsApiList: ['scanQRCode','previewImage']
         })
         wx.ready(()=>{
-          resolve()
+          resolve(wx)
         })
         wx.error((res)=>{
           console.log(res)

@@ -77,7 +77,7 @@ export default {
   methods: {
     scanCode(index) {
       var self = this;
-      getWXSign.apply(this).then(data => {
+      getWXSign.apply(this).then(wx => {
         wx.scanQRCode({
           needResult: 1,
           scanType: ["qrCode", "barCode"],

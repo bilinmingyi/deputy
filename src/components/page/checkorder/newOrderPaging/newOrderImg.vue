@@ -71,7 +71,7 @@
       },
       showImg(imgData){
         var imgList=this.imgDataList;
-        getWXSign.apply(this).then(data=>{
+        getWXSign.apply(this).then(wx=>{
           wx.previewImage({
             current:imgData,
             urls: imgList
