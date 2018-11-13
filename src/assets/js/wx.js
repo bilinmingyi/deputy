@@ -2,10 +2,11 @@ import wx from 'weixin-js-sdk'
 
 export default function getWXSign() {
   return new Promise((resolve, reject) => {
-    this.axios.post('/weixin/sales/wxConfig').then(respone => {
+    this.axios.post('/weixin/sales/wxConfig',{
+       'uri':window.location.pathname+window.location.hash+window.location.search
+    }).then(respone => {
       const res = respone.data;
       if (res.code === 1000) {
-
         wx.config({
           debug: false,
           appId: res.data.appId,

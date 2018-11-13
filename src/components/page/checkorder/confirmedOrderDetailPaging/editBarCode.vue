@@ -82,7 +82,7 @@ export default {
           needResult: 1,
           scanType: ["qrCode", "barCode"],
           success: function(res) {
-            var result = res.resultStr;
+            var result=JSON.parse(res.resultStr)[scan_code].scan_result;
             self.specimens[index].barCode = result;
           }
         });
