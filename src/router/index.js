@@ -81,7 +81,7 @@ export default new Router({
           props:true
         },
         {
-          path:'clinicCloudOrderPage/waitPayPage/:clinicId/:orderSeqno',
+          path:'clinicCloudOrderPage/waitPayPage/:orderSeqno',
           name:'waitPayPage',
           component: () => import(/* webpackChunkName: 'waitPayPage' */'@/components/page/cloudorder/waitPayPage.vue'),
           props:true
