@@ -61,6 +61,7 @@
 
   .search_left img {
     height: 1.25rem;
+    margin-top: 0.125rem;
   }
 
   .search_left input {
@@ -68,6 +69,7 @@
     background: transparent;
     outline: none;
     padding-left: 0.395rem;
+    line-height: 24px;
   }
 
   .search_left input::-webkit-input-placeholder {

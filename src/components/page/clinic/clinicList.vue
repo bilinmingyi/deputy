@@ -1,6 +1,6 @@
 <template>
   <div>
-    <d-search @on-search="getData"></d-search>
+    <d-search @on-search="getData" placeholder="诊所名称"></d-search>
     <section class="clinic_content">
       <ul>
         <router-link v-for="(clinic,index) in clinicList" :to="`/clinic/clinicDetail/${clinic.id}`" :key="index">

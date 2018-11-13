@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f1730b4b-107d-44df-880f-b029dd3db586" name="Default" comment="患者获取接口">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/js/wx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/js/wx.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/dSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/dSearch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/checkList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/checkList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/editBarCode.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/editBarCode.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/editBarCode.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/editBarCode.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/clinic/clinicList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/clinic/clinicList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -59,10 +62,10 @@
           <entry key="babelrc" value="2" />
           <entry key="css" value="407" />
           <entry key="html" value="27" />
-          <entry key="js" value="7403" />
+          <entry key="js" value="7435" />
           <entry key="json" value="1" />
           <entry key="txt" value="402" />
-          <entry key="vue" value="23542" />
+          <entry key="vue" value="23749" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -70,22 +73,22 @@
           <entry key="CSS" value="407" />
           <entry key="HTML" value="36" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="7394" />
+          <entry key="JavaScript" value="7426" />
           <entry key="PLAIN_TEXT" value="402" />
-          <entry key="Vue.js" value="23542" />
+          <entry key="Vue.js" value="23749" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="6" />
-          <entry key="HTML" value="8" />
+          <entry key="HTML" value="9" />
           <entry key="HTTP Request" value="1" />
           <entry key="Image" value="5" />
           <entry key="JSON" value="4" />
           <entry key="JavaScript" value="71" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Vue.js" value="188" />
+          <entry key="Vue.js" value="193" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -93,12 +96,12 @@
           <entry key="babelrc" value="1" />
           <entry key="css" value="6" />
           <entry key="gitignore" value="1" />
-          <entry key="html" value="8" />
+          <entry key="html" value="9" />
           <entry key="http" value="1" />
           <entry key="js" value="71" />
           <entry key="json" value="3" />
           <entry key="png" value="5" />
-          <entry key="vue" value="188" />
+          <entry key="vue" value="193" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -107,10 +110,15 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderCode.vue">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/editBarCode.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="71" column="74" lean-forward="true" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="74" />
+            <state relative-caret-position="436">
+              <caret line="71" column="65" selection-start-line="71" selection-start-column="65" selection-end-line="71" selection-end-column="65" />
               <folding>
                 <element signature="e#786#836#0" expanded="true" />
                 <element signature="n#style#0;n#!!top" />
@@ -120,24 +128,69 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderCode.vue">
+        <entry file="file://$PROJECT_DIR$/src/components/common/dSearch.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/page/clinic/clinicList.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="52" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPage.vue">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/editBarCode.vue">
+        <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="968">
-              <caret line="84" column="72" selection-start-line="84" selection-start-column="72" selection-end-line="84" selection-end-column="72" />
+            <state relative-caret-position="66">
+              <caret line="3" column="53" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/checkList.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="24" column="80" selection-start-line="24" selection-start-column="80" selection-end-line="24" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/editBarCode.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/assets/js/wx.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="35" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="35" />
+            <state relative-caret-position="396">
+              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dist/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="80" selection-end-column="768" />
             </state>
           </provider>
         </entry>
@@ -198,8 +251,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPaging/confirmedList.vue" />
-        <option value="$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPage.vue" />
         <option value="$PROJECT_DIR$/src/components/common/dTimer.vue" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/allList.vue" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/confirmedList.vue" />
@@ -220,10 +271,8 @@
         <option value="$PROJECT_DIR$/build/webpack.prod.conf.js" />
         <option value="$PROJECT_DIR$/src/fetch/config.js" />
         <option value="$PROJECT_DIR$/config/proxyConfig.js" />
-        <option value="$PROJECT_DIR$/src/components/page/clinic/clinicList.vue" />
         <option value="$PROJECT_DIR$/src/components/page/home.vue" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/addNewProject.vue" />
-        <option value="$PROJECT_DIR$/src/components/common/dSearch.vue" />
         <option value="$PROJECT_DIR$/dist/public/deputy/js/myAchievement.863edaad4bd739360c8a.js" />
         <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/components/common/touchList.vue" />
@@ -246,9 +295,13 @@
         <option value="$PROJECT_DIR$/src/components/page/person/personal.vue" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/newOrderPatient.vue" />
+        <option value="$PROJECT_DIR$/src/assets/js/wx.js" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/editBarCode.vue" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/editBarCode.vue" />
-        <option value="$PROJECT_DIR$/src/assets/js/wx.js" />
+        <option value="$PROJECT_DIR$/src/components/common/dSearch.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/clinic/clinicList.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/checkorder/checkList.vue" />
       </list>
     </option>
   </component>
@@ -329,6 +382,13 @@
               <item name="deputy" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deputy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deputy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="page" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -345,8 +405,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="page" type="462c0819:PsiDirectoryNode" />
-              <item name="checkorder" type="462c0819:PsiDirectoryNode" />
-              <item name="confirmedOrderDetailPaging" type="462c0819:PsiDirectoryNode" />
+              <item name="clinic" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="deputy" type="b2602c69:ProjectViewProjectNode" />
@@ -354,8 +413,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="page" type="462c0819:PsiDirectoryNode" />
-              <item name="checkorder" type="462c0819:PsiDirectoryNode" />
-              <item name="newOrderPaging" type="462c0819:PsiDirectoryNode" />
+              <item name="cloudorder" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="deputy" type="b2602c69:ProjectViewProjectNode" />
@@ -412,11 +470,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/assets/js/wx.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderReport.vue</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/editBarCode.vue</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/editBarCode.vue</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/newOrderImg.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/checkorder/clinicCheckOrderPaging/payList.vue</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -556,21 +610,7 @@
       <workItem from="1541231995483" duration="87003000" />
       <workItem from="1541639169873" duration="5990000" />
       <workItem from="1541984835771" duration="25321000" />
-      <workItem from="1542015974728" duration="25104000" />
-    </task>
-    <task id="LOCAL-00029" summary="待确认和待支付组件">
-      <created>1541409791594</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1541409791594</updated>
-    </task>
-    <task id="LOCAL-00030" summary="待确认和待支付组件">
-      <created>1541412601236</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1541412601236</updated>
+      <workItem from="1542015974728" duration="31647000" />
     </task>
     <task id="LOCAL-00031" summary="待确认和待支付组件">
       <created>1541413712759</created>
@@ -901,11 +941,25 @@
       <option name="project" value="LOCAL" />
       <updated>1542096089424</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="患者获取接口">
+      <created>1542101793922</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1542101793922</updated>
+    </task>
+    <task id="LOCAL-00079" summary="患者获取接口">
+      <created>1542103347888</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1542103347888</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="282180000" />
+    <option name="totallyTimeSpent" value="288723000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -924,7 +978,7 @@
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32887402" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49894625" weight="0.31772575" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49894625" visible="true" weight="0.29765886" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.26086956" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -993,7 +1047,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="患者获取接口" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dist/public/deputy/js/newOrderPage.630a3f7e02c270765b1f.js" />
     <entry file="file://$PROJECT_DIR$/config/prod.env.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1024,24 +1077,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/clinic/clinicList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fetch/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/dSearch.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="65" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -1222,9 +1261,6 @@
     <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/cloudListPage.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -1248,9 +1284,6 @@
           <caret line="2" column="142" selection-start-line="2" selection-start-column="142" selection-end-line="2" selection-end-column="142" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPage.vue">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/css/reset.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -1290,13 +1323,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27" selection-end-column="768" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPage.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -1332,10 +1358,31 @@
     <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderCode.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/js/wx.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="80" selection-end-column="768" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/editBarCode.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/editBarCode.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="71" column="74" lean-forward="true" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="74" />
+        <state relative-caret-position="436">
+          <caret line="71" column="65" selection-start-line="71" selection-start-column="65" selection-end-line="71" selection-end-column="65" />
           <folding>
             <element signature="e#786#836#0" expanded="true" />
             <element signature="n#style#0;n#!!top" />
@@ -1343,17 +1390,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/editBarCode.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/common/dSearch.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="968">
-          <caret line="84" column="72" selection-start-line="84" selection-start-column="72" selection-end-line="84" selection-end-column="72" />
+        <state relative-caret-position="198">
+          <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/js/wx.js">
+    <entry file="file://$PROJECT_DIR$/src/components/page/clinic/clinicList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="35" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="35" />
+        <state relative-caret-position="44">
+          <caret line="2" column="52" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/clinicCloudOrderPage.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/cloudorder/cloudlist.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="53" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/checkList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" column="80" selection-start-line="24" selection-start-column="80" selection-end-line="24" selection-end-column="80" />
         </state>
       </provider>
     </entry>

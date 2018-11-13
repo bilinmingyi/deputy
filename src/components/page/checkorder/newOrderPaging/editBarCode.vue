@@ -6,7 +6,7 @@
         <info-header noBorder>{{contain.name}}</info-header>
         <div class="bg-fff pl12 pr12 pb20 mb12">
           <div class="pl12 pr12 input-btn-box">
-            <input type="number" placeholder="条码" v-model="contain.barCode">
+            <input type="text" placeholder="条码" v-model="contain.barCode">
             <button @click.stop="scanCode(index)">扫码</button>
           </div>
           <div class="pl12 pr12 pt16 counter-box">
@@ -49,9 +49,7 @@
 
     },
     data() {
-      return {
-
-      };
+      return {};
     },
     computed: {
       ...mapState('newCheckOrder', {
@@ -62,17 +60,16 @@
       ...mapActions('newCheckOrder', [
         'set_contain'
       ]),
-      scanCode(index){
-        var self=this;
-        getWXSign.apply(this).then(wx=>{
+      scanCode(index) {
+        var self = this;
+        getWXSign.apply(this).then(wx => {
           wx.scanQRCode({
-            needResult:1,
-            scanType: ["qrCode","barCode"],
-            success:function (res) {
-              var result=res.resultStr;
-              self.$Message.infor(result);
-
-              self.contains[index].barCode=result;
+            needResult: 1,
+            scanType: ["qrCode", "barCode"],
+            success: function (res) {
+              var result = res.resultStr;
+              self.$Message.infor(result.split(',')[1]);
+              self.contains[index].barCode = result.split(',')[1];
             }
           })
         });

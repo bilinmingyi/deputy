@@ -1,7 +1,7 @@
 <template>
   <div class="checkList">
     <d-header>云处方订单</d-header>
-    <d-search @on-search="getData"></d-search>
+    <d-search @on-search="getData" placeholder="诊所名称"></d-search>
     <section class="clinicList">
       <div class="bg-fff p15">
         <table class="d-table" data-type="2">
