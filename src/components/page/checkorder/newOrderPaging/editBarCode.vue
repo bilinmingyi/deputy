@@ -68,7 +68,6 @@
             scanType: ["qrCode", "barCode"],
             success: function (res) {
               var result = res.resultStr;
-              self.$Message.infor(result.split(',')[1]);
               self.contains[index].barCode = result.split(',')[1];
             }
           })
