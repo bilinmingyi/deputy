@@ -48,6 +48,14 @@ const fullTime = val => {
   return year + "/" + month + "/" + date + "  " + hour + ":" + minutes;
 };
 
+const treatOrderType= val => {
+  const list=[{code:1,name:"中药"}, {code:2,name:"成药"}, {code:3,name:"产品"}];
+  for (var i=0;i<list.length;i++){
+    if(list[i].code===val){
+      return list[i].name
+    }
+  }
+}
 /**
  * @desc： Format price.
  * @param {String} price
@@ -151,5 +159,6 @@ module.exports = {
   checkOrderType,
   priceFormat,
   parseNum,
-  dateFormat
+  dateFormat,
+  treatOrderType
 };

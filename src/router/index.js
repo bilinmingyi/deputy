@@ -83,7 +83,8 @@ export default new Router({
         {
           path:'clinicCloudOrderPage/waitPayPage/:orderSeqno',
           name:'waitPayPage',
-          component: () => import(/* webpackChunkName: 'waitPayPage' */'@/components/page/cloudorder/waitPayPage.vue')
+          component: () => import(/* webpackChunkName: 'waitPayPage' */'@/components/page/cloudorder/waitPayPage.vue'),
+          props:true
         }
       ]
     },
