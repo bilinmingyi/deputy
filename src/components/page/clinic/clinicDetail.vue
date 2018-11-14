@@ -25,11 +25,11 @@
       <!-- </router-link> -->
       <router-link class="top_item" :to="{path:`/checkListPage/clinicCheckOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
         <img src="../../../assets/img/jy.png">
-        <span>检验订单查询</span>
+        <span>检验订单</span>
       </router-link>
       <router-link class="top_item" :to="{path:`/cloudListPage/clinicCloudOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
         <img src="../../../assets/img/cf.png">
-        <span>云处方订单<br>查询</span>
+        <span>处方订单</span>
       </router-link>
     </section>
     <section v-for="doc in doctorList">
