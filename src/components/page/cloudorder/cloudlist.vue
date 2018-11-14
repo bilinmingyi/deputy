@@ -14,6 +14,7 @@
           </div>
           <router-link :to="{path:`/cloudListPage/clinicCloudOrderPage/${item.clinic_id}`, query:{name:`${item.clinic_name}`}}" class="clinic-item-btn">去处理</router-link>
         </li>
+        <li class="clinic-none" v-show="dataList.length==0">暂无数据</li>
       </ul>
       <!--<div class="add_more">查看更多...</div>-->
     </section>
@@ -124,6 +125,15 @@
     line-height: 1rem;
     color: rgb(90, 61, 61);
     letter-spacing: 0;
+  }
+
+  .clinic-none {
+    color: #7c7c7c;
+    font-size: .875rem;
+    background: #fafafa;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
   }
 
   .color-8c {
