@@ -85,7 +85,7 @@
             success: function (res) {
               var result = res.resultStr;
               self.$Message.infor(result.split(',')[1])
-              self.specimens[index].barCode = result.split(',')[1];
+              self.specimens[index].barcode = result.split(',')[1];
             }
           });
         });
