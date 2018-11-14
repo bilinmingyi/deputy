@@ -43,6 +43,7 @@
       </div>
       <div class="pay_operation" v-else>
         <button @click="handleOrder(-1)">关闭</button>
+        <button @click="handleOrder(4)" v-if="order.is_paid==0">去支付</button>
       </div>
     </section>
     <d-load v-if="showLoad"></d-load>
@@ -171,6 +172,8 @@ export default {
               this.$Message.infor(res.msg);
             }
           });
+      } else if (type == 4) {
+        window.location.href = '/weixin/pay/?orderType=5&orderSeqno=' + this.orderSeqno;
       }
     }
   }
