@@ -12,9 +12,9 @@
 <script>
 export default {
   props: {
-    'noBorder': {
+    noBorder: {
       type: Boolean,
-      default: false,
+      default: false
     }
   },
   data() {
@@ -55,6 +55,8 @@ export default {
 .info-header button {
   position: absolute;
   right: 0.94rem;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;

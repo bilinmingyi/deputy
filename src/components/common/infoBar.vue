@@ -33,13 +33,13 @@ export default {
   position: relative;
 }
 .info-header::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   border-bottom: 1px solid #d9d9d9;
-  transform: scaleY(.5);
+  transform: scaleY(0.5);
 }
 .info-header-text {
   font-family: PingFangSC-Medium;
@@ -50,11 +50,13 @@ export default {
   line-height: 1.25rem;
   margin-left: 0.75rem;
   border-left: 0.25rem solid #08bac6;
-  padding-left: 0.5rem; 
+  padding-left: 0.5rem;
 }
 .info-header button {
   position: absolute;
   right: 0.94rem;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +84,7 @@ export default {
   min-width: 20vw;
   font-family: PingFangSC-Regular;
   font-size: 0.9375rem;
-  color: #7C7C7C;
+  color: #7c7c7c;
   letter-spacing: 0;
 }
 .info-content > * > *:nth-child(2) {
