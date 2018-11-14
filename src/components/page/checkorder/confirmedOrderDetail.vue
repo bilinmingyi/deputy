@@ -26,7 +26,7 @@
       <!--订单条码组件-->
       <order-code></order-code>
       <!--订单图片组件-->
-      <order-img :img-list="imgDataList" v-on:datachange="changeImg"></order-img>
+      <order-img :img-list="imgDataList" v-on:datachange="changeImg" :can-change="status==='WAITCONFIRM'?true:false"></order-img>
       <!--订单支付方式组件-->
       <order-pay></order-pay>
       <div :class="['payment',{'bottom': status!='DONE'}, {'mb12': status=='DONE'}]">
