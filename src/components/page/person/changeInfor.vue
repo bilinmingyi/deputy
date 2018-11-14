@@ -89,8 +89,8 @@ export default {
   watch: {
     infoMonth(newVal) {
       if (newVal !== "") {
-        this.infoYear = Number(this.infoYear) + Math.trunc(Number(newVal) / 12);
-        this.infoMonth = Number(newVal) % 12;
+        this.infoYear = parseInt(this.infoYear) + Math.trunc(parseInt(newVal) / 12);
+        this.infoMonth = parseInt(newVal) % 12;
       }
     }
   },
