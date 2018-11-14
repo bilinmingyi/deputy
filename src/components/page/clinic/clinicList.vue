@@ -116,9 +116,8 @@
     font-size: 0.625rem;
     color: #FFFFFF;
     border-radius: 4px;
-    height: 1.25rem;
-    line-height: 1.25rem;
-    padding: 0 0.25rem;
+    align-self: center;
+    padding:  0.125rem 0.25rem;
     margin-left: 0.5rem;
   }
 

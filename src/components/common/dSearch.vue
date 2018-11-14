@@ -69,7 +69,7 @@
     background: transparent;
     outline: none;
     padding-left: 0.395rem;
-    line-height: 24px;
+    align-self: center;
   }
 
   .search_left input::-webkit-input-placeholder {
