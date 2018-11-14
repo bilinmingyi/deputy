@@ -1,8 +1,8 @@
 <template>
   <div class="counter">
-    <img src="@/assets/img/jia@2x.png" class="add" v-on:click="$emit('input', myNum < max ? ++myNum : myNum)">
-    <input type="number" @input="$emit('input', Number(myNum))" v-model="myNum">
     <img src="@/assets/img/jian@2x.png" class="sub" v-on:click="$emit('input', myNum > min ? --myNum : myNum)">
+    <input type="number" @input="$emit('input', Number(myNum))" v-model="myNum">
+    <img src="@/assets/img/jia@2x.png" class="add" v-on:click="$emit('input', myNum < max ? ++myNum : myNum)">
   </div>
 </template>
 
