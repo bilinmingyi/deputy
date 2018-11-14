@@ -7,7 +7,7 @@
           <img src="@/assets/img/report.png" class="mr12">
           <span v-if="dataList.length === 0">等待报告出炉</span>
           <span v-else-if="dataList.length > 0 && dataList.length < barCodeList.length">部分报告已出</span>
-          <span v-else="dataList.length > 0 && dataList.length == barCodeList.length">全部报告已出</span>
+          <span v-else>全部报告已出</span>
         </div>
         <div class="report-item" v-for="(item, index) in dataList">
           <span><span style="color: #7c7c7c;">{{index + 1}}: </span>{{item.testName.length > 20 ? item.testName.slice(0, 20) + '...' : item.testName}}</span>
@@ -49,8 +49,8 @@ export default {
             arr.forEach(item => {
               let childPics = [];
               if (item.reportData) {
-                let arr = JSON.parse(item.reportData);
-                arr.forEach(childItem => {
+                let childArr = JSON.parse(item.reportData);
+                childArr.forEach(childItem => {
                   if (childItem.picReportUrl) {
                     childPics.push(childItem.picReportUrl);
                   }
