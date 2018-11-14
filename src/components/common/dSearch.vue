@@ -70,6 +70,7 @@
     outline: none;
     padding-left: 0.395rem;
     align-self: center;
+    line-height: 1.5rem;
   }
 
   .search_left input::-webkit-input-placeholder {
@@ -82,7 +83,7 @@
     border-radius: 0.25rem;
     font-size: 0.875rem;
     color: #FFFFFF;
-    padding: 0.375rem 1rem;
+    padding: 0.475rem 1rem 0.50rem;
     border: none;
   }
 </style>

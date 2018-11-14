@@ -5,9 +5,9 @@
       <div class="add_img" v-for="(imgData,index) in imgDataList">
         <div v-if="imgData!=''" style="position: relative;">
           <img :src="imgData" @click="showImg(imgData)">
-          <div class="img_delete_btn" @click.stop="deleteImg(index)">删除</div>
+          <div v-if="canChange" class="img_delete_btn" @click.stop="deleteImg(index)">删除</div>
         </div>
-        <div v-else @click.stop.prevent="fileClick(index)">+</div>
+        <div v-if="imgData=='' && canChange" @click.stop.prevent="fileClick(index)">+</div>
         <input style="display: none;" type="file" :id="'img-'+index" @change="fileChange($event,index)"/>
       </div>
       <div class="add_img_title">最多可上传3张照片</div>
@@ -27,6 +27,10 @@
         default() {
           return '["","",""]'
         }
+      },
+      canChange: {
+        type: Boolean,
+        default: true
       }
     },
     components: {
@@ -35,7 +39,7 @@
     data() {
       return {
         currIndex: -1,
-        imgDataList:JSON.parse(this.imgList)
+        imgDataList: JSON.parse(this.imgList)
       }
     },
     watch: {
@@ -48,32 +52,32 @@
         this.currIndex = index;
         document.getElementById('img-' + index).click();
       },
-      deleteImg(index){
-        this.imgDataList.splice(index,1,'');
-        this.$emit("datachange",JSON.stringify(this.imgDataList))
+      deleteImg(index) {
+        this.imgDataList.splice(index, 1, '');
+        this.$emit("datachange", JSON.stringify(this.imgDataList))
       },
-      fileChange(el,index) {
+      fileChange(el, index) {
         if (!el.target.files[0].size) return;
         var formData = new FormData();
         formData.append("file", el.target.files[0]);
         this.axios.post("/weixin/sales/dyCheckOrder/imgUpload", formData).then(respone => {
-          const res=respone.data;
-          document.querySelector('#img-'+index).value=null
-          if(res.code==1000){
-            this.imgDataList.splice(this.currIndex,1,res.data);
-            this.$emit("datachange",JSON.stringify(this.imgDataList))
-          }else {
+          const res = respone.data;
+          document.querySelector('#img-' + index).value = null
+          if (res.code == 1000) {
+            this.imgDataList.splice(this.currIndex, 1, res.data);
+            this.$emit("datachange", JSON.stringify(this.imgDataList))
+          } else {
             this.$Message.infor(res.msg)
           }
         }).catch(error => {
           console.log(error)
         })
       },
-      showImg(imgData){
-        var imgList=this.imgDataList;
-        getWXSign.apply(this).then(wx=>{
+      showImg(imgData) {
+        var imgList = this.imgDataList;
+        getWXSign.apply(this).then(wx => {
           wx.previewImage({
-            current:imgData,
+            current: imgData,
             urls: imgList
           })
         })
@@ -101,7 +105,8 @@
     text-align: center;
     align-self: center;
   }
-  .upload_img_block .add_img img{
+
+  .upload_img_block .add_img img {
     height: calc(20vw - 0.676rem);
     width: calc(20vw - 0.676rem);
     border-radius: 0.25rem;
@@ -114,14 +119,15 @@
     color: #7C7C7C;
     font-size: 0.75rem;
   }
-  .upload_img_block .img_delete_btn{
+
+  .upload_img_block .img_delete_btn {
     position: absolute;
     bottom: 0;
     font-size: 14px;
     line-height: 20px;
     text-align: center;
     width: 100%;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
   }
