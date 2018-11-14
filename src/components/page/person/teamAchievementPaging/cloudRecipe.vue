@@ -107,13 +107,7 @@ export default {
           } else {
             this.$Message.infor(res.msg);
           }
-        })
-        .catch(err => {
-          console.log(err);
-        })
-        .then(() => {
-          this.showLoad = false;
-        })
+        }).catch(console.log).then(() => this.showLoad = false)
     }
   }
 };

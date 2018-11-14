@@ -48,6 +48,11 @@
       let barCodeInfo = this.specimens;
       let updateArr = [];
       barCodeInfo.forEach(item => {
+        if (item.barcode === '') {
+          this.$Message.infor('条码不能为空');
+          next(false);
+          return;
+        }
         updateArr.push(
           this.axios.post("/weixin/sales/dyCheckOrderSpecimens/update", {
             id: item.id,

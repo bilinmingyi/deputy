@@ -112,15 +112,12 @@
           'clinic_id': this.clinicId
         }).then(respone => {
           var res = respone.data;
-          this.showLoad = false;
           if (res.code === 1000) {
             this.order = res.data;
           } else {
             this.$Message.infor(res.msg)
           }
-        }).catch(error => {
-          console.log(error)
-        })
+        }).catch(console.log).then(() => this.showLoad = false)
       },
       toPay() {
         window.location.href = '/weixin/pay/?orderType=5&orderSeqno=' + this.orderSeqno;
