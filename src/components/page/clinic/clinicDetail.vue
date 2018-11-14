@@ -12,7 +12,7 @@
         </div>
         <div class="clinic_infor_item mt5">
           <div>联系电话：</div>
-          <div>{{clinicDetail.phoneNum}}</div>
+          <div><a :href="'tel:'+clinicDetail.phoneNum" style="color: #111111">{{clinicDetail.phoneNum}}</a></div>
         </div>
       </section>
     </section>
