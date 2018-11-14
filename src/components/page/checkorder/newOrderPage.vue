@@ -75,17 +75,22 @@
         }
       },
       sureOrder() {
-        if (this.allState.clinic.clinicId === '') {
+        if (this.allState.clinic.doctorId == '') {
           this.$Message.infor("请先选择所属医生");
           return
         }
 
         if (this.allState.patient.name === ''
-          || this.allState.patient.mobile ===''
+          || this.allState.patient.mobile === ''
           || this.allState.patient.age === ''
           || this.allState.patient.birthMonth === ''
         ) {
           this.$Message.infor('请填写全部患者信息')
+          return
+        }
+
+        if (this.allState.patient.age < 0 || this.allState.patient.birthMonth < 0) {
+          this.$Message.infor('请填写正整数的年龄月份')
           return
         }
 
@@ -94,8 +99,8 @@
           return
         }
         var today = new Date();
-        today.setFullYear(Number(today.getFullYear()) - Number(this.allState.patient.age));
-        today.setMonth(Number(today.getMonth()) - Number(this.allState.patient.birthMonth));
+        today.setFullYear(parseInt(today.getFullYear()) - parseInt(this.allState.patient.age) - parseInt(this.allState.patient.birthMonth / 12));
+        today.setMonth(parseInt(today.getMonth()) - parseInt(this.allState.patient.birthMonth % 12));
 
         var checkList = [], checkSetList = [];
         this.allState.prescription.items.forEach(item => {
@@ -108,11 +113,11 @@
         var specimenList = [];
         this.allState.prescription.contains.forEach(item => {
           specimenList.push({
-            container_code:item.code,
-            name:item.name,
-            barcode:item.barCode,
-            volumn:item.num,
-            memo:item.memo
+            container_code: item.code,
+            name: item.name,
+            barcode: item.barCode,
+            volumn: item.num,
+            memo: item.memo
           })
         });
         this.axios.post("/weixin/sales/dyCheckOrder/create", {
@@ -133,14 +138,14 @@
             "specimen_list": specimenList
           }]
         }).then(respone => {
-          var res=respone.data;
-          if(res.code===1000){
-            if(this.allState.prescription.payType==1){
-              window.location.href='/weixin/pay/?orderType=5&orderSeqno='+res.data;
-            }else {
+          var res = respone.data;
+          if (res.code === 1000) {
+            if (this.allState.prescription.payType == 1) {
+              window.location.href = '/weixin/pay/?orderType=5&orderSeqno=' + res.data;
+            } else {
               this.close(2);
             }
-          }else {
+          } else {
             this.$Message.infor(res.msg)
           }
 
