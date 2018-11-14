@@ -8,7 +8,7 @@
           <div v-if="canChange" class="img_delete_btn" @click.stop="deleteImg(index)">删除</div>
         </div>
         <div v-if="imgData=='' && canChange" @click.stop.prevent="fileClick(index)">+</div>
-        <input style="display: none;" type="file" :id="'img-'+index" @change="fileChange($event,index)"/>
+        <input accept="image/*" capture="camera" style="display: none;" type="file" :id="'img-'+index" @change="fileChange($event,index)"/>
       </div>
       <div class="add_img_title">最多可上传3张照片</div>
     </div>
