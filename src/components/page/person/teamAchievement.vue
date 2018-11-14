@@ -2,7 +2,7 @@
     <div>
       <d-header>团队业绩</d-header>
       <d-nav class="nav">
-        <li :class="{'active': activePage==1}" @click="activePage=1">云药房</li>
+        <!--<li :class="{'active': activePage==1}" @click="activePage=1">云药房</li>-->
         <li :class="{'active': activePage==2}" @click="activePage=2">云处方</li>
         <li :class="{'active': activePage==3}" @click="activePage=3">检验订单</li>
       </d-nav>
@@ -30,7 +30,7 @@ export default {
   },
   data() {
     return {
-      activePage: 1
+      activePage: 2
     };
   },
   computed: {
