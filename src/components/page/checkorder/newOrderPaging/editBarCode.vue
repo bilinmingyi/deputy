@@ -18,6 +18,10 @@
         </div>
       </div>
     </section>
+    <section class="pay_operation">
+      <button @click.stop="$router.go(-1)">关闭</button>
+      <button @click.stop="sureChange">确认</button>
+    </section>
   </div>
 </template>
 
@@ -34,16 +38,6 @@
       dHeader,
       infoHeader,
       counter
-    },
-    beforeRouteLeave(to, from, next) {
-      try {
-        this.set_contain(this.contains);
-      } catch (e) {
-        console.log(e)
-        next(false)
-      }
-      next();
-
     },
     created() {
 
@@ -72,6 +66,21 @@
             }
           })
         });
+      },
+      sureChange() {
+        try{
+          this.contains.forEach(item => {
+            if(item.barCode===""){
+              throw new Error("条码不能为空");
+            }
+          });
+        }catch (e) {
+          this.$Message.infor(e.message)
+          return
+        }
+
+        this.set_contain(this.contains);
+        this.$router.go(-1)
       }
     }
   };
@@ -81,7 +90,8 @@
   .content {
     min-height: calc(100vh - 2.75rem);
     width: 100vw;
-    margin: 2.75rem 0 0 0;
+    margin-top: 2.75rem;
+    padding-bottom: 4.375rem;
   }
 
   .content input:focus {

@@ -49,6 +49,9 @@
       <!--</ul>-->
       <!--<div class="add_more">查看更多...</div>-->
     </section>
+    <div>
+      <img src="../../assets/img/noInfor@2x.png" class="no_infor">
+    </div>
     <d-footer :activeItem="1"></d-footer>
   </div>
 </template>
@@ -159,5 +162,9 @@
     line-height: 2.5rem;
     text-align: center;
     margin-bottom: 3.125rem;
+  }
+  .no_infor{
+    height: 40vh;
+    margin: 10vh auto
   }
 </style>
