@@ -92,7 +92,7 @@ export default {
           this.$Message.infor(res.msg);
           next(false);
         }
-      });
+      }).catch(console.log).then(()=>{next()});
   },
   methods: {
     ...mapActions("changeCheckOrder", ["add_project", "clear_newProjectList"]),
