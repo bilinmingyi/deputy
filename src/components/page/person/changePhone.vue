@@ -132,9 +132,7 @@ export default {
             this.$Message.infor(res.msg);
           }
         })
-        .catch(err => {
-          console.log(err);
-        });
+        .catch(console.log).then(() => {this.getImgCode()})
     }
   }
 };
