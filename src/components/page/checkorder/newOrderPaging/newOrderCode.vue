@@ -12,6 +12,7 @@
       <ul>
         <li class="list-item" v-for="contain in contains">{{contain.name}}</li>
       </ul>
+      <div class="no_data" v-if="contains.length!=undefined && contains.length===0"> 暂无条码信息</div>
     </div>
   </div>
 </template>
@@ -54,5 +55,11 @@
 
   ul .list-item:nth-last-child(1) {
     margin-bottom: 0;
+  }
+  .no_data {
+    color: #8C8C8C;
+    text-align: center;
+    font-size: 0.94rem;
+    padding: 0.7825rem 0;
   }
 </style>

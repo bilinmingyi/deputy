@@ -10,14 +10,20 @@ import message from './assets/js/message'
 import store from './store/index'
 
 
-
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
 Vue.prototype.$Message = message;
-Vue.use(vueAxios, axios);
 
+Vue.use(vueAxios, axios);
+try {
+  axios.defaults.baseURL = appRoot === undefined ? "" : appRoot;
+  Vue.prototype.appRoot = appRoot === undefined ? "" : appRoot;
+} catch (e) {
+  console.log(e)
+}
 Vue.config.productionTip = false;
+
 
 /* eslint-disable no-new */
 new Vue({
