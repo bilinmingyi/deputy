@@ -194,7 +194,7 @@ export default {
           label: "现金"
         }
       ],
-      counter: 0,
+      counter: null,
       showLoad: true
     };
   },

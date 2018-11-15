@@ -117,7 +117,7 @@
     align-self: center;
     text-align: center;
     color: #7C7C7C;
-    font-size: 0.75rem;
+    font-size: 0.9375rem;
   }
 
   .upload_img_block .img_delete_btn {

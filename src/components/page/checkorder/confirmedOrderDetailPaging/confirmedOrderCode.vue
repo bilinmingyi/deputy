@@ -7,6 +7,7 @@
     <div class="barcode-box p15 mb12">
       <ul>
         <li v-for="item in barCodeList">{{item.name}}</li>
+        <li v-show="barCodeList.length == 0" class="no-data">暂无条码信息</li>
       </ul>
     </div>
   </div>
@@ -55,5 +56,15 @@ export default {
 }
 .barcode-box ul li:nth-last-child(1) {
   margin-bottom: 0;
+}
+.no-data {
+  height: 2.88rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Regular;
+  font-size: 0.9375rem;
+  color: #8C8C8C;
+  letter-spacing: 0;
 }
 </style>

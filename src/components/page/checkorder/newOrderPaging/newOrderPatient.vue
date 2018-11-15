@@ -177,7 +177,7 @@
     border: none;
     outline: none;
     font-size: 1rem;
-    color: #7C7C7C;
+    color: #3F3F3F;
     flex: 1;
   }
 

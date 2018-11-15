@@ -177,7 +177,7 @@ export default {
   outline-color: transparent;
 }
 .info-item input::-webkit-input-placeholder {
-  color: #999;
+  color: #7c7c7c;
 }
 .img-code {
   /* margin: -0.5rem 0;

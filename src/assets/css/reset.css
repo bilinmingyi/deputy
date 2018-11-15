@@ -87,18 +87,23 @@ button {
 }
 
 input::-webkit-input-placeholder {
-  font-size: 14px !important;
-  color: #8C8C8C !important;
+  font-size: 1rem;
+  color: #7c7c7c;
 }
 
 input:-moz-placeholder {
-  font-size: 14px !important;
-  color: #8C8C8C !important;
+  font-size: 1rem;
+  color: #7c7c7c;
 }
 
 input:-ms-input-placeholder {
-  font-size: 14px !important;
-  color: #8C8C8C !important;
+  font-size: 1rem;
+  color: #7c7c7c;
+}
+
+input {
+  font-size: 1rem;
+  color: #3F3F3F;
 }
 
 /* 图标字体 */

@@ -72,11 +72,13 @@
     align-self: center;
     line-height: 1.5rem;
     width: 100%;
+    font-size: 0.875rem;
+    color: #3F3F3F;
   }
 
   .search_left input::-webkit-input-placeholder {
-    font-size: 0.875rem;
-    color: #8C8C8C;
+    font-size: 0.875rem !important;
+    color: #8C8C8C !important;
   }
 
   .search_btn {

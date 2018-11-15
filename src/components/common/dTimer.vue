@@ -165,6 +165,7 @@ export default {
   width: calc(50vw - 3.38rem);
   margin-right: 0.565rem;
   text-align: center;
+  font-size: 0.75rem;
 }
 .input_block button {
   background: #08bac6;

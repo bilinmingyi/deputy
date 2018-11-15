@@ -178,7 +178,12 @@
     padding: 0 1rem;
     flex: 1;
     border: none;
-    outline: none
+    outline: none;
+    font-size: 1rem;
+    color: #3F3F3F;
+  }
+  .payment input::-webkit-input-placeholder {
+    color: #7C7C7C;
   }
 
 </style>

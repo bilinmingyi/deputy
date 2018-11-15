@@ -139,7 +139,7 @@
     border: none;
     padding: 0 0.875rem;
     font-family: PingFangSC-Light;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     color: #3f3f3f;
     letter-spacing: 0;
     text-align: left;
