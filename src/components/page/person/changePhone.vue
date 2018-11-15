@@ -36,7 +36,7 @@ export default {
       token: "",
       bindMobile: "",
       msgCode: "",
-      time: 10,
+      time: 60,
       sendMsgDisabled: false
     };
   },
@@ -116,7 +116,7 @@ export default {
     checkCode() {
       this.axios
         .post("/weixin/sales/mobile/update", {
-          mobile: this.bindMobile,
+          phone_num: this.bindMobile,
           code: this.msgCode
         })
         .then(response => {
