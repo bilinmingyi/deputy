@@ -57,7 +57,8 @@ export default {
 .barcode-box ul li:nth-last-child(1) {
   margin-bottom: 0;
 }
-.no-data {
+.barcode-box ul .no-data {
+  border: none;
   height: 2.88rem;
   display: flex;
   justify-content: center;

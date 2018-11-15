@@ -9,7 +9,7 @@
         <button class="delete-btn" @click.stop='deleteItem'>删除</button>
       </li>
     </ul>
-    <div class="no_data" v-if="data.length!=undefined && data.length==0">暂无项目信息</div>
+    <div class="no_data" v-if="data.length!=undefined && data.length==0 && noDataTips">暂无项目信息</div>
   </div>
 </template>
 
@@ -20,6 +20,10 @@
         type: Array
       },
       canDelete: {
+        type: Boolean,
+        default: true
+      },
+      noDataTips: {
         type: Boolean,
         default: true
       }
