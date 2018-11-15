@@ -71,6 +71,7 @@
     padding-left: 0.395rem;
     align-self: center;
     line-height: 1.5rem;
+    width: 100%;
   }
 
   .search_left input::-webkit-input-placeholder {

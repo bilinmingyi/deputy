@@ -86,6 +86,21 @@ button {
   appearance: none;
 }
 
+input::-webkit-input-placeholder {
+  font-size: 14px !important;
+  color: #8C8C8C !important;
+}
+
+input:-moz-placeholder {
+  font-size: 14px !important;
+  color: #8C8C8C !important;
+}
+
+input:-ms-input-placeholder {
+  font-size: 14px !important;
+  color: #8C8C8C !important;
+}
+
 /* 图标字体 */
 @font-face {
   font-family: "yunicon";
@@ -570,9 +585,11 @@ button {
 .mb50 {
   margin-bottom: 3.125rem;
 }
+
 .mb56 {
   margin-bottom: 3.5rem;
 }
+
 .add_more {
   color: #7C7C7C;
   font-size: 0.875rem;
@@ -582,16 +599,16 @@ button {
   text-align: center;
 }
 
-
-.pay_operation{
+.pay_operation {
   position: fixed;
   bottom: 0;
   background: #FFFFFF;
   width: 100%;
   display: flex;
-  padding: 0.5rem 0.61rem ;
+  padding: 0.5rem 0.61rem;
 }
-.pay_operation button{
+
+.pay_operation button {
   flex: 1;
   color: #3F3F3F;
   font-size: 0.94rem;
@@ -601,11 +618,13 @@ button {
   margin: 0 0.33rem;
   line-height: 2.5rem;
 }
-.pay_operation button:last-child{
+
+.pay_operation button:last-child {
   color: #FFFFFF;
   background: #08BAC6;
 }
-.pay_operation::before{
+
+.pay_operation::before {
   content: "";
   position: absolute;
   top: 0;
@@ -615,15 +634,17 @@ button {
   -webkit-transform: scaleY(0.5);
   transform: scaleY(0.5);
 }
+
 /* color */
 .color-ec6464 {
   color: #EC6464 !important;
 }
 
 /* v-cloak */
-[v-cloak]{
+[v-cloak] {
   display: none !important;
 }
+
 /*订单列表*/
 .order_item {
   background: #FFFFFF;
@@ -662,4 +683,5 @@ button {
 .order_item_bottom {
   padding: 0 0.94rem 0.625rem;
 }
+
 /*订单列表*/
