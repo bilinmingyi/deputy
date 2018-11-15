@@ -115,7 +115,7 @@ export default {
     },
     checkCode() {
       this.axios
-        .post("/weixin/sales/bind", {
+        .post("/weixin/sales/mobile/update", {
           mobile: this.bindMobile,
           code: this.msgCode
         })
