@@ -50,7 +50,7 @@
       <!--<div class="add_more">查看更多...</div>-->
     </section>
     <div>
-      <img src="../../assets/img/noInfor@2x.png" class="no_infor">
+      <img :src="appRoot+'/public/deputy/img/noInfor@2x.png'" class="no_infor">
     </div>
     <d-footer :activeItem="1"></d-footer>
   </div>
