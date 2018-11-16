@@ -128,15 +128,11 @@
           "patient_age": this.allState.patient.age,
           "patient_birthday": today.getTime(),
           "patient_sex": this.allState.patient.sex,
-          "recipe_list": [{
-            "recipe_type": this.allState.prescription.recipeType,
-            "is_cloud": this.allState.prescription.isCould,
-            "doctor_remark": this.allState.prescription.doctorRemark,
-            "check_images": JSON.stringify(this.allState.prescription.imgList),
-            "check_list": checkList,
-            "checkset_list": checkSetList,
-            "specimen_list": specimenList
-          }]
+          "memo": this.allState.prescription.doctorRemark,
+          "check_images": JSON.stringify(this.allState.prescription.imgList),
+          "check_list": checkList,
+          "checkset_list": checkSetList,
+          "specimen_list": specimenList
         }).then(respone => {
           var res = respone.data;
           if (res.code === 1000) {
@@ -182,6 +178,7 @@
     font-size: 1rem;
     color: #3F3F3F;
   }
+
   .payment input::-webkit-input-placeholder {
     color: #7C7C7C;
   }
