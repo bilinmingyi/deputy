@@ -58,25 +58,26 @@
         this.$emit("datachange", JSON.stringify(this.imgDataList))
       },
       fileChange(el, index) {
-        // this.compress(el).then(data=>{
-        //   console.log(data)
-        // });
-        // console.log(el.target.files[0])
         if (!el.target.files[0].size) return;
-        var formData = new FormData();
-        formData.append("file", el.target.files[0]);
-        this.axios.post("/weixin/sales/dyCheckOrder/imgUpload", formData).then(respone => {
-          const res = respone.data;
-          document.querySelector('#img-' + index).value = null
-          if (res.code == 1000) {
-            this.imgDataList.splice(this.currIndex, 1, res.data);
-            this.$emit("datachange", JSON.stringify(this.imgDataList))
-          } else {
-            this.$Message.infor(res.msg)
-          }
-        }).catch(error => {
-          console.log(error)
-        })
+        this.compress(el).then(data=>{
+          let resultData=this.dataURLtoFile(data[0],el.target.files[0].name);
+          var formData = new FormData();
+          formData.append("file",resultData);
+          this.axios.post("/weixin/sales/dyCheckOrder/imgUpload", formData).then(respone => {
+            const res = respone.data;
+            document.querySelector('#img-' + index).value = null
+            if (res.code == 1000) {
+              this.imgDataList.splice(this.currIndex, 1, res.data);
+              this.$emit("datachange", JSON.stringify(this.imgDataList))
+            } else {
+              this.$Message.infor(res.msg)
+            }
+          }).catch(error => {
+            console.log(error)
+          })
+        });
+
+
       },
       showImg(imgData) {
         var imgList = this.imgDataList;
@@ -91,74 +92,81 @@
         //   })
         // })
       },
-      // compress(event) {
-      //   var file = event.target.files;
-      //   var reader = new FileReader(), imgFile = file[0];
-      //   if (imgFile.type.indexOf('image') == 0) {
-      //     reader.readAsDataURL(imgFile);
-      //   } else {
-      //     this.$Message.infor('文件类型仅为图片')
-      //   }
-      //   let img = new Image();
-      //   reader.onload = function (e) {
-      //     img.src = e.target.result;
-      //   };
-      //   var imgP = new Promise((resolve, reject) => {
-      //     img.onload = () => {
-      //       var canvas = document.createElement("canvas");
-      //       var ctx = canvas.getContext('2d');
-      //       //    瓦片canvas
-      //       var tCanvas = document.createElement("canvas");
-      //       var tctx = tCanvas.getContext("2d");
-      //
-      //       var initSize = img.src.length;
-      //       var width = img.width;
-      //       var height = img.height;
-      //
-      //       //图片像素大于400万像素，计算压缩到400万以下
-      //       var ratio;
-      //
-      //       if ((ratio = width * height / 4000000) > 1) {
-      //         ratio = Math.sqrt(ratio);
-      //         width /= ratio;
-      //         height /= ratio;
-      //       } else {
-      //         ratio = 1;
-      //       }
-      //       canvas.width = width;
-      //       canvas.headers = height;
-      //
-      //       ctx.fillStyle = "#fff";
-      //       ctx.fillRect(0, 0, canvas.width, canvas, height);
-      //
-      //       //如果图片太大则使用瓦片绘制
-      //       var count;
-      //       if ((count = width * height / 1000000 > 1)) {
-      //         count = ~~(Math.sqrt(count) + 1);//计算分成的瓦片数
-      //         var nw = ~~(width / count);
-      //         var nh = ~~(height / count);
-      //
-      //         tCanvas.width = nw;
-      //         tCanvas.height = nh;
-      //
-      //         for (var i = 0; i < count; i++) {
-      //           for (var j = 0; j < count; j++) {
-      //             tctx.drawImage(img, i * nw * ratio, j * nh * ratio, nw * ratio, nh * ratio, 0, 0, nw, nh);
-      //             ctx.drawImage(tCanvas, i * nw, j * nh, nw, nh)
-      //           }
-      //         }
-      //       } else {
-      //         ctx.drawImage(img, 0, 0, width, height)
-      //       }
-      //       //进行最小压缩
-      //       var ndata = canvas.toDataURL('image/jpeg', 0.1);
-      //       tCanvas.width = tCanvas.height = canvas.width = canvas.height = 0;
-      //       resolve(ndata)
-      //     }
-      //   })
-      //   return Promise.all([imgP])
-      // }
+      compress(event) {
+        var file = event.target.files;
+        var reader = new FileReader(), imgFile = file[0];
+        if (imgFile.type.indexOf('image') == 0) {
+          reader.readAsDataURL(imgFile);
+        } else {
+          this.$Message.infor('文件类型仅为图片')
+        }
+        let img = new Image();
+        reader.onload = function (e) {
+          img.src = e.target.result;
 
+        };
+        var imgP = new Promise((resolve, reject) => {
+          img.onload = () => {
+            var canvas = document.createElement("canvas");
+            var ctx = canvas.getContext('2d');
+            //    瓦片canvas
+            var tCanvas = document.createElement("canvas");
+            var tctx = tCanvas.getContext("2d");
+            var initSize = img.src.length;
+            var width = img.width;
+            var height = img.height;
+
+            //图片像素大于400万像素，计算压缩到400万以下
+            var ratio;
+
+            if ((ratio = width * height / 4000000) > 1) {
+              ratio = Math.sqrt(ratio);
+              width /= ratio;
+              height /= ratio;
+            } else {
+              ratio = 1;
+            }
+            canvas.width = width;
+            canvas.height = height;
+
+            ctx.fillStyle = "#fff";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            //如果图片太大则使用瓦片绘制
+            var count;
+            if ((count = width * height / 1000000 > 1)) {
+              count = ~~(Math.sqrt(count) + 1);//计算分成的瓦片数
+              var nw = ~~(width / count);
+              var nh = ~~(height / count);
+
+              tCanvas.width = nw;
+              tCanvas.height = nh;
+
+              for (var i = 0; i < count; i++) {
+                for (var j = 0; j < count; j++) {
+                  tctx.drawImage(img, i * nw * ratio, j * nh * ratio, nw * ratio, nh * ratio, 0, 0, nw, nh);
+                  ctx.drawImage(tCanvas, i * nw, j * nh, nw, nh)
+                }
+              }
+            } else {
+              ctx.drawImage(img, 0, 0, width, height)
+            }
+            //进行最小压缩
+            var ndata = canvas.toDataURL('image/jpeg', 0.3);
+            tCanvas.width = tCanvas.height = canvas.width = canvas.height = 0;
+            resolve(ndata)
+          }
+        })
+        return Promise.all([imgP])
+      },
+      dataURLtoFile(dataurl, filename) {
+        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+          bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        while(n--){
+          u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new File([u8arr], filename, {type:mime});
+      }
     }
   }
 </script>
