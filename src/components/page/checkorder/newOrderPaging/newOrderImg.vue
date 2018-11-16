@@ -8,7 +8,8 @@
           <div v-if="canChange" class="img_delete_btn" @click.stop="deleteImg(index)">删除</div>
         </div>
         <div v-if="imgData=='' && canChange" @click.stop.prevent="fileClick(index)">+</div>
-        <input accept="image/*" style="display: none;" :name="'img-'+index" type="file" :id="'img-'+index" @change="fileChange($event,index)"/>
+        <input accept="image/*" style="display: none;" :name="'img-'+index" type="file" :id="'img-'+index"
+               @change="fileChange($event,index)"/>
       </div>
       <div class="add_img_title">最多可上传3张照片</div>
     </div>
@@ -81,7 +82,70 @@
             urls: imgList
           })
         })
-      }
+      },
+      // compress(event) {
+        // var file = event.target.files;
+        // var reader = new FileReader(), imgFile = file[0];
+        // if (imgFile.type.indexOf('image') == 0) {
+        //   reader.readAsDataURL(imgFile);
+        // } else {
+        //   this.$Message.infor('文件类型仅为图片')
+        // }
+        // let img = new Image();
+        // reader.onload = function (e) {
+        //   img.src = e.target.result;
+        // };
+        // var imgP = new Promise((resolve, reject) => {
+        //   img.onload = () => {
+        //     var canvas = document.createElement("canvas");
+        //     var ctx = canvas.getContext('2d');
+        //     //    瓦片canvas
+        //     var tCanvas = document.createElement("canvas");
+        //     var tctx = tCanvas.getContext("2d");
+        //
+        //     var initSize = img.src.length;
+        //     var width = img.width;
+        //     var height = img.height;
+        //
+        //     //图片像素大于400万像素，计算压缩到400万以下
+        //     var ratio;
+        //
+        //     if ((ratio = width * height / 4000000) > 1) {
+        //       ratio = Math.sqrt(ratio);
+        //       width /= ratio;
+        //       height /= ratio;
+        //     } else {
+        //       ratio = 1;
+        //     }
+        //     canvas.width = width;
+        //     canvas.headers = height;
+        //
+        //     ctx.fillStyle = "#fff";
+        //     ctx.fillRect(0, 0, canvas.width, canvas, height);
+        //
+        //     //如果图片太大则使用瓦片绘制
+        //     var count;
+        //     if ((count = width * height / 1000000 > 1)) {
+        //       count = ~~(Math.sqrt(count) + 1);//计算分成的瓦片数
+        //       var nw = ~~(width / count);
+        //       var nh = ~~(height / count);
+        //
+        //       tCanvas.width = nw;
+        //       tCanvas.height = nh;
+        //
+        //       for (var i = 0; i < count; i++) {
+        //         for (var j = 0; j < count; j++) {
+        //           tctx.drawImage(img, i * nw * ratio, j * nh * ratio, nw * ratio, nh * ratio,0,0,nw,nh);
+        //           ctx.drawImage(tCanvas,i*nw,j*nh,nw,nh)
+        //         }
+        //       }
+        //
+        //
+        //     }
+        //
+        //   }
+        // })
+      // }
 
     }
   }
