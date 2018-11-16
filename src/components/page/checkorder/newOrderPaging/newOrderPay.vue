@@ -4,7 +4,7 @@
     <div class="bg-fff pl15 pr15 mb12">
       <div class="pay_line">
         <span>订单金额</span>
-        <span class="pay_money">￥{{money}}</span>
+        <span class="pay_money">{{money | priceFormat}}</span>
       </div>
       <hr class="full-screen-hr">
       <div class="pay_line pay_type_block">
