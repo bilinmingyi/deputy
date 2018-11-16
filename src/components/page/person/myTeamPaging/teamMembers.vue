@@ -4,7 +4,7 @@
       <img class="person_portrait" src="@/assets/img/ndb.png">
       <div class="person_infor" :id="item.id">
         <div>
-          <span class="person_name">{{item.contract}}</span>
+          <span class="person_name">{{item.name}}</span>
         </div>
         <div class="person_mobile">联系电话：{{item.phone_num}}</div>
       </div>
