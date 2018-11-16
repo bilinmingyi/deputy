@@ -2,7 +2,7 @@
   <div>
     <info-header>
       条码信息
-      <button v-if="isPay===0 && status=='WAITCONFIRM'" slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/editBarCode` })">编辑条码</button>
+      <button v-if="status=='WAITCONFIRM'" slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/editBarCode` })">编辑条码</button>
     </info-header>
     <div class="barcode-box p15 mb12">
       <ul>

@@ -142,10 +142,17 @@ export default {
           this.$Message.infor('至少添加一个检验项目');
           return;
         }
+        let barCodeInfo = this.order.dyCheckOrderSpecimenInfos;
+        for (let i = 0, len = barCodeInfo.length; i < len; i++) {
+          if (barCodeInfo[i].barcode === "") {
+            this.$Message.infor("条码不能为空");
+            return;
+          }
+        }
         this.axios
           .post("/weixin/sales/dyCheckOrder/comfirm", {
             order_seqno: this.orderSeqno,
-            check_images: JSON.stringify(this.imgDataList),
+            check_images: typeof this.imgDataList === 'string' ? this.imgDataList : JSON.stringify(this.imgDataList),
             pay_type: this.order.pay_type,
             memo: this.order.memo
           })
