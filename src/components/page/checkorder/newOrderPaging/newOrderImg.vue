@@ -7,18 +7,22 @@
           <img :src="imgData" @click="showImg(imgData)">
           <div v-if="canChange" class="img_delete_btn" @click.stop="deleteImg(index)">删除</div>
         </div>
-        <div v-if="imgData=='' && canChange" @click.stop.prevent="fileClick(index)">+</div>
+        <div v-if="imgData=='' && canChange" @click.stop.prevent="fileClick(index)">
+          +
+        </div>
         <input accept="image/*" style="display: none;" :name="'img-'+index" type="file" :id="'img-'+index"
                @change="fileChange($event,index)"/>
       </div>
       <div class="add_img_title">最多可上传3张照片</div>
     </div>
+
   </div>
 </template>
 
 <script>
   import infoHeader from "@/components/common/infoHeader"
-  import getWXSign from '@/assets/js/wx'
+  // import getWXSign from '@/assets/js/wx'
+  // import dImgload from "@/components/common/dImgload"
 
   export default {
     name: "newOrderImg",
@@ -182,7 +186,7 @@
     border-radius: 0.25rem;
     width: calc(20vw - 0.676rem);
     height: calc(20vw - 0.676rem);
-    line-height: calc(20vw - 0.876rem);
+    line-height: calc(20vw - 0.676rem);
     margin-right: 0.5rem;
     color: #CCCCCC;
     font-size: 1.75rem;
