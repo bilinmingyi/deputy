@@ -56,56 +56,56 @@
         }
       }
     },
-    beforeRouteLeave(to, from, next) {
-      var list = [];
-      this.preItems.forEach(item => {
-        if (item.type === 1) {
-          list.push(item.specimen_container_code)
-        } else if (item.type === 2) {
-          item.dy_checks.forEach(check => {
-            list.push(check.specimen_container_code)
-          })
-        }
-      })
-      if (list.length === 0) {
-        next();
-      } else {
-        this.axios.post("/stockmng/specimenContainer/list", {
-          codes: list
-        }).then(respone => {
-          const res = respone.data;
-          const selectContains = JSON.parse(JSON.stringify(this.contains));
-
-          if (res.code === 1000) {
-            res.data.forEach(item => {
-              for (var i = 0; i < selectContains.length; i++) {
-                if (selectContains[i].code === item.code) {
-                  break
-                }
-              }
-              if (i === selectContains.length) {
-                this.push_contain({
-                  num: 1,
-                  memo: '',
-                  code: item.code,
-                  id: item.id,
-                  name: item.name,
-                  barCode: ''
-                })
-              }
-            })
-            next();
-          } else {
-            this.$Message.infor(res.msg);
-            next(false);
-          }
-        }).catch(error => {
-          console.log(error)
-          next(false)
-        })
-      }
-
-    },
+    // beforeRouteLeave(to, from, next) {
+    //   var list = [];
+    //   this.preItems.forEach(item => {
+    //     if (item.type === 1) {
+    //       list.push(item.specimen_container_code)
+    //     } else if (item.type === 2) {
+    //       item.dy_checks.forEach(check => {
+    //         list.push(check.specimen_container_code)
+    //       })
+    //     }
+    //   })
+    //   if (list.length === 0) {
+    //     next();
+    //   } else {
+    //     this.axios.post("/stockmng/specimenContainer/list", {
+    //       codes: list
+    //     }).then(respone => {
+    //       const res = respone.data;
+    //       const selectContains = JSON.parse(JSON.stringify(this.contains));
+    //
+    //       if (res.code === 1000) {
+    //         res.data.forEach(item => {
+    //           for (var i = 0; i < selectContains.length; i++) {
+    //             if (selectContains[i].code === item.code) {
+    //               break
+    //             }
+    //           }
+    //           if (i === selectContains.length) {
+    //             this.push_contain({
+    //               num: 1,
+    //               memo: '',
+    //               code: item.code,
+    //               id: item.id,
+    //               name: item.name,
+    //               barCode: ''
+    //             })
+    //           }
+    //         })
+    //         next();
+    //       } else {
+    //         this.$Message.infor(res.msg);
+    //         next(false);
+    //       }
+    //     }).catch(error => {
+    //       console.log(error)
+    //       next(false)
+    //     })
+    //   }
+    //
+    // },
     methods: {
       ...mapActions('newCheckOrder', [
         'push_checkItem',
@@ -155,10 +155,6 @@
         this.dataList = [];
       },
       addProject(item) {
-        // if (this.checkAddMed(item.id)) {
-        //   this.$Message.infor("该项目已添加")
-        //   return
-        // }
         if (this.checkItemAdd(item)) {
           this.$Message.infor("已存在项目或者项目部分");
           return
@@ -167,6 +163,55 @@
           ...item,
           "type": this.activePage
         })
+        this.updateItem();
+      },
+      updateItem(){
+          var list = [];
+          this.preItems.forEach(item => {
+            if (item.type === 1) {
+              list.push(item.specimen_container_code)
+            } else if (item.type === 2) {
+              item.dy_checks.forEach(check => {
+                list.push(check.specimen_container_code)
+              })
+            }
+          })
+          if (list.length === 0) {
+           this.$router.go(-1);
+          } else {
+            this.axios.post("/stockmng/specimenContainer/list", {
+              codes: list
+            }).then(respone => {
+              const res = respone.data;
+              const selectContains = JSON.parse(JSON.stringify(this.contains));
+
+              if (res.code === 1000) {
+                res.data.forEach(item => {
+                  for (var i = 0; i < selectContains.length; i++) {
+                    if (selectContains[i].code === item.code) {
+                      break
+                    }
+                  }
+                  if (i === selectContains.length) {
+                    this.push_contain({
+                      num: 1,
+                      memo: '',
+                      code: item.code,
+                      id: item.id,
+                      name: item.name,
+                      barCode: ''
+                    })
+                  }
+                })
+                this.$router.go(-1);
+              } else {
+                this.$Message.infor(res.msg);
+              }
+            }).catch(error => {
+              console.log(error)
+            })
+          }
+
       },
       checkItemAdd(item) {
         var list = [];

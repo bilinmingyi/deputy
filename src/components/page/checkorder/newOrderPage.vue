@@ -179,7 +179,7 @@
     color: #3F3F3F;
     font-size: 1rem;
     padding: 0.78rem 0.94rem;
-    margin-bottom: 4.25rem;
+    margin-bottom: 8.5rem;
     display: flex;
   }
 
