@@ -20,7 +20,7 @@
     </section>
     <div class="pay_operation">
         <button @click="handleBarCode(1)">关闭</button>
-        <button @click="handleBarCode(2)">确认</button>
+        <button @click="handleBarCode(2)" v-if="status == 'WAITCONFIRM'">确认</button>
       </div>
   </div>
 </template>
@@ -44,7 +44,8 @@ export default {
   },
   computed: {
     ...mapState("changeCheckOrder", {
-      specimens: state => state.order.dyCheckOrderSpecimenInfos
+      specimens: state => state.order.dyCheckOrderSpecimenInfos,
+      status: state => state.order.status
     })
   },
   methods: {
@@ -124,14 +125,16 @@ export default {
 .input-btn-box input {
   border: 1px solid #08bac6;
   border-radius: 0.25rem;
-  font-family: PingFangSC-Light;
+  font-family: PingFangSC-Regular;
   font-size: 1rem;
   color: #3f3f3f;
   letter-spacing: 0;
-  text-align: left;
   flex: 1;
   min-height: 2.75rem;
   padding: 0 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .input-btn-box input::-webkit-input-placeholder,
@@ -166,7 +169,7 @@ export default {
   border-radius: 0.25rem;
   border: none;
   padding: 0 0.875rem;
-  font-family: PingFangSC-Light;
+  font-family: PingFangSC-Regular;
   font-size: 0.9375rem;
   color: #3f3f3f;
   letter-spacing: 0;
