@@ -59,7 +59,7 @@ import orderCode from "@/components/page/checkorder/confirmedOrderDetailPaging/c
 import orderImg from "@/components/page/checkorder/newOrderPaging/newOrderImg";
 import orderPay from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderPay";
 import dLoad from "@/components/common/dLoad";
-import orderReport from '@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderReport'
+import orderReport from "@/components/page/checkorder/confirmedOrderDetailPaging/confirmedOrderReport";
 import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
@@ -88,7 +88,8 @@ export default {
   computed: {
     ...mapState("changeCheckOrder", {
       order: state => state.order,
-      status: state => state.order.status
+      status: state => state.order.status,
+      checkedPayType: state => state.order.pay_type
     }),
     ...mapGetters("changeCheckOrder", ["curProjects", "imgDataList"])
   },
@@ -96,7 +97,8 @@ export default {
     ...mapActions("changeCheckOrder", [
       "set_order",
       "update_imgs",
-      "reset_order"
+      "reset_order",
+      "set_payType"
     ]),
     getData(noLoad) {
       if (!noLoad) {
@@ -109,6 +111,7 @@ export default {
           let res = response.data;
           if (res.code == 1000) {
             this.set_order(res.data);
+            this.set_payType(1);
           } else {
             this.$Message.infor(res.msg);
           }
@@ -139,7 +142,7 @@ export default {
           .catch(console.log);
       } else if (type == 2) {
         if (this.order.items_info.length === 0) {
-          this.$Message.infor('至少添加一个检验项目');
+          this.$Message.infor("至少添加一个检验项目");
           return;
         }
         let barCodeInfo = this.order.dyCheckOrderSpecimenInfos;
@@ -152,7 +155,10 @@ export default {
         this.axios
           .post("/weixin/sales/dyCheckOrder/comfirm", {
             order_seqno: this.orderSeqno,
-            check_images: typeof this.imgDataList === 'string' ? this.imgDataList : JSON.stringify(this.imgDataList),
+            check_images:
+              typeof this.imgDataList === "string"
+                ? this.imgDataList
+                : JSON.stringify(this.imgDataList),
             pay_type: this.order.pay_type,
             memo: this.order.memo
           })
@@ -160,7 +166,11 @@ export default {
             let res = response.data;
             if (res.code == 1000) {
               this.$Message.infor("确认成功");
-              this.$router.go(-1);
+              if (this.checkedPayType == 1) {
+                this.handleOrder(4);
+              } else {
+                this.$router.go(-1);
+              }
             } else {
               this.$Message.infor(res.msg);
             }
@@ -180,7 +190,8 @@ export default {
             }
           });
       } else if (type == 4) {
-        window.location.href = '/weixin/pay/?orderType=5&orderSeqno=' + this.orderSeqno;
+        window.location.href =
+          "/weixin/pay/?orderType=5&orderSeqno=" + this.orderSeqno;
       }
     }
   }

@@ -18,6 +18,7 @@
         </ul>
       </div>
     </section>
+    <d-load v-if="showLoad"></d-load>
   </div>
 </template>
 
@@ -25,14 +26,17 @@
 import dHeader from "@/components/common/dHeader";
 import dSearch from "@/components/common/dSearch";
 import { mapState, mapGetters, mapActions } from "vuex";
+import dLoad from "@/components/common/dLoad";
 export default {
   components: {
     dHeader,
-    dSearch
+    dSearch,
+    dLoad
   },
   props: ["orderSeqno"],
   data() {
     return {
+      showLoad: false,
       activePage: 1,
       timer: "",
       dataList: []
@@ -44,55 +48,6 @@ export default {
       projects: state => state.order.items_info
     }),
     ...mapGetters("changeCheckOrder", ["curProjects"])
-  },
-  beforeRouteLeave(to, from, next) {
-    if (
-      !this.newProjects.check_list.length &&
-      !this.newProjects.checkset_list.length
-    ) {
-      next();
-      return;
-    }
-
-    const [check, checkSet] = [[], []];
-    this.curProjects.check_list.forEach(item => {
-      check.push({ cloud_item_id: item.item_id });
-    });
-    this.curProjects.checkset_list.forEach(item => {
-      checkSet.push({ set_id: item.set_id });
-    });
-    let params = {
-      order_seqno: this.orderSeqno,
-      check_list: check.concat(
-        this.newProjects.check_list.map(item => {
-          return {
-            cloud_item_id: item.id
-          };
-        })
-      ),
-      checkset_list: checkSet.concat(
-        this.newProjects.checkset_list.map(item => {
-          return {
-            set_id: item.id
-          };
-        })
-      )
-    };
-
-    this.axios
-      .post("/weixin/sales/dyCheckOrder/update", params)
-      .then(respone => {
-        const res = respone.data;
-        if (res.code === 1000) {
-          // 更新vuex
-          this.clear_newProjectList();
-
-          next();
-        } else {
-          this.$Message.infor(res.msg);
-          next(false);
-        }
-      }).catch(console.log).then(()=>{next()});
   },
   methods: {
     ...mapActions("changeCheckOrder", ["add_project", "clear_newProjectList"]),
@@ -150,6 +105,7 @@ export default {
         project: item,
         type: this.activePage
       });
+      this.updateProject()
     },
     checkAddMed(id) {
       let arr1 =
@@ -180,6 +136,56 @@ export default {
         }
       }
       return true;
+    },
+    updateProject() {
+      this.showLoad = true;
+      if (
+        !this.newProjects.check_list.length &&
+        !this.newProjects.checkset_list.length
+      ) {
+        this.$router.go(-1);
+        return;
+      }
+      const [check, checkSet] = [[], []];
+      this.curProjects.check_list.forEach(item => {
+        check.push({ cloud_item_id: item.item_id });
+      });
+      this.curProjects.checkset_list.forEach(item => {
+        checkSet.push({ set_id: item.set_id });
+      });
+      let params = {
+        order_seqno: this.orderSeqno,
+        check_list: check.concat(
+          this.newProjects.check_list.map(item => {
+            return {
+              cloud_item_id: item.id
+            };
+          })
+        ),
+        checkset_list: checkSet.concat(
+          this.newProjects.checkset_list.map(item => {
+            return {
+              set_id: item.id
+            };
+          })
+        )
+      };
+
+      this.axios
+        .post("/weixin/sales/dyCheckOrder/update", params)
+        .then(respone => {
+          const res = respone.data;
+          if (res.code === 1000) {
+            // 更新vuex
+            this.clear_newProjectList();
+          } else {
+            this.$Message.infor(res.msg);
+          }
+        })
+        .catch(console.log)
+        .then(() => {
+          this.$router.go(-1);
+        });
     }
   }
 };

@@ -53,16 +53,18 @@ export default {
     dRadio
   },
   data() {
-    return {};
+    return {
+      checkedPayType:1  
+    }
   },
   created() {
-    this.set_payType(this.checkedPayType);
+    
   },
   computed: {
     ...mapState("changeCheckOrder", {
       projectList: state => state.order.items_info,
       isPay: state => state.order.is_paid,
-      checkedPayType: state => state.order.pay_type,
+      // checkedPayType: state => state.order.pay_type,
       status: state => state.order.status,
       trade_price: state => state.order.trade_price,
     }),

@@ -10,7 +10,7 @@
           <span v-else>全部报告已出</span>
         </div>
         <div class="report-item" v-for="(item, index) in dataList">
-          <span><span style="color: #7c7c7c;">{{index + 1}}: </span>{{item.testName.length > 20 ? item.testName.slice(0, 20) + '...' : item.testName}}</span>
+          <span><span style="color: #7c7c7c;">{{index + 1}}: </span>{{item.testName.length > 15 ? item.testName.slice(0, 15) + '...' : item.testName}}</span>
           <button @click="showPic(item.reportData)">查看</button>
         </div>
       </div>
