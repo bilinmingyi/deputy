@@ -47,7 +47,7 @@
     },
     computed: {
       ...mapState('newCheckOrder', {
-        contains: state => state.prescription.contains
+        contains: state => JSON.parse(JSON.stringify(state.prescription.contains))
       })
     },
     methods: {
@@ -91,7 +91,7 @@
     min-height: calc(100vh - 2.75rem);
     width: 100vw;
     margin-top: 2.75rem;
-    padding-bottom: 4.375rem;
+    padding-bottom: 8.75rem;
   }
 
   .content input:focus {

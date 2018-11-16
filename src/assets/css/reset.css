@@ -80,6 +80,8 @@ a:link, a:visited, a:hover, a:active {
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
+input[type="text"],
+input[type="number "],
 button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -104,9 +106,6 @@ input:-ms-input-placeholder {
 input {
   font-size: 1rem;
   color: #3F3F3F;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 /* 图标字体 */
