@@ -120,6 +120,21 @@
             memo: item.memo
           })
         });
+        console.log(JSON.stringify(this.allState.prescription.imgList))
+        console.log(JSON.stringify({
+          "clinic_id": this.allState.clinic.clinicId,
+          "doctor_id": this.allState.clinic.doctorId,
+          "patient_mobile": this.allState.patient.mobile,
+          "patient_name": this.allState.patient.name,
+          "patient_age": this.allState.patient.age,
+          "patient_birthday": today.getTime(),
+          "patient_sex": this.allState.patient.sex,
+          "memo": this.allState.prescription.doctorRemark,
+          "check_images": JSON.stringify(this.allState.prescription.imgList),
+          "check_list": checkList,
+          "checkset_list": checkSetList,
+          "specimen_list": specimenList
+        }))
         this.axios.post("/weixin/sales/dyCheckOrder/create", {
           "clinic_id": this.allState.clinic.clinicId,
           "doctor_id": this.allState.clinic.doctorId,

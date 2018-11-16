@@ -4,7 +4,7 @@
     <div class="bg-fff pl15 pr15 mb12">
       <div class="pay_line">
         <span>订单金额</span>
-        <span class="pay_money">{{orderPrice | priceFormat}}</span>
+        <span class="pay_money">{{trade_price | priceFormat}}</span>
       </div>
 
       <section v-if="isPay==1">
@@ -63,9 +63,10 @@ export default {
       projectList: state => state.order.items_info,
       isPay: state => state.order.is_paid,
       checkedPayType: state => state.order.pay_type,
-      status: state => state.order.status
+      status: state => state.order.status,
+      trade_price: state => state.order.trade_price,
     }),
-    ...mapGetters("changeCheckOrder", ["orderPrice"])
+    // ...mapGetters("changeCheckOrder", ["orderPrice"])
     // payType() {
     //   this.set_payType(this.checkedPayType);
     //   return this.checkedPayType;

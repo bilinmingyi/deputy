@@ -69,38 +69,36 @@ export default {
         let axios = this.axios;
         let barCodeInfo = this.specimens;
         let updateArr = [];
-        barCodeInfo.forEach(item => {
-          if (item.barcode === "") {
+        for (let i = 0, len = barCodeInfo.length; i < len; i++) {
+          if (barCodeInfo[i].barcode === "") {
             this.$Message.infor("条码不能为空");
             return;
           }
-          updateArr.push(axios.post(
-              "/weixin/sales/dyCheckOrderSpecimens/update",
-              {
-                id: item.id,
-                order_seqno: this.orderSeqno,
-                volumn: item.volumn,
-                barcode: item.barcode,
-                memo: item.memo
-              }
-          ));
-          axios.all(updateArr).then(
-            axios.spread((...rest) => {
-              let status = true;
-              for (let i = 0, len = rest.length; i < len; i++) {
-                let response = rest[i].data;
-                let config = rest[i].config;
-                if (response.code != 1000) {
-                  this.$Message.infor(response.msg);
-                  status = false;
-                  break;
-                }
-              }
-              status && handleBarCode(1);
+          updateArr.push(
+            axios.post("/weixin/sales/dyCheckOrderSpecimens/update", {
+              id: barCodeInfo[i].id,
+              order_seqno: this.orderSeqno,
+              volumn: barCodeInfo[i].volumn,
+              barcode: barCodeInfo[i].barcode,
+              memo: barCodeInfo[i].memo
             })
           );
-        });
-        console.log(updateArr);
+        }
+        axios.all(updateArr).then(
+          axios.spread((...rest) => {
+            let status = true;
+            for (let i = 0, len = rest.length; i < len; i++) {
+              let response = rest[i].data;
+              let config = rest[i].config;
+              if (response.code != 1000) {
+                this.$Message.infor(response.msg);
+                status = false;
+                break;
+              }
+            }
+            status && this.handleBarCode(1);
+          })
+        );   
       }
     }
   }
