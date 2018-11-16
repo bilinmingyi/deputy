@@ -58,7 +58,7 @@
         handler(newVal, oldVal) {
           var allPrice=0;
           newVal.forEach(item => {
-            allPrice+=Number(item.trade_price);
+            allPrice+=Number(item.price)*0.7;
           })
           this.set_price(allPrice)
         }
