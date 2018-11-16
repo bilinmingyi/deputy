@@ -68,12 +68,16 @@ export default {
         .catch(console.log);
     },
     showPic(pics) {
-      getWXSign.apply(this).then(wx => {
-        wx.previewImage({
-          current: pics[0],
-          urls: pics
-        });
-      });
+      WeixinJSBridge.invoke('imagePreview', {
+        'current': pics[0],
+        'urls': pics
+      })
+      // getWXSign.apply(this).then(wx => {
+      //   wx.previewImage({
+      //     current: pics[0],
+      //     urls: pics
+      //   });
+      // });
     }
   }
 };
