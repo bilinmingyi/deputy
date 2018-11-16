@@ -15,6 +15,7 @@
           </div>
           <hr class="full-screen-hr">
         </li>
+        <li class="clinic-none" v-show="isComplete && clinicList.length==0">暂无相关数据</li>
       </ul>
       <!-- <div class="add_more">查看更多...</div> -->
     </section>
@@ -35,7 +36,8 @@
       return {
         showLoad: false,
         teamId: null,
-        clinicList: []
+        clinicList: [],
+        isComplete: false
       };
     },
     filters: {
@@ -55,6 +57,7 @@
     methods: {
       getData(name) {
         this.showLoad = true;
+        this.isComplete = false;
         this.axios
           .post("/weixin/salesTeam/clinic/list", {
             sales_channel_id: this.teamId,
@@ -72,6 +75,7 @@
             console.log(err);
           })
           .then(() => {
+            this.isComplete = true;
             this.showLoad = false;
           });
       }
@@ -131,5 +135,14 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  
+  .clinic-none {
+    color: #7c7c7c;
+    font-size: 0.875rem;
+    background: #fafafa;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
   }
 </style>

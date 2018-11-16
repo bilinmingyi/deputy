@@ -9,6 +9,8 @@
         <div class="person_mobile">联系电话：{{item.phone_num}}</div>
       </div>
     </div>
+    <div class="add_more" v-show="isComplete && teamMembers.length==0">暂无相关数据</div>
+    <d-load v-if="showLoad"></d-load>
     <!-- <div class="person_content">
       <img class="person_portrait" src="@/assets/img/nv.png">
       <div class="person_infor">
@@ -22,11 +24,17 @@
 </template>
 
 <script>
+import dLoad from "@/components/common/dLoad";
 export default {
+  components: {
+    dLoad
+  },
   data() {
     return {
+      showLoad: false,
       teamId: null,
       teamMembers: [],
+      isComplete: false
     };
   },
   created() {
@@ -35,6 +43,8 @@ export default {
   },
   methods: {
     getMembers() {
+      this.showLoad = true;
+      this.isComplete = false;
       this.axios
         .post("/weixin/salesTeam/list", {
           sales_channel_id: this.teamId
@@ -49,6 +59,9 @@ export default {
         })
         .catch(err => {
           console.log(err);
+        }).then(() => {
+          this.isComplete = true;
+          this.showLoad = false;
         });
     }
   }
