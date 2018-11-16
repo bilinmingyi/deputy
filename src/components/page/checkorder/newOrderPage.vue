@@ -50,6 +50,7 @@
       ...mapState('newCheckOrder', {
         imgDataList: state => state.prescription.imgList,
         remark: state => state.prescription.doctorRemark,
+        contains: state => state.prescription.contains,
         allState: state => state
       })
     },
@@ -98,6 +99,17 @@
           this.$Message.infor("至少添加一个检查项目");
           return
         }
+        try{
+          this.contains.forEach(item => {
+            if(item.barCode===""){
+              throw new Error("条码不能为空");
+            }
+          });
+        }catch (e) {
+          this.$Message.infor(e.message)
+          return
+        }
+
         var today = new Date();
         today.setFullYear(parseInt(today.getFullYear()) - parseInt(this.allState.patient.age) - parseInt(this.allState.patient.birthMonth / 12));
         today.setMonth(parseInt(today.getMonth()) - parseInt(this.allState.patient.birthMonth % 12));
@@ -120,21 +132,8 @@
             memo: item.memo
           })
         });
-        console.log(JSON.stringify(this.allState.prescription.imgList))
-        console.log(JSON.stringify({
-          "clinic_id": this.allState.clinic.clinicId,
-          "doctor_id": this.allState.clinic.doctorId,
-          "patient_mobile": this.allState.patient.mobile,
-          "patient_name": this.allState.patient.name,
-          "patient_age": this.allState.patient.age,
-          "patient_birthday": today.getTime(),
-          "patient_sex": this.allState.patient.sex,
-          "memo": this.allState.prescription.doctorRemark,
-          "check_images": JSON.stringify(this.allState.prescription.imgList),
-          "check_list": checkList,
-          "checkset_list": checkSetList,
-          "specimen_list": specimenList
-        }))
+
+
         this.axios.post("/weixin/sales/dyCheckOrder/create", {
           "clinic_id": this.allState.clinic.clinicId,
           "doctor_id": this.allState.clinic.doctorId,
