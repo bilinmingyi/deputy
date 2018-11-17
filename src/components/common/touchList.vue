@@ -26,6 +26,10 @@
       noDataTips: {
         type: Boolean,
         default: true
+      },
+      relativeActive: {
+        type: Boolean,
+        default: false,
       }
     },
     data() {
@@ -41,6 +45,13 @@
     computed: {
       getkey() {
         return this.mykey;
+      },
+    },
+    watch: {
+      relativeActive(newVal) {
+        if (newVal) {
+          this.restSlide();
+        }
       }
     },
     methods: {
@@ -71,6 +82,7 @@
         if (this.startX - this.endX > 100) {
           this.restSlide();
           this.activeItem = index;
+          this.$emit('active');
         }
         // 右滑
         if (this.startX - this.endX < -100) {
@@ -83,6 +95,7 @@
       //复位滑动状态
       restSlide() {
         this.activeItem = -1;
+        this.$emit('reset');
       },
       //删除
       deleteItem(e) {

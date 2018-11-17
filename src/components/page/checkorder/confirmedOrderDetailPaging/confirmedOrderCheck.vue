@@ -5,12 +5,23 @@
       <button v-if="isPay===0 && status=='WAITCONFIRM'" slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/addNewProject` })">添加项目</button>
     </info-header>
     <div class="bg-fff p15 mb12">
-      <touch-list :data="curProjects.check_list" @delete="deleteCheckProject" class="mb10" :can-delete="status=='WAITCONFIRM' && isPay===0?true:false" :noDataTips="curProjects.checkset_list.length==0?true:false">
+      <touch-list :data="curProjects.check_list" 
+        @delete="deleteCheckProject" class="mb10" 
+        :can-delete="status=='WAITCONFIRM' && isPay===0" 
+        :noDataTips="curProjects.checkset_list.length==0"
+        :relativeActive="checksetActive"
+        @reset="checkActive=false"
+        @active="checkActive=true">
         <div slot-scope="{prop}">
           <span>{{prop.set_id ? prop.set_name : prop.name}}</span>
         </div>
       </touch-list>
-      <touch-list :data="curProjects.checkset_list" @delete="deleteCheckSetProject" :can-delete="status=='WAITCONFIRM' && isPay===0?true:false" :noDataTips="curProjects.check_list.length==0 && curProjects.checkset_list.length>0?true:false">
+      <touch-list :data="curProjects.checkset_list" 
+        @delete="deleteCheckSetProject" :can-delete="status=='WAITCONFIRM' && isPay===0" 
+        :noDataTips="curProjects.check_list.length==0 && curProjects.checkset_list.length>0"
+        :relativeActive="checkActive"
+        @reset="checksetActive=false"
+        @active="checksetActive=true">
         <div slot-scope="{prop}">
           <span>{{prop.set_name}}</span>
         </div>
@@ -31,7 +42,10 @@ export default {
     touchList
   },
   data() {
-    return {};
+    return {
+      checkActive: false,
+      checksetActive: false,
+    };
   },
   computed: {
     ...mapState("changeCheckOrder", {
