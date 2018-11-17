@@ -2,7 +2,7 @@
   <div>
     <info-header>
       条码信息
-      <button slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/editBarCode` })">编辑条码</button>
+      <button slot="btn" @click="$router.push({ path: `/checkListPage/clinicCheckOrderPage/confirmedOrderDetail/${orderSeqno}/editBarCode` })">{{status == 'WAITCONFIRM' ? '编辑': '查看'}}条码</button>
     </info-header>
     <div class="barcode-box p15 mb12">
       <ul>

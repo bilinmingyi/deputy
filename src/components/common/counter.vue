@@ -1,8 +1,8 @@
 <template>
   <div class="counter">
-    <img src="@/assets/img/jian@2x.png" class="sub" v-on:click="$emit('input', myNum > min ? --myNum : myNum)">
-    <input type="number" @input="$emit('input', Number(myNum))" v-model="myNum" placeholder="0">
-    <img src="@/assets/img/jia@2x.png" class="add" v-on:click="$emit('input', myNum < max ? ++myNum : myNum)">
+    <img src="@/assets/img/jian@2x.png" class="sub" v-on:click="$emit('input', !disable && myNum > min ? --myNum : myNum)">
+    <input type="number" @input="$emit('input', Number(myNum))" v-model="myNum" placeholder="0" :disabled="disable">
+    <img src="@/assets/img/jia@2x.png" class="add" v-on:click="$emit('input', !disable && myNum < max ? ++myNum : myNum)">
   </div>
 </template>
 
@@ -20,6 +20,10 @@ export default {
     max: {
       type: Number,
       default: Infinity
+    },
+    disable: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -59,6 +63,12 @@ export default {
   width: 5rem;
   flex: 1;
 }
+
+.counter input:disabled {
+  background: #fff;
+  color: #7c7c7c;
+}
+
 input::-webkit-input-placeholder {
   font-size: 1rem;
   color: #8c8c8c;

@@ -6,14 +6,14 @@
         <info-header noBorder>{{item.name}}</info-header>
         <div class="bg-fff pl12 pr12 pb20 mb12">
           <div class="pl12 pr12 input-btn-box">
-            <input type="text" placeholder="条码" v-model="item.barcode">
+            <input type="text" placeholder="条码" v-model="item.barcode" :readonly="status!='WAITCONFIRM'">
             <button @click.stop="scanCode(index)">扫码</button>
           </div>
           <div class="pl12 pr12 pt16 counter-box">   
-            <counter :min=1 v-model="item.volumn"></counter>
+            <counter :min=1 v-model="item.volumn" :disable="status!='WAITCONFIRM'"></counter>
           </div>
           <div class="input-box pl12 pr12 pt16">
-            <input type="text" placeholder="标本备注" v-model="item.memo">
+            <input type="text" placeholder="标本备注" v-model="item.memo" :readonly="status!='WAITCONFIRM'">
           </div>
         </div>
       </div>
@@ -50,6 +50,9 @@ export default {
   },
   methods: {
     scanCode(index) {
+      if (this.status != 'WAITCONFIRM') {
+        return;
+      }
       var self = this;
       getWXSign.apply(this).then(wx => {
         wx.scanQRCode({
@@ -118,6 +121,11 @@ export default {
   outline-color: #08bac6;
 }
 
+.content input:disabled {
+  background: #fff;
+  color: #7c7c7c;
+}
+
 .input-btn-box {
   display: flex;
   width: 100%;
@@ -175,6 +183,11 @@ export default {
   color: #3f3f3f;
   letter-spacing: 0;
   text-align: left;
+}
+
+.input-box input:disabled {
+  background: #ededed;
+  color: #7c7c7c;
 }
 
 .counter-box {
