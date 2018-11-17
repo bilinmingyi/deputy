@@ -59,6 +59,9 @@
         }
       }
     },
+    created(){
+      this.getData(' ',true);
+    },
     // beforeRouteLeave(to, from, next) {
     //   var list = [];
     //   this.preItems.forEach(item => {
@@ -109,28 +112,34 @@
     //   }
     //
     // },
+
     methods: {
       ...mapActions('newCheckOrder', [
         'push_checkItem',
         'push_contain',
         'set_price'
       ]),
-      getData(name) {
+      getData(name,defaultList) {
         var url = "", params = {};
         if (this.activePage == 1) {
           url = "/stockmng/dyCheck/list"
           params = {
             "query": name,
-            "status": 1
+            "status": 1,
+
           }
         } else if (this.activePage == 2) {
           url = "/stockmng/dyCheckset/list"
           params = {
             "query": name,
             "status": 1,
-            "need_checks": 1
+            "need_checks": 1,
           }
         }
+        if(defaultList){
+          Object.assign(params,{"page_size":10,"page":1});
+        }
+
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
           if (name === '') {
@@ -156,6 +165,7 @@
           document.querySelector('#dsearch').value="";
         });
         this.dataList = [];
+        this.getData(' ',true);
       },
       addProject(item) {
         if (this.checkItemAdd(item)) {

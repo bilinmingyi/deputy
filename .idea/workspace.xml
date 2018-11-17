@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f1730b4b-107d-44df-880f-b029dd3db586" name="Default" comment="价格计算">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/editBarCode.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/editBarCode.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/addNewProject.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/addNewProject.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -60,7 +60,7 @@
           <entry key="js" value="7528" />
           <entry key="json" value="1" />
           <entry key="txt" value="488" />
-          <entry key="vue" value="26400" />
+          <entry key="vue" value="26529" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -70,7 +70,7 @@
           <entry key="JSON" value="3" />
           <entry key="JavaScript" value="7519" />
           <entry key="PLAIN_TEXT" value="488" />
-          <entry key="Vue.js" value="26400" />
+          <entry key="Vue.js" value="26529" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -117,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/editBarCode.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
+            <state relative-caret-position="352">
+              <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -156,16 +156,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/addNewProject.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3146">
-              <caret line="165" column="26" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="26" />
+            <state relative-caret-position="1903">
+              <caret line="167" column="31" selection-start-line="167" selection-start-column="31" selection-end-line="167" selection-end-column="31" />
               <folding>
-                <element signature="e#740#790#0" expanded="true" />
-                <element signature="e#973#1067#0" />
-                <element signature="e#1083#1244#0" />
-                <element signature="e#1257#1515#0" />
+                <element signature="e#778#828#0" expanded="true" />
                 <element signature="n#style#0;n#!!top" />
               </folding>
             </state>
@@ -312,9 +309,9 @@
         <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/newOrderImg.vue" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPage.vue" />
         <option value="$PROJECT_DIR$/src/router/index.js" />
-        <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/addNewProject.vue" />
         <option value="$PROJECT_DIR$/src/assets/css/reset.css" />
         <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/editBarCode.vue" />
+        <option value="$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/addNewProject.vue" />
       </list>
     </option>
   </component>
@@ -512,6 +509,127 @@
       <recent name="D:\deputy\src\assets\css" />
     </key>
   </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/common/moduleTest.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetail.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/addNewProject.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/checkorder/confirmedOrderDetailPaging/editBarCode.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/checkorder/newOrderPage.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/addNewProject.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/cloudorder/waitPayPage.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/person/changeInfor.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/person/changePhone.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/person/myAchievement.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/person/myTeam.vue</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/components/page/person/teamAchievement.vue</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -558,14 +676,7 @@
       <workItem from="1541984835771" duration="25321000" />
       <workItem from="1542015974728" duration="55041000" />
       <workItem from="1542244188308" duration="45052000" />
-      <workItem from="1542416625707" duration="1520000" />
-    </task>
-    <task id="LOCAL-00054" summary="条码信息">
-      <created>1541677047134</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1541677047134</updated>
+      <workItem from="1542416625707" duration="2576000" />
     </task>
     <task id="LOCAL-00055" summary="条码信息编辑">
       <created>1541678890900</created>
@@ -903,11 +1014,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542362763027</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="价格计算">
+      <created>1542418308897</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1542418308898</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="358689000" />
+    <option name="totallyTimeSpent" value="359745000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1259,20 +1377,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/addNewProject.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3146">
-          <caret line="165" column="26" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="26" />
-          <folding>
-            <element signature="e#740#790#0" expanded="true" />
-            <element signature="e#973#1067#0" />
-            <element signature="e#1083#1244#0" />
-            <element signature="e#1257#1515#0" />
-            <element signature="n#style#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/newOrderPay.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1276">
@@ -1335,8 +1439,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/editBarCode.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
+        <state relative-caret-position="352">
+          <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/checkorder/newOrderPaging/addNewProject.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1903">
+          <caret line="167" column="31" selection-start-line="167" selection-start-column="31" selection-end-line="167" selection-end-column="31" />
+          <folding>
+            <element signature="e#778#828#0" expanded="true" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
