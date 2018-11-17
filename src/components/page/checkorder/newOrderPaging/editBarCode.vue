@@ -43,7 +43,9 @@
 
     },
     data() {
-      return {};
+      return {
+
+      };
     },
     computed: {
       ...mapState('newCheckOrder', {
@@ -56,6 +58,9 @@
       ]),
       scanCode(index) {
         var self = this;
+
+
+
         getWXSign.apply(this).then(wx => {
           wx.scanQRCode({
             needResult: 1,
@@ -63,6 +68,7 @@
             success: function (res) {
               var result = res.resultStr;
               self.contains[index].barCode = result.split(',')[1];
+              self.$forceUpdate();
             }
           })
         });
