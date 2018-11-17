@@ -143,8 +143,7 @@
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
           if (name === '') {
-            this.dataList = [];
-            return
+            Object.assign(params,{"page_size":10,"page":1});
           }
           this.axios.post(url, params).then((respone) => {
             let res = respone.data;
