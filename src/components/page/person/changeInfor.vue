@@ -156,6 +156,7 @@ export default {
   width: 100vw;
   margin-top: 2.75rem;
   margin-bottom: 3.5rem;
+  padding-bottom: 8.75rem;
 }
 .info-item {
   min-height: 3rem;

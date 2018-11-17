@@ -9,8 +9,8 @@
             <input type="text" placeholder="条码" v-model="item.barcode">
             <button @click.stop="scanCode(index)">扫码</button>
           </div>
-          <div class="pl12 pr12 pt16 counter-box">
-            <counter :min=0 v-model="item.volumn"></counter>
+          <div class="pl12 pr12 pt16 counter-box">   
+            <counter :min=1 v-model="item.volumn"></counter>
           </div>
           <div class="input-box pl12 pr12 pt16">
             <input type="text" placeholder="标本备注" v-model="item.memo">
@@ -111,6 +111,7 @@ export default {
   min-height: calc(100vh - 2.75rem);
   width: 100vw;
   margin: 2.75rem 0 0 0;
+  padding-bottom: 8.75rem;
 }
 
 .content input:focus {

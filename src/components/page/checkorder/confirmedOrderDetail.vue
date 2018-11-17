@@ -214,7 +214,7 @@ export default {
 }
 
 .bottom {
-  margin-bottom: 4.25rem;
+  margin-bottom: 7rem;
 }
 
 .payment input {

@@ -172,6 +172,7 @@
     min-height: calc(100vh - 2.75rem);
     width: 100vw;
     margin: 2.75rem 0 0 0;
+    padding-bottom: 7rem;
   }
 
   .payment {
@@ -179,7 +180,6 @@
     color: #3F3F3F;
     font-size: 1rem;
     padding: 0.78rem 0.94rem;
-    margin-bottom: 8.5rem;
     display: flex;
   }
 

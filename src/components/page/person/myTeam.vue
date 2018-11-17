@@ -56,5 +56,6 @@ export default {
 .content {
   position: relative;
   top: 5.75rem;
+  padding-bottom: 8.75rem;
 }
 </style>

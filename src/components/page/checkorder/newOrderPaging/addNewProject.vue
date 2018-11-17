@@ -18,6 +18,7 @@
         </ul>
       </div>
     </section>
+    <d-load v-if="showLoad"></d-load>
   </div>
 </template>
 
@@ -25,14 +26,16 @@
   import dHeader from "@/components/common/dHeader";
   import dSearch from "@/components/common/dSearch";
   import {mapState, mapActions} from 'vuex'
-
+  import dLoad from "@/components/common/dLoad";
   export default {
     components: {
       dHeader,
-      dSearch
+      dSearch,
+      dLoad
     },
     data() {
       return {
+        showLoad: false,
         activePage: 1,
         dataList: [],
         timer: ""
@@ -166,6 +169,7 @@
         this.updateItem();
       },
       updateItem(){
+          this.showLoad = true;
           var list = [];
           this.preItems.forEach(item => {
             if (item.type === 1) {
@@ -209,7 +213,7 @@
               }
             }).catch(error => {
               console.log(error)
-            })
+            }).then(() => { this.showLoad = false; })
           }
 
       },

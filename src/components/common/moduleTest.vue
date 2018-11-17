@@ -229,5 +229,6 @@ export default {
   min-height: calc(100vh - 2.75rem);
   width: 100vw;
   margin: 2.75rem 0 0 0;
+  padding-bottom: 8.75rem;
 }
 </style>

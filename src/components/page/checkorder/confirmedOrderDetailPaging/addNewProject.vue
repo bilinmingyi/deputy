@@ -181,10 +181,11 @@ export default {
           } else {
             this.$Message.infor(res.msg);
           }
+          this.$router.go(-1);
         })
         .catch(console.log)
         .then(() => {
-          this.$router.go(-1);
+          this.showLoad = false;
         });
     }
   }
