@@ -39,7 +39,8 @@ export default {
       showLoad: false,
       activePage: 1,
       timer: "",
-      dataList: []
+      dataList: [],
+      isFirst: true
     };
   },
   computed: {
@@ -49,9 +50,12 @@ export default {
     }),
     ...mapGetters("changeCheckOrder", ["curProjects"])
   },
+  created(){
+    this.getData(' ',true);
+  },
   methods: {
     ...mapActions("changeCheckOrder", ["add_project", "clear_newProjectList"]),
-    getData(name) {
+    getData(name,defaultList) {
       let url = "",
         params = {};
       if (this.activePage == 1) {
@@ -67,6 +71,9 @@ export default {
           status: 1,
           need_checks: 1
         };
+      }
+      if(defaultList){
+        Object.assign(params,{"page_size":10,"page":1});
       }
       clearTimeout(this.timer);
       this.timer = setTimeout(() => {
@@ -92,6 +99,10 @@ export default {
     changeTab(type) {
       this.activePage = type;
       this.dataList = [];
+      if (this.isFirst) {
+        this.isFirst = false;
+        this.getData(' ',true);
+      }
     },
     addProject(item) {
       if (this.checkAddMed(item.id)) {
