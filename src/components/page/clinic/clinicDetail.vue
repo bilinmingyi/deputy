@@ -23,13 +23,13 @@
         <span>检验录单</span>
       </div>
       <!-- </router-link> -->
-      <router-link class="top_item" :to="{path:`/checkListPage/clinicCheckOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
-        <img src="../../../assets/img/jy.png">
-        <span>检验订单</span>
-      </router-link>
       <router-link class="top_item" :to="{path:`/cloudListPage/clinicCloudOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
-        <img src="../../../assets/img/cf.png">
+        <img src="../../../assets/img/cfdd.png">
         <span>处方订单</span>
+      </router-link>
+      <router-link class="top_item" :to="{path:`/checkListPage/clinicCheckOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
+        <img src="../../../assets/img/jydd.png">
+        <span>检验订单</span>
       </router-link>
     </section>
     <section v-for="doc in doctorList">
@@ -162,8 +162,8 @@
   }
 
   .home_top .top_item img {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
     margin: 0 auto;
     display: inline-block;
   }

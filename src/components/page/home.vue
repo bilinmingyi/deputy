@@ -2,18 +2,17 @@
   <div>
     <section class="home_top">
       <div class="top_item">
-        <img src="../../assets/img/yf.png">
+        <img src="../../assets/img/y.png">
         <span>云药房订单</span>
       </div>
-      <router-link class="top_item" to="/checkListPage">
-        <img src="../../assets/img/jy.png">
-        <span>检验订单</span>
-      </router-link>
       <router-link class="top_item" to="/cloudListPage">
-        <img src="../../assets/img/cf.png">
+        <img src="../../assets/img/cfdd.png">
         <span>云处方订单</span>
       </router-link>
-
+      <router-link class="top_item" to="/checkListPage">
+        <img src="../../assets/img/jydd.png">
+        <span>检验订单</span>
+      </router-link>
     </section>
     <section class="home_content">
       <div class="home_content_title">
@@ -97,8 +96,8 @@
   }
 
   .home_top .top_item img {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
     margin: 0 auto;
     display: inline-block;
   }
