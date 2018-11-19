@@ -120,7 +120,7 @@
         }).catch(console.log).then(() => this.showLoad = false)
       },
       toPay() {
-        window.location.href = '/weixin/pay/?orderType=5&orderSeqno=' + this.orderSeqno;
+        window.location.href = '/dyyzs/weixin/pay//weixin/pay/?orderType=5&orderSeqno=' + this.orderSeqno;
       },
       cancelOrder() {
         this.axios.post("/treatmng/dytreatorder/cancel", {

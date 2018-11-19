@@ -95,7 +95,6 @@ export default {
               let response = rest[i].data;
               let config = rest[i].config;
               if (response.code != 1000) {
-                this.$Message.infor(response.msg);
                 status = false;
                 break;
               }

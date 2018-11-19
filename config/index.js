@@ -43,7 +43,7 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'public/deputy',
+    assetsSubDirectory: 'dyyzs/public/deputy',
     assetsPublicPath: '/',
 
     /**

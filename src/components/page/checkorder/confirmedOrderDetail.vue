@@ -89,7 +89,8 @@ export default {
     ...mapState("changeCheckOrder", {
       order: state => state.order,
       status: state => state.order.status,
-      checkedPayType: state => state.order.pay_type
+      checkedPayType: state => state.order.pay_type,
+      isPay: state => state.order.is_paid
     }),
     ...mapGetters("changeCheckOrder", ["curProjects", "imgDataList"])
   },
@@ -165,8 +166,7 @@ export default {
           .then(response => {
             let res = response.data;
             if (res.code == 1000) {
-              this.$Message.infor("确认成功");
-              if (this.checkedPayType == 1) {
+              if (this.checkedPayType == 1 && this.isPay==0) {
                 this.handleOrder(4);
               } else {
                 this.$router.go(-1);
@@ -191,7 +191,7 @@ export default {
           });
       } else if (type == 4) {
         window.location.href =
-          "/weixin/pay/?orderType=5&orderSeqno=" + this.orderSeqno;
+          "/dyyzs/weixin/pay/?orderType=5&orderSeqno=" + this.orderSeqno;
       }
     }
   }

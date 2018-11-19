@@ -17,8 +17,8 @@ Vue.prototype.$Message = message;
 
 Vue.use(vueAxios, axios);
 try {
-  axios.defaults.baseURL = appRoot === undefined ? "" : appRoot;
-  Vue.prototype.appRoot = appRoot === undefined ? "" : appRoot;
+  axios.defaults.baseURL = '/dyyzs';
+  Vue.prototype.appRoot = '/dyyzs';
 } catch (e) {
   console.log(e)
 }

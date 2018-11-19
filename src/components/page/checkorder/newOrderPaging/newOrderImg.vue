@@ -8,7 +8,8 @@
           <div v-if="canChange" class="img_delete_btn" @click.stop="deleteImg(index)">删除</div>
         </div>
         <div v-if="imgData=='' && canChange" @click.stop.prevent="fileClick(index)">
-          +
+          <span v-if="addIndex!==index">+</span>
+          <d-imgload v-else style="font-size: 10px;transform: scale(0.5,0.5) translateY(16vw)"></d-imgload>
         </div>
         <input accept="image/*" style="display: none;" :name="'img-'+index" type="file" :id="'img-'+index"
                @change="fileChange($event,index)"/>
@@ -22,7 +23,7 @@
 <script>
   import infoHeader from "@/components/common/infoHeader"
   // import getWXSign from '@/assets/js/wx'
-  // import dImgload from "@/components/common/dImgload"
+  import dImgload from "@/components/common/dImgload"
 
   export default {
     name: "newOrderImg",
@@ -39,12 +40,14 @@
       }
     },
     components: {
-      infoHeader
+      infoHeader,
+      dImgload
     },
     data() {
       return {
         currIndex: -1,
-        imgDataList: JSON.parse(this.imgList)
+        imgDataList: JSON.parse(this.imgList),
+        addIndex:-1
       }
     },
     watch: {
@@ -63,6 +66,7 @@
       },
       fileChange(el, index) {
         if (!el.target.files[0].size) return;
+        this.addIndex=index;
         this.compress(el).then(data=>{
           let resultData=this.dataURLtoFile(data[0],el.target.files[0].name);
           var formData = new FormData();
@@ -72,6 +76,7 @@
             document.querySelector('#img-' + index).value = null
             if (res.code == 1000) {
               this.imgDataList.splice(this.currIndex, 1, res.data);
+              this.addIndex=-1;
               this.$emit("datachange", JSON.stringify(this.imgDataList))
             } else {
               this.$Message.infor(res.msg)

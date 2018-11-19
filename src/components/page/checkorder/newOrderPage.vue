@@ -151,7 +151,7 @@
           var res = respone.data;
           if (res.code === 1000) {
             if (this.allState.prescription.payType == 1) {
-              window.location.href = '/weixin/pay/?orderType=5&orderSeqno=' + res.data;
+              window.location.href = '/dyyzs/weixin/pay/?orderType=5&orderSeqno=' + res.data;
             } else {
               this.close(2);
             }
