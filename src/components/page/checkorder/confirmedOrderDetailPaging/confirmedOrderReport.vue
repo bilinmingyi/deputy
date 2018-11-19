@@ -58,7 +58,7 @@ export default {
               }
               this.dataList.push({
                 testName: item.testName,
-                reportData: [item.picReportUrl].concat(childPics)
+                reportData: childPics
               });
             });
           } else {
