@@ -16,7 +16,7 @@
           <span>{{prop.set_id ? prop.set_name : prop.name}}</span>
         </div>
       </touch-list>
-      <touch-list :data="curProjects.checkset_list" 
+      <touch-list :data="curProjects.checkset_list"
         @delete="deleteCheckSetProject" :can-delete="status=='WAITCONFIRM' && isPay===0" 
         :noDataTips="curProjects.check_list.length==0 && curProjects.checkset_list.length>0"
         :relativeActive="checkActive"

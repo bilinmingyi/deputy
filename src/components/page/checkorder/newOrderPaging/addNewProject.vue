@@ -1,18 +1,19 @@
 <template>
   <div class="main">
-    <d-header>检验项目</d-header>
-    <div class="nav_block">
-      <nav class="nav_list">
-        <li :class="{'active': activePage==1}" @click="changeTab(1)">基本项目</li>
-        <li :class="{'active': activePage==2}" @click="changeTab(2)">组合项目</li>
-      </nav>
-      <hr class="full-screen-hr">
-    </div>
+    <d-header :cb="!showSeries" @click="showSeries=true;">检验项目</d-header>
     <d-search @on-search="getData" placeholder="请输入检验项目名称"></d-search>
     <section class="content">
       <div class="project-box p15">
-        <ul>
-          <li v-for="item in dataList" @click.stop="addProject(item)" :class="{'active_li':checkAddMed(item.id)}">
+        <ul v-if="showSeries">
+          <li v-for="item in seriesList" @click.stop="getData(item, 'detail')">
+            {{item}}
+          </li>
+        </ul>
+        <ul v-else>
+          <li v-for="item in dataList" @click.stop="addProject(item)"
+            :class="[{'active_li':checkAddMed(item)},
+            {'checkset-li': item.dy_checks},
+            {'active_set_li': item.dy_checks && checkAddMed(item)}]">
             {{item.name}}（{{item.trade_price}}元）
           </li>
         </ul>
@@ -38,7 +39,9 @@
         showLoad: false,
         activePage: 1,
         dataList: [],
-        timer: ""
+        timer: "",
+        showSeries: true,
+        seriesList: [],
       };
     },
     computed: {
@@ -60,101 +63,52 @@
       }
     },
     created(){
-      this.getData(' ',true);
+      this.getData(" ", "default");
     },
-    // beforeRouteLeave(to, from, next) {
-    //   var list = [];
-    //   this.preItems.forEach(item => {
-    //     if (item.type === 1) {
-    //       list.push(item.specimen_container_code)
-    //     } else if (item.type === 2) {
-    //       item.dy_checks.forEach(check => {
-    //         list.push(check.specimen_container_code)
-    //       })
-    //     }
-    //   })
-    //   if (list.length === 0) {
-    //     next();
-    //   } else {
-    //     this.axios.post("/stockmng/specimenContainer/list", {
-    //       codes: list
-    //     }).then(respone => {
-    //       const res = respone.data;
-    //       const selectContains = JSON.parse(JSON.stringify(this.contains));
-    //
-    //       if (res.code === 1000) {
-    //         res.data.forEach(item => {
-    //           for (var i = 0; i < selectContains.length; i++) {
-    //             if (selectContains[i].code === item.code) {
-    //               break
-    //             }
-    //           }
-    //           if (i === selectContains.length) {
-    //             this.push_contain({
-    //               num: 1,
-    //               memo: '',
-    //               code: item.code,
-    //               id: item.id,
-    //               name: item.name,
-    //               barCode: ''
-    //             })
-    //           }
-    //         })
-    //         next();
-    //       } else {
-    //         this.$Message.infor(res.msg);
-    //         next(false);
-    //       }
-    //     }).catch(error => {
-    //       console.log(error)
-    //       next(false)
-    //     })
-    //   }
-    //
-    // },
-
     methods: {
       ...mapActions('newCheckOrder', [
         'push_checkItem',
         'push_contain',
         'set_price'
       ]),
-      getData(name,defaultList) {
+      getData(name,type) {
         var url = "", params = {};
-        if (this.activePage == 1) {
-          url = "/stockmng/dyCheck/list"
+        this.showLoad = true;
+        if (type == "default" || name === '') {
+          url = "/stockmng/dyCheck/category";
+        } else if (type == "detail") {
+          url = "/stockmng/dyCheckAndSet/list";
+          params = { category: name, need_checks: 1 };
+        } else {
+          url = "/stockmng/dyCheckAndSet/list";
           params = {
-            "query": name,
-            "status": 1,
-
-          }
-        } else if (this.activePage == 2) {
-          url = "/stockmng/dyCheckset/list"
-          params = {
-            "query": name,
-            "status": 1,
-            "need_checks": 1,
+            query: name,
+            need_checks: 1,
           }
         }
-        if(defaultList){
-          Object.assign(params,{"page_size":10,"page":1});
-        }
-
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
-          if (name === '') {
-            Object.assign(params,{"page_size":10,"page":1});
-          }
           this.axios.post(url, params).then((respone) => {
             let res = respone.data;
             if (res.code == 1000) {
-              this.dataList = res.data;
+              if (type == "default" || name === '') {
+                this.showSeries = true;
+                this.seriesList = res.data;
+              } else {
+                this.showSeries = false;
+                let data = res.data;
+                this.dataList = data.dy_checkset_list.concat(
+                  data.dy_check_list
+                );
+              }
             } else {
               this.$Message.infor(res.msg)
             }
           }).catch((error) => {
             console.log(error)
-          })
+          }).then(() => {
+            this.showLoad = false;
+          });
         }, 150);
 
       },
@@ -167,6 +121,7 @@
         this.getData(' ',true);
       },
       addProject(item) {
+        this.activePage  = item.dy_checks ? 2 : 1;
         if (this.checkItemAdd(item)) {
           this.$Message.infor("已存在项目或者项目部分");
           return
@@ -256,9 +211,10 @@
         }
 
       },
-      checkAddMed(id) {
+      checkAddMed(item) {
+        let id = item.id;
         for (var i = 0; i < this.preItems.length; i++) {
-          if (this.preItems[i].id === id && this.preItems[i].type === this.activePage) {
+          if (this.preItems[i].id === id && this.preItems[i].type === (item.dy_checks ? 2 : 1)) {
             return true
           }
         }
@@ -299,12 +255,12 @@
   }
 
   .main >>> .block-fix {
-    top: calc(44px + 3rem);
+    top: 2.75rem;
   }
 
   .content {
     position: relative;
-    top: calc(44px + 6rem);
+    top: 6rem;
   }
 
   .project-box {
@@ -334,5 +290,16 @@
   .project-box ul .active_li {
     background: #08bac6;
     color: #FFFFFF;
+  }
+  
+  .project-box ul .checkset-li {
+    background: #FFFEF2;
+    border: 1px solid #EEAE1D;
+    border-radius: 0.25rem;
+  }
+
+  .project-box ul .active_set_li {
+    background: #EEAE1D;
+    color: #ffffff;
   }
 </style>

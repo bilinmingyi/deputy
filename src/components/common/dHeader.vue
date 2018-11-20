@@ -1,6 +1,6 @@
 <template>
   <header class="d-header">
-    <img v-if="isCanBack" src="@/assets/img/fanghui@2x.png" @click="goBack()" class="d-header-img">
+    <img v-if="isCanBack" src="@/assets/img/fanghui@2x.png" @click="goBack(cb)" class="d-header-img">
     <span><slot></slot></span>
   </header>
 </template>
@@ -12,11 +12,17 @@
         type: Boolean,
         default: true
       },
-
+      cb: {
+        type: Boolean,
+        default: false
+      }
     },
     methods: {
       goBack() {
         this.$emit('click');
+        if (this.cb) {
+          return;
+        }
         window.history.length > 1
           ? this.$router.go(-1)
           : this.$router.push("/");

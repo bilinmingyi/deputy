@@ -1,19 +1,20 @@
 <template>
   <div class="main">
-    <d-header>检验项目</d-header>
-    <div class="nav_block">
-      <nav class="nav_list">
-        <li :class="{'active': activePage==1}" @click="changeTab(1)">基本项目</li>
-        <li :class="{'active': activePage==2}" @click="changeTab(2)">组合项目</li>
-      </nav>
-    <hr class="full-screen-hr">
-    </div>
+    <d-header :cb="!showSeries" @click="showSeries=true;">检验项目</d-header>
     <d-search @on-search="getData" placeholder="请输入检验项目名称"></d-search>
     <section class="content">
       <div class="project-box p15">
-        <ul>
-          <li v-for="item in dataList" @click.stop="addProject(item)" :class="{'active_li':checkAddMed(item.id)}">
-            {{item.name}} ({{item.trade_price}}元)
+        <ul v-if="showSeries">
+          <li v-for="item in seriesList" @click.stop="getData(item, 'detail')">
+            {{item}}
+          </li>
+        </ul>
+        <ul v-else>
+          <li v-for="item in dataList" @click.stop="addProject(item)"
+            :class="[{'active_li':checkAddMed(item.id)},
+            {'checkset-li': item.dy_checks},
+            {'active_set_li': item.dy_checks && checkAddMed(item.id)}]">
+            {{`${item.name} (${item.trade_price}元)`}}
           </li>
         </ul>
       </div>
@@ -40,7 +41,8 @@ export default {
       activePage: 1,
       timer: "",
       dataList: [],
-      isFirst: true
+      showSeries: true,
+      seriesList: [],
     };
   },
   computed: {
@@ -48,63 +50,60 @@ export default {
       newProjects: state => state.newProjects,
       projects: state => state.order.items_info
     }),
-    ...mapGetters("changeCheckOrder", ["curProjects"])
+    ...mapGetters("changeCheckOrder", ["curProjects"]),
   },
-  created(){
-    this.getData(' ',true);
+  created() {
+    this.getData(" ", "default");
   },
   methods: {
     ...mapActions("changeCheckOrder", ["add_project", "clear_newProjectList"]),
-    getData(name,defaultList) {
+    getData(name, type) {
       let url = "",
         params = {};
-      if (this.activePage == 1) {
-        url = "/stockmng/dyCheck/list";
+      this.showLoad = true;
+      if (type == "default" || name === '') {
+        url = "/stockmng/dyCheck/category";
+      } else if (type == "detail") {
+        url = "/stockmng/dyCheckAndSet/list";
+        params = { category: name, need_checks: 1 };
+      } else {
+        url = "/stockmng/dyCheckAndSet/list";
         params = {
           query: name,
-          status: 1
-        };
-      } else if (this.activePage == 2) {
-        url = "/stockmng/dyCheckset/list";
-        params = {
-          query: name,
-          status: 1,
-          need_checks: 1
-        };
-      }
-      if(defaultList){
-        Object.assign(params,{"page_size":10,"page":1});
+          need_checks: 1,
+        }
       }
       clearTimeout(this.timer);
       this.timer = setTimeout(() => {
-        if (name === "") {
-          this.dataList = [];
-          return;
-        }
         this.axios
           .post(url, params)
           .then(respone => {
             let res = respone.data;
             if (res.code == 1000) {
-              this.dataList = res.data;
+              if (type == "default" || name === '') {
+                this.showSeries = true;
+                this.seriesList = res.data;
+              } else {
+                this.showSeries = false;
+                let data = res.data;
+                this.dataList = data.dy_checkset_list.concat(
+                  data.dy_check_list
+                );
+              }
             } else {
               this.$Message.infor(res.msg);
             }
           })
           .catch(error => {
             console.log(error);
+          })
+          .then(() => {
+            this.showLoad = false;
           });
       }, 150);
     },
-    changeTab(type) {
-      this.activePage = type;
-      this.dataList = [];
-      if (this.isFirst) {
-        this.isFirst = false;
-        this.getData(' ',true);
-      }
-    },
     addProject(item) {
+      this.activePage  = item.dy_checks ? 2 : 1;
       if (this.checkAddMed(item.id)) {
         this.$Message.infor("该项目已添加");
         return;
@@ -116,7 +115,7 @@ export default {
         project: item,
         type: this.activePage
       });
-      this.updateProject()
+      this.updateProject();
     },
     checkAddMed(id) {
       let arr1 =
@@ -129,6 +128,17 @@ export default {
         arr2.check_list.find(item => item.item_id === id) ||
         arr2.checkset_list.find(item => item.set_id === id)
       );
+    },
+    checkStatus(id, type) {
+      let arr = this.curProjects;
+      if (type == 2) {
+        return arr.checkset_list.find(item => item.item_id === id);
+      } else if (type == 3) {
+        return (
+          arr.checkset_list.find(item => item.item_id === id) &&
+          arr.check_list.find(item => item.set_id === id)
+        );
+      }
     },
     canAdd(item) {
       let arr = this.projects;
@@ -231,11 +241,11 @@ export default {
   border-bottom: 2px solid #08bac6;
 }
 .main >>> .block-fix {
-  top: calc(44px + 3rem);
+  top: 2.75rem;
 }
 .content {
   position: relative;
-  top: calc(44px + 6rem);
+  top: 6rem;
 }
 .project-box {
   background: #fff;
@@ -260,6 +270,17 @@ export default {
 }
 .project-box ul .active_li {
   background: #08bac6;
+  color: #ffffff;
+}
+
+.project-box ul .checkset-li {
+  background: #fffef2;
+  border: 1px solid #eeae1d;
+  border-radius: 0.25rem;
+}
+
+.project-box ul .active_set_li {
+  background: #eeae1d;
   color: #ffffff;
 }
 </style>
