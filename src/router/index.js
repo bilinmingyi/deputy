@@ -18,6 +18,11 @@ export default new Router({
 
     },
     {
+      path: '/home/dyCheckConfirmOrderList',
+      name: 'dyCheckConfirmOrderList',
+      component: () => import(/* webpackChunkName: 'dyCheckConfirmOrderList' */ '@/components/page/checkorder/dyCheckConfirmOrderList.vue')
+    },
+    {
       path: '/checkListPage',
       component: () => import(/* webpackChunkName: 'checkListPage'*/'@/components/page/checkorder/checkListPage.vue'),
       children: [

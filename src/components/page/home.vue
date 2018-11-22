@@ -7,7 +7,7 @@
         <span>检验开方</span>
       </router-link>
       <div class="top_item_line"></div>
-      <router-link class="top_item" to="/checkListPage">
+      <router-link class="top_item" to="/home/dyCheckConfirmOrderList">
         <img src="../../assets/img/sk.png">
         <span>检验收款</span>
       </router-link>
@@ -44,7 +44,7 @@
 
 <script>
   import dFooter from "@/components/common/dFooter"
-
+  import dSearch from '@/components/common/dSearch.vue'
   export default {
     name: "home",
     components: {
