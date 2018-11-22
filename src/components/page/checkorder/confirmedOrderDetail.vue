@@ -5,10 +5,6 @@
       <order-report v-if="status!='WAITCONFIRM'"></order-report>
       <info-bar :title="'患者详情'">
         <div>
-          <span>就诊时间：</span>
-          <span>{{order.create_time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
-        </div>
-        <div>
           <span>患者姓名：</span>
           <span>{{order.patient_name}}</span>
         </div>
@@ -17,8 +13,16 @@
           <span>{{order.patient_mobile}}</span>
         </div>
         <div>
-          <span>就诊医生：</span>
+          <span>下单时间：</span>
+          <span>{{order.create_time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
+        </div>
+        <div>
+          <span>医生姓名：</span>
           <span>{{order.doctor_name}}</span>
+        </div>
+        <div>
+          <span>诊所名称：</span>
+          <span>{{order.clinic_name}}</span>
         </div>
       </info-bar>
       <!--订单检查项目组件-->

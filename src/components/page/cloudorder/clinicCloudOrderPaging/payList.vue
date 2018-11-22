@@ -4,7 +4,7 @@
       <div class="order_item">
         <div class="order_item_top">
           <span>{{order.doctorName}}</span>
-          <span>{{order.createTime|fullTime}}</span>
+          <span>{{order.createTime|dateFormat('yy/MM/dd hh:mm')}}</span>
         </div>
         <div class="order_item_middle">
           <span>{{order.patientName}}</span>

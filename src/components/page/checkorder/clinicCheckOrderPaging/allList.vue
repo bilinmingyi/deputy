@@ -1,11 +1,11 @@
 <template>
   <div>
-    <dTime v-model="timeObj" class="search_block" @input="getData()"></dTime>
-    <section class="mt188 mb50">
+    <dTime :showSearch="true" v-model="timeObj" class="search_block" @input="getData()"></dTime>
+    <section class="mt240 mb50">
         <div class="order_item" v-for="(order,index) in dataList" @click="jumpToDetail(order.order_seqno)">
           <div class="order_item_top">
             <span>{{order.doctor_name}}</span>
-            <span>{{order.create_time|fullTime}}</span>
+            <span>{{order.create_time|dateFormat('yy/MM/dd hh:mm')}}</span>
           </div>
           <div class="order_item_middle">
             <span>{{order.patient_name}}</span>
@@ -58,7 +58,8 @@ export default {
           end_time: this.timeObj.end_time,
           clinic_id: this.clinicId,
           page_size: this.pageSize,
-          page: this.page
+          page: this.page,
+          query: this.timeObj.searchData
         })
         .then(respone => {
           var res = respone.data,
