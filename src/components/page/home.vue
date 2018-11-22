@@ -2,10 +2,10 @@
   <div>
     <section class="home_top">
 
-      <router-link class="top_item" to="/checkListPage/newOrderPage">
+      <div class="top_item" @click="toNewOrder">
         <img src="../../assets/img/kf.png">
         <span>检验开方</span>
-      </router-link>
+      </div>
       <div class="top_item_line"></div>
       <router-link class="top_item" to="/checkListPage">
         <img src="../../assets/img/sk.png">
@@ -44,7 +44,7 @@
 
 <script>
   import dFooter from "@/components/common/dFooter"
-
+  import {mapActions} from 'vuex'
   export default {
     name: "home",
     components: {
@@ -61,7 +61,10 @@
       this.getData();
     },
     methods: {
-      getData: function (name) {
+      ...mapActions('newCheckOrder',[
+        'cancel_order'
+      ]),
+      getData(name) {
         var self = this;
         this.showLoad = true;
         self.axios.post("/weixin/sales/dyCheckOrder/num", {
@@ -75,6 +78,10 @@
             this.$Message.infor(res.msg)
           }
         }).catch(console.log).then(() => this.showLoad = false)
+      },
+      toNewOrder(){
+        this.cancel_order();
+        this.$router.push('/checkListPage/newOrderPage')
       }
     }
   }
