@@ -1,23 +1,29 @@
 <template>
   <div :class="['d-timer', {'border': !noBorder}]">
     <div class="fast_block">
-        <button :class="{'cur': myFastDate == 1}" @click="setQueryDate(1)">今日</button>
-        <button :class="{'cur': myFastDate == 2}" @click="setQueryDate(2)">昨日</button>
-        <button :class="{'cur': myFastDate == 3}" @click="setQueryDate(3)">本月</button>
-        <button :class="{'cur': myFastDate == 4}" @click="setQueryDate(4)">上月</button>
+      <button :class="{'cur': myFastDate == 1}" @click="setQueryDate(1)">今日</button>
+      <button :class="{'cur': myFastDate == 2}" @click="setQueryDate(2)">昨日</button>
+      <button :class="{'cur': myFastDate == 3}" @click="setQueryDate(3)">本月</button>
+      <button :class="{'cur': myFastDate == 4}" @click="setQueryDate(4)">上月</button>
+    </div>
+    <div class="input_block">
+      <input placeholder="起始日期" type="date" v-model="startDate">
+      <input placeholder="结束日期" type="date" v-model="endDate">
+      <div v-if="!showSearch">
+        <button @click="setQueryDate">查询</button>
       </div>
-      <div class="input_block">
-        <input placeholder="起始日期" type="date" v-model="startDate">
-        <input placeholder="结束日期" type="date" v-model="endDate">
-        <div>
-          <button @click="setQueryDate">查询</button>
-        </div>
-      </div>
+    </div>
+    <hr class="full-screen-hr" v-if="showSearch">
+    <d-search v-if="showSearch" @on-search="emitSearch" :placeholder="searchPlaceHolder"></d-search>
   </div>
 </template>
 
 <script>
+import dSearch from "@/components/common/dSearch";
 export default {
+  components: {
+    dSearch,
+  },
   props: {
     fastDate: {
       type: Number,
@@ -26,6 +32,14 @@ export default {
     noBorder: {
       type: Boolean,
       default: false
+    },
+    showSearch: {
+      type: Boolean,
+      default: false
+    },
+    searchPlaceHolder: {
+      type: String,
+      default: '患者姓名、电话'
     }
   },
   data() {
@@ -38,7 +52,8 @@ export default {
       thisMonthStart: "",
       thisMonthEnd: "",
       lastMonthStart: "",
-      lastMonthEnd: ""
+      lastMonthEnd: "",
+      searchData: "",
     };
   },
   created() {
@@ -54,6 +69,10 @@ export default {
     }
   },
   methods: {
+    emitSearch(val) {
+      this.searchData = val;
+      this.setQueryDate()
+    },
     setQueryDate(type) {
       switch (type) {
         case 1:
@@ -76,10 +95,12 @@ export default {
           break;
       }
       this.myFastDate = type ? type : -1;
-      this.$emit("input", {
+      let params = {
         start_time: this.startTime,
         end_time: this.endTime
-      });
+      }
+      this.showSearch && Object.assign(params, {searchData: this.searchData});
+      this.$emit("input", params);
     },
     dateToString(date) {
       let year = date.getFullYear();
@@ -157,6 +178,7 @@ export default {
 .input_block {
   display: flex;
   width: 100vw;
+  min-height: 3rem;
   padding: 0.5rem 0.94rem;
 }
 .input_block input {
@@ -166,6 +188,7 @@ export default {
   margin-right: 0.565rem;
   text-align: center;
   font-size: 0.75rem;
+  flex: 1;
 }
 .input_block button {
   background: #08bac6;
@@ -177,6 +200,9 @@ export default {
   padding: 0.375rem 1rem;
   display: block;
 }
+.input_block :nth-last-child(1) {
+  margin-right: 0;
+}
 .d-timer input:focus {
   outline-color: #08bac6;
 }
@@ -184,5 +210,8 @@ export default {
   border: 1px solid #08bac6;
   background: #08bac6;
   color: #fff;
+}
+.d-timer >>> .block-fix {
+  position: relative;
 }
 </style>

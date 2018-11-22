@@ -3,7 +3,7 @@
       <div class="order_item" v-for="(order,index) in dataList" @click="jumpToDetail(order.order_seqno)">
         <div class="order_item_top">
           <span>{{order.doctor_name}}</span>
-          <span>{{order.create_time|fullTime}}</span>
+          <span>{{order.create_time|dateFormat('yy/MM/dd hh:mm')}}</span>
         </div>
         <div class="order_item_middle">
           <span>{{order.patient_name}}</span>

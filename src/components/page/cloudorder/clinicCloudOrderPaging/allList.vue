@@ -1,19 +1,19 @@
 <template>
   <div>
-    <dTime v-model="timeObj" class="search_block" @input="getData()"></dTime>
-    <section class="mt188">
+    <dTime :showSearch="true" v-model="timeObj" class="search_block" @input="getData()"></dTime>
+    <section class="mt240">
       <router-link v-for="(order,index) in dataList" :key="index" :to="{path:`/cloudListPage/clinicCloudOrderPage/waitPayPage/${order.orderSeqno}`,query:{clinicId:clinicId}}">
         <div class="order_item">
           <div class="order_item_top">
             <span>{{order.doctorName}}</span>
-            <span>{{order.createTime|fullTime}}</span>
+            <span>{{order.createTime|dateFormat('yy/MM/dd hh:mm')}}</span>
           </div>
           <div class="order_item_middle">
             <span>{{order.patientName}}</span>
             <span>{{order.status|treatOrdeType}}</span>
           </div>
           <div class="order_item_bottom">
-            <span>付款金额：{{order.tradePrice}}</span>
+            <span>付款金额：{{order.price}}</span>
           </div>
           <hr class="full-screen-hr">
         </div>
@@ -56,7 +56,8 @@
           "end_time": this.timeObj.end_time,
           "clinic_id": this.clinicId,
           "page_size": this.pageSize,
-          "page": this.page
+          "page": this.page,
+          "query": this.timeObj.searchData
         }).then(respone => {
           var res = respone.data, self = this;
           self.isComplete = true;
