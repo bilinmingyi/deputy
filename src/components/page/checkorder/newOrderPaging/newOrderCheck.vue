@@ -2,10 +2,8 @@
   <div>
     <info-header>
       检验项目
-      <button slot="btn">
-        <router-link to="/checkListPage/newOrderPage/addNewProject" style="color:#3f3f3f;">
-          添加项目
-        </router-link>
+      <button slot="btn" @click="toAddNew">
+        添加项目
       </button>
     </info-header>
     <div class="bg-fff p15 mb12">
@@ -37,7 +35,8 @@
     computed: {
       ...mapState('newCheckOrder', {
         preItems: state => state.prescription.items,
-        contains: state => state.prescription.contains
+        contains: state => state.prescription.contains,
+        clinicId: state => state.clinic.clinicId
       })
     },
     methods: {
@@ -58,7 +57,7 @@
             })
           }
         })
-        if(list.length===0){
+        if (list.length === 0) {
           this.clear_contain();
         }
         this.axios.post("/stockmng/specimenContainer/list", {
@@ -70,13 +69,13 @@
           if (res.code === 1000) {
             const resData = res.data;
             if (selectContains.length !== res.data.length) {
-              selectContains.forEach((contain,index) => {
-                for (var i=0;i<resData.length;i++){
-                  if(resData[i].code===contain.code){
+              selectContains.forEach((contain, index) => {
+                for (var i = 0; i < resData.length; i++) {
+                  if (resData[i].code === contain.code) {
                     break
                   }
                 }
-                if(i===resData.length){
+                if (i === resData.length) {
                   this.delete_contain(index)
                 }
               })
@@ -86,6 +85,13 @@
           }
         })
 
+      },
+      toAddNew() {
+        if(this.clinicId){
+          this.$router.push('/checkListPage/newOrderPage/addNewProject')
+        }else {
+          this.$Message.infor("请先选择医生");
+        }
       }
     }
   }

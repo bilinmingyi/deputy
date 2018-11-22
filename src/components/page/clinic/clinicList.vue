@@ -113,7 +113,7 @@
 <style scoped>
   .clinic_content {
     background: #ffffff;
-    margin-top: 3rem;
+    margin-top: 3.25rem;
   }
 
   .order_infor {

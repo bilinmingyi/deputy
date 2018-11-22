@@ -61,9 +61,12 @@
       ...mapActions('newCheckOrder', [
         'set_imgList',
         'set_remark',
+        'set_clinicId'
       ]),
       init() {
-        this.$store.commit('newCheckOrder/SET_CLINICID', this.$route.query.clinicId)
+        if(this.$route.query.clinicId){
+          this.set_clinicId(this.$route.query.clinicId)
+        }
       },
       changeImg(str) {
         this.set_imgList(str)

@@ -26,5 +26,5 @@ export default {
   //设置备注
   SET_REMARK: 'SET_REMARK',
   //取消订单
-  CANCEL_ORDER: 'CANCEL_ORDER'
+  CANCEL_ORDER: 'CANCEL_ORDER',
 }

@@ -7,7 +7,7 @@ const newOne = {
       name: "",
       mobile: "",
       age: "",
-      birthMonth: "",
+      birthMonth: "0",
       birthday: "",
       sex: 0
     },
@@ -105,6 +105,9 @@ const newOne = {
     },
     set_doctorId: ({commit}, obj) => {
       commit(types.SET_DOCTORID, obj)
+    },
+    set_clinicId: ({commit}, obj) =>{
+      commit(types.SET_CLINICID,obj)
     },
     push_checkItem: ({commit}, obj) => {
       commit(types.PUSH_CHECKITEM, obj)
