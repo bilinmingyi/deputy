@@ -47,7 +47,8 @@
     computed: {
       ...mapState('newCheckOrder', {
         preItems: state => state.prescription.items,
-        contains: state => state.prescription.contains
+        contains: state => state.prescription.contains,
+        clinicId: state => state.clinic.clinicId
       })
     },
     watch: {
@@ -77,13 +78,14 @@
         if (type == "default" || name === '') {
           url = "/stockmng/dyCheck/category";
         } else if (type == "detail") {
-          url = "/stockmng/dyCheckAndSet/list";
-          params = { category: name, need_checks: 1 };
+          url = "/weixin/sales/dyCheckAndSet/list";
+          params = { category: name, need_checks: 1, clinic_id: this.clinicId};
         } else {
-          url = "/stockmng/dyCheckAndSet/list";
+          url = "/weixin/sales/dyCheckAndSet/list";
           params = {
             query: name,
             need_checks: 1,
+            clinic_id: this.clinicId
           }
         }
         clearTimeout(this.timer);

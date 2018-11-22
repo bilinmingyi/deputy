@@ -48,7 +48,8 @@ export default {
   computed: {
     ...mapState("changeCheckOrder", {
       newProjects: state => state.newProjects,
-      projects: state => state.order.items_info
+      projects: state => state.order.items_info,
+      clinic_id: state => state.order.clinic_id,
     }),
     ...mapGetters("changeCheckOrder", ["curProjects"]),
   },
@@ -64,13 +65,14 @@ export default {
       if (type == "default" || name === '') {
         url = "/stockmng/dyCheck/category";
       } else if (type == "detail") {
-        url = "/stockmng/dyCheckAndSet/list";
-        params = { category: name, need_checks: 1 };
+        url = "/weixin/sales/dyCheckAndSet/list";
+        params = { category: name, need_checks: 1, clinic_id: this.clinic_id};
       } else {
-        url = "/stockmng/dyCheckAndSet/list";
+        url = "/weixin/sales/dyCheckAndSet/list";
         params = {
           query: name,
           need_checks: 1,
+          clinic_id: this.clinic_id
         }
       }
       clearTimeout(this.timer);
