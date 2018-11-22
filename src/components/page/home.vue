@@ -1,75 +1,82 @@
 <template>
   <div>
     <section class="home_top">
-      <div class="top_item">
-        <img src="../../assets/img/y.png">
-        <span>云药房订单</span>
-      </div>
+
       <router-link class="top_item" to="/cloudListPage">
-        <img src="../../assets/img/cfdd.png">
-        <span>云处方订单</span>
+        <img src="../../assets/img/kf.png">
+        <span>检验开方</span>
       </router-link>
+      <div class="top_item_line"></div>
       <router-link class="top_item" to="/checkListPage">
-        <img src="../../assets/img/jydd.png">
-        <span>检验订单</span>
+        <img src="../../assets/img/sk.png">
+        <span>检验收款</span>
       </router-link>
     </section>
     <section class="home_content">
       <div class="home_content_title">
-        <img src="../../assets/img/xx.png">
-        <span>订单消息</span>
+
+        <span>待确认检验单</span>
       </div>
       <hr class="full-screen-hr">
-      <!--<ul>-->
-        <!--<li>-->
-          <!--<div class="order_infor">-->
-            <!--<div class="order_infor_top">-->
-              <!--<div>采购订单下单</div>-->
-              <!--<div>18/10/01 14:12</div>-->
-            <!--</div>-->
-            <!--<div class="order_infor_bottom">-->
-              <!--深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<hr class="full-screen-hr">-->
-        <!--</li>-->
-        <!--<li>-->
-          <!--<div class="order_infor">-->
-            <!--<div class="order_infor_top">-->
-              <!--<div>采购订单下单</div>-->
-              <!--<div>18/10/01 14:12</div>-->
-            <!--</div>-->
-            <!--<div class="order_infor_bottom">-->
-              <!--深圳淳道门诊：这是消息这是消息这是消这是消息消息这是消息这是消息这是消这是消息消息-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<hr class="full-screen-hr">-->
-        <!--</li>-->
-      <!--</ul>-->
-      <!--<div class="add_more">查看更多...</div>-->
+      <section class="clinicList">
+        <ul>
+          <li class="clinic-item" v-for="item in dataList">
+            <div class="clinic-item-content">
+              <img src="@/assets/img/menzhen.png">
+              <div>
+                <span>{{item.clinic_name}}</span><br>
+                <span class="color-8c">待确认：<span class="red_a">{{item.sum}}</span></span>
+              </div>
+            </div>
+            <router-link :to="{path:`/checkListPage/clinicCheckOrderPage/${item.clinic_id}`, query:{name:`${item.clinic_name}`}}" class="clinic-item-btn">去处理</router-link>
+          </li>
+          <li class="clinic-none" v-show="dataList.length==0 && isComplete">暂无数据</li>
+        </ul>
+        <!--<div class="add_more">查看更多...</div>-->
+      </section>
     </section>
     <div>
-      <img :src="appRoot+'/public/deputy/img/noInfor@2x.png'" class="no_infor">
+      <!--<img :src="appRoot+'/public/deputy/img/noInfor@2x.png'" class="no_infor">-->
     </div>
     <d-footer :activeItem="1"></d-footer>
   </div>
 </template>
 
 <script>
-  import dFooter from "@/components/common/dFooter";
+  import dFooter from "@/components/common/dFooter"
 
   export default {
     name: "home",
     components: {
-      dFooter
+      dFooter,
     },
     data: function () {
-      return {}
+      return {
+        showLoad: false,
+        dataList: [],
+        isComplete:false
+      }
     },
-    created: function () {
-
+    created() {
+      this.getData();
     },
-    methods: {}
+    methods: {
+      getData: function (name) {
+        var self = this;
+        this.showLoad = true;
+        self.axios.post("/weixin/sales/dyCheckOrder/num", {
+          "query": name
+        }).then((respone) => {
+          var res = respone.data;
+          self.isComplete=true;
+          if (res.code == 1000) {
+            this.dataList = res.data;
+          } else {
+            this.$Message.infor(res.msg)
+          }
+        }).catch(console.log).then(() => this.showLoad = false)
+      }
+    }
   }
 </script>
 
@@ -80,10 +87,17 @@
     background: #fff;
     margin-bottom: 0.75rem;
   }
-
+  .top_item_line{
+    border-right: 1px solid #D9D9D9;;
+    -webkit-transform: scaleX(0.5);
+    -moz-transform: scaleX(0.5);
+    -ms-transform: scaleX(0.5);
+    -o-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+  }
   .home_top .top_item {
     flex: 1;
-    padding: 1rem 0 1.125rem 0;
+    padding: 1.5rem 0 1.44rem 0;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -96,8 +110,8 @@
   }
 
   .home_top .top_item img {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 3rem;
+    height: 3rem;
     margin: 0 auto;
     display: inline-block;
   }
@@ -107,10 +121,10 @@
   }
 
   .home_content_title {
-    font-size: 0.875rem;
+    font-size: 1rem;
+    font-weight: bold;
     color: #3F3F3F;
-    height: 3rem;
-    line-height: 3rem;
+    padding: 0.815rem 0 0.78rem 0.94rem;
     display: flex;
     align-items: center;
   }
@@ -120,15 +134,6 @@
     width: 1.5rem;
     margin-right: 0.375rem;
     margin-left: 0.9375rem;
-  }
-
-  .order_infor {
-    padding: 0.625rem 1rem;
-  }
-
-  .order_infor_top {
-    display: flex;
-
   }
 
   .order_infor_top div:first-child {
@@ -144,26 +149,81 @@
     margin-right: 0.5rem;
   }
 
-  .order_infor_bottom {
-    margin-top: 0.5rem;
-    color: #7C7C7C;
-    font-size: 0.875rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .clinicList {
+    background: #ffffff;
+    margin-bottom: 3.125rem;
   }
 
-  .add_more {
-    color: #7C7C7C;
+  .clinic-item {
+    min-height: 5rem;
+    width: 100vw;
+    padding: 0 0.9375rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: PingFangSC-Regular;
+    font-size: 0.9375rem;
+    color: #3f3f3f;
+    letter-spacing: 0;
+    line-height: 1.5rem;
+  }
+  .clinic-item::after {
+    content: "";
+    border-bottom: 1px solid #d9d9d9;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scaleY(0.5);
+  }
+
+  .clinic-item:nth-last-child(1)::after {
+    border: none;
+  }
+
+  .clinic-item-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .clinic-item-content img {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 0.5rem;
+  }
+
+  .clinic-item-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 2rem;
+    min-width: 3.75rem;
+    padding: 0.25rem 0.5rem;
+    background: #ebf8f9;
+    border: 1px solid #08bac6;
+    border-radius: 0.25rem;
+    font-family: PingFangSC-Regular;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgb(90, 61, 61);
+    letter-spacing: 0;
+  }
+
+  .clinic-none {
+    color: #7c7c7c;
     font-size: 0.875rem;
-    background: #FAFAFA;
+    background: #fafafa;
     height: 2.5rem;
     line-height: 2.5rem;
     text-align: center;
-    margin-bottom: 3.125rem;
   }
-  .no_infor{
-    height: 40vh;
-    margin: 10vh auto
+
+  .color-8c {
+    color: #8c8c8c;
+  }
+
+  .red_a {
+    color: #ec6f6f;
   }
 </style>

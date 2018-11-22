@@ -16,7 +16,6 @@
         </li>
         <li class="clinic-none" v-show="dataList.length==0">暂无数据</li>
       </ul>
-      <!--<div class="add_more">查看更多...</div>-->
     </section>
     <d-load v-if="showLoad"></d-load>
   </div>
@@ -25,7 +24,7 @@
 <script>
   import dHeader from '@/components/common/dHeader.vue'
   import dSearch from '@/components/common/dSearch.vue'
-  import dLoad from "@/components/common/dLoad";
+  import dLoad from "@/components/common/dLoad"
   export default {
     name: "checkList",
     data: function () {

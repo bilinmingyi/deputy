@@ -690,5 +690,7 @@ input {
 .order_item_bottom {
   padding: 0 0.94rem 0.625rem;
 }
-
+.tr{
+  text-align: right;
+}
 /*订单列表*/

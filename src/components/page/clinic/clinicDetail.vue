@@ -7,12 +7,17 @@
     <section class="bg-fff">
       <section class="clinic_infor">
         <div class="clinic_infor_item">
-          <div>诊所地址：</div>
+          <div>地址：</div>
           <div>{{clinicDetail.provinceName}}省{{clinicDetail.cityName}}市{{clinicDetail.countyName}}区{{clinicDetail.address}}</div>
         </div>
-        <div class="clinic_infor_item mt5">
-          <div>联系电话：</div>
-          <div><a :href="'tel:'+clinicDetail.phoneNum" style="color: #111111">{{clinicDetail.phoneNum}}</a></div>
+        <hr class="full-screen-hr">
+        <div class="clinic_infor_item clinic_infor_item_modify">
+          <div>{{clinicDetail.contact}}：{{clinicDetail.phoneNum}}</div>
+          <div class="tr">
+            <a :href="'tel:'+clinicDetail.phoneNum">
+              <button class="phoneBtn">打电话</button>
+            </a>
+          </div>
         </div>
       </section>
     </section>
@@ -25,11 +30,11 @@
       <!-- </router-link> -->
       <router-link class="top_item" :to="{path:`/cloudListPage/clinicCloudOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
         <img src="../../../assets/img/cfdd.png">
-        <span>处方订单</span>
+        <span>云处方订单</span>
       </router-link>
       <router-link class="top_item" :to="{path:`/checkListPage/clinicCheckOrderPage/${clinicId}`, query:{name:`${clinicDetail.name}`}}">
         <img src="../../../assets/img/jydd.png">
-        <span>检验订单</span>
+        <span>云检验订单</span>
       </router-link>
     </section>
     <section v-for="doc in doctorList">
@@ -115,35 +120,32 @@
   .clinic_ban{
     margin-top: 2.75rem;
     background: #FFFFFF;
-    padding: 0.75rem 0.97rem 0.625rem;
+    padding: 0.75rem 0.97rem 0;
   }
   .clinic_ban img{
     width: calc( 100vw - 1.94rem);
     border-radius: 0.25rem;
   }
   .clinic_infor{
-    margin: 0 0.97rem;
-    width: calc(100vw - 1.94rem);
-    padding: 0.625rem 0.94rem;
-    background: #FAFAFA;
-    border-radius: 0.25rem;
+
     font-size: 0.875rem;
-    color: #7C7C7C;
+    color: #232323;
 
   }
   .clinic_infor_item{
     display: flex;
+    padding: 0.875rem 0.94rem;
     line-height: 1.25rem;
   }
 
   .clinic_infor_item div:last-child{
     flex: 1;
-    color: #111111;
   }
   .home_top {
     display: flex;
     justify-content: center;
     background: #fff;
+    margin-top: 0.75rem;
     margin-bottom: 0.75rem;
   }
 
@@ -209,5 +211,18 @@
     font-weight: bold;
     color: #3F3F3F;
     margin-right: 0.5rem;
+  }
+  .clinic_infor_item_modify{
+    color: #232323;
+    font-size: 1rem;
+    align-items: center;
+  }
+  .clinic_infor_item_modify .phoneBtn{
+    background: #EBF8F9;
+    border: 0.0625rem solid #08BAC6;
+    border-radius: 0.25rem;
+    color: #3F3F3F;
+    font-size: 0.75rem;
+    padding: 0.47rem 0.875rem;
   }
 </style>
