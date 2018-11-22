@@ -152,7 +152,7 @@ export default {
     counter,
     dLoad,
     dTimer,
-    pullRefresh
+    pullRefresh,
   },
   data() {
     return {
