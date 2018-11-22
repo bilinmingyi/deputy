@@ -3,9 +3,17 @@
     <info-header>患者信息</info-header>
     <div class="bg-fff pl15 pr15 mb12">
       <div class="pay_line_two">
-        <span class="pr16">所属医生</span>
+        <span class="pr16">诊所名称</span>
+        <select class="doctor_select" @change="changeClinic($event)" :disabled="!canChangeClinic">
+          <option value="">请选择诊所</option>
+          <option v-for="clinic in clinicList" :value="clinic.id" :selected="clinicId == clinic.id">{{clinic.name}}</option>
+        </select>
+      </div>
+      <hr class="full-screen-hr">
+      <div class="pay_line_two">
+        <span class="pr16">医生名称</span>
         <select class="doctor_select" @input="set_doctorId($event.target.value)">
-          <option value="">请选择所属医生</option>
+          <option value="">请选择医生</option>
           <option v-for="doc in doctorList" :value="doc.id" :selected="doctorId == doc.id">{{doc.name}}</option>
         </select>
       </div>
@@ -61,15 +69,22 @@
     },
     data() {
       return {
+        clinicList:[],
         doctorList: [],
         patientList: [],
         inputType: 1,
         timer: "",
-        showSelect: false
+        showSelect: false,
+        canChangeClinic:true
       }
     },
     created() {
-      this.getDoctorList()
+      this.getClinicList();
+      if(this.$route.query.clinicId){
+        this.canChangeClinic=false;
+        this.getDoctorList()
+      }
+
     },
     computed: {
       ...mapState('newCheckOrder', {
@@ -86,8 +101,13 @@
     methods: {
       ...mapActions('newCheckOrder', [
         'set_patient',
-        'set_doctorId'
+        'set_doctorId',
+        'set_clinicId'
       ]),
+      changeClinic(event){
+        this.set_clinicId(event.target.value)
+        this.getDoctorList()
+      },
       getDoctorList() {
         const self = this;
         self.axios.post("/weixin/sales/clinic/doctorList", {
@@ -99,6 +119,22 @@
           } else {
             this.$Message.infor(res.msg)
           }
+        })
+      },
+      getClinicList(){
+        const self=this;
+        self.axios.post("/weixin/sales/clinic/list",{
+          "page": 1,
+          "page_size": 100
+        }).then(respone=>{
+          var res=respone.data;
+          if(res.code===1000){
+            self.clinicList = res.data;
+          }else {
+            self.$Message.infor(res.msg)
+          }
+        }).catch(error=>{
+          console.log(error)
         })
       },
       searchPat(type) {

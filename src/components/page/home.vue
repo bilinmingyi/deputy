@@ -2,7 +2,7 @@
   <div>
     <section class="home_top">
 
-      <router-link class="top_item" to="/cloudListPage">
+      <router-link class="top_item" to="/checkListPage/newOrderPage">
         <img src="../../assets/img/kf.png">
         <span>检验开方</span>
       </router-link>
