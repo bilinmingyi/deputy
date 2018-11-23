@@ -188,12 +188,12 @@
   .clinic_order_item {
     flex: 1;
     color: #3F3F3F;
-    font-size: 1rem;
+    font-size: 0.94rem;
     padding: 0.815rem 0 0.78rem 0;
     text-align: center;
   }
 
   .f5_border {
-    border-bottom: 0.75rem solid #f5f5f5;
+    border-bottom: 0.75rem solid #EDEDED;
   }
 </style>

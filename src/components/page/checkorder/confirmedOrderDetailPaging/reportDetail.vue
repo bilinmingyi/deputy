@@ -51,9 +51,10 @@ export default {
   },
   methods: {
     showPic() {
+      var self=this;
       WeixinJSBridge.invoke('imagePreview', {
-        'current': report.report_imgs[0],
-        'urls': report.report_imgs
+        'current': self.report.report_imgs[0],
+        'urls': self.report.report_imgs
       })
     }
   }
