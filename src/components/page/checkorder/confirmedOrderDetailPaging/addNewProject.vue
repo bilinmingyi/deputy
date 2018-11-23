@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <d-header :cb="!showSeries" @click="showSeries=true;">检验项目</d-header>
+    <d-header :cb="!showSeries" @click="judgeStatus">检验项目</d-header>
     <d-search @on-search="getData" placeholder="请输入检验项目名称"></d-search>
     <section class="content">
       <div class="project-box p15">
@@ -43,6 +43,7 @@ export default {
       dataList: [],
       showSeries: true,
       seriesList: [],
+      scrollTop: 0
     };
   },
   computed: {
@@ -67,6 +68,7 @@ export default {
       } else if (type == "detail") {
         url = "/weixin/sales/dyCheckAndSet/list";
         params = { category: name, need_checks: 1, clinic_id: this.clinic_id};
+        this.scrollTop = document.documentElement.scrollTop;
       } else {
         url = "/weixin/sales/dyCheckAndSet/list";
         params = {
@@ -74,6 +76,7 @@ export default {
           need_checks: 1,
           clinic_id: this.clinic_id
         }
+        this.scrollTop = document.documentElement.scrollTop;
       }
       clearTimeout(this.timer);
       this.timer = setTimeout(() => {
@@ -85,8 +88,10 @@ export default {
               if (type == "default" || name === '') {
                 this.showSeries = true;
                 this.seriesList = res.data;
+                document.documentElement.scrollTop = this.scrollTop;
               } else {
                 this.showSeries = false;
+                document.documentElement.scrollTop = 0;
                 let data = res.data;
                 this.dataList = data.dy_checkset_list.concat(
                   data.dy_check_list
@@ -210,6 +215,12 @@ export default {
         .then(() => {
           this.showLoad = false;
         });
+    },
+    judgeStatus() {
+      this.showSeries = true;
+      setTimeout(() => {
+        document.documentElement.scrollTop = this.scrollTop;
+      })
     }
   }
 };
