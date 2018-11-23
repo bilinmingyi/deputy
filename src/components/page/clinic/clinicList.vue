@@ -114,6 +114,7 @@
   .clinic_content {
     background: #ffffff;
     margin-top: 3.25rem;
+    margin-bottom: 3.125rem;
   }
 
   .order_infor {
