@@ -22,7 +22,7 @@
 import dSearch from "@/components/common/dSearch";
 export default {
   components: {
-    dSearch,
+    dSearch
   },
   props: {
     fastDate: {
@@ -39,7 +39,7 @@ export default {
     },
     searchPlaceHolder: {
       type: String,
-      default: '患者姓名、电话'
+      default: "患者姓名、电话"
     }
   },
   data() {
@@ -53,7 +53,7 @@ export default {
       thisMonthEnd: "",
       lastMonthStart: "",
       lastMonthEnd: "",
-      searchData: "",
+      searchData: ""
     };
   },
   created() {
@@ -62,16 +62,26 @@ export default {
   },
   computed: {
     startTime() {
-      return new Date(this.startDate).getTime();
+      let date = new Date(this.startDate);
+      date.setHours(0);
+      date.setMinutes(0);
+      date.setSeconds(0);
+      date.setMilliseconds(0);
+      return date.getTime();
     },
     endTime() {
-      return new Date(this.endDate).getTime() + 86399999;
+      let date = new Date(this.endDate);
+      date.setHours(0);
+      date.setMinutes(0);
+      date.setSeconds(0);
+      date.setMilliseconds(0);
+      return date.getTime() + 86399999;
     }
   },
   methods: {
     emitSearch(val) {
       this.searchData = val;
-      this.setQueryDate()
+      this.setQueryDate();
     },
     setQueryDate(type) {
       switch (type) {
@@ -98,8 +108,8 @@ export default {
       let params = {
         start_time: this.startTime,
         end_time: this.endTime
-      }
-      this.showSearch && Object.assign(params, {searchData: this.searchData});
+      };
+      this.showSearch && Object.assign(params, { searchData: this.searchData });
       this.$emit("input", params);
     },
     dateToString(date) {
