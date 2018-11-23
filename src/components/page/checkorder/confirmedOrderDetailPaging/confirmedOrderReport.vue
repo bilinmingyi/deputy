@@ -8,11 +8,12 @@
           <span v-if="dataList.length === 0">等待报告出炉</span>
           <span v-else-if="dataList.length > 0 && dataList.length < barCodeList.length">部分报告已出</span>
           <span v-else>全部报告已出</span>
+          <button @click="showReport" v-if="dataList.length > 0">查看报告</button>
         </div>
-        <div class="report-item" v-for="(item, index) in dataList">
+        <!-- <div class="report-item" v-for="(item, index) in dataList">
           <span><span style="color: #7c7c7c;">{{index + 1}}: </span>{{item.testName.length > 15 ? item.testName.slice(0, 15) + '...' : item.testName}}</span>
           <button @click="showPic(item.reportData)">查看</button>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -37,6 +38,7 @@ export default {
     this.getDate();
   },
   methods: {
+    ...mapActions("changeCheckOrder", ["add_report"]),
     getDate() {
       this.axios
         .post("/treatmng/dycheckorder/getCheckReport", {
@@ -45,22 +47,24 @@ export default {
         .then(response => {
           let res = response.data;
           if (res.code == 1000) {
-            let arr = res.data;
-            arr.forEach(item => {
-              let childPics = [];
-              if (item.reportData) {
-                let childArr = JSON.parse(item.reportData);
-                childArr.forEach(childItem => {
-                  if (childItem.picReportUrl) {
-                    childPics.push(childItem.picReportUrl);
-                  }
-                });
-              }
-              this.dataList.push({
-                testName: item.testName,
-                reportData: childPics
-              });
-            });
+            this.add_report(res.data);
+            this.dataList = res.data.report_imgs;
+            // let arr = res.data;
+            // arr.forEach(item => {
+            //   let childPics = [];
+            //   if (item.reportData) {
+            //     let childArr = JSON.parse(item.reportData);
+            //     childArr.forEach(childItem => {
+            //       if (childItem.picReportUrl) {
+            //         childPics.push(childItem.picReportUrl);
+            //       }
+            //     });
+            //   }
+            //   this.dataList.push({
+            //     testName: item.testName,
+            //     reportData: childPics
+            //   });
+            // });
           } else {
             this.$Message.infor(res.msg);
           }
@@ -78,6 +82,9 @@ export default {
       //     urls: pics
       //   });
       // });
+    },
+    showReport() {
+      this.$router.push({ name: 'confirmedOrderReportDetail', params: { }})
     }
   }
 };
@@ -109,6 +116,7 @@ export default {
   color: #3f3f3f;
   letter-spacing: 0;
   font-weight: bold;
+  flex: 1;
 }
 .report-item {
   height: 3.5rem;
@@ -123,7 +131,8 @@ export default {
   line-height: 42px;
 }
 
-.report-item button {
+.report-item button,
+.report-title button {
   height: 2rem;
   min-width: 3.75rem;
   text-align: center;

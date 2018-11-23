@@ -47,6 +47,10 @@ const changeOne = {
       checkset_list: []
     },
     newImgList: '',
+    report: {
+      report_imgs: [],
+      report_detail: []
+    },
   },
   getters: {
     orderPrice: state => {
@@ -183,7 +187,11 @@ const changeOne = {
         check_list: [],
         checkset_list: []
       }
-      state.newImgList = ''
+      state.newImgList = '';
+      state.reportDetail = {};
+    },
+    [types.ADD_REPORT](state, obj) {
+      state.report = obj;
     }
   },
   actions: {
@@ -210,6 +218,9 @@ const changeOne = {
     },
     reset_order: ({commit}) => {
       commit(types.RESET_ORDER);
+    },
+    add_report: ({commit}, obj) => {
+      commit(types.ADD_REPORT, obj);
     }
   }
 };

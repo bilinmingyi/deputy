@@ -17,7 +17,8 @@ const checkOrderType = val => {
   var list = [
     { code: "WAITCONFIRM", name: "待确认" },
     { code: "CHECKING", name: "检验中" },
-    { code: "DONE", name: "完成" }
+    { code: "DONE", name: "完成" },
+    { code: "CANCEL", name: "取消" }
   ];
   for (var i = 0; i < list.length; i++) {
     if (list[i].code == val) {
@@ -153,6 +154,14 @@ const dateFormat = function(date, fmt) {
   return d.getTime() === d.getTime() ? d.Format(fmt) : '';
 };
 
+/** 
+ * @desc: sex format
+*/
+const sexFormat = (val) => {
+  const dict = ['男', '女', '保密'];
+  return dict[val];
+}
+
 module.exports = {
   treatOrdeType,
   fullTime,
@@ -160,5 +169,6 @@ module.exports = {
   priceFormat,
   parseNum,
   dateFormat,
-  treatOrderType
+  treatOrderType,
+  sexFormat
 };

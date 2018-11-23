@@ -15,5 +15,7 @@ export default {
   // 设置付款方式
   SET_PAYTYPE: 'SET_PAYTYPE',
   //重置订单
-  RESET_ORDER: 'RESET_ORDER'
+  RESET_ORDER: 'RESET_ORDER',
+  // 添加报告
+  ADD_REPORT: 'ADD_REPORT'
 }

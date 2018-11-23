@@ -56,6 +56,12 @@ export default new Router({
           props: true
         },
         {
+          path: 'clinicCheckOrderPage/confirmedOrderDetail/:orderSeqno/reportDetail',
+          name: 'confirmedOrderReportDetail',
+          component: () => import(/* webpackChunkName: 'confirmedOrderDetail' */'@/components/page/checkorder/confirmedOrderDetailPaging/reportDetail.vue'),
+          props: true
+        },
+        {
           path:'newOrderPage',
           name:'newOrderPage',
           component: () => import(/* webpackChunkName: 'newOrderPage' */'@/components/page/checkorder/newOrderPage.vue'),
