@@ -31,6 +31,7 @@
       imgList: {
         type: String,
         default() {
+          //测试上传
           return '["","",""]'
         }
       },
