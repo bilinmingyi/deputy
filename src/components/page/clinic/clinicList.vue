@@ -195,6 +195,6 @@
   }
 
   .f5_border {
-    border-bottom: 0.75rem solid #EDEDED;
+    border-bottom: 0.75rem solid #F5F5F5;
   }
 </style>
