@@ -1,10 +1,10 @@
 <template>
   <footer class="d-footer">
-    <div :class="['d-footer-item', {active: activeBar==1}]" @click="setPage(1)">
-        <span class="yunicon" v-if="activeBar==1">&#xe60b;</span>
-        <span class="yunicon" v-else="activeBar!=1">&#xe60e;</span>
-        <span class="d-footer-text">首页</span>
-    </div>
+    <!--<div :class="['d-footer-item', {active: activeBar==1}]" @click="setPage(1)">-->
+        <!--<span class="yunicon" v-if="activeBar==1">&#xe60b;</span>-->
+        <!--<span class="yunicon" v-else="activeBar!=1">&#xe60e;</span>-->
+        <!--<span class="d-footer-text">首页</span>-->
+    <!--</div>-->
     <div :class="['d-footer-item', {active: activeBar==2}]" @click="setPage(2)">
         <span class="yunicon" v-if="activeBar==2">&#xe60a;</span>
         <span class="yunicon" v-else="activeBar!=2">&#xe60c;</span>
