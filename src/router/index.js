@@ -102,6 +102,23 @@ export default new Router({
       ]
     },
     {
+      path: '/goodsOrderPage',
+      component: () => import(/* webpackChunkName: 'goodsOrderPage' */'@/components/page/goodsorder/goodsOrderPage.vue'),
+      children: [
+        {
+          path: '',
+          name: 'goodsOrderPage',
+          component: () => import(/* webpackChunkName: 'goodsOrderPage' */'@/components/page/goodsorder/goodsOrder.vue')
+        },
+        {
+          path:'clinicGoodsOrderPage/:clinicId',
+          name:'clinicGoodsOrderPage',
+          component: ()=> import(/* webpackChunkName: 'goodsOrderPage' */'@/components/page/goodsorder/clinicGoodsOrderPage.vue'),
+          props:true
+        },
+      ]
+    },
+    {
       path: '/clinic',
       component: () => import(/* webpackChunkName: 'clinic' */'@/components/page/clinic/clinic.vue'),
       children:[

@@ -27,13 +27,14 @@
                          :to="{path:`/cloudListPage/clinicCloudOrderPage/${clinic.id}`, query:{name:`${clinic.name}`}}">
               处方订单
             </router-link>
-            <div class="clinic_order_item">
-              药房订单
-            </div>
             <router-link class="clinic_order_item"
+                         :to="{path:`/goodsOrderPage/clinicGoodsOrderPage/${clinic.id}`, query:{name:`${clinic.name}`}}">
+              采购订单
+            </router-link>
+            <!-- <router-link class="clinic_order_item"
                          :to="{path:`/checkListPage/clinicCheckOrderPage/${clinic.id}`, query:{name:`${clinic.name}`}}">
               检验订单
-            </router-link>
+            </router-link> -->
           </div>
         </li>
 
