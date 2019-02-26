@@ -1,3 +1,12 @@
+const codeToName = (list, code) => {
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].code == code) {
+      return list[i].name;
+    }
+  }
+  return null;
+}
+
 const treatOrdeType = val => {
   var list = [
     { code: "UNPAID", name: "待支付" },
@@ -7,11 +16,7 @@ const treatOrdeType = val => {
     { code: "DONE", name: "完成" },
     { code: "CANCEL", name: "取消" }
   ];
-  for (var i = 0; i < list.length; i++) {
-    if (list[i].code == val) {
-      return list[i].name;
-    }
-  }
+  return codeToName(list, val);
 };
 const checkOrderType = val => {
   var list = [
@@ -20,11 +25,22 @@ const checkOrderType = val => {
     { code: "DONE", name: "完成" },
     { code: "CANCEL", name: "取消" }
   ];
-  for (var i = 0; i < list.length; i++) {
-    if (list[i].code == val) {
-      return list[i].name;
-    }
-  }
+  return codeToName(list, val);
+};
+const goodsOrderType = val => {
+  var list = [
+    {code:"UNKNOWN",name:"未知"},
+    {code:"WAIT_AUDIT",name:"待审核"},
+    {code:"INIT",name:"待提交"},
+    {code:"UNPAID",name:"待付款"},
+    {code:"DISPENSING",name:"待配药"},
+    {code:"DELIVERING",name:"待发货"},
+    {code:"WAIT_INSTOCK",name:"待收货"},
+    {code:"DONE",name:"完成"},
+    {code:"BACK",name:"回退"},
+    {code: "CANCEL", name: "取消"}
+  ];
+  return codeToName(list, val);
 };
 const fullTime = val => {
   var dateObj = new Date(Number(val));
@@ -170,5 +186,6 @@ module.exports = {
   parseNum,
   dateFormat,
   treatOrderType,
-  sexFormat
+  sexFormat,
+  goodsOrderType
 };

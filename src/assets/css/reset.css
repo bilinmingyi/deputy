@@ -691,7 +691,11 @@ input {
   color: #EB6262;
 }
 
+.order_item_bottom span:first-child {
+  flex: 1;
+}
 .order_item_bottom {
+  display: flex;
   padding: 0 0.94rem 0.625rem;
 }
 .tr{

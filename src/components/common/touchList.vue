@@ -4,12 +4,12 @@
       <li :class="['list-item', {'slide-right': activeItem == index}]" v-for='(item, index) in data'>
         <div class="list-box" @touchstart.capture="touchStart" @touchend.capture="touchEnd(index, $event)"
              @click="skip(index)">
-          <slot :prop="item"></slot>
+          <slot :prop="item" :index="index"></slot>
         </div>
         <button class="delete-btn" @click.stop='deleteItem'>删除</button>
       </li>
     </ul>
-    <div class="no_data" v-if="data.length!=undefined && data.length==0 && noDataTips">暂无项目信息</div>
+    <div class="no_data" v-if="data.length!=undefined && data.length==0 && noDataTips">暂无信息</div>
   </div>
 </template>
 

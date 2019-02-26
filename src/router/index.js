@@ -116,6 +116,12 @@ export default new Router({
           component: ()=> import(/* webpackChunkName: 'goodsOrderPage' */'@/components/page/goodsorder/clinicGoodsOrderPage.vue'),
           props:true
         },
+        {
+          path:'clinicGoodsOrderPage/goodsOrderDetailPage/:orderSeqno',
+          name:'goodsOrderDetailPage',
+          component: () => import(/* webpackChunkName: 'goodsOrderPage' */'@/components/page/goodsorder/goodsOrderDetailPage.vue'),
+          props:true
+        }
       ]
     },
     {
