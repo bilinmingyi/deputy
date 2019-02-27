@@ -30,29 +30,76 @@
           <span>{{order.phone_num}}</span>
         </div>
         <div>
-          <span>详细地址：</span>
+          <span>配送地址：</span>
           <span>{{order.address}}</span>
         </div>
-        <div>
+        <!-- <div>
           <span>配送金额：</span>
           <span style="color: red">￥{{order.deliver_price}}</span>
-        </div>
+        </div>-->
       </info-bar>
       <div v-for="item in providerList" class="bg-ff mb12">
         <info-header>{{item.provider}}</info-header>
         <div class="mt16 mb16 ml15 mr15">
           <touch-list :canDelete="false" :data="item.list">
-            <div slot-scope="{prop, index}">
-              <span>{{index}}</span>
-              <span>{{prop.name}}</span>
+            <div class="list-content" slot-scope="{prop, index}">
+              <div class="list-content-index">{{index + 1}}</div>
+              <div class="list-content-detail">
+                <span>{{ prop.name }}{{ prop.spec ? `(${prop.spec})` : "" }}</span>
+                <br>
+                <span style="white-space: nowrap">单价:{{ prop.trade_price | priceFormat }}</span>&nbsp;&nbsp;
+                <span style="white-space: nowrap">数量:{{ prop.num }}</span>&nbsp;&nbsp;
+                <span style="white-space: nowrap">
+                  金额:
+                  <span
+                    class="color-f57a76"
+                  >{{ Number(prop.trade_price) * Number(prop.num) | priceFormat }}</span>
+                </span>
+              </div>
             </div>
           </touch-list>
         </div>
       </div>
-      <div class="payment">
-        <span>付款金额</span>
-        <span>￥{{order.price}}</span>
+      <div class="mb12">
+        <div class="payment">
+          <span>商品总价：</span>
+          <span>{{order.goods_price | priceFormat}}</span>
+        </div>
+        <div class="payment">
+          <span>邮寄费用：</span>
+          <span>{{order.deliver_price | priceFormat}}</span>
+        </div>
+        <div class="payment">
+          <span>订单总价：</span>
+          <span>{{order.price||(order.goods_price+order.deliver_price) | priceFormat}}</span>
+        </div>
       </div>
+
+      <info-header>支付信息</info-header>
+      <div class="pay-type-box mb12">
+        <span>支付方式</span>
+        <div class="pay-radio-box">
+          <div>
+            <d-radio
+              :name="'pay-type'"
+              :id="'pay-type-wx'"
+              :checkedVal="4"
+              :curVal="order.pay_type"
+              @change="order.pay_type = 4"
+            >微信</d-radio>
+          </div>
+          <div>
+            <d-radio
+              :name="'pay-type'"
+              :id="'pay-type-xx'"
+              :checkedVal="6"
+              :curVal="order.pay_type"
+              @change="order.pay_type = 6"
+            >线下转账</d-radio>
+          </div>
+        </div>
+      </div>
+
       <div class="pay_operation">
         <button @click.stop="$router.go(-1)">关闭</button>
         <button v-if="order.status==='UNPAID'" @click.stop="cancelOrder()">取消订单</button>
@@ -69,6 +116,7 @@ import infoBar from "@/components/common/infoBar";
 import infoHeader from "@/components/common/infoHeader";
 import dLoad from "@/components/common/dLoad";
 import touchList from "@/components/common/touchList";
+import dRadio from "@/components/common/dRadio";
 
 export default {
   props: ["orderSeqno"],
@@ -77,7 +125,8 @@ export default {
     infoHeader,
     infoBar,
     dLoad,
-    touchList
+    touchList,
+    dRadio
   },
   data() {
     return {
@@ -193,7 +242,7 @@ export default {
   min-height: calc(100vh - 2.75rem);
   width: 100vw;
   margin: 2.75rem 0 0 0;
-  padding-bottom: 8.75rem;
+  padding-bottom: 3.75rem;
 }
 
 .payment {
@@ -201,12 +250,55 @@ export default {
   color: #7c7c7c;
   font-size: 1rem;
   padding: 0.78rem 0.94rem;
-  margin-bottom: 4.25rem;
+  display: flex;
+  position: relative;
 }
-
+.payment::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  transform: scaleY(0.5) translateY(-0.5px);
+  border-top: 1px solid rgba(217, 217, 217, 1);
+}
+.payment span:first-child {
+  flex: 1;
+}
 .payment span:last-child {
   margin-left: 1rem;
   color: #eb6262;
   font-weight: bold;
+}
+
+.color-f57a76 {
+  color: #f57a76;
+}
+
+.pay-type-box {
+  background: #fff;
+  padding: 0.5rem 0.9375rem;
+  display: flex;
+  /* align-items: center; */
+  min-height: 48px;
+  position: relative;
+  font-size: 1rem;
+  color: #7c7c7c;
+}
+
+.pay-type-box > span {
+  line-height: 2rem;
+}
+
+.pay-radio-box {
+  flex: 1;
+  margin-left: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pay-radio-box > div {
+  margin-right: 1rem;
 }
 </style>
