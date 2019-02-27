@@ -65,7 +65,7 @@ export default {
       if (this.activeItem >= 0) {
         this.restSlide();
       } else {
-        console.log(this.data[index]);
+        // console.log(this.data[index]);
       }
     },
     //滑动开始
