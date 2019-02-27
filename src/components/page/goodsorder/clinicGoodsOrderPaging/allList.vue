@@ -54,10 +54,10 @@ export default {
     getData(isAdd) {
       this.showLoad = true;
       this.axios
-        .post("/stockmng/goodsOrder/list", {
+        .post("/weixin/sales/dyGoodsOrder/list", {
           start_time: this.timeObj.start_time,
           end_time: this.timeObj.end_time,
-          clinic_id: this.clinicId,
+          clinic_id: Number(this.clinicId),
           page_size: this.pageSize,
           page: this.page,
           // query: this.timeObj.searchData

@@ -50,8 +50,7 @@
                 <span style="white-space: nowrap">单价:{{ prop.trade_price | priceFormat }}</span>&nbsp;&nbsp;
                 <span style="white-space: nowrap">数量:{{ prop.num }}</span>&nbsp;&nbsp;
                 <span style="white-space: nowrap">
-                  金额:
-                  <span
+                  金额:<span
                     class="color-f57a76"
                   >{{ Number(prop.trade_price) * Number(prop.num) | priceFormat }}</span>
                 </span>
@@ -73,36 +72,49 @@
           <span>订单总价：</span>
           <span>{{order.price||(order.goods_price+order.deliver_price) | priceFormat}}</span>
         </div>
-      </div>
-
-      <info-header>支付信息</info-header>
-      <div class="pay-type-box mb12">
-        <span>支付方式</span>
-        <div class="pay-radio-box">
+        <div class="payment" v-if="orderStatus!='UNPAID'">
+          <span>支付方式：</span>
           <div>
-            <d-radio
-              :name="'pay-type'"
-              :id="'pay-type-wx'"
-              :checkedVal="4"
-              :curVal="order.pay_type"
-              @change="order.pay_type = 4"
-            >微信</d-radio>
-          </div>
-          <div>
-            <d-radio
-              :name="'pay-type'"
-              :id="'pay-type-xx'"
-              :checkedVal="6"
-              :curVal="order.pay_type"
-              @change="order.pay_type = 6"
-            >线下转账</d-radio>
+            <span v-if="order.pay_type==1">微信</span>
+            <span v-if="order.pay_type==2">支付宝</span>
+            <span v-if="order.pay_type==3">银行卡</span>
+            <span v-if="order.pay_type==4">微信</span>
+            <span v-if="order.pay_type==5">支付宝</span>
+            <span v-if="order.pay_type==6">现金</span>
+            <span v-if="order.pay_type==7">医保卡</span>
+            <span v-if="order.pay_type==9">平台支付</span>
           </div>
         </div>
       </div>
-
+      <div v-if="orderStatus=='UNPAID'">
+        <info-header>支付信息</info-header>
+        <div class="pay-type-box mb12">
+          <span>支付方式</span>
+          <div class="pay-radio-box">
+            <div>
+              <d-radio
+                :name="'pay-type'"
+                :id="'pay-type-wx'"
+                :checkedVal="4"
+                :curVal="order.pay_type"
+                @change="order.pay_type = 4"
+              >微信</d-radio>
+            </div>
+            <div>
+              <d-radio
+                :name="'pay-type'"
+                :id="'pay-type-xx'"
+                :checkedVal="6"
+                :curVal="order.pay_type"
+                @change="order.pay_type = 6"
+              >线下转账</d-radio>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="pay_operation">
         <button @click.stop="$router.go(-1)">关闭</button>
-        <button v-if="order.status==='UNPAID'" @click.stop="cancelOrder()">取消订单</button>
+        <button v-if="order.status==='UNPAID'" @click.stop="cancelOrderConfirm()">取消订单</button>
         <button v-if="order.status==='UNPAID'" @click.stop="toPay()">去支付</button>
       </div>
     </section>
@@ -149,7 +161,7 @@ export default {
     getData() {
       this.showLoad = true;
       this.axios
-        .post("/stockmng/goodsOrder/detail", {
+        .post("/weixin/sales/dyGoodsOrder/detail", {
           order_seqno: this.orderSeqno
           // 'clinic_id': this.clinicId
         })
@@ -172,13 +184,22 @@ export default {
         .then(() => (this.showLoad = false));
     },
     toPay() {
-      window.location.href =
-        "/dyyzs/weixin/pay//weixin/pay/?orderType=4&orderSeqno=" +
-        this.orderSeqno;
+      if (this.order.pay_type == 4) {
+        window.location.href =
+          "/dyyzs/weixin/pay//weixin/pay/?orderType=7&orderSeqno=" +
+          this.orderSeqno;
+      } else if (this.order.pay_type == 6) {
+        this.$router.go(-1);
+      } else {
+        this.$Message.infor("请先选择支付方式！");
+      }
+    },
+    cancelOrderConfirm() {
+      this.$Message.confirm("是否要取消订单？", this.cancelOrder)
     },
     cancelOrder() {
       this.axios
-        .post("/treatmng/dytreatorder/cancel", {
+        .post("/stockmng/goodsOrder/cancel", {
           order_seqno: this.orderSeqno
         })
         .then(respone => {
@@ -263,10 +284,10 @@ export default {
   transform: scaleY(0.5) translateY(-0.5px);
   border-top: 1px solid rgba(217, 217, 217, 1);
 }
-.payment span:first-child {
+.payment > span:first-child {
   flex: 1;
 }
-.payment span:last-child {
+.payment > span:last-child {
   margin-left: 1rem;
   color: #eb6262;
   font-weight: bold;
