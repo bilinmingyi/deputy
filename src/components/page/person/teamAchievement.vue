@@ -1,17 +1,18 @@
 <template>
-    <div>
-      <d-header>团队业绩</d-header>
-      <d-nav class="nav">
-        <!--<li :class="{'active': activePage==1}" @click="activePage=1">云药房</li>-->
-        <li :class="{'active': activePage==2}" @click="activePage=2">云处方</li>
-        <li :class="{'active': activePage==3}" @click="activePage=3">检验订单</li>
-      </d-nav>
-      <section class="content">
-        <keep-alive>
-          <component v-bind:is="currentTabComponent"></component>
-        </keep-alive>
-      </section>
-    </div>
+  <div>
+    <d-header>团队业绩</d-header>
+    <d-nav class="nav">
+      <!--<li :class="{'active': activePage==1}" @click="activePage=1">云药房</li>-->
+      <li :class="{'active': activePage==2}" @click="activePage=2">云处方</li>
+      <!-- <li :class="{'active': activePage==3}" @click="activePage=3">检验订单</li> -->
+      <li :class="{'active': activePage==4}" @click="activePage=4">采购订单</li>
+    </d-nav>
+    <section class="content">
+      <keep-alive>
+        <component v-bind:is="currentTabComponent"></component>
+      </keep-alive>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -20,13 +21,15 @@ import dNav from "@/components/common/dNav";
 import cloudPharmacy from "./teamAchievementPaging/cloudPharmacy";
 import cloudRecipe from "./teamAchievementPaging/cloudRecipe";
 import inspectOrder from "./teamAchievementPaging/inspectOrder";
+import cloudGoodsOrder from "./teamAchievementPaging/cloudGoodsOrder";
 export default {
   components: {
     dHeader,
     dNav,
     cloudPharmacy,
     cloudRecipe,
-    inspectOrder
+    inspectOrder,
+    cloudGoodsOrder
   },
   data() {
     return {
@@ -44,6 +47,9 @@ export default {
           break;
         case 3:
           return "inspect-order";
+          break;
+        case 4:
+          return "cloud-goods-order";
           break;
         default:
           return "cloud-pharmacy";

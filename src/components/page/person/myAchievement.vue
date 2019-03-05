@@ -4,7 +4,8 @@
       <d-nav class="nav">
         <!-- <li :class="{'active': activePage==1}" @click="activePage=1">云药房</li> -->
         <li :class="{'active': activePage==2}" @click="activePage=2">云处方</li>
-        <li :class="{'active': activePage==3}" @click="activePage=3">检验订单</li>
+        <!-- <li :class="{'active': activePage==3}" @click="activePage=3">检验订单</li> -->
+        <li :class="{'active': activePage==4}" @click="activePage=4">采购订单</li>
       </d-nav>
       <section class="content">
         <keep-alive>
@@ -20,13 +21,15 @@ import dNav from "@/components/common/dNav";
 import cloudPharmacy from "./myAchievementPaging/cloudPharmacy";
 import cloudRecipe from "./myAchievementPaging/cloudRecipe";
 import inspectOrder from "./myAchievementPaging/inspectOrder";
+import cloudGoodsOrder from "./myAchievementPaging/cloudGoodsOrder";
 export default {
   components: {
     dHeader,
     dNav,
     cloudPharmacy,
     cloudRecipe,
-    inspectOrder
+    inspectOrder,
+    cloudGoodsOrder
   },
   data() {
     return {
@@ -45,6 +48,8 @@ export default {
         case 3:
           return "inspect-order";
           break;
+        case 4: 
+          return "cloud-goods-order"
         default:
           return "cloud-pharmacy";
           break;

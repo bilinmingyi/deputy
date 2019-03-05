@@ -237,7 +237,6 @@ export default {
           });
         }.bind(this)
       );
-      console.log(this.providerList);
     },
     formatProjectList(pros) {
       let ret = [];
