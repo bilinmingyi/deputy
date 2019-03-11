@@ -186,7 +186,7 @@ export default {
     toPay() {
       if (this.order.pay_type == 4) {
         window.location.href =
-          "/dyyzs/weixin/pay/weixin/pay/?orderType=7&orderSeqno=" +
+          "/dyyzs/weixin/pay/?orderType=7&orderSeqno=" +
           this.orderSeqno;
       } else if (this.order.pay_type == 6) {
         this.$router.go(-1);
